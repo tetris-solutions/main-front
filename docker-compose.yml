@@ -1,0 +1,22 @@
+db:
+  image: rethinkdb
+  ports:
+    - "8080:8080"
+user-api:
+    build: .
+    dockerfile: Dockerfile-api
+    command: npm run user-api
+    volumes:
+      - .:/code
+    links:
+      - db:rethinkdb.tetris-solutions.com.br
+web:
+  build: .
+  command: npm run start-dev
+  volumes:
+    - .:/code
+  ports:
+    - "8001:8001"
+  links:
+    - user-api:user.api.tetris-solutions.com.br
+

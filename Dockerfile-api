@@ -1,0 +1,4 @@
+FROM node:latest
+RUN mkdir -p /code
+WORKDIR /code
+ADD . /code/
