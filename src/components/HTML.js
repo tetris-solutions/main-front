@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 
-export default ({documentTitle, children}) => (
+export default ({documentTitle = 'Tetris Solutions', children}) => (
   <html>
   <head>
     <meta charSet='UTF-8'/>
