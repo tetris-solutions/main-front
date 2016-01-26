@@ -29,7 +29,7 @@
     "react-dom": "^0.14.6"
   },
   "devDependencies": {
-    "@tetris/user-api": "0.0.6",
+    "@tetris/user-api": "0.0.8",
     "babel-cli": "^6.4.5",
     "babel-loader": "^6.2.1",
     "babel-plugin-react-transform": "^2.0.0",

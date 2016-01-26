@@ -2,9 +2,12 @@ import React from 'react'
 
 const Login = React.createClass({
   displayName: 'Login',
+  handleSubmit () {
+
+  },
   render () {
     return (
-      <form className='panel panel-default'>
+      <form className='panel panel-default' onSubmit={this.handleSubmit}>
         <section className='panel-body'>
           <div className='form-group'>
             <label>email</label>

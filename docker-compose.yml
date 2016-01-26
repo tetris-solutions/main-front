@@ -6,6 +6,8 @@ user-api:
     build: .
     dockerfile: Dockerfile-api
     command: npm run user-api
+    ports:
+      - "8000:8000"
     volumes:
       - .:/code
     links:
