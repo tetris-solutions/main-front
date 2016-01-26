@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 
-export default ({documentTitle = 'Tetris Solutions', children}) => (
+export default ({documentTitle = 'Tetris Solutions', inject = {}, children}) => (
   <html>
   <head>
     <meta charSet='UTF-8'/>
@@ -10,7 +10,9 @@ export default ({documentTitle = 'Tetris Solutions', children}) => (
   </head>
   <body>
   <div id='app' dangerouslySetInnerHTML={{__html: ReactDOMServer.renderToString(children)}}/>
+  <script dangerouslySetInnerHTML={{__html: `var backendPayload = ${JSON.stringify(inject)}`}}/>
   <script src='/client.js'></script>
   </body>
   </html>
 )
+

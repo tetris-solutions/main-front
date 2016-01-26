@@ -1,5 +1,4 @@
 import React from 'react'
-import Login from './Login'
 
 const Home = React.createClass({
   displayName: 'Home',
@@ -7,8 +6,6 @@ const Home = React.createClass({
     return (
       <div className='container'>
         <h1>Hello world!</h1>
-        <hr/>
-        <Login />
       </div>
     )
   }

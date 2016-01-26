@@ -15,7 +15,10 @@ export default {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': {}
+      'process.env': {
+        FRONT_URL: `"${process.env.FRONT_URL}"`,
+        USER_API_URL: `"${process.env.USER_API_URL}"`
+      }
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
