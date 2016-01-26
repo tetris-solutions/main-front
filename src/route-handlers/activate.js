@@ -1,5 +1,5 @@
 import {GET} from '@tetris/http'
-import assign from 'lodash/assign'
+import get from 'lodash/get'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import HTML from '../components/HTML'
@@ -19,13 +19,12 @@ export default (req, res) =>
       </Root>
       </HTML>)))
 
-    .catch(r => r.json()
-      .then(response => res.status(r.status)
+    .catch(fetchResponse => res.status(fetchResponse.status)
         .send(ReactDOMServer.renderToStaticMarkup(
-          <HTML inject={{activationError: assign(r, response)}}>
+          <HTML inject={{activationError: {status: fetchResponse.status, message: get(fetchResponse, 'data.message')}}}>
           <Root>
             <ActivationFailure>
-              {response.message}
+              {get(fetchResponse, 'data.message')}
             </ActivationFailure>
           </Root>
-          </HTML>))))
+          </HTML>)))
