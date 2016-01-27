@@ -1,4 +1,5 @@
 import React from 'react'
+import {IndexLink} from 'react-router'
 
 const {createClass, PropTypes} = React
 
@@ -14,7 +15,7 @@ export default createClass({
         <p className='text-danger'>
           {this.props.children || 'Não foi possível ativar sua conta.'}
         </p>
-        <a href='/' className='btn btn-primary pull-right'>Voltar</a>
+        <IndexLink to='/' className='btn btn-primary pull-right'>Voltar</IndexLink>
       </div>
     )
   }

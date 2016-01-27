@@ -1,3 +1,7 @@
 import {GET} from '@tetris/http'
 
-export default () => GET(`${process.env.USER_API_URL}`)
+/**
+ * load user from api
+ * @param token
+ */
+export default token => GET(`${process.env.USER_API_URL}`, {headers: {Authorization: `Bearer ${token}`}})

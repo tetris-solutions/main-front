@@ -3,14 +3,9 @@ import loadCachedState from './functions/load-cached-state'
 import persistTree from './functions/persist-tree'
 import merge from 'lodash/merge'
 import global from 'global'
+import defaultState from './default-state'
 
-const user = null
-const permissions = []
-
-const tree = new Tree(merge({
-  user,
-  permissions
-}, loadCachedState(), global.backendPayload))
+const tree = new Tree(merge(defaultState, loadCachedState(), global.backendPayload))
 
 tree
   .select('user')

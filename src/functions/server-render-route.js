@@ -10,7 +10,9 @@ import {createMemoryHistory} from 'react-router'
  * @param tree
  * @returns {*}
  */
-export default (location, tree) => {
+export default function serverRenderRoute (req, res) {
+  const location = req.path
+  const tree = res.locals.tree
   const history = createMemoryHistory(location)
   const markup = ReactDOMServer.renderToStaticMarkup(
     <HTML inject={tree.get()}>
@@ -18,5 +20,5 @@ export default (location, tree) => {
     </HTML>
   )
   tree.release()
-  return markup
+  return res.send(markup)
 }

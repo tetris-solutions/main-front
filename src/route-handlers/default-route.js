@@ -1,6 +1,3 @@
-import render from '../functions/server-render-route'
-import Tree from 'baobab'
+import serverRenderRoute from '../functions/server-render-route'
 
-export default (req, res) =>
-  res.send(render(req.path,
-    req.tree || new Tree({user: null})))
+export default serverRenderRoute

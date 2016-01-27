@@ -1,13 +1,16 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 import global from 'global'
-import get from 'lodash/get'
+import {branch} from 'baobab-react/higher-order'
 import ActivationFailure from './ActivationFailure'
 import ActivationSuccess from './ActivationSuccess'
 
-export default React.createClass({
+const Activation = React.createClass({
   displayName: 'Activation',
+  propTypes: {
+    activationError: PropTypes.object
+  },
   render () {
-    const activationError = get(global, 'backendPayload.activationError')
+    const {activationError} = this.props
     return activationError
       ? (
       <ActivationFailure>
@@ -16,5 +19,11 @@ export default React.createClass({
     ) : (
       <ActivationSuccess/>
     )
+  }
+})
+
+export default branch(Activation, {
+  cursors: {
+    activationError: ['errors', 'activation']
   }
 })

@@ -1,5 +1,16 @@
 import webpack from 'webpack'
 import path from 'path'
+import each from 'lodash/each'
+import pick from 'lodash/pick'
+
+function passEnv () {
+  const env = {}
+
+  each(pick(process.env, 'FRONT_URL', 'USER_API_URL', 'TOKEN_COOKIE_DOMAIN', 'TOKEN_COOKIE_NAME'),
+    (value, key) => env[key] = `"${value}"`)
+
+  return env
+}
 
 export default {
   devtool: 'eval-source-map',
@@ -15,10 +26,7 @@ export default {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': {
-        FRONT_URL: `"${process.env.FRONT_URL}"`,
-        USER_API_URL: `"${process.env.USER_API_URL}"`
-      }
+      'process.env': passEnv()
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()

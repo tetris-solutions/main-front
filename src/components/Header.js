@@ -1,12 +1,25 @@
 import React from 'react'
 import {Link, IndexLink} from 'react-router'
+import logoutAction from '../actions/logout-action'
+import {branch} from 'baobab-react/higher-order'
 
 const {PropTypes} = React
 
-export default React.createClass({
+const Header = React.createClass({
   displayName: 'Header',
   propTypes: {
-    user: PropTypes.object
+    user: PropTypes.object,
+    actions: PropTypes.shape({
+      logout: PropTypes.func.isRequired
+    })
+  },
+  contextTypes: {
+    router: PropTypes.object.isRequired
+  },
+  handleLogoutClick (e) {
+    e.preventDefault()
+    this.props.actions.logout()
+    this.context.router.push('/')
   },
   render () {
     const {user} = this.props
@@ -18,8 +31,11 @@ export default React.createClass({
           </div>
           {user ? (
             <ul className='nav navbar-nav navbar-right'>
+              <li><a>{user.name}</a></li>
               <li>
-                <a href='/settings'>Configurações</a>
+                <a href='/' onClick={this.handleLogoutClick}>
+                  Sair
+                </a>
               </li>
             </ul>
           ) : (
@@ -35,5 +51,11 @@ export default React.createClass({
         </div>
       </nav>
     )
+  }
+})
+
+export default branch(Header, {
+  actions: {
+    logout: logoutAction
   }
 })
