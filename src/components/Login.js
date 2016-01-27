@@ -1,12 +1,25 @@
 import React from 'react'
-import login from '../actions/login'
+import loginAction from '../actions/login-action'
+import {branch} from 'baobab-react/higher-order'
+
+const {PropTypes} = React
 
 const Login = React.createClass({
   displayName: 'Login',
+  propTypes: {
+    actions: PropTypes.shape({
+      login: PropTypes.func.isRequired
+    })
+  },
+  contextTypes: {
+    router: PropTypes.object.isRequired
+  },
   handleSubmit (e) {
     e.preventDefault()
     const {elements} = e.target
-    login(elements.email.value, elements.password.value)
+    this.props.actions
+      .login(elements.email.value, elements.password.value)
+      .then(() => this.context.router.push('/'))
   },
   render () {
     return (
@@ -29,4 +42,8 @@ const Login = React.createClass({
   }
 })
 
-export default Login
+export default branch(Login, {
+  actions: {
+    login: loginAction
+  }
+})

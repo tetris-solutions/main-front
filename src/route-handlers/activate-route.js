@@ -9,6 +9,8 @@ import ActivationFailure from '../components/ActivationFailure'
 
 const {USER_API_URL} = process.env
 
+// @TODO: adaptar essas rotas a arquitetura isomórfica
+
 export default (req, res) =>
   GET(`${USER_API_URL}/activate/${req.params.activationCode}`)
 

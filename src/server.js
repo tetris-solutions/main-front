@@ -19,6 +19,7 @@ if (process.env.NODE_ENV === 'development') {
 app.get('/', loadRoute('default'))
 app.get('/login', loadRoute('default'))
 app.get('/signup', loadRoute('default'))
+app.get('/waiting-confirmation', loadRoute('default'))
 
 app.get('/activate/:activationCode', loadRoute('activate'))
 

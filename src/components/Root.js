@@ -1,15 +1,26 @@
 import React from 'react'
 import Header from './Header'
+import {branch} from 'baobab-react/higher-order'
 
-export default React.createClass({
+const {PropTypes} = React
+
+const Root = React.createClass({
   displayName: 'Root',
   propTypes: {
-    children: React.PropTypes.node
+    children: PropTypes.node,
+    user: PropTypes.object
   },
   render () {
+    const {user} = this.props
     return <div>
-      <Header/>
+      <Header user={user}/>
       {this.props.children}
     </div>
+  }
+})
+
+export default branch(Root, {
+  cursors: {
+    user: ['user']
   }
 })

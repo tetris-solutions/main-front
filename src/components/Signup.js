@@ -1,8 +1,13 @@
 import React from 'react'
-import signup from '../actions/signup'
+import signup from '../api/signup'
+
+const {PropTypes} = React
 
 export default React.createClass({
   displayName: 'Signup',
+  contextTypes: {
+    router: PropTypes.object.isRequired
+  },
   handleSubmit (e) {
     e.preventDefault()
     const {elements} = e.target
@@ -10,7 +15,7 @@ export default React.createClass({
       email: elements.email.value,
       password: elements.password.value,
       name: elements.name.value
-    })
+    }).then(() => this.context.router.push('/waiting-confirmation'))
   },
   render () {
     return (
