@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link, IndexLink} from 'react-router'
 
 export default React.createClass({
   render () {
@@ -6,11 +7,14 @@ export default React.createClass({
       <nav className='navbar navbar-default'>
         <div className='container-fluid'>
           <div className='navbar-header'>
-            <a className='navbar-brand' href='/'>Tetris</a>
+            <IndexLink className='navbar-brand' to='/'>Tetris</IndexLink>
           </div>
           <ul className='nav navbar-nav navbar-right'>
             <li>
-              <a href='/login'>Login</a>
+              <Link to='/signup'>Cadastrar</Link>
+            </li>
+            <li>
+              <Link to='/login'>Login</Link>
             </li>
           </ul>
         </div>

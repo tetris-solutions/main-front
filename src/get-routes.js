@@ -4,15 +4,15 @@ import Login from './components/Login'
 import Activation from './components/Activation'
 import Home from './components/Home'
 import Root from './components/Root'
+import Signup from './components/Signup'
 
-export default function getRoutes (history) {
-  return (
-    <Router history={history}>
-      <Route path='/' component={Root}>
-        <IndexRoute component={Home}/>
-        <Route path='/login' component={Login}/>
-        <Route path='/activate/:activationCode' component={Activation}/>
-      </Route>
-    </Router>
-  )
-}
+export default history => (
+  <Router history={history}>
+    <Route path='/' component={Root}>
+      <IndexRoute component={Home}/>
+      <Route path='/login' component={Login}/>
+      <Route path='/signup' component={Signup}/>
+      <Route path='/activate/:activationCode' component={Activation}/>
+    </Route>
+  </Router>
+)

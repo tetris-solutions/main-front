@@ -7,17 +7,19 @@ global.fetch = fetch
 dotenv.config()
 
 const app = express()
-let loadRoute = name => require(`./route-handlers/${name}`).default
+let loadRoute = name => require(`./route-handlers/${name}-route`).default
 
 app.use(express.static(path.normalize(`${__dirname}/../public`)))
 
 if (process.env.NODE_ENV === 'development') {
   require('./dev-server-hook').default(app)
-  loadRoute = name => (...args) => require(`./route-handlers/${name}`).default(...args)
+  loadRoute = name => (...args) => require(`./route-handlers/${name}-route`).default(...args)
 }
 
-app.get('/', loadRoute('home'))
+app.get('/', loadRoute('default'))
+app.get('/login', loadRoute('default'))
+app.get('/signup', loadRoute('default'))
+
 app.get('/activate/:activationCode', loadRoute('activate'))
-app.get('/login', loadRoute('login'))
 
 app.listen(3000)
