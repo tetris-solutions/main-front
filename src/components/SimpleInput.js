@@ -3,6 +3,14 @@ import pick from 'lodash/pick'
 import cx from 'classnames'
 
 const {PropTypes} = React
+const inputFields = [
+  'name',
+  'type',
+  'onChange',
+  'required',
+  'defaultValue',
+  'value'
+]
 
 export default React.createClass({
   displayName: 'SimpleInput',
@@ -19,11 +27,11 @@ export default React.createClass({
     onChange: PropTypes.func
   },
   render () {
-    const {type, name, error, label, onChange} = this.props
+    const {error, label} = this.props
     return (
       <div className={cx('form-group', error && 'has-error')}>
         <label className='control-label'>{label}</label>
-        <input className='form-control' type={type} name={name} onChange={onChange} {...pick(this.props, 'required')}/>
+        <input className='form-control' {...pick(this.props, inputFields)}/>
         {error && (<p className='help-block'>{error}</p>)}
       </div>
     )

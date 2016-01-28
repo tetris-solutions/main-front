@@ -5,6 +5,7 @@ import Activation from './components/Activation'
 import Home from './components/Home'
 import Root from './components/Root'
 import Signup from './components/Signup'
+import Profile from './components/Me'
 import WaitingConfirmation from './components/WaitingConfirmation'
 import {root} from 'baobab-react/higher-order'
 
@@ -14,6 +15,7 @@ export default (history, tree) => (
       <IndexRoute component={Home}/>
       <Route path='/login' component={Login}/>
       <Route path='/signup' component={Signup}/>
+      <Route path='/me' component={Profile}/>
       <Route path='/waiting-confirmation' component={WaitingConfirmation}/>
       <Route path='/activate/:activationCode' component={Activation}/>
     </Route>

@@ -31,7 +31,7 @@ const Header = React.createClass({
           </div>
           {user ? (
             <ul className='nav navbar-nav navbar-right'>
-              <li><a>{user.name}</a></li>
+              <li><Link to='/me'>{user.name}</Link></li>
               <li>
                 <a href='/' onClick={this.handleLogoutClick}>
                   Sair

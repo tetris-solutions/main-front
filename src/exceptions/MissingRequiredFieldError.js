@@ -1,4 +1,4 @@
-import CustomException from './CustomException'
+import CustomException from '@tetris/base-lib/CustomException'
 
 export default class MissingRequiredFieldError extends CustomException {
   constructor (field) {
