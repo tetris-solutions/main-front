@@ -22,9 +22,11 @@
   },
   "homepage": "https://github.com/tetris-solutions/main-front#readme",
   "dependencies": {
+    "@tetris/base-lib": "0.0.1",
     "@tetris/http": "^0.1.0",
     "baobab": "^2.3.3",
     "baobab-react": "^1.0.1",
+    "classnames": "^2.2.3",
     "cookie-parser": "^1.4.1",
     "cors": "^2.7.1",
     "dotenv": "^2.0.0",
@@ -39,7 +41,7 @@
     "whatwg-fetch": "^0.11.0"
   },
   "devDependencies": {
-    "@tetris/user-api": "0.0.15",
+    "@tetris/user-api": "0.0.18",
     "babel-cli": "^6.4.5",
     "babel-loader": "^6.2.1",
     "babel-plugin-react-transform": "^2.0.0",

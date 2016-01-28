@@ -1,8 +1,9 @@
-export default class InvalidArgumentError extends Error {
+import CustomException from '@tetris/base-lib/CustomException'
+
+export default class InvalidArgumentError extends CustomException {
   constructor (arg) {
-    const message = `${arg} is not a valid argument`
-    super(message)
-    this.message = message
+    super(`${arg} is not a valid argument`)
   }
 }
+
 InvalidArgumentError.displayName = 'InvalidArgumentError'

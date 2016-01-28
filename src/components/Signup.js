@@ -1,10 +1,13 @@
 import React from 'react'
 import signup from '../api/signup'
+import FormMixin from '../mixins/FormMixin'
+import SimpleInput from './SimpleInput'
 
 const {PropTypes} = React
 
 export default React.createClass({
   displayName: 'Signup',
+  mixins: [FormMixin],
   contextTypes: {
     router: PropTypes.object.isRequired
   },
@@ -15,27 +18,36 @@ export default React.createClass({
       email: elements.email.value,
       password: elements.password.value,
       name: elements.name.value
-    }).then(() => this.context.router.push('/waiting-confirmation'))
+    })
+      .then(() => this.context.router.push('/waiting-confirmation'))
+      .catch(this.handleSubmitException)
   },
   render () {
+    const {errors} = this.state
     return (
       <div className='container'>
         <form className='panel panel-default' onSubmit={this.handleSubmit}>
           <section className='panel-body'>
-            <div className='form-group'>
-              <label>Nome</label>
-              <input className='form-control' type='text' name='name' required/>
-            </div>
 
-            <div className='form-group'>
-              <label>E-mail</label>
-              <input className='form-control' type='email' name='email' required/>
-            </div>
+            <SimpleInput name='name'
+                         label='Nome'
+                         error={errors.name}
+                         onChange={this.dismissError}
+                         required/>
 
-            <div className='form-group'>
-              <label>Senha</label>
-              <input className='form-control' type='password' name='password' required/>
-            </div>
+            <SimpleInput name='email'
+                         type='email'
+                         label='E-mail'
+                         error={errors.email}
+                         onChange={this.dismissError}
+                         required/>
+
+            <SimpleInput name='password'
+                         type='password'
+                         label='Senha'
+                         error={errors.password}
+                         onChange={this.dismissError}
+                         required/>
 
             <button className='btn btn-primary'>
               Salvar

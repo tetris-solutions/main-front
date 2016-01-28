@@ -1,8 +1,9 @@
-export default class MissingRequiredFieldError extends Error {
+import CustomException from './CustomException'
+
+export default class MissingRequiredFieldError extends CustomException {
   constructor (field) {
-    const message = `${field} is required`
-    super(message)
-    this.message = message
+    super(`${field} is required`)
+    this.field = field
   }
 }
 MissingRequiredFieldError.displayName = 'MissingRequiredFieldError'
