@@ -1,5 +1,4 @@
 import React from 'react'
-import global from 'global'
 import {branch} from 'baobab-react/higher-order'
 import ActivationFailure from './ActivationFailure'
 import ActivationSuccess from './ActivationSuccess'
