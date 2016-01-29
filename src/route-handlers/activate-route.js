@@ -1,12 +1,10 @@
 import {GET} from '@tetris/http'
-import loadUser from '../api/load-user'
+import loadUser from '../api/get-user-by-token'
 import serverRenderRoute from '../functions/server-render-route'
 import passTokenAhead from '../functions/pass-token-ahead'
 
-const {USER_API_URL} = process.env
-
 export default (req, res) =>
-  GET(`${USER_API_URL}/activate/${req.params.activationCode}`)
+  GET(`${process.env.USER_API_URL}/activate/${req.params.activationCode}`)
     .then(response => {
       passTokenAhead(req, res)(response)
       return loadUser(response.token)

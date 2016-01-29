@@ -3,6 +3,7 @@ import path from 'path'
 import dotenv from 'dotenv'
 import fetch from 'node-fetch'
 import cookieParser from 'cookie-parser'
+import protectedRouteMiddleware from './middlewares/protected'
 import initializeMiddleware from './middlewares/initialize-tree'
 import authMiddleware from './middlewares/auth'
 import morgan from 'morgan'
@@ -27,7 +28,7 @@ if (process.env.NODE_ENV === 'development') {
 app.get('/', loadRoute('default'))
 app.get('/login', loadRoute('default'))
 app.get('/signup', loadRoute('default'))
-app.get('/me', loadRoute('default'))
+app.get('/me', protectedRouteMiddleware, loadRoute('default'))
 app.get('/waiting-confirmation', loadRoute('default'))
 
 app.get('/activate/:activationCode', loadRoute('activate'))

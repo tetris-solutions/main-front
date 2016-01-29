@@ -6,4 +6,4 @@ export default class InvalidArgumentError extends CustomException {
   }
 }
 
-InvalidArgumentError.displayName = 'InvalidArgumentError'
+InvalidArgumentError.displayName = 'AccessForbidden'

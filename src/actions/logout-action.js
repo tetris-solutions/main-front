@@ -1,7 +1,9 @@
 import Cookie from 'js-cookie'
 
 export default function logoutAction (tree) {
-  Cookie.remove(process.env.TOKEN_COOKIE_NAME)
+  Cookie.remove(process.env.TOKEN_COOKIE_NAME, {domain: process.env.TOKEN_COOKIE_DOMAIN})
+  console.log(process.env.TOKEN_COOKIE_NAME)
+  debugger
   try {
     window.localStorage.clear()
   } catch (e) {

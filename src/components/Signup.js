@@ -14,6 +14,7 @@ export default React.createClass({
   handleSubmit (e) {
     e.preventDefault()
     const {elements} = e.target
+    this.preSubmit()
     signup({
       email: elements.email.value,
       password: elements.password.value,
@@ -21,12 +22,13 @@ export default React.createClass({
     })
       .then(() => this.context.router.push('/waiting-confirmation'))
       .catch(this.handleSubmitException)
+      .then(this.posSubmit)
   },
   render () {
-    const {errors} = this.state
+    const {errors, submitInProgress} = this.state
     return (
       <div className='container'>
-        <form className='panel panel-default' onSubmit={this.handleSubmit}>
+        <form className='panel panel-default' onSubmit={this.handleSubmit} method='POST'>
           <section className='panel-body'>
 
             <SimpleInput name='name'
@@ -49,8 +51,8 @@ export default React.createClass({
                          onChange={this.dismissError}
                          required/>
 
-            <button className='btn btn-primary'>
-              Salvar
+            <button disabled={submitInProgress} className='btn btn-primary'>
+              {submitInProgress ? 'Enviando...' : 'Salvar'}
             </button>
           </section>
         </form>

@@ -23,7 +23,7 @@
   "homepage": "https://github.com/tetris-solutions/main-front#readme",
   "dependencies": {
     "@tetris/base-lib": "0.0.1",
-    "@tetris/http": "^0.1.0",
+    "@tetris/http": "^0.2.0",
     "baobab": "^2.3.3",
     "baobab-react": "^1.0.1",
     "classnames": "^2.2.3",

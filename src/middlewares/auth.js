@@ -1,4 +1,4 @@
-import loadUser from '../api/load-user'
+import getUserByToken from '../api/get-user-by-token'
 import passTokenAhead from '../functions/pass-token-ahead'
 
 export default function authMiddleware (req, res, next) {
@@ -14,9 +14,10 @@ export default function authMiddleware (req, res, next) {
 
   if (!token) return noAuth()
 
-  loadUser(token)
+  getUserByToken(token)
     .then(passTokenAhead(req, res))
     .then(function saveUserObject (response) {
+      req.user = response.data
       res.locals.tree.set('user', response.data)
       res.locals.tree.commit()
       next()

@@ -6,6 +6,7 @@ import global from 'global'
 export default {
   getInitialState () {
     return {
+      submitInProgress: false,
       errors: {}
     }
   },
@@ -31,5 +32,11 @@ export default {
       delete errors[name]
       return errors
     })
+  },
+  preSubmit () {
+    this.setState({errors: {}, submitInProgress: true})
+  },
+  posSubmit () {
+    this.setState({submitInProgress: false})
   }
 }
