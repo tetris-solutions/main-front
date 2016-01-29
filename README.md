@@ -11,10 +11,11 @@
         - se precisar usar as funcionalidades que enviam email, você vai precisar pedir os valores do SMTP a alguém do time
 - [instale o docker e o docker-compose](https://docs.docker.com/)
 
-## Instalação
+## Rodando a aplicação
 
 ```sh
 source .env
 docker-compose up
 ```
 
+Se você estiver no Linux, já pode abrir localhost:3000 no browser, no caso do OS X você provavelmente vai precisar descubrir o ip da máquina virtual com o docker-machine.
