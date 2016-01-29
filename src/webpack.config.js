@@ -1,18 +1,22 @@
-import webpack from 'webpack'
-import path from 'path'
-import each from 'lodash/each'
-import pick from 'lodash/pick'
+// esse arquivo é escrito em commonjs e js legado
+// pra que o usuário possa rodar `webpack` normalmente da pasta src
+var webpack = require('webpack')
+var path = require('path')
+var each = require('lodash/each')
+var pick = require('lodash/pick')
 
 function passEnv () {
-  const env = {}
+  var env = {}
 
   each(pick(process.env, 'FRONT_URL', 'USER_API_URL', 'TOKEN_COOKIE_DOMAIN', 'TOKEN_COOKIE_NAME'),
-    (value, key) => env[key] = `"${value}"`)
+    function (value, key) {
+      env[key] = `"${value}"`
+    })
 
   return env
 }
 
-export default {
+module.exports = {
   devtool: 'eval-source-map',
   context: __dirname,
   entry: [
