@@ -11,6 +11,7 @@
     "test": "ava tests",
     "lint": "eslint src",
     "user-api": "user-api",
+    "db-migration": "db-migration",
     "start": "nodemon src/server.js"
   },
   "repository": {
@@ -42,7 +43,7 @@
     "whatwg-fetch": "^0.11.0"
   },
   "devDependencies": {
-    "@tetris/user-api": "0.0.19",
+    "@tetris/user-api": "0.0.21",
     "babel-cli": "^6.4.5",
     "babel-loader": "^6.2.1",
     "babel-plugin-react-transform": "^2.0.0",
