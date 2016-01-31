@@ -18,4 +18,4 @@ source .env
 docker-compose up
 ```
 
-Se você estiver no Linux, já pode abrir localhost:3000 no browser, no caso do OS X você provavelmente vai precisar descubrir o ip da máquina virtual com o docker-machine.
+Se você estiver no Linux, já pode abrir localhost:3000 no browser, no caso do OS X você provavelmente vai precisar descobrir o ip da máquina virtual com o docker-machine.
