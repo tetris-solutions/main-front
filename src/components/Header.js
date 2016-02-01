@@ -1,4 +1,5 @@
 import React from 'react'
+import LanguageSelector from './HeaderLanguageSelector'
 import {Link, IndexLink} from 'react-router'
 import logoutAction from '../actions/logout-action'
 import {branch} from 'baobab-react/higher-order'
@@ -29,6 +30,7 @@ const Header = React.createClass({
           <div className='navbar-header'>
             <IndexLink className='navbar-brand' to='/'>Tetris</IndexLink>
           </div>
+
           {user ? (
             <ul className='nav navbar-nav navbar-right'>
               <li><Link to='/me'>{user.name}</Link></li>
@@ -48,6 +50,8 @@ const Header = React.createClass({
               </li>
             </ul>
           )}
+
+          <LanguageSelector />
         </div>
       </nav>
     )

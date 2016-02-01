@@ -30,7 +30,7 @@ const Me = createClass({
     .then(this.posSubmit)
   },
   render () {
-    const {errors, submitInProgress} = this.state
+    const {errors} = this.state
     const {user: {name, email, avatar}} = this.props
     return (
       <div className='container'>

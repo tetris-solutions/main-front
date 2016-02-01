@@ -1,32 +1,40 @@
 import React from 'react'
-import signup from '../api/signup'
+import signupAction from '../actions/signup-action'
 import FormMixin from '../mixins/FormMixin'
 import SimpleInput from './SimpleInput'
 import SubmitButton from './SubmitButton'
+import {branch} from 'baobab-react/higher-order'
 
 const {PropTypes} = React
 
-export default React.createClass({
+const Signup = React.createClass({
   displayName: 'Signup',
   mixins: [FormMixin],
+  propTypes: {
+    actions: PropTypes.shape({
+      signup: PropTypes.func
+    })
+  },
   contextTypes: {
     router: PropTypes.object.isRequired
   },
   handleSubmit (e) {
     e.preventDefault()
     const {elements} = e.target
+
     this.preSubmit()
-    signup({
-      email: elements.email.value,
-      password: elements.password.value,
-      name: elements.name.value
-    })
+    this.props.actions
+      .signup({
+        email: elements.email.value,
+        password: elements.password.value,
+        name: elements.name.value
+      })
       .then(() => this.context.router.push('/waiting-confirmation'))
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
   render () {
-    const {errors, submitInProgress} = this.state
+    const {errors} = this.state
     return (
       <div className='container'>
         <form className='panel panel-default' onSubmit={this.handleSubmit} method='POST'>
@@ -57,5 +65,11 @@ export default React.createClass({
         </form>
       </div>
     )
+  }
+})
+
+export default branch(Signup, {
+  actions: {
+    signup: signupAction
   }
 })

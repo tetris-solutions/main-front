@@ -1,5 +1,7 @@
 import {POST} from '@tetris/http'
-import passValidatedUser from '../functions/pass-validated-user'
-import includeToken from '../functions/include-token'
+import validatedUser from '../functions/validate-user'
+import merge from 'lodash/merge'
 
-export default passValidatedUser(user => POST(`${process.env.USER_API_URL}/user`, includeToken({body: user})))
+export default (user, config) => validatedUser(user)
+  .then(() => POST(`${process.env.USER_API_URL}/user`,
+    merge(config, {body: user})))

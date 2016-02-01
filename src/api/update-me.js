@@ -1,7 +1,7 @@
 import {PUT} from '@tetris/http'
-import passValidatedUser from '../functions/pass-validated-user'
-import includeToken from '../functions/include-token'
+import validatedUser from '../functions/validate-user'
+import merge from 'lodash/merge'
 
-const onValidate = user => PUT(`${process.env.USER_API_URL}/me`, includeToken({body: user}))
-onValidate.requiresPassword = false
-export default passValidatedUser(onValidate)
+export default (user, config) => validatedUser(user, false)
+  .then(() => PUT(`${process.env.USER_API_URL}/me`,
+    merge(config, {body: user})))

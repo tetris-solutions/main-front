@@ -29,7 +29,7 @@ const Login = React.createClass({
       .then(this.posSubmit)
   },
   render () {
-    const {errors, submitInProgress} = this.state
+    const {errors} = this.state
     return (
       <div className='container'>
         <form className='panel panel-default' onSubmit={this.handleSubmit} method='POST'>
