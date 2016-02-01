@@ -19,3 +19,7 @@ docker-compose up
 ```
 
 Se você estiver no Linux, já pode abrir localhost:3000 no browser, no caso do OS X você provavelmente vai precisar descobrir o ip da máquina virtual com o docker-machine.
+
+## Estrutura da aplicação
+
+Todo código editável se encontra em `src`. A aplicação segue o paradigma [javascript universal](https://strongloop.com/strongblog/the-foundations-of-universal-or-isomorphic-javascript/), utilizando [express](http://expressjs.com/) como servidor e [React](https://facebook.github.io/react) (+[Baobab](http://npmjs.com/baobab) e [React-Router](http://npmjs.com/react-router)) para construção da UI. Existem dois pontos de entrada, e os nomes devem ser bem auto-explicativos: `client.js` e `server.js`.
