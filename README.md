@@ -33,4 +33,4 @@ Javascript, [ES2015](https://babeljs.io/docs/learn-es2015/), funcional arroz-com
 
 ## Infraestrutura
 
-Não foi utilizado um task runner, apenas [npm scripts](http://substack.net/task_automation_with_npm_run) mesmo. A geração do bundle pro browser é feita com o webpack e o babel como transpiler.
+Não foi utilizado um task runner, apenas [npm scripts](http://substack.net/task_automation_with_npm_run) mesmo. A geração do bundle pro browser é feita com o [webpack](http://www.christianalfoni.com/articles/2015_10_01_Taking-the-next-step-with-react-and-webpack) e o [babel](http://babeljs.io/) como transpiler.
