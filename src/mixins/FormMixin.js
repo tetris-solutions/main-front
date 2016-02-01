@@ -1,9 +1,20 @@
+import React from 'react'
 import MissingRequiredFieldError from '../exceptions/MissingRequiredFieldError'
 import isEmpty from 'lodash/isEmpty'
 import assign from 'lodash/assign'
 import global from 'global'
 
+const {PropTypes} = React
+
 export default {
+  getChildContext () {
+    return {
+      submitInProgress: this.state.submitInProgress
+    }
+  },
+  childContextTypes: {
+    submitInProgress: PropTypes.bool.isRequired
+  },
   getInitialState () {
     return {
       submitInProgress: false,

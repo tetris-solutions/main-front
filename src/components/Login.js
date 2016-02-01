@@ -3,6 +3,7 @@ import FormMixin from '../mixins/FormMixin'
 import loginAction from '../actions/login-action'
 import SimpleInput from './SimpleInput'
 import {branch} from 'baobab-react/higher-order'
+import SubmitButton from './SubmitButton'
 
 const {PropTypes} = React
 
@@ -46,9 +47,7 @@ const Login = React.createClass({
                          error={errors.password}
                          onChange={this.dismissError}
                          required/>
-            <button disabled={submitInProgress} className='btn btn-primary'>
-              {submitInProgress ? 'Enviando...' : 'Salvar'}
-            </button>
+            <SubmitButton/>
           </section>
         </form>
       </div>

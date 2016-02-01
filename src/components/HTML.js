@@ -7,11 +7,14 @@ export default ({documentTitle = 'Tetris Solutions', inject = {}, children}) => 
     <meta charSet='UTF-8'/>
     <title>{documentTitle}</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='/css/ladda.min.css'/>
+    <script dangerouslySetInnerHTML={{__html: `var backendPayload = ${JSON.stringify(inject)}`}}/>
+    <script src='/js/spin.min.js' defer></script>
+    <script src='/js/ladda.min.js' defer></script>
+    <script src='/client.js' defer></script>
   </head>
   <body>
   <div id='app' dangerouslySetInnerHTML={{__html: ReactDOMServer.renderToString(children)}}/>
-  <script dangerouslySetInnerHTML={{__html: `var backendPayload = ${JSON.stringify(inject)}`}}/>
-  <script src='/client.js'></script>
   </body>
   </html>
 )

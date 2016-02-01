@@ -2,6 +2,7 @@ import React from 'react'
 import signup from '../api/signup'
 import FormMixin from '../mixins/FormMixin'
 import SimpleInput from './SimpleInput'
+import SubmitButton from './SubmitButton'
 
 const {PropTypes} = React
 
@@ -51,9 +52,7 @@ export default React.createClass({
                          onChange={this.dismissError}
                          required/>
 
-            <button disabled={submitInProgress} className='btn btn-primary'>
-              {submitInProgress ? 'Enviando...' : 'Salvar'}
-            </button>
+            <SubmitButton />
           </section>
         </form>
       </div>

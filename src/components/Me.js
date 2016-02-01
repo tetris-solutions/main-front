@@ -3,6 +3,7 @@ import FormMixin from '../mixins/FormMixin'
 import SimpleInput from './SimpleInput'
 import {branch} from 'baobab-react/higher-order'
 import updateMeAction from '../actions/update-me-action'
+import SubmitButton from './SubmitButton'
 
 const {PropTypes, createClass} = React
 
@@ -67,10 +68,7 @@ const Me = createClass({
                              label='Nova senha'
                              error={errors.password}
                              onChange={this.dismissError}/>
-
-                <button disabled={submitInProgress} className='btn btn-primary'>
-                  {submitInProgress ? 'Enviando...' : 'Salvar'}
-                </button>
+                <SubmitButton/>
               </section>
             </form>
           </div>
