@@ -3,6 +3,7 @@ import ReactDOMServer from '../../node_modules/react-dom/server'
 import HTML from './../components/HTML'
 import getRoutes from './../get-routes'
 import {createMemoryHistory} from 'react-router'
+import beautify from 'js-beautify'
 
 /**
  * renders the app markup
@@ -12,13 +13,21 @@ import {createMemoryHistory} from 'react-router'
  */
 export default function serverRenderRoute (req, res) {
   const location = req.path
-  const tree = res.locals.tree
+  const useBeautify = process.env.BEAUTIFY_HTML === 'true'
+  const {tree} = res.locals
   const history = createMemoryHistory(location)
+  const app = getRoutes(history, tree)
+  const appMarkup = useBeautify
+    ? ReactDOMServer.renderToStaticMarkup(app)
+    : ReactDOMServer.renderToString(app)
+
   const markup = ReactDOMServer.renderToStaticMarkup(
     <HTML inject={tree.get()}>
-    {getRoutes(history, tree)}
+    {appMarkup}
     </HTML>
   )
+
   tree.release()
-  return res.send(markup)
+
+  return res.send(useBeautify ? beautify.html(markup) : markup)
 }

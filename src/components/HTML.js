@@ -14,7 +14,7 @@ export default ({documentTitle = 'Tetris Solutions', inject = {}, children}) => 
     <script src='/client.js' defer></script>
   </head>
   <body>
-  <div id='app' dangerouslySetInnerHTML={{__html: ReactDOMServer.renderToString(children)}}/>
+  <div id='app' dangerouslySetInnerHTML={{__html: children}}/>
   </body>
   </html>
 )

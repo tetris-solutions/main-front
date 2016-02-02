@@ -20,7 +20,7 @@ const HeaderLanguageSelector = React.createClass({
     return (
       <form className='navbar-form navbar-right'>
         <div className='form-group'>
-          <select className='form-control' value={this.props.userLocale || this.props.locale} onChange={this.onChangeLocale}>
+          <select className='form-control' value={this.props.locale || this.props.userLocale} onChange={this.onChangeLocale}>
             <option value='en'>English</option>
             <option value='pt'>Português</option>
           </select>
