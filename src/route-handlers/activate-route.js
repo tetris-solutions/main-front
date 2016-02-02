@@ -4,7 +4,7 @@ import serverRenderRoute from '../functions/server-render-route'
 import passTokenAhead from '../functions/pass-token-ahead'
 
 export default (req, res) =>
-  GET(`${process.env.USER_API_URL}/activate/${req.params.activationCode}`)
+  GET(`${process.env.USER_API_URL}/activate/${req.params.activationCode}`, {headers: {'Accept-Language': req.locale}})
     .then(response => {
       passTokenAhead(req, res)(response)
       return loadUser(response.token)

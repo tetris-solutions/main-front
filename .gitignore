@@ -2,5 +2,6 @@ lib
 .idea
 node_modules
 .env
+.docker.env
 *.log
 .npmrc

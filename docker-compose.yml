@@ -4,18 +4,19 @@ db:
     - "8080:8080"
 user-api:
     build: .
+    env_file: .docker.env
     command: npm run user-api
-    volumes:
-      - .:/opt/app/src
     ports:
       - "4000:4000"
     links:
       - "db:${RETHINKDB_HOST}"
 web:
   build: .
+  env_file: .docker.env
   command: npm run start
   volumes:
-    - .:/opt/app/src
+    - ./src:/opt/app/src
+    - ./node_modules:/opt/app/node_modules
   ports:
     - "3000:3000"
   links:
