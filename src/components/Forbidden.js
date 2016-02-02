@@ -1,4 +1,5 @@
 import React from 'react'
+import Message from './intl/Message'
 
 export default React.createClass({
   displayName: 'Forbidden',
@@ -6,8 +7,12 @@ export default React.createClass({
     return (
       <div className='container'>
         <div className='alert alert-warning'>
-          <h1 className='page-header'>Acesso negado!</h1>
-          <p>Você não tem permissão para acessar está página.</p>
+          <h1 className='page-header'>
+            <Message>accessForbiddenTitle</Message>
+          </h1>
+          <p>
+            <Message>accessForbiddenDescription</Message>
+          </p>
         </div>
       </div>
     )
