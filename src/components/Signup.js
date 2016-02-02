@@ -41,21 +41,21 @@ const Signup = React.createClass({
           <section className='panel-body'>
 
             <SimpleInput name='name'
-                         label='Nome'
+                         label='name'
                          error={errors.name}
                          onChange={this.dismissError}
                          required/>
 
             <SimpleInput name='email'
                          type='email'
-                         label='E-mail'
+                         label='email'
                          error={errors.email}
                          onChange={this.dismissError}
                          required/>
 
             <SimpleInput name='password'
                          type='password'
-                         label='Senha'
+                         label='password'
                          error={errors.password}
                          onChange={this.dismissError}
                          required/>

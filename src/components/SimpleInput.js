@@ -1,6 +1,7 @@
 import React from 'react'
 import pick from 'lodash/pick'
 import cx from 'classnames'
+import Message from './intl/Message'
 
 const {PropTypes} = React
 const inputFields = [
@@ -30,7 +31,9 @@ export default React.createClass({
     const {error, label} = this.props
     return (
       <div className={cx('form-group', error && 'has-error')}>
-        <label className='control-label'>{label}</label>
+        <label className='control-label'>
+          <Message>{label + 'Label'}</Message>
+        </label>
         <input className='form-control' {...pick(this.props, inputFields)}/>
         {error && (<p className='help-block'>{error}</p>)}
       </div>

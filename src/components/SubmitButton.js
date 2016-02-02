@@ -1,4 +1,5 @@
 import React from 'react'
+import Message from './intl/Message'
 
 const {PropTypes} = React
 
@@ -19,7 +20,6 @@ export default React.createClass({
     }
   },
   render () {
-    const {submitInProgress} = this.context
     return (
       <button type='submit'
               ref='btn'
@@ -27,7 +27,9 @@ export default React.createClass({
               data-style='expand-right'
               data-color='mint'
               data-size='s'>
-        <span className='ladda-label'>Salvar</span>
+        <span className='ladda-label'>
+          <Message>callToActionSubmit</Message>
+        </span>
       </button>
     )
   }

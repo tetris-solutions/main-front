@@ -3,5 +3,8 @@ import nav from './nav'
 import exceptions from './exceptions'
 import callToAction from './callToAction'
 import successMessages from './success'
+import labels from './labels'
 
-export default assign({}, nav, exceptions, callToAction, successMessages)
+export default assign({
+  greetingMessage: 'Hello world!'
+}, nav, exceptions, callToAction, successMessages, labels)

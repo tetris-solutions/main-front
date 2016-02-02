@@ -43,7 +43,7 @@ const Me = createClass({
               <section className='panel-body'>
 
                 <SimpleInput name='name'
-                             label='Nome'
+                             label='name'
                              defaultValue={name}
                              error={errors.name}
                              onChange={this.dismissError}
@@ -51,7 +51,7 @@ const Me = createClass({
 
                 <SimpleInput name='email'
                              type='email'
-                             label='E-mail'
+                             label='email'
                              defaultValue={email}
                              error={errors.email}
                              onChange={this.dismissError}
@@ -59,13 +59,13 @@ const Me = createClass({
 
                 <SimpleInput name='oldPassword'
                              type='password'
-                             label='Senha atual'
+                             label='currentPassword'
                              error={errors.oldPassword}
                              onChange={this.dismissError}/>
 
                 <SimpleInput name='password'
                              type='password'
-                             label='Nova senha'
+                             label='newPassword'
                              error={errors.password}
                              onChange={this.dismissError}/>
                 <SubmitButton/>
