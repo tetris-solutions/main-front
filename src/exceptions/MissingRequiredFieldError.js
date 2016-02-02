@@ -6,4 +6,5 @@ export default class MissingRequiredFieldError extends CustomException {
     this.field = field
   }
 }
+
 MissingRequiredFieldError.displayName = 'MissingRequiredFieldError'

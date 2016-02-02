@@ -1,10 +1,50 @@
+import React from 'react'
+import includes from 'lodash/includes'
 import ReactDom from 'react-dom'
 import tree from './client-tree'
 import getRoutes from './get-routes'
+import {GET} from '@tetris/http'
 import {browserHistory} from 'react-router'
-import Cookies from 'js-cookie'
+import loadScript from './functions/load-script'
 
 require('whatwg-fetch')
 
-ReactDom.render(getRoutes(browserHistory, tree),
-  document.getElementById('app'))
+window.React = React
+
+const loadedLocales = {
+  [tree.get('locale')]: tree.get('intl')
+}
+
+loadScript('/js/react-intl.min.js')
+  .then(() => {
+    let hasRendered = false
+
+    const render = () => {
+      ReactDom.render(getRoutes(browserHistory, tree), document.getElementById('app'))
+      hasRendered = true
+    }
+
+    function loadIntl (locale) {
+      if (loadedLocales[locale]) return Promise.resolve(loadedLocales[locale])
+
+      return GET(`/intl/${locale}`).then(({data}) => data)
+    }
+
+    window.tetrisLoadLocale = function (locale) {
+      const src = '/js/' + locale.split('-')[0] + '.js'
+
+      Promise.all([loadScript(src), loadIntl(locale)])
+        .then(args => {
+          const intl = args.pop()
+
+          loadedLocales[locale] = intl
+          tree.set('intl', intl)
+          tree.commit()
+
+          if (!hasRendered) render()
+        })
+
+    }
+
+    window.tetrisLoadLocale(tree.get('locale'))
+  })

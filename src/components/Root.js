@@ -8,7 +8,19 @@ const Root = React.createClass({
   displayName: 'Root',
   propTypes: {
     children: PropTypes.node,
-    user: PropTypes.object
+    user: PropTypes.object,
+    intl: PropTypes.shape({
+      locales: PropTypes.string,
+      messages: PropTypes.object
+    })
+  },
+  childContextTypes: {
+    locales: PropTypes.string,
+    messages: PropTypes.object
+  },
+  getChildContext () {
+    const {intl: {locales, messages}} = this.props
+    return {locales, messages}
   },
   render () {
     const {user} = this.props
@@ -21,6 +33,7 @@ const Root = React.createClass({
 
 export default branch(Root, {
   cursors: {
-    user: ['user']
+    user: ['user'],
+    intl: ['intl']
   }
 })

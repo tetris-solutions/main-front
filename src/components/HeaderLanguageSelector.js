@@ -15,6 +15,7 @@ const HeaderLanguageSelector = React.createClass({
   },
   onChangeLocale ({target: {value}}) {
     this.props.actions.changeLanguage(value)
+    window.tetrisLoadLocale(value)
   },
   render () {
     return (
@@ -22,7 +23,7 @@ const HeaderLanguageSelector = React.createClass({
         <div className='form-group'>
           <select className='form-control' value={this.props.locale || this.props.userLocale} onChange={this.onChangeLocale}>
             <option value='en'>English</option>
-            <option value='pt'>Português</option>
+            <option value='pt-BR'>Português</option>
           </select>
         </div>
       </form>

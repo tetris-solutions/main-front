@@ -1,3 +1,6 @@
+/* eslint-disable */
+import _intl from '@tetris/base-lib/intl'
+/* eslint-enable */
 import express from 'express'
 import path from 'path'
 import dotenv from 'dotenv'
@@ -5,10 +8,12 @@ import fetch from 'node-fetch'
 import cookieParser from 'cookie-parser'
 import protectedRouteMiddleware from './middlewares/protected'
 import initializeMiddleware from './middlewares/initialize-tree'
+import localeMiddleware from './middlewares/locale'
 import authMiddleware from './middlewares/auth'
 import morgan from 'morgan'
 import defaultRoute from './route-handlers/default-route'
 import activateRoute from './route-handlers/activate-route'
+import intlRoute from './route-handlers/intl-route'
 
 global.fetch = fetch
 dotenv.config()
@@ -27,6 +32,7 @@ app.use(morgan(flags.productionMode === 'production'
 ))
 
 app.use(cookieParser())
+app.use(localeMiddleware)
 app.use(initializeMiddleware)
 app.use(authMiddleware)
 
@@ -34,6 +40,7 @@ if (flags.developmentMode) {
   require('./dev-server-hook').default(app)
 }
 
+app.get('/intl/:locale', intlRoute)
 app.get('/', defaultRoute)
 app.get('/login', defaultRoute)
 app.get('/signup', defaultRoute)

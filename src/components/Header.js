@@ -3,6 +3,7 @@ import LanguageSelector from './HeaderLanguageSelector'
 import {Link, IndexLink} from 'react-router'
 import logoutAction from '../actions/logout-action'
 import {branch} from 'baobab-react/higher-order'
+import Message from './intl/Message'
 
 const {PropTypes} = React
 
@@ -36,17 +37,21 @@ const Header = React.createClass({
               <li><Link to='/me'>{user.name}</Link></li>
               <li>
                 <a href='/' onClick={this.handleLogoutClick}>
-                  Sair
+                  <Message>navLogout</Message>
                 </a>
               </li>
             </ul>
           ) : (
             <ul className='nav navbar-nav navbar-right'>
               <li>
-                <Link to='/signup'>Cadastrar</Link>
+                <Link to='/signup'>
+                  <Message>navSignup</Message>
+                </Link>
               </li>
               <li>
-                <Link to='/login'>Login</Link>
+                <Link to='/login'>
+                  <Message>navLogin</Message>
+                </Link>
               </li>
             </ul>
           )}

@@ -2,7 +2,9 @@
   "verbose": true,
   "watch": [
     "src/server.js",
-    "src/components/HTML.js"
+    "src/components/HTML.js",
+    "src/middlewares",
+    "src/route-handlers"
   ],
   "execMap": {
     "js": "npm run babel-node"
