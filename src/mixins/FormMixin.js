@@ -2,7 +2,6 @@ import React from 'react'
 import MissingRequiredFieldError from '../exceptions/MissingRequiredFieldError'
 import isEmpty from 'lodash/isEmpty'
 import assign from 'lodash/assign'
-import global from 'global'
 
 const {PropTypes} = React
 
@@ -15,6 +14,11 @@ export default {
   childContextTypes: {
     submitInProgress: PropTypes.bool.isRequired
   },
+  contextTypes: {
+    messages: PropTypes.shape({
+      missingRequiredField: PropTypes.string.isRequired
+    })
+  },
   getInitialState () {
     return {
       submitInProgress: false,
@@ -22,11 +26,11 @@ export default {
     }
   },
   handleSubmitException (rejection) {
-    const err = rejection instanceof global.Response ? rejection.data : rejection
+    const err = rejection instanceof window.Response ? rejection.data : rejection
     let newErrors
 
     if (err instanceof MissingRequiredFieldError) {
-      newErrors = {[err.field]: err.message}
+      newErrors = {[err.field]: this.context.messages.missingRequiredField}
     } else if (err.fields) {
       newErrors = err.fields
     }
