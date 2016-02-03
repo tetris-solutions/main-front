@@ -45,7 +45,8 @@
     "whatwg-fetch": "^0.11.0"
   },
   "devDependencies": {
-    "@tetris/user-api": "^0.1.2",
+    "@tetris/user-api": "^0.1.3",
+    "ava": "^0.11.0",
     "babel-cli": "^6.4.5",
     "babel-loader": "^6.2.1",
     "babel-plugin-react-transform": "^2.0.0",
