@@ -7,4 +7,3 @@ export default (tree, language) => {
 
   tree.commit()
 }
-

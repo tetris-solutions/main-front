@@ -1,5 +1,4 @@
 import React from 'react'
-import includes from 'lodash/includes'
 import ReactDom from 'react-dom'
 import tree from './client-tree'
 import getRoutes from './get-routes'
@@ -43,7 +42,6 @@ loadScript('/js/react-intl.min.js')
 
           if (!hasRendered) render()
         })
-
     }
 
     window.tetrisLoadLocale(tree.get('locale'))
