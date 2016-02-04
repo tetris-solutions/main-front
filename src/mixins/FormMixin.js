@@ -45,7 +45,7 @@ export default {
   dismissError ({target: {name}}) {
     this.setState(({errors}) => {
       delete errors[name]
-      return errors
+      return {errors}
     })
   },
   preSubmit () {
