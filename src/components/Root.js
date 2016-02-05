@@ -4,7 +4,7 @@ import {branch} from 'baobab-react/higher-order'
 
 const {PropTypes} = React
 
-const Root = React.createClass({
+export const Root = React.createClass({
   displayName: 'Root',
   propTypes: {
     children: PropTypes.node,

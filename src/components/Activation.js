@@ -5,7 +5,7 @@ import ActivationSuccess from './ActivationSuccess'
 
 const {PropTypes, createClass} = React
 
-const Activation = createClass({
+export const Activation = createClass({
   displayName: 'Activation',
   propTypes: {
     activationError: PropTypes.object

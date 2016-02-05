@@ -1,10 +1,11 @@
 import React from 'react'
 import changeLanguageAction from '../actions/change-language-action'
 import {branch} from 'baobab-react/higher-order'
+import global from 'global'
 
 const {PropTypes} = React
 
-const HeaderLanguageSelector = React.createClass({
+export const HeaderLanguageSelector = React.createClass({
   displayName: 'Language-Selector',
   propTypes: {
     userLocale: PropTypes.string,

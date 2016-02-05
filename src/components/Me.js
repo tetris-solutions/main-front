@@ -7,7 +7,7 @@ import SubmitButton from './SubmitButton'
 
 const {PropTypes, createClass} = React
 
-const Me = createClass({
+export const Me = createClass({
   displayName: 'Me',
   mixins: [FormMixin],
   propTypes: {

@@ -7,7 +7,7 @@ import SubmitButton from './SubmitButton'
 
 const {PropTypes} = React
 
-const Login = React.createClass({
+export const Login = React.createClass({
   mixins: [FormMixin],
   displayName: 'Login',
   propTypes: {
@@ -22,7 +22,7 @@ const Login = React.createClass({
     e.preventDefault()
     const {elements} = e.target
     this.preSubmit()
-    this.props.actions
+    return this.props.actions
       .login(elements.email.value, elements.password.value)
       .then(() => this.context.router.push('/'))
       .catch(this.handleSubmitException)

@@ -1,5 +1,6 @@
 import React from 'react'
 import Message from './intl/Message'
+import window from 'global/window'
 
 const {PropTypes} = React
 

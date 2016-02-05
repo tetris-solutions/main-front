@@ -7,7 +7,7 @@ import {branch} from 'baobab-react/higher-order'
 
 const {PropTypes} = React
 
-const Signup = React.createClass({
+export const Signup = React.createClass({
   displayName: 'Signup',
   mixins: [FormMixin],
   propTypes: {

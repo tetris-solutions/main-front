@@ -7,7 +7,7 @@ import Message from './intl/Message'
 
 const {PropTypes} = React
 
-const Header = React.createClass({
+export const Header = React.createClass({
   displayName: 'Header',
   propTypes: {
     user: PropTypes.object,
