@@ -9,7 +9,9 @@ export default React.createClass({
     submitInProgress: PropTypes.bool.isRequired
   },
   componentDidMount () {
-    this.ladda = window.Ladda.create(this.refs.btn)
+    if ('Ladda' in window) {
+      this.ladda = window.Ladda.create(this.refs.btn)
+    }
   },
   componentWillReceiveProps (nextProps, {submitInProgress}) {
     if (submitInProgress === this.context.submitInProgress) return

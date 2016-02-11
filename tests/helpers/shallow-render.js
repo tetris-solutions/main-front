@@ -1,7 +1,34 @@
 import React from 'react'
 import skinDeep from 'skin-deep'
-import {root} from 'baobab-react/higher-order'
+import each from 'lodash/each'
+import merge from 'lodash/merge'
+import stateTree from '../fixtures/stateTree'
+import Tree from 'baobab'
 
-export default ({Component, tree, displayName, props}) => {
-  return skinDeep.shallowRender(React.createElement(root(Component, tree), props)).dive([displayName]).getMountedInstance()
+const {PropTypes, createElement} = React
+const router = {}
+
+export default (Component, props, customTree) => {
+  const tree = merge({}, stateTree, customTree)
+  const context = merge({router}, tree)
+  const baobabTree = new Tree(tree)
+
+  if (props.actions) {
+    each(props.actions, (fn, name) => {
+      props.actions[name] = fn.bind(null, baobabTree)
+    })
+  }
+
+  const Wrapper = React.createClass({
+    displayName: 'Wrapper',
+
+    render () {
+      return createElement(Component, props)
+    }
+  })
+
+  return skinDeep
+    .shallowRender(createElement(Wrapper), context)
+    .dive([Component.displayName])
+    .getMountedInstance()
 }

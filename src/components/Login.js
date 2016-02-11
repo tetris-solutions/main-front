@@ -20,6 +20,7 @@ export const Login = React.createClass({
   },
   handleSubmit (e) {
     e.preventDefault()
+    console.log(this.props, this.context)
     const {elements} = e.target
     this.preSubmit()
     return this.props.actions

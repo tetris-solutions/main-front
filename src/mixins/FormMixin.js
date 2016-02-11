@@ -16,9 +16,7 @@ export default {
     submitInProgress: PropTypes.bool.isRequired
   },
   contextTypes: {
-    messages: PropTypes.shape({
-      missingRequiredField: PropTypes.string.isRequired
-    })
+    messages: PropTypes.object
   },
   getInitialState () {
     return {
@@ -27,7 +25,7 @@ export default {
     }
   },
   handleSubmitException (rejection) {
-    const err = rejection instanceof window.Response ? rejection.data : rejection
+    const err = 'Response' in window && rejection instanceof window.Response ? rejection.data : rejection
     let newErrors
 
     if (err instanceof MissingRequiredFieldError) {
