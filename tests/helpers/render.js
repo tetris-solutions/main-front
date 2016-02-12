@@ -10,7 +10,6 @@ global.ReactIntl = require('react-intl/lib/react-intl')
 require('react-intl/lib/locales')
 
 const {PropTypes} = React
-let wrapperDiv
 
 export default (Component, props) => {
   const context = assign({router}, stateTree)
@@ -31,18 +30,17 @@ export default (Component, props) => {
     }
   })
 
-  if (!wrapperDiv) {
-    wrapperDiv = document.createElement('div')
-    document.body.appendChild(wrapperDiv)
-  }
+  const wrapperDiv = document.createElement('div')
+  document.body.appendChild(wrapperDiv)
 
   const instance = ReactDOM.render(React.createElement(Wrapper), wrapperDiv)
-  const component = instance.refs[Component.displayName]
+  const element = instance.refs[Component.displayName]
 
   return {
-    component,
-    kill () {
+    element,
+    unmount () {
       ReactDOM.unmountComponentAtNode(wrapperDiv)
+      document.body.removeChild(wrapperDiv)
     }
   }
 }

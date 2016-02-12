@@ -9,7 +9,7 @@ const html = `
 </body>
 </html>`
 
-export default () => new Promise((resolve, reject) =>
+const buildDOM = () => new Promise((resolve, reject) =>
   jsdom.env(html, (err, window) => {
     if (err) return reject(err)
 
@@ -23,5 +23,13 @@ export default () => new Promise((resolve, reject) =>
     }
 
     resolve(window)
-  })
-)
+  }))
+
+let cached
+
+export default () => {
+  if (!cached) {
+    cached = buildDOM()
+  }
+  return cached
+}
