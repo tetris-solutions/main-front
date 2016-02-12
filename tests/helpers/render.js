@@ -1,6 +1,5 @@
-import buildDOM from './dom'
 import React from 'react'
-import ReactTestUtils from 'react-addons-test-utils'
+import ReactDOM from 'react-dom'
 import assign from 'lodash/assign'
 import stateTree from '../fixtures/stateTree'
 import router from '../fixtures/router'
@@ -11,34 +10,39 @@ global.ReactIntl = require('react-intl/lib/react-intl')
 require('react-intl/lib/locales')
 
 const {PropTypes} = React
+let wrapperDiv
 
-export default (Component, props) =>
-  buildDOM().then(() => {
-    const context = assign({router}, stateTree)
+export default (Component, props) => {
+  const context = assign({router}, stateTree)
 
-    const Wrapper = React.createClass({
-      displayName: 'Wrapper',
-      getChildContext () {
-        return context
-      },
-      childContextTypes: {
-        router: PropTypes.object,
-        locales: PropTypes.string,
-        messages: PropTypes.object
-      },
-      render () {
-        return React.createElement(Component,
-          assign({refs: Component.displayName}, props))
-      }
-    })
-
-    try {
-      const instance = ReactTestUtils.renderIntoDocument(React.createElement(Wrapper))
-    } catch (e) {
-      console.log('dumb', e)
-    }
-    return {
-      component: instance.refs[Component.displayName],
-      find: fn => ReactTestUtils.findAllInRenderedTree(instance, fn)
+  const Wrapper = React.createClass({
+    displayName: 'Wrapper',
+    getChildContext () {
+      return context
+    },
+    childContextTypes: {
+      router: PropTypes.object,
+      locales: PropTypes.string,
+      messages: PropTypes.object
+    },
+    render () {
+      return React.createElement(Component,
+        assign({ref: Component.displayName}, props))
     }
   })
+
+  if (!wrapperDiv) {
+    wrapperDiv = document.createElement('div')
+    document.body.appendChild(wrapperDiv)
+  }
+
+  const instance = ReactDOM.render(React.createElement(Wrapper), wrapperDiv)
+  const component = instance.refs[Component.displayName]
+
+  return {
+    component,
+    kill () {
+      ReactDOM.unmountComponentAtNode(wrapperDiv)
+    }
+  }
+}

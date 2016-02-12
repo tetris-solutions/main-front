@@ -1,6 +1,6 @@
 import React from 'react'
-import global from 'global'
 import omit from 'lodash/omit'
+import window from 'global/window'
 
 const {PropTypes} = React
 
@@ -15,7 +15,7 @@ export default React.createClass({
     html: PropTypes.bool
   },
   render () {
-    const {FormattedMessage, FormattedHTMLMessage} = global.ReactIntl
+    const {FormattedMessage, FormattedHTMLMessage} = ReactIntl
     const messageName = this.props.children
     const Component = this.props.html
       ? FormattedHTMLMessage

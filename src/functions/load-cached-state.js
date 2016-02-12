@@ -1,9 +1,9 @@
 import isObject from 'lodash/isObject'
-import global from 'global'
+import window from 'global/window'
 
 function loadCachedUser () {
   try {
-    const state = JSON.parse(global.localStorage.tetrisState)
+    const state = JSON.parse(window.localStorage.tetrisState)
     return state && isObject(state) ? state : {}
   } catch (e) {
     return {}

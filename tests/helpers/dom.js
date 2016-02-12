@@ -1,16 +1,19 @@
 import jsdom from 'jsdom'
 
-const html = `<!doctype html>
+const html = `
 <html>
-  <body>
-  </body>
+<head>
+<title>NOPE</title>
+</head>
+<body>
+</body>
 </html>`
 
 export default () => new Promise((resolve, reject) =>
   jsdom.env(html, (err, window) => {
     if (err) return reject(err)
 
-    require('ladda')
+    // require('ladda')
 
     for (let key in window) {
       if (!window.hasOwnProperty(key)) continue

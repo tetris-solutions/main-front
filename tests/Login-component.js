@@ -1,19 +1,54 @@
+import delay from 'delay'
+import buildDOM from './helpers/dom'
 import test from 'ava'
-import render from './helpers/render'
-import {Login} from '../src/components/Login'
 
-test('shows help text empty email', t => {
+let ReactTestUtils
+let Login
+let cleanup
+let render
+
+test.before(t => buildDOM().then(() => {
+  t.ok(document)
+
+  ReactTestUtils = require('react-addons-test-utils')
+  render = require('./helpers/render').default
+  Login = require('../src/components/Login').Login
+}))
+
+test.afterEach(() => {
+  if (cleanup) {
+    cleanup()
+    cleanup = null
+  }
+})
+
+test('shows help text on empty password', t => {
+  const {findRenderedDOMComponentWithTag, Simulate} = ReactTestUtils
   const props = {
     actions: {
-      login: (email, password) => {
-        t.ok(email)
-        t.ok(password)
+      login (email, password) {
+        return new Promise((_, reject) => {
+          t.same(email, 'x@x.com')
+          reject({fields: {password: 'ABC'}})
+        })
       }
     }
   }
 
-  return render(Login, props)
-    .then(({component, find}) => {
-      find(c => console.log(c))
+  t.ok(global.ReactIntl)
+
+  const {component, kill} = render(Login, props)
+  const form = findRenderedDOMComponentWithTag(component, 'form')
+
+  t.ok(form)
+  form.elements.email.value = 'x@x.com'
+  Simulate.submit(form)
+  cleanup = kill
+
+  return delay(1000)
+    .then(() => {
+      const formGroup = form.elements.password.parentNode
+      const className = formGroup.getAttribute('class')
+      t.ok(className.match(/has-error/g))
     })
 })

@@ -16,10 +16,12 @@ export default React.createClass({
   componentWillReceiveProps (nextProps, {submitInProgress}) {
     if (submitInProgress === this.context.submitInProgress) return
 
-    if (submitInProgress) {
-      this.ladda.start()
-    } else {
-      this.ladda.stop()
+    if (this.ladda) {
+      if (submitInProgress) {
+        this.ladda.start()
+      } else {
+        this.ladda.stop()
+      }
     }
   },
   render () {
