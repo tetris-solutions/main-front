@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import assign from 'lodash/assign'
-import stateTree from '../fixtures/stateTree'
+import stateTree from '../fixtures/state-tree'
 import router from '../fixtures/router'
 
 global.Intl = require('intl')
