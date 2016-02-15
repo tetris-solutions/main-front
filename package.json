@@ -6,9 +6,9 @@
   "main": "lib/server.js",
   "scripts": {
     "babel-node": "babel-node",
-    "prepublish": "rimraf lib && babel src -d lib",
-    "build": "npm run prepublish",
-    "test": "ava | tap-summary",
+    "build": "rimraf lib && babel src -d lib",
+    "prepublish": "npm run build",
+    "test": "npm run build && ava | tap-summary",
     "lint": "eslint src",
     "user-api": "user-api",
     "db-migration": "db-migration",
@@ -73,13 +73,10 @@
   },
   "ava": {
     "files": [
-      "tests/*.js"
+      "lib/tests/*.js"
     ],
     "failFast": true,
     "verbose": true,
-    "tap": true,
-    "require": [
-      "babel-core/register"
-    ]
+    "tap": true
   }
 }

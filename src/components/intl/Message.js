@@ -1,6 +1,5 @@
 import React from 'react'
 import omit from 'lodash/omit'
-import window from 'global/window'
 
 const {PropTypes} = React
 

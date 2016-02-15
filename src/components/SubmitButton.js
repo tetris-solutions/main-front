@@ -27,6 +27,7 @@ export default React.createClass({
   render () {
     return (
       <button type='submit'
+              name='submitButton'
               ref='btn'
               className='ladda-button'
               data-style='expand-right'

@@ -1,4 +1,4 @@
-import messages from '../../src/messages'
+import messages from '../../messages'
 
 export default {
   locales: 'en',
