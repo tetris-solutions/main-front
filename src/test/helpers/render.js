@@ -4,6 +4,7 @@ import assign from 'lodash/assign'
 import stateTree from '../fixtures/state-tree'
 import router from '../fixtures/router'
 import window from 'global/window'
+import Baobab from 'baobab'
 
 global.Intl = require('intl')
 global.React = React
@@ -14,6 +15,7 @@ const {PropTypes} = React
 
 export default (Component, props) => {
   const context = assign({router}, stateTree)
+  context.tree = new Baobab(stateTree)
 
   const Wrapper = React.createClass({
     displayName: 'Wrapper',
@@ -23,7 +25,8 @@ export default (Component, props) => {
     childContextTypes: {
       router: PropTypes.object,
       locales: PropTypes.string,
-      messages: PropTypes.object
+      messages: PropTypes.object,
+      tree: PropTypes.object
     },
     render () {
       return React.createElement(Component,

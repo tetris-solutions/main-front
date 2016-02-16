@@ -8,7 +8,7 @@
     "babel-node": "babel-node",
     "build": "rimraf lib && babel src -d lib",
     "prepublish": "npm run build",
-    "test": "npm run build && ava | tap-summary",
+    "test": "npm run build && NODE_ENV=production ava | tap-summary",
     "lint": "eslint src",
     "user-api": "user-api",
     "db-migration": "db-migration",

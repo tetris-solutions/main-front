@@ -33,7 +33,7 @@ export const Header = React.createClass({
           </div>
 
           {user ? (
-            <ul className='nav navbar-nav navbar-right'>
+            <ul ref='ul' className='nav navbar-nav navbar-right'>
               <li><Link to='/me'>{user.name}</Link></li>
               <li>
                 <a href='/' onClick={this.handleLogoutClick}>
@@ -42,7 +42,7 @@ export const Header = React.createClass({
               </li>
             </ul>
           ) : (
-            <ul className='nav navbar-nav navbar-right'>
+            <ul ref='ul' className='nav navbar-nav navbar-right'>
               <li>
                 <Link to='/signup'>
                   <Message>navSignup</Message>

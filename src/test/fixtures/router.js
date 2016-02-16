@@ -1,5 +1,7 @@
 import noop from 'lodash/noop'
+import constant from 'lodash/constant'
 
 export default {
-  push: noop
+  push: noop,
+  createHref: constant('/')
 }

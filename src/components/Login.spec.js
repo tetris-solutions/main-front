@@ -1,7 +1,6 @@
 import buildDOM from '../test/helpers/dom'
 import test from 'ava'
 import noop from 'lodash/noop'
-import intersec from 'lodash/intersection'
 import delay from 'delay'
 
 const render = (...args) => require('../test/helpers/render').default(...args)
@@ -13,17 +12,16 @@ test('form has all the inputs and submit button', t =>
         login: noop
       }
     }
-    const {Login} = require('../components/Login')
+    const {Login} = require('./Login')
     const ReactTestUtils = require('react-addons-test-utils')
     const {element, unmount} = render(Login, props)
 
     const form = ReactTestUtils.findRenderedDOMComponentWithTag(element, 'form')
     t.ok(form)
 
-    const elements = Object.keys(form.elements)
-    const expectedElements = ['email', 'password', 'submitButton']
-
-    t.same(intersec(elements, expectedElements), expectedElements)
+    t.ok(form.elements.email)
+    t.ok(form.elements.password)
+    t.ok(form.elements.submitButton)
 
     unmount()
   }))
@@ -40,7 +38,7 @@ test('show help text on empty password', t =>
         }
       }
     }
-    const {Login} = require('../components/Login')
+    const {Login} = require('./Login')
     const ReactTestUtils = require('react-addons-test-utils')
     const {element, unmount} = render(Login, props)
     const form = ReactTestUtils.findRenderedDOMComponentWithTag(element, 'form')
@@ -69,7 +67,7 @@ test('show help text on empty email', t =>
         }
       }
     }
-    const {Login} = require('../components/Login')
+    const {Login} = require('./Login')
     const ReactTestUtils = require('react-addons-test-utils')
     const {element, unmount} = render(Login, props)
     const form = ReactTestUtils.findRenderedDOMComponentWithTag(element, 'form')
