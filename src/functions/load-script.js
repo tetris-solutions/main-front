@@ -1,10 +1,12 @@
+import window from 'global/window'
+
 const loadedScripts = {}
 const onTheFly = {}
 
 const loadScript = src => new Promise((resolve, reject) => {
   if (loadedScripts[src]) return resolve()
 
-  const script = document.createElement('script')
+  const script = window.document.createElement('script')
 
   script.src = src
   script.onload = () => {
@@ -17,7 +19,7 @@ const loadScript = src => new Promise((resolve, reject) => {
     reject(err)
   }
 
-  document.body.appendChild(script)
+  window.document.body.appendChild(script)
 })
 
 export default src => {

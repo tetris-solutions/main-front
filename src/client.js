@@ -5,6 +5,7 @@ import getRoutes from './get-routes'
 import {GET} from '@tetris/http'
 import {browserHistory} from 'react-router'
 import loadScript from './functions/load-script'
+import window from 'global/window'
 
 require('whatwg-fetch')
 
@@ -19,7 +20,7 @@ loadScript('/js/react-intl.min.js')
     let hasRendered = false
 
     const render = () => {
-      ReactDom.render(getRoutes(browserHistory, tree), document.getElementById('app'))
+      ReactDom.render(getRoutes(browserHistory, tree), window.document.getElementById('app'))
       hasRendered = true
     }
 

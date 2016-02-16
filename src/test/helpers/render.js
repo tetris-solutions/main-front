@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import assign from 'lodash/assign'
 import stateTree from '../fixtures/state-tree'
 import router from '../fixtures/router'
+import window from 'global/window'
 
 global.Intl = require('intl')
 global.React = React
@@ -30,8 +31,8 @@ export default (Component, props) => {
     }
   })
 
-  const wrapperDiv = document.createElement('div')
-  document.body.appendChild(wrapperDiv)
+  const wrapperDiv = window.document.createElement('div')
+  window.document.body.appendChild(wrapperDiv)
 
   const instance = ReactDOM.render(React.createElement(Wrapper), wrapperDiv)
   const element = instance.refs[Component.displayName]
@@ -40,7 +41,7 @@ export default (Component, props) => {
     element,
     unmount () {
       ReactDOM.unmountComponentAtNode(wrapperDiv)
-      document.body.removeChild(wrapperDiv)
+      window.document.body.removeChild(wrapperDiv)
     }
   }
 }

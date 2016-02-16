@@ -73,7 +73,7 @@
   },
   "ava": {
     "files": [
-      "lib/tests/*.js"
+      "lib/**/*.spec.js"
     ],
     "failFast": true,
     "verbose": true,

@@ -1,10 +1,10 @@
-import buildDOM from './helpers/dom'
+import buildDOM from '../test/helpers/dom'
 import test from 'ava'
 import noop from 'lodash/noop'
 import intersec from 'lodash/intersection'
 import delay from 'delay'
 
-const render = (...args) => require('./helpers/render').default(...args)
+const render = (...args) => require('../test/helpers/render').default(...args)
 
 test('form has all the inputs and submit button', t =>
   buildDOM().then(() => {

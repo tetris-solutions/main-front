@@ -1,12 +1,13 @@
 import test from 'ava'
-import global from 'global'
+import window from 'global/window'
 import persistTokenAsCookie from '../functions/persist-token-as-cookie'
 import fetch from 'node-fetch'
 
 const {Response} = fetch
 
 test('cookie is saved', t => {
-  const doc = global.document = {cookie: ''}
+  // document.cookie mock
+  const doc = window.document = {cookie: ''}
   const response = new Response()
   response.token = 'ABCDEFG'
   persistTokenAsCookie(response)
