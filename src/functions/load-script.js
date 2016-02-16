@@ -3,28 +3,42 @@ import window from 'global/window'
 const loadedScripts = {}
 const onTheFly = {}
 
-const loadScript = src => new Promise((resolve, reject) => {
-  if (loadedScripts[src]) return resolve()
+/**
+ * insert script tag if not present
+ * @param {string} src script src
+ * @returns {Promise} promise that resolves once the script has been loaded
+ */
+export function insertScript (src) {
+  return new Promise((resolve, reject) => {
+    if (loadedScripts[src]) return resolve()
 
-  const script = window.document.createElement('script')
+    const script = window.document.createElement('script')
 
-  script.src = src
-  script.onload = () => {
-    loadedScripts[src] = true
-    delete onTheFly[src]
-    resolve()
-  }
-  script.onerror = err => {
-    delete onTheFly[src]
-    reject(err)
-  }
+    script.src = src
+    script.onload = () => {
+      loadedScripts[src] = true
+      delete onTheFly[src]
+      resolve()
+    }
+    script.onerror = err => {
+      delete onTheFly[src]
+      reject(err)
+    }
 
-  window.document.body.appendChild(script)
-})
+    window.document.body.appendChild(script)
+  })
+}
 
-export default src => {
+/**
+ * load src as a script tag avoiding duplication
+ * @param {string} src script src
+ * @returns {Promise} promise that resolves once the script has been loaded
+ */
+function loadScript (src) {
   if (!onTheFly[src]) {
-    onTheFly[src] = loadScript(src)
+    onTheFly[src] = insertScript(src)
   }
   return onTheFly[src]
 }
+
+export default loadScript
