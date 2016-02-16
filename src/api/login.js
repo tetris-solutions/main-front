@@ -4,9 +4,10 @@ import merge from 'lodash/merge'
 
 /**
  * fires a call to login api returning a promise
- * @param email
- * @param password
- * @returns Promise
+ * @param {string} email user email
+ * @param {string} password user password
+ * @param {object} config fetch config
+ * @returns {Promise} promise that resolves to a fetch response
  */
 export default (email, password, config) => new Promise((resolve, reject) => {
   if (!email) throw new MissingRequiredFieldError('email')

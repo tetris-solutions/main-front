@@ -8,7 +8,7 @@ const onTheFly = {}
  * @param {string} src script src
  * @returns {Promise} promise that resolves once the script has been loaded
  */
-export function insertScript (src) {
+function insertScript (src) {
   return new Promise((resolve, reject) => {
     if (loadedScripts[src]) return resolve()
 

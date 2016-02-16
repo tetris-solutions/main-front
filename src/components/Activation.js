@@ -12,8 +12,7 @@ export const Activation = createClass({
   },
   render () {
     const {activationError} = this.props
-    return activationError
-      ? (
+    return activationError ? (
       <ActivationFailure>
         {activationError.message}
       </ActivationFailure>
