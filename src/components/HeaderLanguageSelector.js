@@ -1,6 +1,7 @@
 import React from 'react'
 import changeLanguageAction from '../actions/change-language-action'
 import {branch} from 'baobab-react/higher-order'
+import window from 'global/window'
 
 const {PropTypes} = React
 
@@ -21,9 +22,13 @@ export const HeaderLanguageSelector = React.createClass({
     return (
       <form className='navbar-form navbar-right'>
         <div className='form-group'>
-          <select className='form-control' value={this.props.locale || this.props.userLocale} onChange={this.onChangeLocale}>
+          <select className='form-control'
+                  value={this.props.locale || this.props.userLocale}
+                  onChange={this.onChangeLocale}>
+
             <option value='en'>English</option>
             <option value='pt-BR'>Português</option>
+
           </select>
         </div>
       </form>
