@@ -11,10 +11,10 @@ global.ReactIntl = require('react-intl/lib/react-intl')
 require('react-intl/lib/locales')
 
 /**
- * renders the app markup
- * @param location
- * @param tree
- * @returns {*}
+ * reads from `res.locals` and `req` to generate the React component tree which is then sent to the client as HTML
+ * @param {object} req express request
+ * @param {object} res express response
+ * @returns {undefined}
  */
 export default function serverRenderRoute (req, res) {
   const location = req.path
@@ -42,5 +42,5 @@ export default function serverRenderRoute (req, res) {
 
   tree.release()
 
-  return res.send(useBeautify ? beautify.html(markup) : markup)
+  res.send(useBeautify ? beautify.html(markup) : markup)
 }

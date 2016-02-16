@@ -3,12 +3,12 @@ import omit from 'lodash/omit'
 
 /**
  * saves state tree object to localStorage
- * @param {object} tree state tree object
+ * @param {object} state state tree object
  * @returns {undefined}
  */
-export default function persistTree (tree) {
+export default function cacheState (state) {
   try {
-    window.localStorage.tetrisState = JSON.stringify(omit(tree, 'errors'))
+    window.localStorage.tetrisState = JSON.stringify(omit(state, 'errors'))
   } catch (e) {
     console.log(e)
   }

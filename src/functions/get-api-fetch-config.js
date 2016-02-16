@@ -1,6 +1,12 @@
 import Cookies from 'js-cookie'
 
-export default tree => {
+/**
+ * loads auth token and user locale into fetch request configuration
+ * @param {Baobab} tree the application state tree
+ * @todo make default locale dynamic
+ * @returns {object} fetch request configuration
+ */
+function getApiFetchConfig (tree) {
   const config = {headers: {}}
 
   let token
@@ -11,7 +17,9 @@ export default tree => {
     // ~
   }
 
-  if (token) config.headers.Authorization = `Bearer ${token}`
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
 
   const user = tree.get('user')
   const locale = tree.get('locale')
@@ -21,3 +29,5 @@ export default tree => {
 
   return config
 }
+
+export default getApiFetchConfig

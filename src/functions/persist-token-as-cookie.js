@@ -2,6 +2,7 @@ import Cookies from 'js-cookie'
 /**
  * reads token from fetch Response and stores it as a cookie
  * @param {Response} response fetch Response for a api call
+ * @todo error handling
  * @returns {Response} the same response
  */
 export function persistTokenAsCookie (response) {
@@ -12,7 +13,7 @@ export function persistTokenAsCookie (response) {
         expires: 1
       })
     } catch (e) {
-      // @TODO: error handling
+      // ~ error handling ~
     }
   }
   return response

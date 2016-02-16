@@ -1,6 +1,6 @@
 import Tree from 'baobab'
 import loadCachedState from './functions/load-cached-state'
-import persistTree from './functions/persist-tree'
+import cacheState from './functions/cache-state'
 import merge from 'lodash/merge'
 import window from 'global/window'
 import defaultState from './default-state'
@@ -10,7 +10,7 @@ const tree = new Tree(merge(defaultState, loadCachedState(), window.backendPaylo
 
 tree
   .select('user')
-  .on('update', () => persistTree(tree.get()))
+  .on('update', () => cacheState(tree.get()))
 
 tree.select('locale').on('update', ({data: {currentData}}) => {
   Cookies.set(process.env.LOCALE_COOKIE_NAME, currentData, {
