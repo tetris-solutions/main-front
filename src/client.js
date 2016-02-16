@@ -30,10 +30,16 @@ loadScript('/js/react-intl.min.js')
       return GET(`/intl/${locale}`).then(({data}) => data)
     }
 
-    window.tetrisLoadLocale = function (locale) {
+    /**
+     * loads a given locale and save it in application the state tree
+     * @global
+     * @param {string} locale the locale to laod
+     * @returns {Promise} return a promise that will be resolved once all resources are loaded
+     */
+    function tetrisLoadLocale (locale) {
       const src = '/js/' + locale.split('-')[0] + '.js'
 
-      Promise.all([loadScript(src), loadIntl(locale)])
+      return Promise.all([loadScript(src), loadIntl(locale)])
         .then(args => {
           const intl = args.pop()
 
@@ -45,5 +51,7 @@ loadScript('/js/react-intl.min.js')
         })
     }
 
-    window.tetrisLoadLocale(tree.get('locale'))
+    window.tetrisLoadLocale = tetrisLoadLocale
+
+    tetrisLoadLocale(tree.get('locale'))
   })

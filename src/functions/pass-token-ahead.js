@@ -12,10 +12,11 @@ export default function passTokenAhead (req, res) {
   /**
    * reads token from fetch Response headers
    * @param {Response} fetchResponse fetch response object
+   * @see {@link https://github.com/tetris-solutions/http/blob/master/index.js} for reference
    * @returns {Response} the same response object
    */
   return function fetchCallback (fetchResponse) {
-    if (fetchResponse.token) { // token was refreshed, see https://github.com/tetris-solutions/http/blob/master/index.js#L45
+    if (fetchResponse.token) { // token was refreshed
       res.set('Authorization', `Bearer ${fetchResponse.token}`)
       res.cookie(cookieName, fetchResponse.token, {
         domain,
