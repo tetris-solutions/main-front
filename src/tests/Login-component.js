@@ -34,7 +34,7 @@ test('show help text on empty password', t =>
       actions: {
         login (email, password) {
           return new Promise((_, reject) => {
-            t.same(email, 'x@x.com')
+            t.is(email, 'x@x.com')
             reject({fields: {password: 'ABC'}})
           })
         }
@@ -63,7 +63,7 @@ test('show help text on empty email', t =>
       actions: {
         login (email, password) {
           return new Promise((_, reject) => {
-            t.same(password, '123456')
+            t.is(password, '123456')
             reject({fields: {email: 'ABC'}})
           })
         }

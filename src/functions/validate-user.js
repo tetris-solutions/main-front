@@ -3,22 +3,25 @@ import MissingRequiredFieldError from '../exceptions/MissingRequiredFieldError'
 import InvalidArgumentError from '../exceptions/InvalidArgumentError'
 
 /**
- *
- * @param user
- * @param requiresPassword
- * @param config
+ * performs basic user validation
+ * @param {object} user user object
+ * @param {boolean} [requiresPassword=true] is password required for this case?
+ * @returns {Promise} returns a promise that resolves if the user is valid and rejects otherwise
  */
-export default (user, requiresPassword = true) => Promise.resolve().then(() => {
-  if (!isObject(user) || !user) {
-    throw new InvalidArgumentError('user')
-  }
-  if (!user.email) {
-    throw new MissingRequiredFieldError('email')
-  }
-  if (requiresPassword && !user.password) {
-    throw new MissingRequiredFieldError('password')
-  }
-  if (!user.name) {
-    throw new MissingRequiredFieldError('name')
-  }
-})
+export default function validateUser (user, requiresPassword = true) {
+  return Promise.resolve().then(() => {
+    if (!isObject(user) || !user) {
+      throw new InvalidArgumentError('user')
+    }
+    if (!user.email) {
+      throw new MissingRequiredFieldError('email')
+    }
+    if (requiresPassword && !user.password) {
+      throw new MissingRequiredFieldError('password')
+    }
+    if (!user.name) {
+      throw new MissingRequiredFieldError('name')
+    }
+    return user
+  })
+}

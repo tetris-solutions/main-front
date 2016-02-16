@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOMServer from '../../node_modules/react-dom/server'
+import ReactDOMServer from 'react-dom/server'
 import HTML from './../components/HTML'
 import getRoutes from './../get-routes'
 import {createMemoryHistory} from 'react-router'

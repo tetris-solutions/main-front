@@ -1,16 +1,21 @@
 const ONE_DAY = 1000 * 60 * 60 * 24
 
 /**
- * reads token from fetch request and forwards to client response
- * @param req
- * @param res
- * @returns {fetchCallback}
+ * reads auth token from server side fetch Response and forwards it to the client using express response api
+ * @param {object} req express request
+ * @param {object} res express response
+ * @returns {function} fetchCallback
  */
 export default function passTokenAhead (req, res) {
   const domain = process.env.TOKEN_COOKIE_DOMAIN
   const cookieName = process.env.TOKEN_COOKIE_NAME
+  /**
+   * reads token from fetch Response headers
+   * @param {Response} fetchResponse fetch response object
+   * @returns {Response} the same response object
+   */
   return function fetchCallback (fetchResponse) {
-    if (fetchResponse.token) { // token was refreshed
+    if (fetchResponse.token) { // token was refreshed, see https://github.com/tetris-solutions/http/blob/master/index.js#L45
       res.set('Authorization', `Bearer ${fetchResponse.token}`)
       res.cookie(cookieName, fetchResponse.token, {
         domain,

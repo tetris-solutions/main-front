@@ -2,5 +2,8 @@
   "extends": ["standard", "standard-react"],
   "globals": {
     "ReactIntl": true
+  },
+  "rules": {
+    "valid-jsdoc": 2
   }
 }
