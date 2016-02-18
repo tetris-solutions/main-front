@@ -9,11 +9,11 @@ import merge from 'lodash/merge'
  * @param {object} config fetch config
  * @returns {Promise} promise that resolves to a fetch response
  */
-export default (email, password, config) => new Promise((resolve, reject) => {
+export default (email, password, config) => Promise.resolve().then(() => {
   if (!email) throw new MissingRequiredFieldError('email')
   if (!password) throw new MissingRequiredFieldError('password')
 
-  return POST(`${process.env.USER_API_URL}/login`, merge(config, {
+  return POST(`${process.env.USER_API_URL}/login`, merge({}, config, {
     body: {email, password}
-  })).then(resolve, reject)
+  }))
 })
