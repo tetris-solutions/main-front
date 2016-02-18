@@ -23,6 +23,13 @@ test('throws on undefined password', t =>
       t.is(rej.field, 'password')
     }))
 
+test('does not throw on undefined password when `requiresPassword` is `false`', t =>
+  validateUser({email: 'abc@gmail.com', name: 'abc'}, false)
+    .catch(() => {
+      t.fail('this never happens')
+    })
+    .then(() => t.pass()))
+
 test('throws on undefined name', t =>
   validateUser({email: 'abc@gmail.com', password: '123'})
     .catch(rej => {
@@ -32,4 +39,4 @@ test('throws on undefined name', t =>
 
 test('accepts a valid user', t =>
   validateUser({email: 'abc@gmail.com', password: '123', name: 'person'})
-    .then(t.pass.bind(t)))
+    .then(() => t.pass()))

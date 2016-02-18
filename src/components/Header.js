@@ -1,5 +1,5 @@
 import React from 'react'
-import LanguageSelector from './HeaderLanguageSelector'
+import LocaleSelector from './HeaderLocaleSelector'
 import {Link, IndexLink} from 'react-router'
 import logoutAction from '../actions/logout-action'
 import {branch} from 'baobab-react/higher-order'
@@ -56,7 +56,7 @@ export const Header = React.createClass({
             </ul>
           )}
 
-          <LanguageSelector />
+          <LocaleSelector />
         </div>
       </nav>
     )

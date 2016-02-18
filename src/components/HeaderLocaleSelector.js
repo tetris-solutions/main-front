@@ -1,21 +1,21 @@
 import React from 'react'
-import changeLanguageAction from '../actions/change-language-action'
+import changeLocaleAction from '../actions/change-locale-action'
 import {branch} from 'baobab-react/higher-order'
 import window from 'global/window'
 
 const {PropTypes} = React
 
-export const HeaderLanguageSelector = React.createClass({
-  displayName: 'Language-Selector',
+export const HeaderLocaleSelector = React.createClass({
+  displayName: 'Locale-Selector',
   propTypes: {
     userLocale: PropTypes.string,
     locale: PropTypes.string,
     actions: PropTypes.shape({
-      changeLanguage: PropTypes.func
+      changeLocale: PropTypes.func
     })
   },
   onChangeLocale ({target: {value}}) {
-    this.props.actions.changeLanguage(value)
+    this.props.actions.changeLocale(value)
     window.tetrisLoadLocale(value)
   },
   render () {
@@ -36,12 +36,12 @@ export const HeaderLanguageSelector = React.createClass({
   }
 })
 
-export default branch(HeaderLanguageSelector, {
+export default branch(HeaderLocaleSelector, {
   cursors: {
     userLocale: ['user', 'locale'],
     locale: ['locale']
   },
   actions: {
-    changeLanguage: changeLanguageAction
+    changeLocale: changeLocaleAction
   }
 })

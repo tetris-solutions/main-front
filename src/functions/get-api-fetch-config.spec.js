@@ -14,7 +14,7 @@ test('defaults to "en" locale and empty Authorization', t => {
   t.is(config.headers['Accept-Language'], 'en')
 })
 
-test('loads language from state.locale', t => {
+test('loads locale from state.locale', t => {
   const tree = new Baobab({
     locale: 'xy'
   })
