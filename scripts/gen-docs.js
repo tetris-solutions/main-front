@@ -28,5 +28,6 @@ entries.forEach(entry => {
 })
 
 $.cd('..')
+$.exec('git add docs')
 $.rm('-rf', '.tmp')
 $.mv('_babelrc', '.babelrc')
