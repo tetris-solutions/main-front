@@ -5,7 +5,7 @@ import window from 'global/window'
  * loads state from localStorage
  * @returns {object} retrived state object
  */
-function loadCachedUser () {
+export function loadCachedUser () {
   try {
     const state = JSON.parse(window.localStorage.tetrisState)
     return state && isPlainObject(state) ? state : {}

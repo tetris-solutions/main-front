@@ -5,7 +5,7 @@ import constant from 'lodash/constant'
 
 const updateMe = (...args) => {
   delete require.cache['./update-me']
-  return require('./update-me').default(...args)
+  return require('./update-me').updateMe(...args)
 }
 
 const validateUser = {__esModule: true}
@@ -20,7 +20,7 @@ test('passes user through validation setting `requiresPassword` to false', t => 
 
   http.PUT = constant(Promise.resolve(ultraSecret))
 
-  validateUser.default = (receivedUser, requiresPassword) => {
+  validateUser.validateUser = (receivedUser, requiresPassword) => {
     t.is(requiresPassword, false)
     t.is(passedUser, receivedUser)
     return Promise.resolve()
@@ -31,7 +31,7 @@ test('passes user through validation setting `requiresPassword` to false', t => 
 })
 
 test('fires a PUT request to the update user api passing user in the body', t => delay(100).then(() => {
-  validateUser.default = constant(Promise.resolve())
+  validateUser.validateUser = constant(Promise.resolve())
   const passedUser = {}
   const passedConfig = {XXX: 123}
   http.PUT = (url, receivedConfig) => {

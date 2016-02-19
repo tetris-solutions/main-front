@@ -2,7 +2,7 @@ import buildDOM from '../test/helpers/dom'
 import test from 'ava'
 import noop from 'lodash/noop'
 
-const render = (...args) => require('../test/helpers/render').default(...args)
+const render = (...args) => require('../test/helpers/render').render(...args)
 
 test('shows login and signup when no user is provided', t =>
   buildDOM().then(() => {

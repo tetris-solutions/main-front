@@ -6,7 +6,7 @@ const ONE_DAY = 1000 * 60 * 60 * 24
  * @param {object} res express response
  * @returns {function} fetchCallback
  */
-export default function passTokenAhead (req, res) {
+export function passTokenAhead (req, res) {
   const domain = process.env.TOKEN_COOKIE_DOMAIN
   const cookieName = process.env.TOKEN_COOKIE_NAME
   /**
@@ -26,3 +26,5 @@ export default function passTokenAhead (req, res) {
     return fetchResponse
   }
 }
+
+export default passTokenAhead

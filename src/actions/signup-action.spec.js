@@ -19,7 +19,7 @@ test('passes user and request config to apis', t => {
     return expectedConfig
   })
 
-  const p = require('./signup-action').default(expectedTree, expectedUser)
+  const p = require('./signup-action').signupAction(expectedTree, expectedUser)
 
   t.is(p, expectedPromise)
 })

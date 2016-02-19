@@ -5,7 +5,7 @@
  * @param {function} next next handler
  * @returns {undefined}
  */
-export default function protectedRouteMiddleware (req, res, next) {
+export function protectedRouteMiddleware (req, res, next) {
   if (!req.user) {
     res.status(403)
     next()
@@ -13,3 +13,5 @@ export default function protectedRouteMiddleware (req, res, next) {
     next()
   }
 }
+
+export default protectedRouteMiddleware

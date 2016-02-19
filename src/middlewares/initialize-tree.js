@@ -8,7 +8,9 @@ import defaultState from '../default-state'
  * @param {function} next next handler
  * @returns {undefined}
  */
-export default function initializeTreeMiddleware (req, res, next) {
+export function initializeTreeMiddleware (req, res, next) {
   res.locals.tree = new Tree(defaultState)
   next()
 }
+
+export default initializeTreeMiddleware

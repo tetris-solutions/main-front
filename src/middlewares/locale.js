@@ -10,10 +10,12 @@ export const DEFAULT_LOCALE = 'pt-BR'
  * @param {function} next next handler
  * @returns {undefined}
  */
-export default (req, res, next) => {
+export function localeMiddleware (req, res, next) {
   const cookieLocale = req.cookies[process.env.LOCALE_COOKIE_NAME]
   const headerLocale = req.acceptsLanguages(Object.keys(messages))
   const userLocale = req.user ? req.user.locale : null
   req.locale = cookieLocale || headerLocale || userLocale || DEFAULT_LOCALE
   next()
 }
+
+export default localeMiddleware

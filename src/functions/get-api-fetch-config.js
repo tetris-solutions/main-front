@@ -6,7 +6,7 @@ import Cookies from 'js-cookie'
  * @todo make default locale dynamic
  * @returns {object} fetch request configuration
  */
-function getApiFetchConfig (tree) {
+export function getApiFetchConfig (tree) {
   const config = {headers: {}}
 
   let token

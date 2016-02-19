@@ -1,5 +1,5 @@
-import getUserByToken from '../api/get-user-by-token'
-import passTokenAhead from '../functions/pass-token-ahead'
+import {getUserByToken} from '../api/get-user-by-token'
+import {passTokenAhead} from '../functions/pass-token-ahead'
 
 /**
  * express middleware that reads token from Authorization header and cookies, setting req.user
@@ -8,7 +8,7 @@ import passTokenAhead from '../functions/pass-token-ahead'
  * @param {function} next next handler
  * @returns {Promise} promise that resolves once work is done
  */
-export default function authMiddleware (req, res, next) {
+export function authMiddleware (req, res, next) {
   const domain = process.env.TOKEN_COOKIE_DOMAIN
   const cookieName = process.env.TOKEN_COOKIE_NAME
   const token = (req.get('Authorization') || '').replace(/^Bearer\s/, '') || req.cookies[cookieName]
@@ -30,3 +30,5 @@ export default function authMiddleware (req, res, next) {
       next()
     }, noAuth)
 }
+
+export default authMiddleware

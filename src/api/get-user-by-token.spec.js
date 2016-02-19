@@ -12,5 +12,5 @@ test('fires a GET request to the user api root passing token in `Authorization` 
       t.is(config.headers.Authorization, `Bearer ${TOKEN}`)
     }
   })
-  require('./get-user-by-token').default(TOKEN)
+  require('./get-user-by-token').getUserByToken(TOKEN)
 })

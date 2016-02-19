@@ -1,6 +1,6 @@
-import login from '../api/login'
+import {login} from '../api/login'
 import {saveResponseTokenAsCookie} from '../functions/save-token-as-cookie'
-import getApiFetchConfig from '../functions/get-api-fetch-config'
+import {getApiFetchConfig} from '../functions/get-api-fetch-config'
 
 /**
  * fires request to login API and save user object in the state tree on success

@@ -6,10 +6,12 @@ import omit from 'lodash/omit'
  * @param {object} state state tree object
  * @returns {undefined}
  */
-export default function cacheState (state) {
+export function cacheState (state) {
   try {
     window.localStorage.tetrisState = JSON.stringify(omit(state, 'errors'))
   } catch (e) {
     console.log(e)
   }
 }
+
+export default cacheState

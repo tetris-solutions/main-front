@@ -1,7 +1,17 @@
 import {POST} from '@tetris/http'
-import validatedUser from '../functions/validate-user'
+import {validateUser} from '../functions/validate-user'
 import merge from 'lodash/merge'
 
-export default (user, config) => validatedUser(user)
-  .then(() => POST(`${process.env.USER_API_URL}/user`,
-    merge({}, config, {body: user})))
+/**
+ * validate user then send a POST request to the signup user api
+ * @param {object} user new user object
+ * @param {object} config request config object
+ * @returns {Promise} promise that resolves once action is complete
+ */
+export function signup (user, config) {
+  return validateUser(user)
+    .then(() => POST(`${process.env.USER_API_URL}/user`,
+      merge({}, config, {body: user})))
+}
+
+export default signup

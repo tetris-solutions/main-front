@@ -3,7 +3,7 @@ import test from 'ava'
 import noop from 'lodash/noop'
 import delay from 'delay'
 
-const render = (...args) => require('../test/helpers/render').default(...args)
+const render = (...args) => require('../test/helpers/render').render(...args)
 
 test('form has all the inputs and submit button', t =>
   buildDOM().then(() => {

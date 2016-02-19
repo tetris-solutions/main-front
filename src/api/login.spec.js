@@ -5,7 +5,7 @@ import delay from 'delay'
 
 const login = (...args) => {
   delete require.cache['./login']
-  return require('./login').default(...args)
+  return require('./login').login(...args)
 }
 const http = {}
 mock('@tetris/http', http)

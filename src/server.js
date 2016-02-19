@@ -37,7 +37,7 @@ app.use(initializeMiddleware)
 app.use(authMiddleware)
 
 if (flags.developmentMode) {
-  require('./dev-server-hook').default(app)
+  require('./dev-server-hook').devServerHook(app)
 }
 
 app.get('/intl/:locale', intlRoute)

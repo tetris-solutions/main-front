@@ -5,7 +5,7 @@ import constant from 'lodash/constant'
 
 const signup = (...args) => {
   delete require.cache['./signup']
-  return require('./signup').default(...args)
+  return require('./signup').signup(...args)
 }
 
 const validateUser = {__esModule: true}
@@ -20,7 +20,7 @@ test('passes user through validation', t => {
 
   http.POST = constant(Promise.resolve(ultraSecret))
 
-  validateUser.default = receivedUser => {
+  validateUser.validateUser = receivedUser => {
     t.is(passedUser, receivedUser)
     return Promise.resolve()
   }
@@ -30,7 +30,7 @@ test('passes user through validation', t => {
 })
 
 test('fires a POST request to the signup user api passing user in the body', t => delay(100).then(() => {
-  validateUser.default = constant(Promise.resolve())
+  validateUser.validateUser = constant(Promise.resolve())
   const passedUser = {}
   const passedConfig = {XXX: 123}
   http.POST = (url, receivedConfig) => {

@@ -16,7 +16,7 @@ require('react-intl/lib/locales')
  * @param {object} res express response
  * @returns {undefined}
  */
-export default function serverRenderRoute (req, res) {
+export function serverRenderRoute (req, res) {
   const location = req.path
   const useBeautify = process.env.BEAUTIFY_HTML === 'true'
   const {tree} = res.locals
@@ -44,3 +44,6 @@ export default function serverRenderRoute (req, res) {
 
   res.send(useBeautify ? beautify.html(markup) : markup)
 }
+
+export default serverRenderRoute
+

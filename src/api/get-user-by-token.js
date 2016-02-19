@@ -5,6 +5,10 @@ import {GET} from '@tetris/http'
  * @param {string} token auth token
  * @returns {Promise} promise that resolves to a fetch response
  */
-export default token => GET(`${process.env.USER_API_URL}`, {
-  headers: {Authorization: `Bearer ${token}`}
-})
+export function getUserByToken (token) {
+  return GET(`${process.env.USER_API_URL}`, {
+    headers: {Authorization: `Bearer ${token}`}
+  })
+}
+
+export default getUserByToken

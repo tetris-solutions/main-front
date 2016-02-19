@@ -8,7 +8,7 @@ import InvalidArgumentError from '../exceptions/InvalidArgumentError'
  * @param {boolean} [requiresPassword=true] is password required for this case?
  * @returns {Promise} returns a promise that resolves if the user is valid and rejects otherwise
  */
-export default function validateUser (user, requiresPassword = true) {
+export function validateUser (user, requiresPassword = true) {
   return Promise.resolve().then(() => {
     if (!isObject(user) || !user) {
       throw new InvalidArgumentError('user')
@@ -25,3 +25,5 @@ export default function validateUser (user, requiresPassword = true) {
     return user
   })
 }
+
+export default validateUser

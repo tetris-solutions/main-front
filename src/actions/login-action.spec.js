@@ -6,18 +6,18 @@ import fetch from 'node-fetch'
 
 const loginAction = (...args) => {
   delete require.cache['./login-action']
-  return require('./login-action').default(...args)
+  return require('./login-action').loginAction(...args)
 }
 
 const login = {__esModule: true}
-const persistToken = {__esModule: true}
+const saveToken = {__esModule: true}
 const reqConfig = {}
 
 mock('../api/login', login)
-mock('../functions/persist-token-as-cookie', persistToken)
+mock('../functions/save-token-as-cookie', saveToken)
 mock('../functions/get-api-fetch-config', {
   __esModule: true,
-  default: constant(reqConfig)
+  getApiFetchConfig: constant(reqConfig)
 })
 
 test('passes credentials to the APIs accordingly and saves user object on tree', t => {
@@ -28,14 +28,14 @@ test('passes credentials to the APIs accordingly and saves user object on tree',
 
   response.data = {name: 'Obama'}
 
-  login.default = (receivedEmail, receivedPassword, config) => {
+  login.login = (receivedEmail, receivedPassword, config) => {
     t.is(email, receivedEmail)
     t.is(password, receivedPassword)
     t.is(reqConfig, config)
     return Promise.resolve(response)
   }
 
-  persistToken.default = receivedResponse => {
+  saveToken.saveResponseTokenAsCookie = receivedResponse => {
     t.is(response, receivedResponse)
     return receivedResponse
   }

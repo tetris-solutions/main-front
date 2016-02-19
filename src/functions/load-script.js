@@ -8,7 +8,7 @@ const onTheFly = {}
  * @param {string} src script src
  * @returns {Promise} promise that resolves once the script has been loaded
  */
-function insertScript (src) {
+export function insertScript (src) {
   return new Promise((resolve, reject) => {
     if (loadedScripts[src]) return resolve()
 
@@ -34,7 +34,7 @@ function insertScript (src) {
  * @param {string} src script src
  * @returns {Promise} promise that resolves once the script has been loaded
  */
-function loadScript (src) {
+export function loadScript (src) {
   if (!onTheFly[src]) {
     onTheFly[src] = insertScript(src)
   }
