@@ -7,7 +7,7 @@ export default ({documentTitle = 'Tetris Solutions', payload, children}) => (
     <title>{documentTitle}</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'/>
     <link rel='stylesheet' href='/css/ladda.min.css'/>
-    <script dangerouslySetInnerHTML={{__html: `var backendPayload = ${JSON.stringify(payload)}`}}/>
+    <script id='state-injection' dangerouslySetInnerHTML={{__html: `var backendPayload = ${JSON.stringify(payload)}`}}/>
     <script src='/js/spin.min.js' defer/>
     <script src='/js/ladda.min.js' defer/>
     <script src='/client.js' defer/>

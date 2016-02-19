@@ -42,7 +42,9 @@ export function serverRenderRoute (req, res) {
 
   tree.release()
 
-  res.send(useBeautify ? beautify.html(markup) : markup)
+  res.send('<!DOCTYPE html>\n' + (
+      useBeautify ? beautify.html(markup) : markup
+    ))
 }
 
 export default serverRenderRoute
