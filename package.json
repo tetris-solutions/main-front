@@ -10,6 +10,7 @@
     "build": "rimraf lib && babel src -d lib",
     "prepublish": "npm run build",
     "test": "npm run build && NODE_ENV=production ava | tap-summary",
+    "coverage": "nyc ava",
     "lint": "eslint src",
     "user-api": "user-api",
     "db-migration": "db-migration",
@@ -20,6 +21,11 @@
     "test",
     "documentation"
   ],
+  "nyc": {
+    "exclude": [
+      "lib/**/*.spec.js"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tetris-solutions/main-front.git"
@@ -71,6 +77,7 @@
     "jsdom": "^8.0.2",
     "node-mocks-http": "^1.5.1",
     "nodemon": "^1.8.1",
+    "nyc": "^5.6.0",
     "pre-commit": "^1.1.2",
     "react-addons-test-utils": "^0.14.7",
     "react-transform-catch-errors": "^1.0.1",
