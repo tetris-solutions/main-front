@@ -16,8 +16,11 @@ $.ln('-s', '../docs', 'docs')
 $.ln('-s', '../node_modules', 'node_modules')
 $.ln('-s', '../.git', '.git')
 
-const entries = ['src/server.js'/*, 'src/client.js'*/]
+const entries = ['src/server.js']//, 'src/client.js']
 
+/**
+ * @todo create sub directory documentation structure
+ */
 entries.forEach(entry => {
   pkg.main = entry
   fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2))
