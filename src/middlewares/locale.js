@@ -5,9 +5,9 @@ export const DEFAULT_LOCALE = 'pt-BR'
 /**
  * reads locale headers and save it to `req.locale`
  * @todo possibly read DEFAULT_LOCALE from domain country
- * @param {object} req express request
- * @param {object} res express response
- * @param {function} next next handler
+ * @param {Object} req express request
+ * @param {Object} res express response
+ * @param {Function} next next handler
  * @returns {undefined}
  */
 export function localeMiddleware (req, res, next) {

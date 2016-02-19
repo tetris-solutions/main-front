@@ -6,7 +6,7 @@ import merge from 'lodash/merge'
  * fires a call to login api returning a promise
  * @param {string} email user email
  * @param {string} password user password
- * @param {object} config fetch config
+ * @param {Object} config fetch config
  * @returns {Promise} promise that resolves to a fetch response
  */
 export function login (email, password, config) {

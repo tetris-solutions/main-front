@@ -9,14 +9,13 @@ const loginAction = (...args) => {
   return require('./login-action').loginAction(...args)
 }
 
-const login = {__esModule: true}
-const saveToken = {__esModule: true}
+const login = {}
+const saveToken = {}
 const reqConfig = {}
 
 mock('../api/login', login)
 mock('../functions/save-token-as-cookie', saveToken)
 mock('../functions/get-api-fetch-config', {
-  __esModule: true,
   getApiFetchConfig: constant(reqConfig)
 })
 

@@ -2,9 +2,9 @@ const ONE_DAY = 1000 * 60 * 60 * 24
 
 /**
  * reads auth token from server side fetch Response and forwards it to the client using express response api
- * @param {object} req express request
- * @param {object} res express response
- * @returns {function} fetchCallback
+ * @param {Object} req express request
+ * @param {Object} res express response
+ * @returns {Function} fetchCallback
  */
 export function passTokenAhead (req, res) {
   const domain = process.env.TOKEN_COOKIE_DOMAIN

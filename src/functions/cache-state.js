@@ -3,7 +3,7 @@ import omit from 'lodash/omit'
 
 /**
  * saves state tree object to localStorage
- * @param {object} state state tree object
+ * @param {Object} state state tree object
  * @returns {undefined}
  */
 export function cacheState (state) {

@@ -3,9 +3,9 @@ import defaultState from '../default-state'
 
 /**
  * writes a `Baobab` tree with the default state in `res.locals.tree`
- * @param {object} req express request
- * @param {object} res express response
- * @param {function} next next handler
+ * @param {Object} req express request
+ * @param {Object} res express response
+ * @param {Function} next next handler
  * @returns {undefined}
  */
 export function initializeTreeMiddleware (req, res, next) {

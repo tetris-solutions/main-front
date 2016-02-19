@@ -1,8 +1,8 @@
 /**
  * sets a status code of 403 when the request is not authenticated, but delegates the response body itself to the next handler
- * @param {object} req express request
- * @param {object} res express response
- * @param {function} next next handler
+ * @param {Object} req express request
+ * @param {Object} res express response
+ * @param {Function} next next handler
  * @returns {undefined}
  */
 export function protectedRouteMiddleware (req, res, next) {

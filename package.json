@@ -5,7 +5,7 @@
   "description": "front para o site e admin base",
   "main": "lib/server.js",
   "scripts": {
-    "documentation": "documentation",
+    "documentation": "scripts/gen-docs.js",
     "babel-node": "babel-node",
     "build": "rimraf lib && babel src -d lib",
     "prepublish": "npm run build",
@@ -15,6 +15,11 @@
     "db-migration": "db-migration",
     "start": "nodemon src/server.js"
   },
+  "pre-commit": [
+    "lint",
+    "test",
+    "documentation"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tetris-solutions/main-front.git"
@@ -66,6 +71,7 @@
     "jsdom": "^8.0.2",
     "node-mocks-http": "^1.5.1",
     "nodemon": "^1.8.1",
+    "pre-commit": "^1.1.2",
     "react-addons-test-utils": "^0.14.7",
     "react-transform-catch-errors": "^1.0.1",
     "react-transform-hmr": "^1.0.1",

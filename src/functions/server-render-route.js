@@ -12,8 +12,8 @@ require('react-intl/lib/locales')
 
 /**
  * reads from `res.locals` and `req` to generate the React component tree which is then sent to the client as HTML
- * @param {object} req express request
- * @param {object} res express response
+ * @param {Object} req express request
+ * @param {Object} res express response
  * @returns {undefined}
  */
 export function serverRenderRoute (req, res) {

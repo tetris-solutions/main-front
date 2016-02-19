@@ -4,7 +4,7 @@ import InvalidArgumentError from '../exceptions/InvalidArgumentError'
 
 /**
  * performs basic user validation
- * @param {object} user user object
+ * @param {Object} user user object
  * @param {boolean} [requiresPassword=true] is password required for this case?
  * @returns {Promise} returns a promise that resolves if the user is valid and rejects otherwise
  */

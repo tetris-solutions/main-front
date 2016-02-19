@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
  * loads auth token and user locale into fetch request configuration
  * @param {Baobab} tree the application state tree
  * @todo make default locale dynamic
- * @returns {object} fetch request configuration
+ * @returns {Object} fetch request configuration
  */
 export function getApiFetchConfig (tree) {
   const config = {headers: {}}

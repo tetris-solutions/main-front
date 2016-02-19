@@ -3,7 +3,7 @@ import window from 'global/window'
 
 /**
  * loads state from localStorage
- * @returns {object} retrived state object
+ * @returns {Object} retrived state object
  */
 export function loadCachedUser () {
   try {

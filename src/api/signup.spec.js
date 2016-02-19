@@ -8,7 +8,7 @@ const signup = (...args) => {
   return require('./signup').signup(...args)
 }
 
-const validateUser = {__esModule: true}
+const validateUser = {}
 const http = {}
 
 mock('@tetris/http', http)

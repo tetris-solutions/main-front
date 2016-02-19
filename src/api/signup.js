@@ -4,8 +4,8 @@ import merge from 'lodash/merge'
 
 /**
  * validate user then send a POST request to the signup user api
- * @param {object} user new user object
- * @param {object} config request config object
+ * @param {Object} user new user object
+ * @param {Object} config request config object
  * @returns {Promise} promise that resolves once action is complete
  */
 export function signup (user, config) {

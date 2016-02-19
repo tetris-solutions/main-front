@@ -5,7 +5,7 @@ import getApiFetchConfig from '../functions/get-api-fetch-config'
 /**
  * fires a request to the update user api
  * @param {Baobab} tree state tree
- * @param {object} user new user object
+ * @param {Object} user new user object
  * @returns {Promise} promise that resolves once action is complete
  */
 export function updateMeAction (tree, user) {

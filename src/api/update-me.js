@@ -4,8 +4,8 @@ import merge from 'lodash/merge'
 
 /**
  * validate user then send a PUT request to the update user api
- * @param {object} user object containing changed user properties
- * @param {object} config request config object
+ * @param {Object} user object containing changed user properties
+ * @param {Object} config request config object
  * @returns {Promise} promise that resolves once action is complete
  */
 export function updateMe (user, config) {

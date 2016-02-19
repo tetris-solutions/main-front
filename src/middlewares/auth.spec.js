@@ -11,9 +11,9 @@ const {Response} = fetch
 const CORRECT_TOKEN = 'ABCDE'
 
 const getUserTokenPath = '../api/get-user-by-token'
-const getUserToken = {__esModule: true} // using this to fool babel's _interopRequireDefault
+const getUserToken = {}
 const passTokenAheadPath = '../functions/pass-token-ahead'
-const passTokenAhead = {__esModule: true}
+const passTokenAhead = {}
 
 mock(getUserTokenPath, getUserToken)
 mock(passTokenAheadPath, passTokenAhead)

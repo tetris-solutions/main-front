@@ -3,9 +3,9 @@ import {passTokenAhead} from '../functions/pass-token-ahead'
 
 /**
  * express middleware that reads token from Authorization header and cookies, setting req.user
- * @param {object} req express request
- * @param {object} res express response
- * @param {function} next next handler
+ * @param {Object} req express request
+ * @param {Object} res express response
+ * @param {Function} next next handler
  * @returns {Promise} promise that resolves once work is done
  */
 export function authMiddleware (req, res, next) {

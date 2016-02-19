@@ -8,7 +8,7 @@ const updateMe = (...args) => {
   return require('./update-me').updateMe(...args)
 }
 
-const validateUser = {__esModule: true}
+const validateUser = {}
 const http = {}
 
 mock('@tetris/http', http)
