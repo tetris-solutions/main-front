@@ -1,10 +1,16 @@
 import Cookie from 'js-cookie'
+import window from 'global/window'
 
-export default function logoutAction (tree) {
-  Cookie.remove(process.env.TOKEN_COOKIE_NAME, {
-    domain: process.env.TOKEN_COOKIE_DOMAIN
-  })
+/**
+ * logout the user by removing the user object from the state tree and removing the token from cookies
+ * @param {Baobab} tree state tree
+ * @returns {undefined}
+ */
+function logoutAction (tree) {
   try {
+    Cookie.remove(process.env.TOKEN_COOKIE_NAME, {
+      domain: process.env.TOKEN_COOKIE_DOMAIN
+    })
     window.localStorage.clear()
   } catch (e) {
     // ~~
@@ -12,3 +18,5 @@ export default function logoutAction (tree) {
   tree.set('user', null)
   tree.commit()
 }
+
+export default logoutAction

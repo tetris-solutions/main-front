@@ -20,7 +20,7 @@ mock('../functions/get-api-fetch-config', {
   default: constant(reqConfig)
 })
 
-test('passes credentials to the APIs accordingly', t => {
+test('passes credentials to the APIs accordingly and saves user object on tree', t => {
   const tree = new Baobab()
   const email = 'abc@xxx.com'
   const password = '123'

@@ -1,5 +1,5 @@
 import login from '../api/login'
-import persistTokenAsCookie from '../functions/persist-token-as-cookie'
+import {saveResponseTokenAsCookie} from '../functions/save-token-as-cookie'
 import getApiFetchConfig from '../functions/get-api-fetch-config'
 
 /**
@@ -11,7 +11,7 @@ import getApiFetchConfig from '../functions/get-api-fetch-config'
  */
 function loginAction (tree, email, password) {
   return login(email, password, getApiFetchConfig(tree))
-    .then(persistTokenAsCookie)
+    .then(saveResponseTokenAsCookie)
     .then(response => {
       tree.set('user', response.data)
       tree.commit()
