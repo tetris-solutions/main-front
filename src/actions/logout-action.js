@@ -6,7 +6,7 @@ import window from 'global/window'
  * @param {Baobab} tree state tree
  * @returns {undefined}
  */
-function logoutAction (tree) {
+export function logoutAction (tree) {
   try {
     Cookie.remove(process.env.TOKEN_COOKIE_NAME, {
       domain: process.env.TOKEN_COOKIE_DOMAIN

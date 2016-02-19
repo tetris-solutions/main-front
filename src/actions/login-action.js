@@ -9,7 +9,7 @@ import getApiFetchConfig from '../functions/get-api-fetch-config'
  * @param {string} password user password
  * @returns {Promise} promise that resolves once action is complete
  */
-function loginAction (tree, email, password) {
+export function loginAction (tree, email, password) {
   return login(email, password, getApiFetchConfig(tree))
     .then(saveResponseTokenAsCookie)
     .then(response => {
