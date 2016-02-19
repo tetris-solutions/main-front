@@ -26,8 +26,8 @@ test('injects state tree as a script tag', t => {
   res.locals = {tree}
 
   serverRenderRoute(req, res)
-  const $ = cheerio.load(res._getData())
 
+  const $ = cheerio.load(res._getData())
   const stateInjectionScript = $('#state-injection')
 
   t.ok(stateInjectionScript.length)
@@ -44,7 +44,9 @@ test('injects state tree as a script tag', t => {
   /* eslint-enable */
 
   t.ok(global.backendPayload)
+
   const {locale, user, intl} = global.backendPayload
+
   t.is(locale, LOCALE)
   t.same(user, expectedUser)
   t.ok(intl)
