@@ -1,19 +1,32 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import assign from 'lodash/assign'
-import stateTree from '../fixtures/state-tree'
-import router from '../fixtures/router'
-import window from 'global/window'
-import Baobab from 'baobab'
+import buildDOM from './dom'
 
-global.Intl = require('intl')
-global.React = React
-global.ReactIntl = require('react-intl/lib/react-intl')
-require('react-intl/lib/locales')
+export function initialize () {
+  return buildDOM().then(() => {
+    const React = require('react')
 
-const {PropTypes} = React
+    global.Intl = require('intl')
+    global.React = React
+    global.ReactIntl = require('react-intl/lib/react-intl')
+  })
+}
 
 export function render (Component, props = null) {
+  const React = require('react')
+  const ReactDOM = require('react-dom')
+  const assign = require('lodash/assign')
+  const {stateTree} = require('../fixtures/state-tree')
+  const {router} = require('../fixtures/router')
+  const window = require('global/window')
+  const Baobab = require('baobab')
+
+  global.Intl = require('intl')
+  global.React = React
+  global.ReactIntl = require('react-intl/lib/react-intl')
+
+  require('react-intl/lib/locales')
+
+  const {PropTypes} = React
+
   const context = assign({router}, stateTree)
   context.tree = new Baobab(stateTree)
 
@@ -48,5 +61,3 @@ export function render (Component, props = null) {
     }
   }
 }
-
-export default render

@@ -1,10 +1,10 @@
 import test from 'ava'
-import buildDOM from '../test/helpers/dom'
 import messages from '../messages'
+import {render, initialize} from '../test/helpers/render'
 
-const render = (...args) => require('../test/helpers/render').render(...args)
+test.before(initialize)
 
-test('renders `page-header`, `text-success` and `btn-primary`', t => buildDOM().then(() => {
+test('renders `page-header`, `text-success` and `btn-primary`', t => {
   const {ActivationSuccess} = require('./ActivationSuccess')
   const {element, unmount} = render(ActivationSuccess)
   const ReactTestUtils = require('react-addons-test-utils')
@@ -15,9 +15,9 @@ test('renders `page-header`, `text-success` and `btn-primary`', t => buildDOM().
   t.ok(ReactTestUtils.findRenderedDOMComponentWithClass(element, 'btn-primary'))
 
   unmount()
-}))
+})
 
-test('renders confirmationSuccess message', t => buildDOM().then(() => {
+test('renders confirmationSuccess message', t => {
   const {ActivationSuccess} = require('./ActivationSuccess')
   const {element, unmount} = render(ActivationSuccess)
   const ReactTestUtils = require('react-addons-test-utils')
@@ -26,4 +26,4 @@ test('renders confirmationSuccess message', t => buildDOM().then(() => {
   t.ok(successMsg)
   t.not(-1, successMsg.innerHTML.indexOf(messages.en.emailConfirmationSuccess))
   unmount()
-}))
+})

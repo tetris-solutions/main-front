@@ -1,11 +1,11 @@
 import test from 'ava'
-import buildDOM from '../test/helpers/dom'
 import window from 'global/window'
 import noop from 'lodash/noop'
+import {render, initialize} from '../test/helpers/render'
 
-const render = (...args) => require('../test/helpers/render').render(...args)
+test.before(initialize)
 
-test('uses `props.locale` as `<select>` value', t => buildDOM().then(() => {
+test('uses `props.locale` as `<select>` value', t => {
   const props = {
     userLocale: 'en',
     locale: 'pt-BR',
@@ -18,9 +18,9 @@ test('uses `props.locale` as `<select>` value', t => buildDOM().then(() => {
   t.ok(element.refs.select)
   t.is(props.locale, element.refs.select.value)
   unmount()
-}))
+})
 
-test('uses `props.userLocale` as fallback for `<select>` value', t => buildDOM().then(() => {
+test('uses `props.userLocale` as fallback for `<select>` value', t => {
   const props = {
     userLocale: 'pt-BR',
     locale: null,
@@ -35,9 +35,9 @@ test('uses `props.userLocale` as fallback for `<select>` value', t => buildDOM()
   t.is(props.userLocale, element.refs.select.value)
 
   unmount()
-}))
+})
 
-test('calls `props.actions.changeLocale` and `window.tetrisLoadLocale` onChange passing new locale', t => buildDOM().then(() => {
+test('calls `props.actions.changeLocale` and `window.tetrisLoadLocale` onChange passing new locale', t => {
   const newLocale = 'en'
   const isProperLocale = locale => {
     t.is(locale, newLocale)
@@ -62,4 +62,4 @@ test('calls `props.actions.changeLocale` and `window.tetrisLoadLocale` onChange 
   ReactTestUtils.Simulate.change(element.refs.select)
 
   unmount()
-}))
+})

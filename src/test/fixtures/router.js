@@ -1,7 +1,7 @@
 import noop from 'lodash/noop'
 import constant from 'lodash/constant'
 
-export default {
+export const router = {
   push: noop,
   createHref: constant('/')
 }

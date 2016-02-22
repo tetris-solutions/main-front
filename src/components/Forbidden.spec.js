@@ -1,10 +1,10 @@
 import test from 'ava'
-import buildDOM from '../test/helpers/dom'
 import messages from '../messages'
+import {render, initialize} from '../test/helpers/render'
 
-const render = (...args) => require('../test/helpers/render').render(...args)
+test.before(initialize)
 
-test('renders forbidden message and title inside alert box', t => buildDOM().then(() => {
+test('renders forbidden message and title inside alert box', t => {
   const {Forbidden} = require('./Forbidden')
   const {element, unmount} = render(Forbidden)
   const ReactTestUtils = require('react-addons-test-utils')
@@ -16,4 +16,4 @@ test('renders forbidden message and title inside alert box', t => buildDOM().the
   t.not(-1, alertBox.innerHTML.indexOf(messages.en.accessForbiddenDescription))
 
   unmount()
-}))
+})

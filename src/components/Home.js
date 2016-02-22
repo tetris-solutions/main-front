@@ -1,7 +1,7 @@
 import React from 'react'
 import Message from './intl/Message'
 
-const Home = React.createClass({
+export const Home = React.createClass({
   displayName: 'Home',
   render () {
     return (

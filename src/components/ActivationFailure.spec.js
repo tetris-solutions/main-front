@@ -1,10 +1,10 @@
 import test from 'ava'
-import buildDOM from '../test/helpers/dom'
 import messages from '../messages'
+import {render, initialize} from '../test/helpers/render'
 
-const render = (...args) => require('../test/helpers/render').render(...args)
+test.before(initialize)
 
-test('renders `page-header`, `text-danger` and `btn-primary`', t => buildDOM().then(() => {
+test('renders `page-header`, `text-danger` and `btn-primary`', t => {
   const {ActivationFailure} = require('./ActivationFailure')
   const {element, unmount} = render(ActivationFailure)
   const ReactTestUtils = require('react-addons-test-utils')
@@ -15,9 +15,9 @@ test('renders `page-header`, `text-danger` and `btn-primary`', t => buildDOM().t
   t.ok(ReactTestUtils.findRenderedDOMComponentWithClass(element, 'btn-primary'))
 
   unmount()
-}))
+})
 
-test('renders passed message inside `text-danger` box', t => buildDOM().then(() => {
+test('renders passed message inside `text-danger` box', t => {
   const props = {
     children: 'Nonsense'
   }
@@ -29,9 +29,9 @@ test('renders passed message inside `text-danger` box', t => buildDOM().then(() 
   t.ok(errMsg)
   t.not(-1, errMsg.innerHTML.indexOf(props.children))
   unmount()
-}))
+})
 
-test('fallback to rendering default message inside `text-danger` box', t => buildDOM().then(() => {
+test('fallback to rendering default message inside `text-danger` box', t => {
   const {ActivationFailure} = require('./ActivationFailure')
   const {element, unmount} = render(ActivationFailure)
   const ReactTestUtils = require('react-addons-test-utils')
@@ -40,4 +40,4 @@ test('fallback to rendering default message inside `text-danger` box', t => buil
   t.ok(errMsg)
   t.not(-1, errMsg.innerHTML.indexOf(messages.en.emailConfirmationFailureDefaultDescription))
   unmount()
-}))
+})

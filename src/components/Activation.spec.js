@@ -1,12 +1,13 @@
 import test from 'ava'
-import buildDOM from '../test/helpers/dom'
+import {render, initialize} from '../test/helpers/render'
 
-const render = (...args) => require('../test/helpers/render').render(...args)
+test.before(initialize)
 
-test('renders error if any', t => buildDOM().then(() => {
+test('renders error if any', t => {
   const props = {
     activationError: new Error('Don\'t even care')
   }
+  initialize()
   const {Activation} = require('./Activation')
   const {element, unmount} = render(Activation, props)
   const ReactTestUtils = require('react-addons-test-utils')
@@ -15,9 +16,9 @@ test('renders error if any', t => buildDOM().then(() => {
   t.ok(errMsg)
   t.not(-1, errMsg.innerHTML.indexOf(props.activationError.message))
   unmount()
-}))
+})
 
-test('renders success message when no error is present', t => buildDOM().then(() => {
+test('renders success message when no error is present', t => {
   const {Activation} = require('./Activation')
   const {element, unmount} = render(Activation)
   const ReactTestUtils = require('react-addons-test-utils')
@@ -26,4 +27,4 @@ test('renders success message when no error is present', t => buildDOM().then(()
 
   t.ok(successMsg)
   unmount()
-}))
+})

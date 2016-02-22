@@ -1,6 +1,6 @@
 import messages from '../../messages'
 
-export default {
+export const stateTree = {
   locales: 'en',
   messages: messages.en
 }
