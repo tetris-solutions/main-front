@@ -29,7 +29,7 @@ test('`handleSubmit` calls `signup` action passing form values', t => {
   }
   const props = {
     user: {}, actions: {
-      signup: ({name, email, password}) => {
+      signup ({name, email, password}) {
         t.is(name, expectedUser.name)
         t.is(email, expectedUser.email)
         t.is(password, expectedUser.password)

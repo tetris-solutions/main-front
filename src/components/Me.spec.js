@@ -45,7 +45,7 @@ test('`handleSubmit` calls `updateMe` action passing form values', t => {
   }
   const props = {
     user: {}, actions: {
-      updateMe: ({name, email, password, oldPassword}) => {
+      updateMe ({name, email, password, oldPassword}) {
         t.is(name, expectedUser.name)
         t.is(email, expectedUser.email)
         t.is(password, expectedUser.password)

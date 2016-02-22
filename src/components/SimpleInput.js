@@ -13,7 +13,7 @@ const inputFields = [
   'value'
 ]
 
-export default React.createClass({
+export const SimpleInput = React.createClass({
   displayName: 'SimpleInput',
   getDefaultProps () {
     return {
@@ -40,3 +40,5 @@ export default React.createClass({
     )
   }
 })
+
+export default SimpleInput
