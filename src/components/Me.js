@@ -20,7 +20,7 @@ export const Me = createClass({
     e.preventDefault()
     const {target: {elements: {name, email, password, oldPassword}}} = e
     this.preSubmit()
-    this.props.actions.updateMe({
+    return this.props.actions.updateMe({
       name: name.value,
       email: email.value,
       password: password.value,
