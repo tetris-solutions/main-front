@@ -2,7 +2,7 @@ import React from 'react'
 import {IndexLink} from 'react-router'
 import Message from './intl/Message'
 
-export default React.createClass({
+export const ActivationSuccess = React.createClass({
   displayName: 'Activation-Success',
   render () {
     return (
@@ -20,3 +20,5 @@ export default React.createClass({
     )
   }
 })
+
+export default ActivationSuccess

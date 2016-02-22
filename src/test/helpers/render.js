@@ -13,7 +13,7 @@ require('react-intl/lib/locales')
 
 const {PropTypes} = React
 
-export function render (Component, props) {
+export function render (Component, props = null) {
   const context = assign({router}, stateTree)
   context.tree = new Baobab(stateTree)
 

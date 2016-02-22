@@ -5,9 +5,8 @@ import messages from '../messages'
 const render = (...args) => require('../test/helpers/render').render(...args)
 
 test('renders `page-header`, `text-danger` and `btn-primary`', t => buildDOM().then(() => {
-  const props = {}
   const {ActivationFailure} = require('./ActivationFailure')
-  const {element, unmount} = render(ActivationFailure, props)
+  const {element, unmount} = render(ActivationFailure)
   const ReactTestUtils = require('react-addons-test-utils')
 
   t.ok(element)
@@ -33,9 +32,8 @@ test('renders passed message inside `text-danger` box', t => buildDOM().then(() 
 }))
 
 test('fallback to rendering default message inside `text-danger` box', t => buildDOM().then(() => {
-  const props = {}
   const {ActivationFailure} = require('./ActivationFailure')
-  const {element, unmount} = render(ActivationFailure, props)
+  const {element, unmount} = render(ActivationFailure)
   const ReactTestUtils = require('react-addons-test-utils')
   const errMsg = ReactTestUtils.findRenderedDOMComponentWithClass(element, 'text-danger')
 

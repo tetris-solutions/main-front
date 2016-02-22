@@ -1,7 +1,7 @@
 import React from 'react'
 import Message from './intl/Message'
 
-export default React.createClass({
+export const Forbidden = React.createClass({
   displayName: 'Forbidden',
   render () {
     return (
@@ -18,3 +18,5 @@ export default React.createClass({
     )
   }
 })
+
+export default Forbidden

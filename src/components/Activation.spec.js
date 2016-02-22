@@ -18,9 +18,8 @@ test('renders error if any', t => buildDOM().then(() => {
 }))
 
 test('renders success message when no error is present', t => buildDOM().then(() => {
-  const props = {}
   const {Activation} = require('./Activation')
-  const {element, unmount} = render(Activation, props)
+  const {element, unmount} = render(Activation)
   const ReactTestUtils = require('react-addons-test-utils')
   const successMsg = ReactTestUtils
     .findRenderedDOMComponentWithClass(element, 'text-success')

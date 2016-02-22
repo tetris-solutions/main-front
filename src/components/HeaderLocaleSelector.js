@@ -22,7 +22,7 @@ export const HeaderLocaleSelector = React.createClass({
     return (
       <form className='navbar-form navbar-right'>
         <div className='form-group'>
-          <select className='form-control'
+          <select ref='select' className='form-control'
                   value={this.props.locale || this.props.userLocale}
                   onChange={this.onChangeLocale}>
 
