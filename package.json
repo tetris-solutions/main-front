@@ -59,7 +59,7 @@
     "whatwg-fetch": "^0.11.0"
   },
   "devDependencies": {
-    "@tetris/user-api": "^0.3.1",
+    "@tetris/user-api": "^0.3.2",
     "ava": "^0.11.0",
     "babel-cli": "^6.4.5",
     "babel-loader": "^6.2.1",
