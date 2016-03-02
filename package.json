@@ -12,7 +12,6 @@
     "test": "npm run build >/dev/null 2>&1 && NODE_ENV=production ava | faucet",
     "coverage": "nyc ava",
     "lint": "eslint src",
-    "user-api": "user-api",
     "start": "nodemon src/server.js"
   },
   "pre-commit": [
@@ -58,7 +57,6 @@
     "whatwg-fetch": "^0.11.0"
   },
   "devDependencies": {
-    "@tetris/user-api": "^0.4.4",
     "ava": "^0.11.0",
     "babel-cli": "^6.4.5",
     "babel-loader": "^6.2.1",
