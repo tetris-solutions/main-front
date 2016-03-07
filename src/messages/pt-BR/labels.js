@@ -3,5 +3,7 @@ export default {
   emailLabel: 'E-mail',
   passwordLabel: 'Senha',
   currentPasswordLabel: 'Senha atual',
-  newPasswordLabel: 'Nova senha'
+  newPasswordLabel: 'Nova senha',
+  newCompanyLabel: 'Nova empresa',
+  companyNameLabel: 'Nome da sua empresa'
 }

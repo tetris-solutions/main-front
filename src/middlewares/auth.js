@@ -24,6 +24,7 @@ export function authMiddleware (req, res, next) {
   return getUserByToken(token)
     .then(passTokenAhead(req, res))
     .then(function saveUserObject (response) {
+      req.authToken = token
       req.user = response.data
       res.locals.tree.set('user', response.data)
       res.locals.tree.commit()

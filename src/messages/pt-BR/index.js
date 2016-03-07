@@ -6,5 +6,6 @@ import successMessages from './success'
 import labels from './labels'
 
 export default assign({
-  greetingMessage: 'Bem vindo a lugar nenhum'
+  greetingMessage: 'Bem vindo a lugar nenhum',
+  adminHeaderTitle: 'Administração da empresa'
 }, nav, exceptions, callToAction, successMessages, labels)

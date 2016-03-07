@@ -6,5 +6,6 @@ import successMessages from './success'
 import labels from './labels'
 
 export default assign({
-  greetingMessage: 'Hello world!'
+  greetingMessage: 'Hello world!',
+  adminHeaderTitle: 'Company administration'
 }, nav, exceptions, callToAction, successMessages, labels)

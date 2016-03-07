@@ -3,20 +3,22 @@ import _intl from '@tetris/base-lib/intl'
 /* eslint-enable */
 import express from 'express'
 import path from 'path'
-import dotenv from 'dotenv'
 import fetch from 'node-fetch'
 import cookieParser from 'cookie-parser'
+
 import protectedRouteMiddleware from './middlewares/protected'
 import initializeMiddleware from './middlewares/initialize-tree'
 import localeMiddleware from './middlewares/locale'
 import authMiddleware from './middlewares/auth'
+import {performActionsMiddleware} from './middlewares/perform-actions'
+
 import morgan from 'morgan'
 import defaultRoute from './route-handlers/default-route'
 import activateRoute from './route-handlers/activate-route'
 import intlRoute from './route-handlers/intl-route'
+import {getUserCompaniesAction} from './actions/get-user-companies-action'
 
 global.fetch = fetch
-dotenv.config()
 
 const flags = {
   developmentMode: process.env.NODE_ENV === 'development',
@@ -47,5 +49,21 @@ app.get('/signup', defaultRoute)
 app.get('/me', protectedRouteMiddleware, defaultRoute)
 app.get('/waiting-confirmation', defaultRoute)
 app.get('/activate/:activationCode', activateRoute)
+
+app.get('/admin',
+  protectedRouteMiddleware,
+  performActionsMiddleware(getUserCompaniesAction),
+  defaultRoute)
+
+app.get('/admin/:company',
+  protectedRouteMiddleware,
+  performActionsMiddleware(getUserCompaniesAction),
+  defaultRoute)
+
+app.use(function errorHandler (err, req, res, next) {
+  // @todo logging
+  console.log(err, err.stack)
+  res.status(500).send('Yay')
+})
 
 app.listen(3000)

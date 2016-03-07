@@ -36,6 +36,11 @@ export const Header = React.createClass({
             <ul ref='ul' className='nav navbar-nav navbar-right'>
               <li><Link to='/me'>{user.name}</Link></li>
               <li>
+                <Link to='/admin'>
+                  <Message>navAdmin</Message>
+                </Link>
+              </li>
+              <li>
                 <a href='/' onClick={this.handleLogoutClick}>
                   <Message>navLogout</Message>
                 </a>

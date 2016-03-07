@@ -1,5 +1,6 @@
 export default {
   navSignup: 'Cadastrar',
   navLogin: 'Login',
-  navLogout: 'Sair'
+  navLogout: 'Sair',
+  navAdmin: 'Administração'
 }

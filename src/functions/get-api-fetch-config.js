@@ -3,18 +3,23 @@ import Cookies from 'js-cookie'
 /**
  * loads auth token and user locale into fetch request configuration
  * @param {Baobab} tree the application state tree
+ * @param {Object} [req] express request
  * @todo make default locale dynamic
  * @returns {Object} fetch request configuration
  */
-export function getApiFetchConfig (tree) {
+export function getApiFetchConfig (tree, req) {
   const config = {headers: {}}
 
   let token
 
-  try {
-    token = Cookies.get(process.env.TOKEN_COOKIE_NAME)
-  } catch (e) {
-    // ~
+  if (!req) {
+    try {
+      token = Cookies.get(process.env.TOKEN_COOKIE_NAME)
+    } catch (e) {
+      // ~
+    }
+  } else {
+    token = req.authToken
   }
 
   if (token) {

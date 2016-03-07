@@ -1,5 +1,6 @@
 import test from 'ava'
 import noop from 'lodash/noop'
+import messages from '../messages'
 import {render, initialize} from '../test/helpers/render'
 
 test.before(initialize)
@@ -37,7 +38,8 @@ test('displays user name and logout link when a user is provided', t => {
   const lis = ul.children
 
   t.ok(lis[0].innerHTML.match(new RegExp(props.user.name, 'gi')))
-  t.ok(lis[1].innerHTML.match(/logout/gi))
+  t.ok(lis[1].innerHTML.match(new RegExp(messages.en.navAdmin, 'gi')))
+  t.ok(lis[2].innerHTML.match(/logout/gi))
 
   unmount()
 })

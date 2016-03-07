@@ -1,5 +1,6 @@
 export default {
   navSignup: 'Signup',
   navLogin: 'Login',
-  navLogout: 'Logout'
+  navLogout: 'Logout',
+  navAdmin: 'Dashboard'
 }
