@@ -15,7 +15,6 @@ export const CreateCompany = React.createClass({
     router: PropTypes.object
   },
   propTypes: {
-    owner: PropTypes.string,
     actions: PropTypes.shape({
       createCompany: PropTypes.func,
       getUserCompanies: PropTypes.func
@@ -24,10 +23,8 @@ export const CreateCompany = React.createClass({
   handleSubmit (e) {
     e.preventDefault()
     this.preSubmit()
-    const {target: {elements}} = e
     const company = {
-      owner: this.props.owner,
-      name: elements.name.value
+      name: e.target.elements.name.value
     }
 
     this.props.actions.createCompany(company)
@@ -58,9 +55,6 @@ export const CreateCompany = React.createClass({
 })
 
 export default branch(CreateCompany, {
-  cursors: {
-    owner: ['user', 'id']
-  },
   actions: {
     createCompany: createCompanyAction,
     getUserCompanies: getUserCompaniesAction
