@@ -4,6 +4,8 @@
     "ReactIntl": true
   },
   "rules": {
-    "valid-jsdoc": 2
+    "valid-jsdoc": 2,
+    "no-console": 2,
+    "no-debugger": 2
   }
 }

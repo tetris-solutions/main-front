@@ -10,7 +10,7 @@ export function cacheState (state) {
   try {
     window.localStorage.tetrisState = JSON.stringify(omit(state, 'errors'))
   } catch (e) {
-    console.log(e)
+    // @todo log error or show some kind of alert popup
   }
 }
 

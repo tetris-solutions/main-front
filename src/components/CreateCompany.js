@@ -4,7 +4,7 @@ import SimpleInput from './SimpleInput'
 import SubmitButton from './SubmitButton'
 import {branch} from 'baobab-react/higher-order'
 import {createCompanyAction} from '../actions/create-company-action'
-import {getUserCompaniesAction} from '../actions/get-user-companies-action'
+import {loadUserCompaniesAction} from '../actions/load-user-companies-action'
 
 const {PropTypes} = React
 
@@ -17,7 +17,7 @@ export const CreateCompany = React.createClass({
   propTypes: {
     actions: PropTypes.shape({
       createCompany: PropTypes.func,
-      getUserCompanies: PropTypes.func
+      loadUserCompanies: PropTypes.func
     })
   },
   handleSubmit (e) {
@@ -28,9 +28,10 @@ export const CreateCompany = React.createClass({
     }
 
     this.props.actions.createCompany(company)
-      .then(response => {
-        this.context.router.push(`/admin/${response.data.id}`)
-      })
+      .then(response => this.props.actions.loadUserCompanies()
+        .then(() => {
+          this.context.router.push(`/admin/${response.data.id}`)
+        }))
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
@@ -57,6 +58,6 @@ export const CreateCompany = React.createClass({
 export default branch(CreateCompany, {
   actions: {
     createCompany: createCompanyAction,
-    getUserCompanies: getUserCompaniesAction
+    loadUserCompanies: loadUserCompaniesAction
   }
 })

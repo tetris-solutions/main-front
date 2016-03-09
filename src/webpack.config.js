@@ -17,7 +17,7 @@ function passEnv () {
 }
 
 module.exports = {
-  devtool: 'eval-source-map',
+  devtool: 'eval',
   context: __dirname,
   entry: [
     'webpack-hot-middleware/client',

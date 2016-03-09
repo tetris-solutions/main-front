@@ -14,10 +14,12 @@ require('react-intl/lib/locales')
  * reads from `res.locals` and `req` to generate the React component tree which is then sent to the client as HTML
  * @param {Object} req express request
  * @param {Object} res express response
+ * @param {String} [location] predefined location
  * @returns {undefined}
  */
-export function serverRenderRoute (req, res) {
-  const location = req.path
+export function serverRenderRoute (req, res, location) {
+  location = location || req.path
+
   const useBeautify = process.env.BEAUTIFY_HTML === 'true'
   const {tree} = res.locals
 

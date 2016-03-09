@@ -8,7 +8,7 @@ import getApiFetchConfig from '../functions/get-api-fetch-config'
  * @param {Object} [req] express request
  * @returns {Promise.<Array>} promise that resolves once action is complete
  */
-export function getUserCompaniesAction (tree, req) {
+export function loadUserCompaniesAction (tree, req) {
   return getUserCompanies(getApiFetchConfig(tree, req))
     .then(saveResponseTokenAsCookie)
     .then(response => {
@@ -17,4 +17,4 @@ export function getUserCompaniesAction (tree, req) {
     })
 }
 
-export default getUserCompaniesAction
+export default loadUserCompaniesAction

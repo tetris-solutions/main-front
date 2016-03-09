@@ -16,7 +16,7 @@ import morgan from 'morgan'
 import defaultRoute from './route-handlers/default-route'
 import activateRoute from './route-handlers/activate-route'
 import intlRoute from './route-handlers/intl-route'
-import {getUserCompaniesAction} from './actions/get-user-companies-action'
+import {loadUserCompaniesAction} from './actions/load-user-companies-action'
 
 global.fetch = fetch
 
@@ -52,21 +52,22 @@ app.get('/activate/:activationCode', activateRoute)
 
 app.get('/admin',
   protectedRouteMiddleware,
-  performActionsMiddleware(getUserCompaniesAction),
+  performActionsMiddleware(loadUserCompaniesAction),
   defaultRoute)
 
 app.get('/admin/:company',
   protectedRouteMiddleware,
-  performActionsMiddleware(getUserCompaniesAction),
+  performActionsMiddleware(loadUserCompaniesAction),
   defaultRoute)
 
-app.use(function errorHandler (err, req, res, next) {
+app.use(function errorHandler (_err, req, res, next) {
   // @todo logging
-  console.log('### got err ###')
-  console.log(err)
-  console.log('### stack ###')
-  console.log(err.stack)
-  res.status(500).send('Yay')
+  // @todo show/redirect to error view
+  // console.log('### got err ###')
+  // console.log(err)
+  // console.log('### stack ###')
+  // console.log(err.stack)
+  res.status(500).send('Something really awful happened')
 })
 
 app.listen(3000)

@@ -1,3 +1,3 @@
 import serverRenderRoute from '../functions/server-render-route'
 
-export default serverRenderRoute
+export default (req, res) => serverRenderRoute(req, res)
