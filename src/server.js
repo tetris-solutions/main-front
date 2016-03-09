@@ -63,6 +63,28 @@ app.get('/admin/:company',
     loadCompanyActionServerAdaptor),
   defaultRoute)
 
+app.get('/admin/:company/:role',
+  protectedRouteMiddleware,
+  performActionsMiddleware(
+    loadUserCompaniesActionServerAdaptor,
+    loadCompanyActionServerAdaptor),
+  defaultRoute)
+
+app.get('/admin/:company/:role/permissions',
+  protectedRouteMiddleware,
+  performActionsMiddleware(
+    loadUserCompaniesActionServerAdaptor,
+    loadCompanyActionServerAdaptor),
+  defaultRoute)
+
+app.get('/admin/:company/:role/users',
+  protectedRouteMiddleware,
+  performActionsMiddleware(
+    loadUserCompaniesActionServerAdaptor,
+    loadCompanyActionServerAdaptor/*,
+     @todo loadRoleUsers*/),
+  defaultRoute)
+
 app.use(function errorHandler (_err, req, res, next) {
   // @todo logging
   // @todo show/redirect to error view

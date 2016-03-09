@@ -2,5 +2,7 @@ export default {
   navSignup: 'Cadastrar',
   navLogin: 'Login',
   navLogout: 'Sair',
-  navAdmin: 'Administração'
+  navAdmin: 'Administração',
+  navRolePermissions: 'Permissões',
+  navRoleUsers: 'Usuários'
 }

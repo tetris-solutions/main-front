@@ -8,6 +8,10 @@ import Signup from './components/Signup'
 import Admin from './components/Admin'
 import EditCompany from './components/EditCompany'
 import CreateCompany from './components/CreateCompany'
+import CompanyRole from './components/CompanyRole'
+import RolePermissions from './components/RolePermissions'
+import RoleUsers from './components/RoleUsers'
+
 import Profile from './components/Me'
 import WaitingConfirmation from './components/WaitingConfirmation'
 import {root} from 'baobab-react/higher-order'
@@ -59,7 +63,14 @@ export default (history, tree) => {
             <IndexRoute component={CreateCompany}/>
 
             <Route path=':company' component={EditCompany}
-                   onEnter={preload(loadCompanyActionRouterAdaptor)}/>
+                   onEnter={preload(loadCompanyActionRouterAdaptor)}>
+
+              <Route path=':role' component={CompanyRole}>
+                <Route path='permissions' component={RolePermissions}/>
+                <Route path='users' component={RoleUsers}/>
+              </Route>
+
+            </Route>
 
           </Route>
         </Route>
