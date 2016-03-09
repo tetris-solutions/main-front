@@ -62,7 +62,10 @@ app.get('/admin/:company',
 
 app.use(function errorHandler (err, req, res, next) {
   // @todo logging
-  console.log(err, err.stack)
+  console.log('### got err ###')
+  console.log(err)
+  console.log('### stack ###')
+  console.log(err.stack)
   res.status(500).send('Yay')
 })
 

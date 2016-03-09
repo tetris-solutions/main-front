@@ -1,14 +1,16 @@
 import test from 'ava'
 import protectedMiddleware from './protected'
 
-test('writes 403 status for unauthenticated request and calls next', t =>
+test('redirects to login setting next query param', t =>
   protectedMiddleware(
-    {},
     {
-      status (code) {
-        t.is(code, 403)
+      path: '/xxx'
+    },
+    {
+      redirect (newPath) {
+        t.is(newPath, `/login?next=/xxx`)
       }
-    }, () => t.pass()))
+    }))
 
 test('does not mess with response when `req.user` is set', t =>
   protectedMiddleware({user: true}, null,

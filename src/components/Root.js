@@ -12,15 +12,19 @@ export const Root = React.createClass({
     intl: PropTypes.shape({
       locales: PropTypes.string,
       messages: PropTypes.object
-    })
+    }),
+    location: PropTypes.object,
+    params: PropTypes.object
   },
   childContextTypes: {
     locales: PropTypes.string,
-    messages: PropTypes.object
+    messages: PropTypes.object,
+    location: PropTypes.object,
+    params: PropTypes.object
   },
   getChildContext () {
-    const {intl: {locales, messages}} = this.props
-    return {locales, messages}
+    const {location, params, intl: {locales, messages}} = this.props
+    return {locales, messages, location, params}
   },
   render () {
     const {user} = this.props

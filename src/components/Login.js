@@ -4,6 +4,7 @@ import loginAction from '../actions/login-action'
 import SimpleInput from './SimpleInput'
 import {branch} from 'baobab-react/higher-order'
 import SubmitButton from './SubmitButton'
+import get from 'lodash/get'
 
 const {PropTypes} = React
 
@@ -16,15 +17,19 @@ export const Login = React.createClass({
     })
   },
   contextTypes: {
-    router: PropTypes.object.isRequired
+    router: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired
   },
   handleSubmit (e) {
     e.preventDefault()
     const {elements} = e.target
     this.preSubmit()
     return this.props.actions
-      .login(elements.email.value, elements.password.value)
-      .then(() => this.context.router.push('/'))
+      .login(
+        elements.email.value,
+        elements.password.value)
+      .then(() => this.context
+        .router.push(get(this, 'context.location.query.next') || '/'))
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },

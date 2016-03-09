@@ -2,7 +2,6 @@ import React from 'react'
 import {Router, IndexRoute, Route} from 'react-router'
 import Login from './components/Login'
 import Activation from './components/Activation'
-import Forbidden from './components/Forbidden'
 import Home from './components/Home'
 import Root from './components/Root'
 import Signup from './components/Signup'
@@ -16,20 +15,27 @@ import {root} from 'baobab-react/higher-order'
 const isServer = typeof window === 'undefined'
 
 export default (history, tree) => {
+  function requireAuth (nextState, replace) {
+    if (!tree.get('user')) {
+      replace({
+        pathname: '/login',
+        state: {
+          next: nextState.location.pathname
+        }
+      })
+    }
+  }
+
   let protectedRoute
+
   if (isServer) {
     protectedRoute = Component => ({
-      component: tree.get('user') ? Component : Forbidden
+      component: Component
     })
   } else {
     protectedRoute = Component => ({
-      getComponent (location, callback) {
-        if (tree.get('user')) {
-          callback(null, Component)
-        } else {
-          callback(null, Forbidden)
-        }
-      }
+      component: Component,
+      onEnter: requireAuth
     })
   }
 
@@ -44,7 +50,7 @@ export default (history, tree) => {
         <Route path='me' {...protectedRoute(Profile)}/>
         <Route path='waiting-confirmation' component={WaitingConfirmation}/>
         <Route path='activate/:activationCode' component={Activation}/>
-        <Route path='admin' component={Admin}>
+        <Route path='admin' {...protectedRoute(Admin)}>
           <IndexRoute component={CreateCompany}/>
           <Route path=':company' component={EditCompany}/>
         </Route>

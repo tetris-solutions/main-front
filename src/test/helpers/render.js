@@ -10,12 +10,13 @@ export function initialize () {
   })
 }
 
-export function render (Component, props = null) {
+export function render (Component, props = null, location = null) {
   const React = require('react')
   const ReactDOM = require('react-dom')
   const assign = require('lodash/assign')
   const {stateTree} = require('../fixtures/state-tree')
   const {router} = require('../fixtures/router')
+  location = location || require('../fixtures/location').location
   const window = require('global/window')
   const Baobab = require('baobab')
 

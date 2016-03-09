@@ -13,12 +13,14 @@ export const Admin = React.createClass({
   },
   contextTypes: {
     messages: PropTypes.object,
-    router: PropTypes.object
+    router: PropTypes.object,
+    params: PropTypes.object
   },
   navigateToCompany ({target: {value}}) {
     this.context.router.push(`/admin/${value}`)
   },
   render () {
+    const {params: {company}} = this.context
     return (
       <div className='container'>
         <div className='page-header'>
@@ -27,7 +29,7 @@ export const Admin = React.createClass({
             <small>
               <form className='pull-right'>
                 <span className='form-group'>
-                  <select className='form-control' onChange={this.navigateToCompany}>
+                  <select className='form-control' onChange={this.navigateToCompany} value={company || ''}>
 
                     {map(this.props.companies, ({name, id}, index) => (
                       <option key={index} value={id}>{name}</option>

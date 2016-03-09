@@ -1,5 +1,5 @@
 /**
- * sets a status code of 403 when the request is not authenticated, but delegates the response body itself to the next handler
+ * redirects to login in if no user is logged in
  * @param {Object} req express request
  * @param {Object} res express response
  * @param {Function} next next handler
@@ -7,8 +7,7 @@
  */
 export function protectedRouteMiddleware (req, res, next) {
   if (!req.user) {
-    res.status(403)
-    next()
+    res.redirect(`/login?next=${req.path}`)
   } else {
     next()
   }
