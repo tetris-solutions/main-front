@@ -15,7 +15,7 @@ const buildDOM = () => new Promise((resolve, reject) =>
 
     // require('ladda')
 
-    for (let key in window) {
+    for (const key in window) {
       if (!window.hasOwnProperty(key)) continue
       if (key in global) continue
 

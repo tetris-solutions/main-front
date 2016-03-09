@@ -12,7 +12,7 @@ export function performActionsMiddleware (...actions) {
    * @returns {Promise.<T>} promise that resolves once all actions have been performed
    */
   function resolveActions (req, res, next) {
-    return Promise.all(actions.map(action => action(res.locals.tree, req)))
+    return Promise.all(actions.map(action => action(req, res)))
       .then(() => next(), err => next(err))
   }
 

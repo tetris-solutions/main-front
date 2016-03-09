@@ -13,7 +13,7 @@ export function performLoadAction (tree, action) {
    * @returns {undefined}
    */
   function onEnter (nextState, replace, callback) {
-    action(tree).then(() => callback(),
+    action(nextState, tree).then(() => callback(),
       _err => {
         // @todo show/redirect to error view
       })

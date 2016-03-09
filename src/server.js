@@ -16,7 +16,8 @@ import morgan from 'morgan'
 import defaultRoute from './route-handlers/default-route'
 import activateRoute from './route-handlers/activate-route'
 import intlRoute from './route-handlers/intl-route'
-import {loadUserCompaniesAction} from './actions/load-user-companies-action'
+import {loadUserCompaniesActionServerAdaptor} from './actions/load-user-companies-action'
+import {loadCompanyActionServerAdaptor} from './actions/load-company-action'
 
 global.fetch = fetch
 
@@ -52,12 +53,14 @@ app.get('/activate/:activationCode', activateRoute)
 
 app.get('/admin',
   protectedRouteMiddleware,
-  performActionsMiddleware(loadUserCompaniesAction),
+  performActionsMiddleware(loadUserCompaniesActionServerAdaptor),
   defaultRoute)
 
 app.get('/admin/:company',
   protectedRouteMiddleware,
-  performActionsMiddleware(loadUserCompaniesAction),
+  performActionsMiddleware(
+    loadUserCompaniesActionServerAdaptor,
+    loadCompanyActionServerAdaptor),
   defaultRoute)
 
 app.use(function errorHandler (_err, req, res, next) {

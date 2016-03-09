@@ -5,7 +5,7 @@ import loadScript from './load-script'
 import uniq from 'lodash/uniq'
 import size from 'lodash/size'
 
-let fail = false
+const fail = false
 const scripts = []
 const LOAD_INTERVAL = 300
 

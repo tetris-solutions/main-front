@@ -20,20 +20,26 @@ test('passes `tree` through `getApiFetchConfig` and uses this config to call api
     return expectedPromise
   })
 
-  mock('../functions/get-api-fetch-config', tree => {
-    t.is(tree, expectedTree)
-    return expectedConfig
+  mock('../functions/get-api-fetch-config', {
+    getApiFetchConfig (tree) {
+      t.is(tree, expectedTree)
+      return expectedConfig
+    }
   })
 
-  mock('../functions/save-token-as-cookie', response => {
-    t.is(response, expectedResponse)
-    return expectedResponse
+  mock('../functions/save-token-as-cookie', {
+    saveTokenAsCookie (response) {
+      t.is(response, expectedResponse)
+      return expectedResponse
+    }
   })
 
-  mock('../api/update-me', (user, config) => {
-    t.is(user, changedUser)
-    t.is(config, expectedConfig)
-    return Promise.resolve(expectedResponse)
+  mock('../api/update-me', {
+    updateMe (user, config) {
+      t.is(user, changedUser)
+      t.is(config, expectedConfig)
+      return Promise.resolve(expectedResponse)
+    }
   })
 
   const {updateMeAction} = require('./update-me-action')

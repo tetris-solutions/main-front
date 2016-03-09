@@ -13,11 +13,12 @@ import WaitingConfirmation from './components/WaitingConfirmation'
 import {root} from 'baobab-react/higher-order'
 import {requireAuth} from './functions/require-auth'
 import {performLoadAction} from './functions/perform-load-action'
-import {loadUserCompaniesAction} from './actions/load-user-companies-action'
+import {loadUserCompaniesActionRouterAdaptor} from './actions/load-user-companies-action'
+import {loadCompanyActionRouterAdaptor} from './actions/load-company-action'
 const isServer = typeof window === 'undefined'
 
 export default (history, tree) => {
-  let protectRoute = isServer ? undefined : requireAuth(tree)
+  const protectRoute = isServer ? undefined : requireAuth(tree)
   let firstRender = true
 
   if (!isServer) {
@@ -52,9 +53,14 @@ export default (history, tree) => {
         <Route onEnter={protectRoute}>
           <Route path='me' component={Profile}/>
 
-          <Route path='admin' component={Admin} onEnter={preload(loadUserCompaniesAction)}>
+          <Route path='admin' component={Admin}
+                 onEnter={preload(loadUserCompaniesActionRouterAdaptor)}>
+
             <IndexRoute component={CreateCompany}/>
-            <Route path=':company' component={EditCompany}/>
+
+            <Route path=':company' component={EditCompany}
+                   onEnter={preload(loadCompanyActionRouterAdaptor)}/>
+
           </Route>
         </Route>
 

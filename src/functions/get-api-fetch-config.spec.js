@@ -1,5 +1,5 @@
 import test from 'ava'
-import getApiFetchConfig from './get-api-fetch-config'
+import {getApiFetchConfig} from './get-api-fetch-config'
 import Baobab from 'baobab'
 import Cookies from 'js-cookie'
 import window from 'global/window'

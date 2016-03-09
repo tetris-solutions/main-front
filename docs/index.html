@@ -62,19 +62,49 @@
                 getUserByToken
               </a>
               <a
-                href='#getUserCompanies'
-                class='block bold'>
-                getUserCompanies
-              </a>
-              <a
                 href='#initializeTreeMiddleware'
                 class='block bold'>
                 initializeTreeMiddleware
               </a>
               <a
+                href='#loadCompany'
+                class='block bold'>
+                loadCompany
+              </a>
+              <a
+                href='#loadCompanyAction'
+                class='block bold'>
+                loadCompanyAction
+              </a>
+              <a
+                href='#loadCompanyActionRouterAdaptor'
+                class='block bold'>
+                loadCompanyActionRouterAdaptor
+              </a>
+              <a
+                href='#loadCompanyActionServerAdaptor'
+                class='block bold'>
+                loadCompanyActionServerAdaptor
+              </a>
+              <a
+                href='#loadUserCompanies'
+                class='block bold'>
+                loadUserCompanies
+              </a>
+              <a
                 href='#loadUserCompaniesAction'
                 class='block bold'>
                 loadUserCompaniesAction
+              </a>
+              <a
+                href='#loadUserCompaniesActionRouterAdaptor'
+                class='block bold'>
+                loadUserCompaniesActionRouterAdaptor
+              </a>
+              <a
+                href='#loadUserCompaniesActionServerAdaptor'
+                class='block bold'>
+                loadUserCompaniesActionServerAdaptor
               </a>
               <a
                 href='#localeMiddleware'
@@ -97,22 +127,22 @@
                 logoutAction
               </a>
               <a
-                href='#performLoadAction'
-                class='block bold'>
-                performLoadAction
-              </a>
-                <a
-                  href='#performLoadAction.onEnter'
-                  class='regular block'>
-                  .onEnter
-                </a>
-              <a
                 href='#requireAuth'
                 class='block bold'>
                 requireAuth
               </a>
                 <a
                   href='#requireAuth.onEnter'
+                  class='regular block'>
+                  .onEnter
+                </a>
+              <a
+                href='#performLoadAction'
+                class='block bold'>
+                performLoadAction
+              </a>
+                <a
+                  href='#performLoadAction.onEnter'
                   class='regular block'>
                   .onEnter
                 </a>
@@ -185,7 +215,7 @@
   <h2 id='activateRoute' class='mt0'>
     activateRoute<span class='gray'>(req, res)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/route-handlers/activate-route.js#L13-L27'><code>src/route-handlers/activate-route.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/route-handlers/activate-route.js#L13-L27'><code>src/route-handlers/activate-route.js</code></a></p>
   
   
   
@@ -225,7 +255,7 @@
   <h2 id='authMiddleware' class='mt0'>
     authMiddleware<span class='gray'>(req, res, next)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/middlewares/auth.js#L11-L33'><code>src/middlewares/auth.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/middlewares/auth.js#L11-L33'><code>src/middlewares/auth.js</code></a></p>
   
   
   
@@ -273,7 +303,7 @@
   <h2 id='changeLanguage' class='mt0'>
     changeLanguage<span class='gray'>(tree, locale)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/actions/change-locale-action.js#L7-L15'><code>src/actions/change-locale-action.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/actions/change-locale-action.js#L7-L15'><code>src/actions/change-locale-action.js</code></a></p>
   
   
   
@@ -312,7 +342,7 @@
   <h2 id='createCompany' class='mt0'>
     createCompany<span class='gray'>(company, config)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/api/create-company.js#L10-L12'><code>src/api/create-company.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/api/create-company.js#L10-L12'><code>src/api/create-company.js</code></a></p>
   
   
   
@@ -355,7 +385,7 @@
   <h2 id='createCompanyAction' class='mt0'>
     createCompanyAction<span class='gray'>(tree, company)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/actions/create-company-action.js#L11-L14'><code>src/actions/create-company-action.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/actions/create-company-action.js#L11-L14'><code>src/actions/create-company-action.js</code></a></p>
   
   
   
@@ -384,9 +414,6 @@
     </ul>
       <h4>Returns</h4>
       <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>
-.<
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
->
 </code>
       :
       <div class='force-inline'>
@@ -398,7 +425,7 @@
   <h2 id='fetchCallback' class='mt0'>
     fetchCallback<span class='gray'>(fetchResponse)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/functions/pass-token-ahead.js#L18-L27'><code>src/functions/pass-token-ahead.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/functions/pass-token-ahead.js#L18-L27'><code>src/functions/pass-token-ahead.js</code></a></p>
   
   
   
@@ -428,9 +455,9 @@
 </section>
 </div><div class='py1'><section class='py2 clearfix'>
   <h2 id='getApiFetchConfig' class='mt0'>
-    getApiFetchConfig<span class='gray'>(tree, [req])</span>
+    getApiFetchConfig<span class='gray'>(tree, [token])</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/functions/get-api-fetch-config.js#L10-L36'><code>src/functions/get-api-fetch-config.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/functions/get-api-fetch-config.js#L10-L32'><code>src/functions/get-api-fetch-config.js</code></a></p>
   
   
   
@@ -448,9 +475,9 @@
 
           </div>
         </li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
 =
- <strong>req</strong>
+ <strong>token</strong>
           :
           <div class='force-inline'>
             <p>express request</p>
@@ -471,7 +498,7 @@
   <h2 id='getUserByToken' class='mt0'>
     getUserByToken<span class='gray'>(token)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/api/get-user-by-token.js#L8-L12'><code>src/api/get-user-by-token.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/api/get-user-by-token.js#L8-L12'><code>src/api/get-user-by-token.js</code></a></p>
   
   
   
@@ -500,45 +527,10 @@
       </div>
 </section>
 </div><div class='py1'><section class='py2 clearfix'>
-  <h2 id='getUserCompanies' class='mt0'>
-    getUserCompanies<span class='gray'>(config)</span>
-  </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/api/get-user-companies.js#L8-L10'><code>src/api/get-user-companies.js</code></a></p>
-  
-  
-  
-  
-  
-  <p>loads list of companies users is associated to</p>
-
-    <h4>Parameters</h4>
-    <ul class='suppress-p-margin'>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
- <strong>config</strong>
-          :
-          <div class='force-inline'>
-            <p>fetch config</p>
-
-          </div>
-        </li>
-    </ul>
-      <h4>Returns</h4>
-      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>
-.<
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>
->
-</code>
-      :
-      <div class='force-inline'>
-        <p>promise that resolves to a list of companies</p>
-
-      </div>
-</section>
-</div><div class='py1'><section class='py2 clearfix'>
   <h2 id='initializeTreeMiddleware' class='mt0'>
     initializeTreeMiddleware<span class='gray'>(req, res, next)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/middlewares/initialize-tree.js#L11-L14'><code>src/middlewares/initialize-tree.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/middlewares/initialize-tree.js#L11-L14'><code>src/middlewares/initialize-tree.js</code></a></p>
   
   
   
@@ -582,10 +574,217 @@
       </div>
 </section>
 </div><div class='py1'><section class='py2 clearfix'>
-  <h2 id='loadUserCompaniesAction' class='mt0'>
-    loadUserCompaniesAction<span class='gray'>(tree, [req])</span>
+  <h2 id='loadCompany' class='mt0'>
+    loadCompany<span class='gray'>(id, config)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/actions/load-user-companies-action.js#L11-L18'><code>src/actions/load-user-companies-action.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/api/load-company.js#L9-L11'><code>src/api/load-company.js</code></a></p>
+  
+  
+  
+  
+  
+  <p>call load company API</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+ <strong>id</strong>
+          :
+          <div class='force-inline'>
+            <p>company id</p>
+
+          </div>
+        </li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+ <strong>config</strong>
+          :
+          <div class='force-inline'>
+            <p>fetch request config</p>
+
+          </div>
+        </li>
+    </ul>
+      <h4>Returns</h4>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>
+.<
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+>
+</code>
+      :
+      <div class='force-inline'>
+        <p>promise that resolves with requested company</p>
+
+      </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='loadCompanyAction' class='mt0'>
+    loadCompanyAction<span class='gray'>(tree, id, [token])</span>
+  </h2>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/actions/load-company-action.js#L12-L19'><code>src/actions/load-company-action.js</code></a></p>
+  
+  
+  
+  
+  
+  <p>loads a single company</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li>Baobab
+ <strong>tree</strong>
+          :
+          <div class='force-inline'>
+            <p>state tree</p>
+
+          </div>
+        </li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+ <strong>id</strong>
+          :
+          <div class='force-inline'>
+            <p>company id</p>
+
+          </div>
+        </li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+=
+ <strong>token</strong>
+          :
+          <div class='force-inline'>
+            <p>optional auth token</p>
+
+          </div>
+        </li>
+    </ul>
+      <h4>Returns</h4>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>
+</code>
+      :
+      <div class='force-inline'>
+        <p>promise that resolves once action is complete</p>
+
+      </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='loadCompanyActionRouterAdaptor' class='mt0'>
+    loadCompanyActionRouterAdaptor<span class='gray'>(state, tree)</span>
+  </h2>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/actions/load-company-action.js#L37-L39'><code>src/actions/load-company-action.js</code></a></p>
+  
+  
+  
+  
+  
+  <p>adaptor to call <code>loadCompanyAction</code> as an <code>onEnter</code> hook</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+ <strong>state</strong>
+          :
+          <div class='force-inline'>
+            <p>history state</p>
+
+          </div>
+        </li>
+        <li>Baobab
+ <strong>tree</strong>
+          :
+          <div class='force-inline'>
+            <p>state tree</p>
+
+          </div>
+        </li>
+    </ul>
+      <h4>Returns</h4>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>
+</code>
+      :
+      <div class='force-inline'>
+        <p>promise action</p>
+
+      </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='loadCompanyActionServerAdaptor' class='mt0'>
+    loadCompanyActionServerAdaptor<span class='gray'>(req, res)</span>
+  </h2>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/actions/load-company-action.js#L27-L29'><code>src/actions/load-company-action.js</code></a></p>
+  
+  
+  
+  
+  
+  <p>adaptor to call <code>loadCompanyAction</code> on the server side</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+ <strong>req</strong>
+          :
+          <div class='force-inline'>
+            <p>express request</p>
+
+          </div>
+        </li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+ <strong>res</strong>
+          :
+          <div class='force-inline'>
+            <p>express response</p>
+
+          </div>
+        </li>
+    </ul>
+      <h4>Returns</h4>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>
+</code>
+      :
+      <div class='force-inline'>
+        <p>action promise</p>
+
+      </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='loadUserCompanies' class='mt0'>
+    loadUserCompanies<span class='gray'>(config)</span>
+  </h2>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/api/load-user-companies.js#L8-L10'><code>src/api/load-user-companies.js</code></a></p>
+  
+  
+  
+  
+  
+  <p>loads list of companies users is associated to</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+ <strong>config</strong>
+          :
+          <div class='force-inline'>
+            <p>fetch config</p>
+
+          </div>
+        </li>
+    </ul>
+      <h4>Returns</h4>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>
+.<
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>
+>
+</code>
+      :
+      <div class='force-inline'>
+        <p>promise that resolves to a list of companies</p>
+
+      </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='loadUserCompaniesAction' class='mt0'>
+    loadUserCompaniesAction<span class='gray'>(tree, [token])</span>
+  </h2>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/actions/load-user-companies-action.js#L11-L18'><code>src/actions/load-user-companies-action.js</code></a></p>
   
   
   
@@ -603,9 +802,9 @@
 
           </div>
         </li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
 =
- <strong>req</strong>
+ <strong>token</strong>
           :
           <div class='force-inline'>
             <p>express request</p>
@@ -615,9 +814,6 @@
     </ul>
       <h4>Returns</h4>
       <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>
-.<
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>
->
 </code>
       :
       <div class='force-inline'>
@@ -626,10 +822,90 @@
       </div>
 </section>
 </div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='loadUserCompaniesActionRouterAdaptor' class='mt0'>
+    loadUserCompaniesActionRouterAdaptor<span class='gray'>(state, tree)</span>
+  </h2>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/actions/load-user-companies-action.js#L36-L38'><code>src/actions/load-user-companies-action.js</code></a></p>
+  
+  
+  
+  
+  
+  <p>adaptor to call <code>loadUserCompaniesAction</code> as an <code>onEnter</code> hook</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+ <strong>state</strong>
+          :
+          <div class='force-inline'>
+            <p>history state</p>
+
+          </div>
+        </li>
+        <li>Baobab
+ <strong>tree</strong>
+          :
+          <div class='force-inline'>
+            <p>state tree</p>
+
+          </div>
+        </li>
+    </ul>
+      <h4>Returns</h4>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>
+</code>
+      :
+      <div class='force-inline'>
+        <p>action promise</p>
+
+      </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='loadUserCompaniesActionServerAdaptor' class='mt0'>
+    loadUserCompaniesActionServerAdaptor<span class='gray'>(req, res)</span>
+  </h2>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/actions/load-user-companies-action.js#L26-L28'><code>src/actions/load-user-companies-action.js</code></a></p>
+  
+  
+  
+  
+  
+  <p>adaptor to call <code>loadUserCompaniesAction</code> on the server side</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+ <strong>req</strong>
+          :
+          <div class='force-inline'>
+            <p>express request</p>
+
+          </div>
+        </li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+ <strong>res</strong>
+          :
+          <div class='force-inline'>
+            <p>express response</p>
+
+          </div>
+        </li>
+    </ul>
+      <h4>Returns</h4>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>
+</code>
+      :
+      <div class='force-inline'>
+        <p>action promise</p>
+
+      </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
   <h2 id='localeMiddleware' class='mt0'>
     localeMiddleware<span class='gray'>(req, res, next)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/middlewares/locale.js#L13-L19'><code>src/middlewares/locale.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/middlewares/locale.js#L13-L19'><code>src/middlewares/locale.js</code></a></p>
   
   
   
@@ -676,7 +952,7 @@
   <h2 id='login' class='mt0'>
     login<span class='gray'>(email, password, config)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/api/login.js#L12-L21'><code>src/api/login.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/api/login.js#L12-L21'><code>src/api/login.js</code></a></p>
   
   
   
@@ -724,7 +1000,7 @@
   <h2 id='loginAction' class='mt0'>
     loginAction<span class='gray'>(tree, email, password)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/actions/login-action.js#L12-L19'><code>src/actions/login-action.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/actions/login-action.js#L12-L19'><code>src/actions/login-action.js</code></a></p>
   
   
   
@@ -772,7 +1048,7 @@
   <h2 id='logoutAction' class='mt0'>
     logoutAction<span class='gray'>(tree)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/actions/logout-action.js#L9-L20'><code>src/actions/logout-action.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/actions/logout-action.js#L9-L20'><code>src/actions/logout-action.js</code></a></p>
   
   
   
@@ -800,10 +1076,95 @@
       </div>
 </section>
 </div><div class='py1'><section class='py2 clearfix'>
+  <h2 id='requireAuth' class='mt0'>
+    requireAuth<span class='gray'>(tree)</span>
+  </h2>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/functions/require-auth.js#L6-L24'><code>src/functions/require-auth.js</code></a></p>
+  
+  
+  
+  
+  
+  <p>creates a react-router onEnter hook that checks if user is logged in before permitting access to a give route</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li>Baobab
+ <strong>tree</strong>
+          :
+          <div class='force-inline'>
+            <p>state tree</p>
+
+          </div>
+        </li>
+    </ul>
+      <h4>Returns</h4>
+      <code>onEnter
+</code>
+      :
+      <div class='force-inline'>
+        <p>onEnter hook</p>
+
+      </div>
+      <h4>Static members</h4>
+        <div class='collapsible' id='requireAuth.onEnter'>
+          <a href='#requireAuth.onEnter'>
+            <code>
+              .onEnter<span class='gray'>(nextState, replace)</span>
+            </code>
+            <div class='force-inline'>
+              <p>auth onEnter hook</p>
+
+            </div>
+          </a>
+          <div class='collapser border px2 m2'>
+<section class='py2 clearfix'>
+  <h2 id='requireAuth.onEnter' class='mt0'>
+    onEnter<span class='gray'>(nextState, replace)</span>
+  </h2>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/functions/require-auth.js#L13-L22'><code>src/functions/require-auth.js</code></a></p>
+  
+  
+  
+  
+  
+  <p>auth onEnter hook</p>
+
+    <h4>Parameters</h4>
+    <ul class='suppress-p-margin'>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+ <strong>nextState</strong>
+          :
+          <div class='force-inline'>
+            <p>next location state</p>
+
+          </div>
+        </li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>
+ <strong>replace</strong>
+          :
+          <div class='force-inline'>
+            <p>replace location</p>
+
+          </div>
+        </li>
+    </ul>
+      <h4>Returns</h4>
+      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a>
+</code>
+      
+      <div class='force-inline'>
+        
+      </div>
+</section>
+          </div>
+        </div>
+</section>
+</div><div class='py1'><section class='py2 clearfix'>
   <h2 id='performLoadAction' class='mt0'>
     performLoadAction<span class='gray'>(tree, action)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/functions/perform-load-action.js#L7-L22'><code>src/functions/perform-load-action.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/functions/perform-load-action.js#L7-L22'><code>src/functions/perform-load-action.js</code></a></p>
   
   
   
@@ -854,7 +1215,7 @@
   <h2 id='performLoadAction.onEnter' class='mt0'>
     onEnter<span class='gray'>(nextState, replace, callback)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/functions/perform-load-action.js#L15-L20'><code>src/functions/perform-load-action.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/functions/perform-load-action.js#L15-L20'><code>src/functions/perform-load-action.js</code></a></p>
   
   
   
@@ -901,95 +1262,10 @@
         </div>
 </section>
 </div><div class='py1'><section class='py2 clearfix'>
-  <h2 id='requireAuth' class='mt0'>
-    requireAuth<span class='gray'>(tree)</span>
-  </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/functions/require-auth.js#L6-L24'><code>src/functions/require-auth.js</code></a></p>
-  
-  
-  
-  
-  
-  <p>creates a react-router onEnter hook that checks if user is logged in before permitting access to a give route</p>
-
-    <h4>Parameters</h4>
-    <ul class='suppress-p-margin'>
-        <li>Baobab
- <strong>tree</strong>
-          :
-          <div class='force-inline'>
-            <p>state tree</p>
-
-          </div>
-        </li>
-    </ul>
-      <h4>Returns</h4>
-      <code>onEnter
-</code>
-      :
-      <div class='force-inline'>
-        <p>onEnter hook</p>
-
-      </div>
-      <h4>Static members</h4>
-        <div class='collapsible' id='requireAuth.onEnter'>
-          <a href='#requireAuth.onEnter'>
-            <code>
-              .onEnter<span class='gray'>(nextState, replace)</span>
-            </code>
-            <div class='force-inline'>
-              <p>auth onEnter hook</p>
-
-            </div>
-          </a>
-          <div class='collapser border px2 m2'>
-<section class='py2 clearfix'>
-  <h2 id='requireAuth.onEnter' class='mt0'>
-    onEnter<span class='gray'>(nextState, replace)</span>
-  </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/functions/require-auth.js#L13-L22'><code>src/functions/require-auth.js</code></a></p>
-  
-  
-  
-  
-  
-  <p>auth onEnter hook</p>
-
-    <h4>Parameters</h4>
-    <ul class='suppress-p-margin'>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
- <strong>nextState</strong>
-          :
-          <div class='force-inline'>
-            <p>next location state</p>
-
-          </div>
-        </li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function">Function</a>
- <strong>replace</strong>
-          :
-          <div class='force-inline'>
-            <p>replace location</p>
-
-          </div>
-        </li>
-    </ul>
-      <h4>Returns</h4>
-      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a>
-</code>
-      
-      <div class='force-inline'>
-        
-      </div>
-</section>
-          </div>
-        </div>
-</section>
-</div><div class='py1'><section class='py2 clearfix'>
   <h2 id='passTokenAhead' class='mt0'>
     passTokenAhead<span class='gray'>(req, res)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/functions/pass-token-ahead.js#L9-L28'><code>src/functions/pass-token-ahead.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/functions/pass-token-ahead.js#L9-L28'><code>src/functions/pass-token-ahead.js</code></a></p>
   
   
   
@@ -1029,7 +1305,7 @@
   <h2 id='performActionsMiddleware' class='mt0'>
     performActionsMiddleware<span class='gray'>(actions)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/middlewares/perform-actions.js#L6-L20'><code>src/middlewares/perform-actions.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/middlewares/perform-actions.js#L6-L20'><code>src/middlewares/perform-actions.js</code></a></p>
   
   
   
@@ -1073,7 +1349,7 @@
   <h2 id='performActionsMiddleware.resolveActions' class='mt0'>
     resolveActions<span class='gray'>(req, res, next)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/middlewares/perform-actions.js#L14-L17'><code>src/middlewares/perform-actions.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/middlewares/perform-actions.js#L14-L17'><code>src/middlewares/perform-actions.js</code></a></p>
   
   
   
@@ -1127,7 +1403,7 @@ T
   <h2 id='protectedRouteMiddleware' class='mt0'>
     protectedRouteMiddleware<span class='gray'>(req, res, next)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/middlewares/protected.js#L8-L14'><code>src/middlewares/protected.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/middlewares/protected.js#L8-L14'><code>src/middlewares/protected.js</code></a></p>
   
   
   
@@ -1174,7 +1450,7 @@ T
   <h2 id='saveResponseTokenAsCookie' class='mt0'>
     saveResponseTokenAsCookie<span class='gray'>(response)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/functions/save-token-as-cookie.js#L25-L30'><code>src/functions/save-token-as-cookie.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/functions/save-token-as-cookie.js#L25-L30'><code>src/functions/save-token-as-cookie.js</code></a></p>
   
   
   
@@ -1206,7 +1482,7 @@ T
   <h2 id='saveTokenAsCookie' class='mt0'>
     saveTokenAsCookie<span class='gray'>(token)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/functions/save-token-as-cookie.js#L8-L17'><code>src/functions/save-token-as-cookie.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/functions/save-token-as-cookie.js#L8-L17'><code>src/functions/save-token-as-cookie.js</code></a></p>
   
   
   
@@ -1237,7 +1513,7 @@ T
   <h2 id='serverRenderRoute' class='mt0'>
     serverRenderRoute<span class='gray'>(req, res, [location])</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/functions/server-render-route.js#L20-L50'><code>src/functions/server-render-route.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/functions/server-render-route.js#L20-L50'><code>src/functions/server-render-route.js</code></a></p>
   
   
   
@@ -1285,7 +1561,7 @@ T
   <h2 id='signup' class='mt0'>
     signup<span class='gray'>(user, config)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/api/signup.js#L11-L15'><code>src/api/signup.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/api/signup.js#L11-L15'><code>src/api/signup.js</code></a></p>
   
   
   
@@ -1325,7 +1601,7 @@ T
   <h2 id='signupAction' class='mt0'>
     signupAction<span class='gray'>(tree, user)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/actions/signup-action.js#L10-L12'><code>src/actions/signup-action.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/actions/signup-action.js#L10-L12'><code>src/actions/signup-action.js</code></a></p>
   
   
   
@@ -1365,7 +1641,7 @@ T
   <h2 id='updateMe' class='mt0'>
     updateMe<span class='gray'>(user, config)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/api/update-me.js#L11-L15'><code>src/api/update-me.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/api/update-me.js#L11-L15'><code>src/api/update-me.js</code></a></p>
   
   
   
@@ -1405,7 +1681,7 @@ T
   <h2 id='updateMeAction' class='mt0'>
     updateMeAction<span class='gray'>(tree, user)</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/actions/update-me-action.js#L11-L18'><code>src/actions/update-me-action.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/actions/update-me-action.js#L11-L18'><code>src/actions/update-me-action.js</code></a></p>
   
   
   
@@ -1445,7 +1721,7 @@ T
   <h2 id='validateUser' class='mt0'>
     validateUser<span class='gray'>(user, [requiresPassword])</span>
   </h2>
-    <p><a href='https://github.com/tetris-solutions/main-front/blob/4e71771bb6beba50cfeadb77356e9f0928b75204/src/functions/validate-user.js#L11-L27'><code>src/functions/validate-user.js</code></a></p>
+    <p><a href='https://github.com/tetris-solutions/main-front/blob/d8f7a522890635841d68f309d3a566448bfbf6c8/src/functions/validate-user.js#L11-L27'><code>src/functions/validate-user.js</code></a></p>
   
   
   

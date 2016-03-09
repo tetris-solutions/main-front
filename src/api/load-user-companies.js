@@ -5,8 +5,8 @@ import {GET} from '@tetris/http'
  * @param {Object} config fetch config
  * @returns {Promise.<Array>} promise that resolves to a list of companies
  */
-export function getUserCompanies (config) {
+export function loadUserCompanies (config) {
   return GET(`${process.env.USER_API_URL}/user/companies`, config)
 }
 
-export default getUserCompanies
+export default loadUserCompanies

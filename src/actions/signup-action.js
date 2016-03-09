@@ -1,5 +1,5 @@
 import signup from '../api/signup'
-import getApiFetchConfig from '../functions/get-api-fetch-config'
+import {getApiFetchConfig} from '../functions/get-api-fetch-config'
 
 /**
  * makes a call to the signup user api

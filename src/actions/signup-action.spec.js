@@ -14,9 +14,11 @@ test('passes user and request config to apis', t => {
     return expectedPromise
   })
 
-  mock('../functions/get-api-fetch-config', tree => {
-    t.is(tree, expectedTree)
-    return expectedConfig
+  mock('../functions/get-api-fetch-config', {
+    getApiFetchConfig (tree) {
+      t.is(tree, expectedTree)
+      return expectedConfig
+    }
   })
 
   const p = require('./signup-action').signupAction(expectedTree, expectedUser)
