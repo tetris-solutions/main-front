@@ -1,4 +1,6 @@
 export default {
   user: null,
-  companies: {}
+  companies: {},
+  permissions: [],
+  errors: []
 }

@@ -1,6 +1,7 @@
 import {createCompany} from '../api/create-company'
 import {saveResponseTokenAsCookie} from '../functions/save-token-as-cookie'
 import {getApiFetchConfig} from '../functions/get-api-fetch-config'
+import {pushResponseErrorToState} from '../functions/push-response-error-to-state'
 
 /**
  * creates a new company
@@ -11,6 +12,7 @@ import {getApiFetchConfig} from '../functions/get-api-fetch-config'
 export function createCompanyAction (tree, name) {
   return createCompany(name, getApiFetchConfig(tree))
     .then(saveResponseTokenAsCookie)
+    .catch(pushResponseErrorToState(tree))
 }
 
 export default createCompanyAction

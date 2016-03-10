@@ -1,6 +1,7 @@
 import {loadUserCompanies} from '../api/load-user-companies'
 import {saveResponseTokenAsCookie} from '../functions/save-token-as-cookie'
 import getApiFetchConfig from '../functions/get-api-fetch-config'
+import {pushResponseErrorToState} from '../functions/push-response-error-to-state'
 
 /**
  * loads a list of user companies and saving it into the passed tree as `tree.user.companies`
@@ -15,6 +16,7 @@ export function loadUserCompaniesAction (tree, token) {
       tree.set(['user', 'companies'], response.data)
       tree.commit()
     })
+    .catch(pushResponseErrorToState(tree))
 }
 
 /**

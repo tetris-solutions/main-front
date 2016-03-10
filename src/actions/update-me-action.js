@@ -1,6 +1,7 @@
 import {updateMe} from '../api/update-me'
 import {saveResponseTokenAsCookie} from '../functions/save-token-as-cookie'
 import {getApiFetchConfig} from '../functions/get-api-fetch-config'
+import {pushResponseErrorToState} from '../functions/push-response-error-to-state'
 
 /**
  * fires a request to the update user api
@@ -15,6 +16,7 @@ export function updateMeAction (tree, user) {
       tree.set('user', response.data)
       tree.commit()
     })
+    .catch(pushResponseErrorToState(tree))
 }
 
 export default updateMeAction

@@ -1,6 +1,7 @@
 import {createRole} from '../api/create-role'
 import {saveResponseTokenAsCookie} from '../functions/save-token-as-cookie'
 import {getApiFetchConfig} from '../functions/get-api-fetch-config'
+import {pushResponseErrorToState} from '../functions/push-response-error-to-state'
 
 /**
  * creates a new role
@@ -12,6 +13,7 @@ import {getApiFetchConfig} from '../functions/get-api-fetch-config'
 export function createRoleAction (tree, company, name) {
   return createRole(company, name, getApiFetchConfig(tree))
     .then(saveResponseTokenAsCookie)
+    .catch(pushResponseErrorToState(tree))
 }
 
 export default createRoleAction

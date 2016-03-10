@@ -2,6 +2,7 @@ import {loadRoleUsers} from '../api/load-role-users'
 import {saveResponseTokenAsCookie} from '../functions/save-token-as-cookie'
 import getApiFetchConfig from '../functions/get-api-fetch-config'
 import findIndex from 'lodash/findIndex'
+import {pushResponseErrorToState} from '../functions/push-response-error-to-state'
 
 /**
  * loads a list of users in a role saving it in `tree.companies[company].roles[roleIndex].users`
@@ -21,6 +22,7 @@ export function loadRoleUsersAction (tree, company, role, token) {
       rolesCursor.set([roleIndex, 'users'], response.data)
       tree.commit()
     })
+    .catch(pushResponseErrorToState(tree))
 }
 
 /**

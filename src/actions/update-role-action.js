@@ -1,6 +1,7 @@
 import {saveResponseTokenAsCookie} from '../functions/save-token-as-cookie'
 import {getApiFetchConfig} from '../functions/get-api-fetch-config'
 import {updateRole} from '../api/update-role'
+import {pushResponseErrorToState} from '../functions/push-response-error-to-state'
 
 /**
  * calls the update role api
@@ -13,6 +14,7 @@ import {updateRole} from '../api/update-role'
 export function updateRoleAction (tree, id, name, permissions) {
   return updateRole(id, name, permissions, getApiFetchConfig(tree))
     .then(saveResponseTokenAsCookie)
+    .catch(pushResponseErrorToState(tree))
 }
 
 export default updateRoleAction

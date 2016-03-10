@@ -1,6 +1,7 @@
 import {loadPermissions} from '../api/load-permissions'
 import {saveResponseTokenAsCookie} from '../functions/save-token-as-cookie'
 import getApiFetchConfig from '../functions/get-api-fetch-config'
+import {pushResponseErrorToState} from '../functions/push-response-error-to-state'
 
 /**
  * loads the list of permissions
@@ -15,6 +16,7 @@ export function loadPermissionsAction (tree, token) {
       tree.set('permissions', response.data)
       tree.commit()
     })
+    .catch(pushResponseErrorToState(tree))
 }
 /**
  * adaptor to call `loadPermissionsAction` on the server side

@@ -1,6 +1,7 @@
 import {loadCompany} from '../api/load-company'
 import {saveResponseTokenAsCookie} from '../functions/save-token-as-cookie'
 import getApiFetchConfig from '../functions/get-api-fetch-config'
+import {pushResponseErrorToState} from '../functions/push-response-error-to-state'
 
 /**
  * loads a single company
@@ -16,6 +17,7 @@ export function loadCompanyAction (tree, id, token) {
       tree.set(['companies', id], response.data)
       tree.commit()
     })
+    .catch(pushResponseErrorToState(tree))
 }
 
 /**
