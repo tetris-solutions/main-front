@@ -19,6 +19,7 @@ import intlRoute from './route-handlers/intl-route'
 import {loadUserCompaniesActionServerAdaptor} from './actions/load-user-companies-action'
 import {loadCompanyActionServerAdaptor} from './actions/load-company-action'
 import {loadPermissionsActionServerAdaptor} from './actions/load-permissions-action'
+import {loadRoleUsersActionServerAdaptor} from './actions/load-role-users-action'
 
 global.fetch = fetch
 
@@ -76,8 +77,8 @@ app.get('/admin/:company/:role/users',
   protectedRouteMiddleware,
   performActionsMiddleware(
     loadUserCompaniesActionServerAdaptor,
-    loadCompanyActionServerAdaptor/*,
-     @todo loadRoleUsers*/),
+    loadCompanyActionServerAdaptor,
+    loadRoleUsersActionServerAdaptor),
   defaultRoute)
 
 app.use(function errorHandler (_err, req, res, next) {

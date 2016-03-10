@@ -21,6 +21,8 @@ import {performLoadAction} from './functions/perform-load-action'
 import {loadUserCompaniesActionRouterAdaptor} from './actions/load-user-companies-action'
 import {loadCompanyActionRouterAdaptor} from './actions/load-company-action'
 import {loadPermissionsActionRouterAdaptor} from './actions/load-permissions-action'
+import {loadRoleUsersActionRouteAdaptor} from './actions/load-role-users-action'
+
 const isServer = typeof window === 'undefined'
 
 export default (history, tree) => {
@@ -74,7 +76,8 @@ export default (history, tree) => {
                 <IndexRoute component={RoleOptions}
                             onEnter={preload(loadPermissionsActionRouterAdaptor)}/>
 
-                <Route path='users' component={RoleUsers}/>
+                <Route path='users' component={RoleUsers}
+                       onEnter={preload(loadRoleUsersActionRouteAdaptor)}/>
               </Route>
 
             </Route>
