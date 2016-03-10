@@ -1,7 +1,7 @@
 import React from 'react'
 import map from 'lodash/map'
 import {branch} from 'baobab-react/higher-order'
-import find from 'lodash/find'
+import some from 'lodash/some'
 
 const {PropTypes} = React
 
@@ -24,7 +24,7 @@ export const RoleOptions = React.createClass({
               <input
                 name={id}
                 type='checkbox'
-                defaultChecked={find(rolePermissions, {id})}/> {name}
+                defaultChecked={some(rolePermissions, {id})}/> {name}
             </label>
           </div>
         ))}
