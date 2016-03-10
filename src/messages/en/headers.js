@@ -1,4 +1,5 @@
 export default {
   permissionsHeader: 'Group permissions',
-  adminHeader: 'Company administration'
+  adminHeader: 'Company administration',
+  newRoleHeader: 'New role'
 }

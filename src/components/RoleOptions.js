@@ -8,6 +8,8 @@ import FormMixin from '../mixins/FormMixin'
 import SubmitButton from './SubmitButton'
 import Message from './intl/Message'
 import {updateRoleAction} from '../actions/update-role-action'
+import {loadUserCompaniesAction} from '../actions/load-user-companies-action'
+import {loadCompanyAction} from '../actions/load-company-action'
 
 const {PropTypes} = React
 
@@ -19,6 +21,7 @@ export const RoleOptions = React.createClass({
   },
   propTypes: {
     permissions: PropTypes.array,
+    params: PropTypes.object,
     actions: PropTypes.shape({
       updateRole: PropTypes.func
     })
@@ -30,6 +33,7 @@ export const RoleOptions = React.createClass({
     const {elements} = e.target
     const permissions = []
     const {role} = this.context
+    const {actions: {updateRole, loadUserCompanies, loadCompany}, params: {company}} = this.props
 
     forEach(this.props.permissions, ({id}) => {
       if (elements[id] && elements[id].checked) {
@@ -37,20 +41,20 @@ export const RoleOptions = React.createClass({
       }
     })
 
-    return this.props.actions
-      .updateRole(role.id, elements.name.value, permissions)
-      .then(() => {
-        // @todo make a bunch of API calls to update the UI
-      })
+    return updateRole(role.id, elements.name.value, permissions)
+      .then(() => Promise.all([
+        loadUserCompanies(),
+        loadCompany(company)
+      ]))
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
   render () {
     const {errors} = this.state
-    const {role: {name, permissions}} = this.context
+    const {role: {id, name, permissions}} = this.context
 
     return (
-      <form className='well' method='POST' onSubmit={this.handleSubmit}>
+      <form key={`edit-role-${id}`} className='well' method='POST' onSubmit={this.handleSubmit}>
         <SimpleInput name='name'
                      label='roleName'
                      error={errors.name}
@@ -90,6 +94,8 @@ export default branch(RoleOptions, {
     permissions: ['permissions']
   },
   actions: {
-    updateRole: updateRoleAction
+    updateRole: updateRoleAction,
+    loadCompany: loadCompanyAction,
+    loadUserCompanies: loadUserCompaniesAction
   }
 })

@@ -11,6 +11,7 @@ import CreateCompany from './components/CreateCompany'
 import CompanyRole from './components/CompanyRole'
 import RoleOptions from './components/RoleOptions'
 import RoleUsers from './components/RoleUsers'
+import CreateRole from './components/CreateRole'
 
 import Profile from './components/Me'
 import WaitingConfirmation from './components/WaitingConfirmation'
@@ -65,6 +66,8 @@ export default (history, tree) => {
 
             <Route path=':company' component={EditCompany}
                    onEnter={preload(loadCompanyActionRouterAdaptor)}>
+
+              <IndexRoute component={CreateRole}/>
 
               <Route path=':role' component={CompanyRole}>
 

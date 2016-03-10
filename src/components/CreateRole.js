@@ -3,20 +3,21 @@ import FormMixin from '../mixins/FormMixin'
 import SimpleInput from './SimpleInput'
 import SubmitButton from './SubmitButton'
 import {branch} from 'baobab-react/higher-order'
-import {createCompanyAction} from '../actions/create-company-action'
-import {loadUserCompaniesAction} from '../actions/load-user-companies-action'
+import {createRoleAction} from '../actions/create-role-action'
+import {loadCompanyAction} from '../actions/load-company-action'
 
 const {PropTypes} = React
 
-export const CreateCompany = React.createClass({
-  displayName: 'Create-Company',
+export const CreateRole = React.createClass({
+  displayName: 'Create-Role',
   mixins: [FormMixin],
   contextTypes: {
     router: PropTypes.object
   },
   propTypes: {
+    params: PropTypes.object,
     actions: PropTypes.shape({
-      createCompany: PropTypes.func,
+      createRole: PropTypes.func,
       loadUserCompanies: PropTypes.func
     })
   },
@@ -24,10 +25,12 @@ export const CreateCompany = React.createClass({
     e.preventDefault()
     this.preSubmit()
 
-    this.props.actions.createCompany(e.target.elements.name.value)
-      .then(response => this.props.actions.loadUserCompanies()
+    const {params: {company}, actions: {createRole, loadCompany}} = this.props
+
+    createRole(company, e.target.elements.name.value)
+      .then(response => loadCompany(company)
         .then(() => {
-          this.context.router.push(`/admin/${response.data.id}`)
+          this.context.router.push(`/admin/${company}/${response.data.id}`)
         }))
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
@@ -40,7 +43,7 @@ export const CreateCompany = React.createClass({
 
         <form className='jumbotron' onSubmit={this.handleSubmit} method='POST'>
           <SimpleInput name='name'
-                       label='companyName'
+                       label='roleName'
                        error={errors.name}
                        onChange={this.dismissError}
                        required/>
@@ -51,9 +54,9 @@ export const CreateCompany = React.createClass({
   }
 })
 
-export default branch(CreateCompany, {
+export default branch(CreateRole, {
   actions: {
-    createCompany: createCompanyAction,
-    loadUserCompanies: loadUserCompaniesAction
+    createRole: createRoleAction,
+    loadCompany: loadCompanyAction
   }
 })

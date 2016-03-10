@@ -1,6 +1,7 @@
 import React from 'react'
 import {branch} from 'baobab-react/higher-order'
 import {Link} from 'react-router'
+import Message from './intl/Message'
 import cx from 'classnames'
 
 const {PropTypes} = React
@@ -27,8 +28,7 @@ export const EditCompany = React.createClass({
         <div className='col-sm-3'>
           <ul className='nav nav-pills nav-stacked'>
             <li className='disabled'>
-              <h3>Grupos</h3>
-              <hr/>
+              <h4>Grupos</h4>
             </li>
             {company.roles.map(({id, name}, index) => (
               <li key={index} className={cx(params.role === id && 'active')}>
@@ -37,6 +37,11 @@ export const EditCompany = React.createClass({
                 </Link>
               </li>
             ))}
+            <li className={cx(!params.role && 'active')}>
+              <Link to={`/admin/${params.company}`}>
+                <Message>newRoleHeader</Message>
+              </Link>
+            </li>
           </ul>
         </div>
         <div className='col-sm-9'>
