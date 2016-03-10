@@ -5,7 +5,7 @@ import getApiFetchConfig from '../functions/get-api-fetch-config'
 /**
  * loads a list of user companies and saving it into the passed tree as `tree.user.companies`
  * @param {Baobab} tree state tree
- * @param {String} [token] express request
+ * @param {String} [token] auth token
  * @returns {Promise} promise that resolves once action is complete
  */
 export function loadUserCompaniesAction (tree, token) {
@@ -31,7 +31,7 @@ export function loadUserCompaniesActionServerAdaptor (req, res) {
  * adaptor to call `loadUserCompaniesAction` as an `onEnter` hook
  * @param {Object} state history state
  * @param {Baobab} tree state tree
- * @returns {Promise} action promise
+ * @returns {Promise} promise action
  */
 export function loadUserCompaniesActionRouterAdaptor (state, tree) {
   return loadUserCompaniesAction(tree)

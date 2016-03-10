@@ -30,20 +30,21 @@ export const CompanyRole = React.createClass({
   render () {
     const {params, children} = this.props
     const {router: {isActive}} = this.context
-    const permissionsPath = `/admin/${params.company}/${params.role}/permissions`
+    const optionsPath = `/admin/${params.company}/${params.role}`
     const usersPath = `/admin/${params.company}/${params.role}/users`
+    const isUsers = isActive(usersPath)
 
     return (
       <div>
         <ul className='nav nav-tabs'>
-          <li className={cx(isActive(usersPath) && 'active')}>
-            <Link to={usersPath}>
-              <Message>navRoleUsers</Message>
+          <li className={cx(!isUsers && 'active')}>
+            <Link to={optionsPath}>
+              <Message>navRoleOptions</Message>
             </Link>
           </li>
-          <li className={cx(isActive(permissionsPath) && 'active')}>
-            <Link to={permissionsPath}>
-              <Message>navRolePermissions</Message>
+          <li className={cx(isUsers && 'active')}>
+            <Link to={usersPath}>
+              <Message>navRoleUsers</Message>
             </Link>
           </li>
         </ul>

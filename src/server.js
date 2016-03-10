@@ -18,6 +18,7 @@ import activateRoute from './route-handlers/activate-route'
 import intlRoute from './route-handlers/intl-route'
 import {loadUserCompaniesActionServerAdaptor} from './actions/load-user-companies-action'
 import {loadCompanyActionServerAdaptor} from './actions/load-company-action'
+import {loadPermissionsActionServerAdaptor} from './actions/load-permissions-action'
 
 global.fetch = fetch
 
@@ -67,14 +68,8 @@ app.get('/admin/:company/:role',
   protectedRouteMiddleware,
   performActionsMiddleware(
     loadUserCompaniesActionServerAdaptor,
-    loadCompanyActionServerAdaptor),
-  defaultRoute)
-
-app.get('/admin/:company/:role/permissions',
-  protectedRouteMiddleware,
-  performActionsMiddleware(
-    loadUserCompaniesActionServerAdaptor,
-    loadCompanyActionServerAdaptor),
+    loadCompanyActionServerAdaptor,
+    loadPermissionsActionServerAdaptor),
   defaultRoute)
 
 app.get('/admin/:company/:role/users',
@@ -92,7 +87,9 @@ app.use(function errorHandler (_err, req, res, next) {
   // console.log(err)
   // console.log('### stack ###')
   // console.log(err.stack)
-  res.status(500).send('Something really awful happened')
+  res.status(500).send(`
+    <h1>${_err.message}</h1>
+    <pre><code>${_err.stack}</code></pre>`)
 })
 
 app.listen(3000)

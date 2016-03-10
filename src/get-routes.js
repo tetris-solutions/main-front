@@ -9,7 +9,7 @@ import Admin from './components/Admin'
 import EditCompany from './components/EditCompany'
 import CreateCompany from './components/CreateCompany'
 import CompanyRole from './components/CompanyRole'
-import RolePermissions from './components/RolePermissions'
+import RoleOptions from './components/RoleOptions'
 import RoleUsers from './components/RoleUsers'
 
 import Profile from './components/Me'
@@ -19,6 +19,7 @@ import {requireAuth} from './functions/require-auth'
 import {performLoadAction} from './functions/perform-load-action'
 import {loadUserCompaniesActionRouterAdaptor} from './actions/load-user-companies-action'
 import {loadCompanyActionRouterAdaptor} from './actions/load-company-action'
+import {loadPermissionsActionRouterAdaptor} from './actions/load-permissions-action'
 const isServer = typeof window === 'undefined'
 
 export default (history, tree) => {
@@ -66,7 +67,10 @@ export default (history, tree) => {
                    onEnter={preload(loadCompanyActionRouterAdaptor)}>
 
               <Route path=':role' component={CompanyRole}>
-                <Route path='permissions' component={RolePermissions}/>
+
+                <IndexRoute component={RoleOptions}
+                            onEnter={preload(loadPermissionsActionRouterAdaptor)}/>
+
                 <Route path='users' component={RoleUsers}/>
               </Route>
 

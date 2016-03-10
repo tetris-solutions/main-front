@@ -9,7 +9,10 @@ import defaultState from '../default-state'
  * @returns {undefined}
  */
 export function initializeTreeMiddleware (req, res, next) {
-  res.locals.tree = new Tree(defaultState)
+  const tree = res.locals.tree = new Tree(defaultState)
+  if (req.locale) {
+    tree.set('locale', req.locale)
+  }
   next()
 }
 

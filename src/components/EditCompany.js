@@ -26,7 +26,10 @@ export const EditCompany = React.createClass({
       <div className='row'>
         <div className='col-sm-3'>
           <ul className='nav nav-pills nav-stacked'>
-            <li className='disabled'><a>&zwnj;</a></li>
+            <li className='disabled'>
+              <h3>Grupos</h3>
+              <hr/>
+            </li>
             {company.roles.map(({id, name}, index) => (
               <li key={index} className={cx(params.role === id && 'active')}>
                 <Link to={`/admin/${params.company}/${id}`}>

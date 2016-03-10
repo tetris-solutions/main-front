@@ -26,6 +26,9 @@ export function authMiddleware (req, res, next) {
     .then(function saveUserObject (response) {
       req.authToken = token
       req.user = response.data
+      if (req.locale) {
+        req.user.locale = req.locale
+      }
       res.locals.tree.set('user', response.data)
       res.locals.tree.commit()
       next()
