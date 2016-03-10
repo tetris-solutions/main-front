@@ -4,8 +4,8 @@ import exceptions from './exceptions'
 import callToAction from './callToAction'
 import successMessages from './success'
 import labels from './labels'
+import headers from './headers'
 
 export default assign({
-  greetingMessage: 'Bem vindo a lugar nenhum',
-  adminHeaderTitle: 'Administração da empresa'
-}, nav, exceptions, callToAction, successMessages, labels)
+  greetingMessage: 'Bem vindo a lugar nenhum'
+}, nav, exceptions, callToAction, successMessages, labels, headers)

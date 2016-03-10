@@ -47,7 +47,6 @@ export const CreateCompany = React.createClass({
                        error={errors.name}
                        onChange={this.dismissError}
                        required/>
-
           <SubmitButton/>
         </form>
       </div>

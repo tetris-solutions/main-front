@@ -25,7 +25,7 @@ export const Admin = React.createClass({
       <div className='container'>
         <div className='page-header'>
           <h3>
-            <Message>adminHeaderTitle</Message>
+            <Message>adminHeader</Message>
             <small>
               <form className='pull-right'>
                 <span className='form-group'>
