@@ -7,6 +7,8 @@ import SubmitButton from './SubmitButton'
 import FormMixin from '../mixins/FormMixin'
 import {createUserRoleAction} from '../actions/create-user-role-action'
 import {loadRoleUsersAction} from '../actions/load-role-users-action'
+import {deleteUserRoleAction} from '../actions/delete-user-role-action'
+
 const {PropTypes} = React
 
 export const RoleUsers = React.createClass({
@@ -30,8 +32,10 @@ export const RoleUsers = React.createClass({
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
-  removeUser (id) {
+  removeUserRole (id) {
+    const {actions: {deleteUserRole, loadRoleUsers}, params: {company, role}} = this.props
 
+    return deleteUserRole(id).then(() => loadRoleUsers(company, role))
   },
   render () {
     const {errors} = this.state
@@ -39,24 +43,25 @@ export const RoleUsers = React.createClass({
     return (
       <div className='well'>
         <div className='list-group'>
-          {map(users, ({id, name}, index) => (
+          {map(users, ({user_role, name}, index) => (
             <div key={index} className='list-group-item'>
               <strong>{name}</strong>
               <a className='close'
-                 onClick={this.removeUser.bind(null, id)}>&times;</a>
+                 onClick={this.removeUserRole.bind(null, user_role)}>&times;</a>
             </div>
           ))}
 
           <form className='list-group-item' onSubmit={this.onSubmitUser}>
             <div className='row'>
-              <div className='col-sm-8'>
+              <div className='col-sm-10'>
                 <SimpleInput name='email'
                              label='userEmail'
                              error={errors.email}
                              onChange={this.dismissError}
                              required/>
               </div>
-              <div className='col-sm-8'>
+              <div className='col-sm-2'>
+                <br/>
                 <SubmitButton>
                   <Message>callToActionInvite</Message>
                 </SubmitButton>
@@ -72,6 +77,7 @@ export const RoleUsers = React.createClass({
 export default branch(RoleUsers, {
   actions: {
     createUserRole: createUserRoleAction,
-    loadRoleUsers: loadRoleUsersAction
+    loadRoleUsers: loadRoleUsersAction,
+    deleteUserRole: deleteUserRoleAction
   }
 })
