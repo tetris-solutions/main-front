@@ -16,10 +16,8 @@ const {PropTypes} = React
 export const RoleOptions = React.createClass({
   displayName: 'Role-Options',
   mixins: [FormMixin],
-  contextTypes: {
-    role: PropTypes.object
-  },
   propTypes: {
+    role: PropTypes.object,
     permissions: PropTypes.array,
     params: PropTypes.object,
     actions: PropTypes.shape({
@@ -32,8 +30,11 @@ export const RoleOptions = React.createClass({
 
     const {elements} = e.target
     const permissions = []
-    const {role} = this.context
-    const {actions: {updateRole, loadUserCompanies, loadCompany}, params: {company}} = this.props
+    const {role, params: {company}, actions: {
+      updateRole,
+      loadUserCompanies,
+      loadCompany
+      }} = this.props
 
     forEach(this.props.permissions, ({id}) => {
       if (elements[id] && elements[id].checked) {
@@ -51,7 +52,7 @@ export const RoleOptions = React.createClass({
   },
   render () {
     const {errors} = this.state
-    const {role: {id, name, permissions}} = this.context
+    const {role: {id, name, permissions}} = this.props
 
     return (
       <form key={`edit-role-${id}`} className='well' method='POST' onSubmit={this.handleSubmit}>

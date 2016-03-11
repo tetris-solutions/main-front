@@ -4,7 +4,7 @@ import {Link} from 'react-router'
 import Message from './intl/Message'
 import cx from 'classnames'
 
-const {PropTypes} = React
+const {PropTypes, cloneElement} = React
 
 export const EditCompany = React.createClass({
   displayName: 'Edit-Company',
@@ -12,14 +12,6 @@ export const EditCompany = React.createClass({
     company: PropTypes.object,
     params: PropTypes.object,
     children: PropTypes.node
-  },
-  childContextTypes: {
-    company: PropTypes.object
-  },
-  getChildContext () {
-    return {
-      company: this.props.company
-    }
   },
   render () {
     const {company, children, params} = this.props
@@ -47,7 +39,7 @@ export const EditCompany = React.createClass({
         <div className='col-sm-9'>
           <div className='tab-content'>
             <div className='tab-pane active'>
-              {children}
+              {cloneElement(children, {company})}
             </div>
           </div>
         </div>

@@ -4,35 +4,25 @@ import {Link} from 'react-router'
 import Message from './intl/Message'
 import cx from 'classnames'
 
-const {PropTypes} = React
+const {PropTypes, cloneElement} = React
 
 export const CompanyRole = React.createClass({
   displayName: 'Company-Role',
   propTypes: {
     params: PropTypes.object,
-    children: PropTypes.node
+    children: PropTypes.node,
+    company: PropTypes.object
   },
   contextTypes: {
-    company: PropTypes.object,
     router: PropTypes.object
   },
-  childContextTypes: {
-    role: PropTypes.object
-  },
-  getRole () {
-    return find(this.context.company.roles, {id: this.props.params.role})
-  },
-  getChildContext () {
-    return {
-      role: this.getRole()
-    }
-  },
   render () {
-    const {params, children} = this.props
+    const {params, children, company} = this.props
     const {router: {isActive}} = this.context
     const optionsPath = `/admin/${params.company}/${params.role}`
     const usersPath = `/admin/${params.company}/${params.role}/users`
     const isUsers = isActive(usersPath)
+    const role = find(company.roles, {id: params.role})
 
     return (
       <div>
@@ -50,7 +40,7 @@ export const CompanyRole = React.createClass({
         </ul>
         <div className='tab-content'>
           <div className='tab-pane active'>
-            {children}
+            {cloneElement(children, {role})}
           </div>
         </div>
       </div>
