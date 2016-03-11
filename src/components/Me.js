@@ -4,6 +4,7 @@ import SimpleInput from './SimpleInput'
 import {branch} from 'baobab-react/higher-order'
 import updateMeAction from '../actions/update-me-action'
 import SubmitButton from './SubmitButton'
+import {pushSuccessMessageAction} from '../actions/push-success-message-action'
 
 const {PropTypes, createClass} = React
 
@@ -13,21 +14,25 @@ export const Me = createClass({
   propTypes: {
     user: PropTypes.object.isRequired,
     actions: PropTypes.shape({
-      updateMe: PropTypes.func
+      updateMe: PropTypes.func,
+      pushSuccessMessage: PropTypes.func
     })
   },
   handleSubmit (e) {
     e.preventDefault()
     const {target: {elements: {name, email, password, oldPassword}}} = e
     this.preSubmit()
-    return this.props.actions.updateMe({
+    const {updateMe, pushSuccessMessage} = this.props.actions
+
+    return updateMe({
       name: name.value,
       email: email.value,
       password: password.value,
       oldPassword: oldPassword.value
     })
-    .catch(this.handleSubmitException)
-    .then(this.posSubmit)
+      .then(() => pushSuccessMessage())
+      .catch(this.handleSubmitException)
+      .then(this.posSubmit)
   },
   render () {
     const {errors} = this.state
@@ -83,6 +88,7 @@ export default branch(Me, {
     user: ['user']
   },
   actions: {
-    updateMe: updateMeAction
+    updateMe: updateMeAction,
+    pushSuccessMessage: pushSuccessMessageAction
   }
 })

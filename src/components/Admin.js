@@ -23,11 +23,10 @@ export const Admin = React.createClass({
     const {params: {company}} = this.context
     return (
       <div className='container'>
-        <div className='page-header'>
-          <h3>
-            <Message>adminHeader</Message>
-            <small>
-              <form className='pull-right'>
+        <h3>
+          <Message>adminHeader</Message>
+          <small>
+            <form className='pull-right'>
                 <span className='form-group'>
                   <select className='form-control' onChange={this.navigateToCompany} value={company || ''}>
 
@@ -38,10 +37,10 @@ export const Admin = React.createClass({
                     <option value=''>{this.context.messages.newCompanyLabel}</option>
                   </select>
                 </span>
-              </form>
-            </small>
-          </h3>
-        </div>
+            </form>
+          </small>
+        </h3>
+        <br/>
         {this.props.children}
       </div>
     )

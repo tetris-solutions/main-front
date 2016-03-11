@@ -5,6 +5,7 @@ import SubmitButton from './SubmitButton'
 import {branch} from 'baobab-react/higher-order'
 import {createRoleAction} from '../actions/create-role-action'
 import {loadCompanyAction} from '../actions/load-company-action'
+import {pushSuccessMessageAction} from '../actions/push-success-message-action'
 
 const {PropTypes} = React
 
@@ -18,20 +19,22 @@ export const CreateRole = React.createClass({
     params: PropTypes.object,
     actions: PropTypes.shape({
       createRole: PropTypes.func,
-      loadUserCompanies: PropTypes.func
+      loadUserCompanies: PropTypes.func,
+      pushSuccessMessage: PropTypes.func
     })
   },
   handleSubmit (e) {
     e.preventDefault()
     this.preSubmit()
 
-    const {params: {company}, actions: {createRole, loadCompany}} = this.props
+    const {params: {company}, actions: {createRole, loadCompany, pushSuccessMessage}} = this.props
 
     createRole(company, e.target.elements.name.value)
       .then(response => loadCompany(company)
         .then(() => {
           this.context.router.push(`/admin/${company}/${response.data.id}`)
         }))
+      .then(() => pushSuccessMessage())
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
@@ -57,6 +60,7 @@ export const CreateRole = React.createClass({
 export default branch(CreateRole, {
   actions: {
     createRole: createRoleAction,
-    loadCompany: loadCompanyAction
+    loadCompany: loadCompanyAction,
+    pushSuccessMessage: pushSuccessMessageAction
   }
 })

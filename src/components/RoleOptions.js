@@ -10,6 +10,7 @@ import Message from './intl/Message'
 import {updateRoleAction} from '../actions/update-role-action'
 import {loadUserCompaniesAction} from '../actions/load-user-companies-action'
 import {loadCompanyAction} from '../actions/load-company-action'
+import {pushSuccessMessageAction} from '../actions/push-success-message-action'
 
 const {PropTypes} = React
 
@@ -33,7 +34,8 @@ export const RoleOptions = React.createClass({
     const {role, params: {company}, actions: {
       updateRole,
       loadUserCompanies,
-      loadCompany
+      loadCompany,
+      pushSuccessMessage
       }} = this.props
 
     forEach(this.props.permissions, ({id}) => {
@@ -47,6 +49,7 @@ export const RoleOptions = React.createClass({
         loadUserCompanies(),
         loadCompany(company)
       ]))
+      .then(() => pushSuccessMessage())
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
@@ -97,6 +100,7 @@ export default branch(RoleOptions, {
   actions: {
     updateRole: updateRoleAction,
     loadCompany: loadCompanyAction,
-    loadUserCompanies: loadUserCompaniesAction
+    loadUserCompanies: loadUserCompaniesAction,
+    pushSuccessMessage: pushSuccessMessageAction
   }
 })

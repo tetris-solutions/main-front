@@ -11,7 +11,7 @@ export const Root = React.createClass({
   displayName: 'Root',
   propTypes: {
     children: PropTypes.node,
-    errors: PropTypes.array,
+    alerts: PropTypes.array,
     user: PropTypes.object,
     intl: PropTypes.shape({
       locales: PropTypes.string,
@@ -33,20 +33,19 @@ export const Root = React.createClass({
   addAlerts () {
     if (isServer) return
     let i
-    const {errors} = this.props
-    for (i = this.errorTailIndex; i < errors.length; i++) {
-      const error = errors[i]
-      const level = error.level || 'error'
+    const {alerts} = this.props
+    for (i = this.alertTailIndex; i < alerts.length; i++) {
+      const {message, level} = alerts[i]
 
-      this.refs.toaster[level](error.message, null, {
+      this.refs.toaster[level || 'error'](message, null, {
         timeOut: 5 * 1000,
         extendedTimeOut: 10 * 1000
       })
     }
-    this.errorTailIndex = i
+    this.alertTailIndex = i
   },
   componentDidMount () {
-    this.errorTailIndex = 0
+    this.alertTailIndex = 0
     this.addAlerts()
   },
   componentDidUpdate () {
@@ -71,6 +70,6 @@ export default branch(Root, {
   cursors: {
     user: ['user'],
     intl: ['intl'],
-    errors: ['errors']
+    alerts: ['alerts']
   }
 })

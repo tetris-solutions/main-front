@@ -5,6 +5,7 @@ import SubmitButton from './SubmitButton'
 import {branch} from 'baobab-react/higher-order'
 import {createCompanyAction} from '../actions/create-company-action'
 import {loadUserCompaniesAction} from '../actions/load-user-companies-action'
+import {pushSuccessMessageAction} from '../actions/push-success-message-action'
 
 const {PropTypes} = React
 
@@ -17,18 +18,21 @@ export const CreateCompany = React.createClass({
   propTypes: {
     actions: PropTypes.shape({
       createCompany: PropTypes.func,
-      loadUserCompanies: PropTypes.func
+      loadUserCompanies: PropTypes.func,
+      pushSuccessMessage: PropTypes.func
     })
   },
   handleSubmit (e) {
     e.preventDefault()
     this.preSubmit()
 
-    this.props.actions.createCompany(e.target.elements.name.value)
-      .then(response => this.props.actions.loadUserCompanies()
+    const {createCompany, loadUserCompanies, pushSuccessMessage} = this.props.actions
+    return createCompany(e.target.elements.name.value)
+      .then(response => loadUserCompanies()
         .then(() => {
           this.context.router.push(`/admin/${response.data.id}`)
         }))
+      .then(() => pushSuccessMessage())
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
@@ -54,6 +58,7 @@ export const CreateCompany = React.createClass({
 export default branch(CreateCompany, {
   actions: {
     createCompany: createCompanyAction,
-    loadUserCompanies: loadUserCompaniesAction
+    loadUserCompanies: loadUserCompaniesAction,
+    pushSuccessMessage: pushSuccessMessageAction
   }
 })

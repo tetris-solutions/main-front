@@ -8,6 +8,7 @@ import FormMixin from '../mixins/FormMixin'
 import {createUserRoleAction} from '../actions/create-user-role-action'
 import {loadRoleUsersAction} from '../actions/load-role-users-action'
 import {deleteUserRoleAction} from '../actions/delete-user-role-action'
+import {pushSuccessMessageAction} from '../actions/push-success-message-action'
 
 const {PropTypes} = React
 
@@ -25,10 +26,11 @@ export const RoleUsers = React.createClass({
     e.preventDefault()
     this.preSubmit()
     const {target: {email}} = e
-    const {actions: {createUserRole, loadRoleUsers}, params: {company, role}} = this.props
+    const {actions: {pushSuccessMessage, createUserRole, loadRoleUsers}, params: {company, role}} = this.props
 
     return createUserRole(email.value, role)
       .then(() => loadRoleUsers(company, role))
+      .then(() => pushSuccessMessage())
       .then(() => email.value = '')
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
@@ -79,6 +81,7 @@ export default branch(RoleUsers, {
   actions: {
     createUserRole: createUserRoleAction,
     loadRoleUsers: loadRoleUsersAction,
-    deleteUserRole: deleteUserRoleAction
+    deleteUserRole: deleteUserRoleAction,
+    pushSuccessMessage: pushSuccessMessageAction
   }
 })

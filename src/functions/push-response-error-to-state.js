@@ -11,7 +11,7 @@ export function pushResponseErrorToState (tree) {
    * @returns {undefined}
    */
   function catchError (response) {
-    tree.push('errors', response.data)
+    tree.push('alerts', response.data)
     throw response
   }
 
