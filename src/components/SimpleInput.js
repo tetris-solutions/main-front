@@ -24,7 +24,7 @@ export const SimpleInput = React.createClass({
   propTypes: {
     type: PropTypes.string,
     name: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     error: PropTypes.string,
     onChange: PropTypes.func
   },
