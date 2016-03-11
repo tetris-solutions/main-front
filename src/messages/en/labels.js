@@ -7,5 +7,5 @@ export default {
   newCompanyLabel: 'New Company',
   companyNameLabel: 'Your company name',
   roleNameLabel: 'Role name',
-  userEmailLabel: 'User e-mail'
+  newRoleMemberLabel: 'Inserir usuário'
 }

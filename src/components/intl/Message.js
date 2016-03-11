@@ -24,7 +24,7 @@ export default React.createClass({
 
     return (
       <Component {...props}
-        message={intl.messages[messageName]}
+        message={intl.messages[messageName] || `[ ${messageName} ]`}
         locales={intl.locales}
         messages={intl.messages}/>
     )

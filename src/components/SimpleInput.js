@@ -10,6 +10,7 @@ const inputFields = [
   'onChange',
   'required',
   'defaultValue',
+  'placeholder',
   'value'
 ]
 
@@ -31,9 +32,11 @@ export const SimpleInput = React.createClass({
     const {error, label} = this.props
     return (
       <div className={cx('form-group', error && 'has-error')}>
-        <label className='control-label'>
-          <Message>{label + 'Label'}</Message>
-        </label>
+        {label && (
+          <label className='control-label'>
+            <Message>{label + 'Label'}</Message>
+          </label>
+        )}
         <input className='form-control' {...pick(this.props, inputFields)}/>
         {error && (<p className='help-block'>{error}</p>)}
       </div>

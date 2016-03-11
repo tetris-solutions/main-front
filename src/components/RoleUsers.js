@@ -29,6 +29,7 @@ export const RoleUsers = React.createClass({
 
     return createUserRole(email.value, role)
       .then(() => loadRoleUsers(company, role))
+      .then(() => email.value = '')
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
@@ -45,23 +46,23 @@ export const RoleUsers = React.createClass({
         <div className='list-group'>
           {map(users, ({user_role, name}, index) => (
             <div key={index} className='list-group-item'>
-              <strong>{name}</strong>
-              <a className='close'
-                 onClick={this.removeUserRole.bind(null, user_role)}>&times;</a>
+              <h4>
+                {name}
+                <a className='close' onClick={this.removeUserRole.bind(null, user_role)}>&times;</a>
+              </h4>
             </div>
           ))}
 
           <form className='list-group-item' onSubmit={this.onSubmitUser}>
+            <h4><Message>newRoleMemberLabel</Message></h4>
             <div className='row'>
               <div className='col-sm-10'>
                 <SimpleInput name='email'
-                             label='userEmail'
                              error={errors.email}
                              onChange={this.dismissError}
                              required/>
               </div>
               <div className='col-sm-2'>
-                <br/>
                 <SubmitButton>
                   <Message>callToActionInvite</Message>
                 </SubmitButton>
