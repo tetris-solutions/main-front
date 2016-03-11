@@ -6,5 +6,6 @@ export default {
   newPasswordLabel: 'New password',
   newCompanyLabel: 'New Company',
   companyNameLabel: 'Your company name',
-  roleNameLabel: 'Role name'
+  roleNameLabel: 'Role name',
+  userEmailLabel: 'User e-mail'
 }

@@ -1,5 +1,6 @@
 export default {
   callToActionReturnHome: 'Return to home',
   callToActionSubmit: 'Submit',
-  callToActionSave: 'Save'
+  callToActionSave: 'Save',
+  callToActionInvite: 'Invite'
 }

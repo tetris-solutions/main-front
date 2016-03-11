@@ -8,6 +8,9 @@ export default React.createClass({
   contextTypes: {
     submitInProgress: PropTypes.bool.isRequired
   },
+  propTypes: {
+    children: PropTypes.node
+  },
   componentDidMount () {
     if ('Ladda' in window) {
       this.ladda = window.Ladda.create(this.refs.btn)
@@ -25,6 +28,7 @@ export default React.createClass({
     }
   },
   render () {
+    const {children} = this.props
     return (
       <button type='submit'
               name='submitButton'
@@ -34,7 +38,9 @@ export default React.createClass({
               data-color='mint'
               data-size='s'>
         <span className='ladda-label'>
-          <Message>callToActionSubmit</Message>
+          {children || (
+            <Message>callToActionSubmit</Message>
+          )}
         </span>
       </button>
     )

@@ -34,7 +34,7 @@ export const CompanyRole = React.createClass({
           </li>
           <li className={cx(isUsers && 'active')}>
             <Link to={usersPath}>
-              <Message>navRoleUsers</Message>
+              <Message>navRoleMembers</Message>
             </Link>
           </li>
         </ul>

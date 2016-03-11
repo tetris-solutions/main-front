@@ -3,6 +3,6 @@ export default {
   navLogin: 'Login',
   navLogout: 'Logout',
   navAdmin: 'Dashboard',
-  navRoleOptions: 'Role options',
-  navRoleUsers: 'Users'
+  navRoleOptions: 'Role',
+  navRoleMembers: 'Members'
 }

@@ -1,5 +1,6 @@
 export default {
   callToActionReturnHome: 'Voltar para tela inicial',
   callToActionSubmit: 'Enviar',
-  callToActionSave: 'Salvar'
+  callToActionSave: 'Salvar',
+  callToActionInvite: 'Enviar'
 }
