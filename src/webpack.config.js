@@ -21,10 +21,10 @@ module.exports = {
   context: __dirname,
   entry: [
     'webpack-hot-middleware/client',
-    path.normalize(__dirname + '/client.js')
+    path.resolve(__dirname, 'client.js')
   ],
   output: {
-    path: path.normalize(__dirname + '/../public/'),
+    path: path.resolve(__dirname, '../public/'),
     filename: 'client.js',
     publicPath: '/'
   },

@@ -45,11 +45,14 @@ export const CreateRole = React.createClass({
         <br/>
 
         <form className='jumbotron' onSubmit={this.handleSubmit} method='POST'>
-          <SimpleInput name='name'
-                       label='roleName'
-                       error={errors.name}
-                       onChange={this.dismissError}
-                       required/>
+
+          <SimpleInput
+            name='name'
+            label='roleName'
+            error={errors.name}
+            onChange={this.dismissError}
+            required/>
+
           <SubmitButton/>
         </form>
       </div>

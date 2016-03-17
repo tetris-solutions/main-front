@@ -30,18 +30,21 @@ export default React.createClass({
   render () {
     const {children} = this.props
     return (
-      <button type='submit'
-              name='submitButton'
-              ref='btn'
-              className='ladda-button'
-              data-style='expand-right'
-              data-color='mint'
-              data-size='s'>
+      <button
+        type='submit'
+        name='submitButton'
+        ref='btn'
+        className='ladda-button'
+        data-style='expand-right'
+        data-color='mint'
+        data-size='s'>
+
         <span className='ladda-label'>
           {children || (
             <Message>callToActionSubmit</Message>
           )}
         </span>
+
       </button>
     )
   }

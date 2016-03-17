@@ -39,19 +39,23 @@ export const Login = React.createClass({
       <div className='container'>
         <form className='panel panel-default' onSubmit={this.handleSubmit} method='POST'>
           <section className='panel-body'>
-            <SimpleInput name='email'
-                         type='email'
-                         label='email'
-                         error={errors.email}
-                         onChange={this.dismissError}
-                         required/>
 
-            <SimpleInput name='password'
-                         type='password'
-                         label='password'
-                         error={errors.password}
-                         onChange={this.dismissError}
-                         required/>
+            <SimpleInput
+              name='email'
+              type='email'
+              label='email'
+              error={errors.email}
+              onChange={this.dismissError}
+              required/>
+
+            <SimpleInput
+              name='password'
+              type='password'
+              label='password'
+              error={errors.password}
+              onChange={this.dismissError}
+              required/>
+
             <SubmitButton/>
           </section>
         </form>

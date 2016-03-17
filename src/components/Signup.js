@@ -40,25 +40,28 @@ export const Signup = React.createClass({
         <form className='panel panel-default' onSubmit={this.handleSubmit} method='POST'>
           <section className='panel-body'>
 
-            <SimpleInput name='name'
-                         label='name'
-                         error={errors.name}
-                         onChange={this.dismissError}
-                         required/>
+            <SimpleInput
+              name='name'
+              label='name'
+              error={errors.name}
+              onChange={this.dismissError}
+              required/>
 
-            <SimpleInput name='email'
-                         type='email'
-                         label='email'
-                         error={errors.email}
-                         onChange={this.dismissError}
-                         required/>
+            <SimpleInput
+              name='email'
+              type='email'
+              label='email'
+              error={errors.email}
+              onChange={this.dismissError}
+              required/>
 
-            <SimpleInput name='password'
-                         type='password'
-                         label='password'
-                         error={errors.password}
-                         onChange={this.dismissError}
-                         required/>
+            <SimpleInput
+              name='password'
+              type='password'
+              label='password'
+              error={errors.password}
+              onChange={this.dismissError}
+              required/>
 
             <SubmitButton />
           </section>

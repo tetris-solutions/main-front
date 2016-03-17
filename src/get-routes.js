@@ -30,7 +30,9 @@ export default (history, tree) => {
   let firstRender = true
 
   if (!isServer) {
-    setTimeout(() => firstRender = false, 0)
+    setTimeout(() => {
+      firstRender = false
+    }, 0)
   }
 
   function preload (action) {
@@ -61,23 +63,31 @@ export default (history, tree) => {
         <Route onEnter={protectRoute}>
           <Route path='me' component={Profile}/>
 
-          <Route path='admin' component={Admin}
-                 onEnter={preload(loadUserCompaniesActionRouterAdaptor)}>
+          <Route
+            path='admin'
+            component={Admin}
+            onEnter={preload(loadUserCompaniesActionRouterAdaptor)}>
 
             <IndexRoute component={CreateCompany}/>
 
-            <Route path=':company' component={EditCompany}
-                   onEnter={preload(loadCompanyActionRouterAdaptor)}>
+            <Route
+              path=':company'
+              component={EditCompany}
+              onEnter={preload(loadCompanyActionRouterAdaptor)}>
 
               <IndexRoute component={CreateRole}/>
 
               <Route path=':role' component={CompanyRole}>
 
-                <IndexRoute component={RoleOptions}
-                            onEnter={preload(loadPermissionsActionRouterAdaptor)}/>
+                <IndexRoute
+                  component={RoleOptions}
+                  onEnter={preload(loadPermissionsActionRouterAdaptor)}/>
 
-                <Route path='users' component={RoleUsers}
-                       onEnter={preload(loadRoleUsersActionRouteAdaptor)}/>
+                <Route
+                  path='users'
+                  component={RoleUsers}
+                  onEnter={preload(loadRoleUsersActionRouteAdaptor)}/>
+
               </Route>
 
             </Route>

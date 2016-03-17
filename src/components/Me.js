@@ -47,32 +47,37 @@ export const Me = createClass({
             <form className='panel panel-default' onSubmit={this.handleSubmit} method='POST'>
               <section className='panel-body'>
 
-                <SimpleInput name='name'
-                             label='name'
-                             defaultValue={name}
-                             error={errors.name}
-                             onChange={this.dismissError}
-                             required/>
+                <SimpleInput
+                  name='name'
+                  label='name'
+                  defaultValue={name}
+                  error={errors.name}
+                  onChange={this.dismissError}
+                  required/>
 
-                <SimpleInput name='email'
-                             type='email'
-                             label='email'
-                             defaultValue={email}
-                             error={errors.email}
-                             onChange={this.dismissError}
-                             required/>
+                <SimpleInput
+                  name='email'
+                  type='email'
+                  label='email'
+                  defaultValue={email}
+                  error={errors.email}
+                  onChange={this.dismissError}
+                  required/>
 
-                <SimpleInput name='oldPassword'
-                             type='password'
-                             label='currentPassword'
-                             error={errors.oldPassword}
-                             onChange={this.dismissError}/>
+                <SimpleInput
+                  name='oldPassword'
+                  type='password'
+                  label='currentPassword'
+                  error={errors.oldPassword}
+                  onChange={this.dismissError}/>
 
-                <SimpleInput name='password'
-                             type='password'
-                             label='newPassword'
-                             error={errors.password}
-                             onChange={this.dismissError}/>
+                <SimpleInput
+                  name='password'
+                  type='password'
+                  label='newPassword'
+                  error={errors.password}
+                  onChange={this.dismissError}/>
+
                 <SubmitButton/>
               </section>
             </form>

@@ -31,12 +31,14 @@ export const RoleOptions = React.createClass({
 
     const {elements} = e.target
     const permissions = []
-    const {role, params: {company}, actions: {
+    const {
+      role, params: {company}, actions: {
       updateRole,
       loadUserCompanies,
       loadCompany,
       pushSuccessMessage
-      }} = this.props
+    }
+    } = this.props
 
     forEach(this.props.permissions, ({id}) => {
       if (elements[id] && elements[id].checked) {
@@ -59,12 +61,14 @@ export const RoleOptions = React.createClass({
 
     return (
       <form key={`edit-role-${id}`} className='well' method='POST' onSubmit={this.handleSubmit}>
-        <SimpleInput name='name'
-                     label='roleName'
-                     error={errors.name}
-                     defaultValue={name}
-                     onChange={this.dismissError}
-                     required/>
+
+        <SimpleInput
+          name='name'
+          label='roleName'
+          error={errors.name}
+          defaultValue={name}
+          onChange={this.dismissError}
+          required/>
 
         <div className='panel panel-default'>
           <div className='panel-heading'>

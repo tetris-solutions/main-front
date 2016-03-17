@@ -27,16 +27,16 @@ export const Admin = React.createClass({
           <Message>adminHeader</Message>
           <small>
             <form className='pull-right'>
-                <span className='form-group'>
-                  <select className='form-control' onChange={this.navigateToCompany} value={company || ''}>
+              <span className='form-group'>
+                <select className='form-control' onChange={this.navigateToCompany} value={company || ''}>
 
-                    {map(this.props.companies, ({name, id}, index) => (
-                      <option key={index} value={id}>{name}</option>
-                    ))}
+                  {map(this.props.companies, ({name, id}, index) => (
+                    <option key={index} value={id}>{name}</option>
+                  ))}
 
-                    <option value=''>{this.context.messages.newCompanyLabel}</option>
-                  </select>
-                </span>
+                  <option value=''>{this.context.messages.newCompanyLabel}</option>
+                </select>
+              </span>
             </form>
           </small>
         </h3>

@@ -29,7 +29,7 @@ test('show help text on empty password', t => {
   const props = {
     actions: {
       login (email, password) {
-        return new Promise((_, reject) => {
+        return new Promise((resolve, reject) => {
           t.is(email, 'x@x.com')
           reject({fields: {password: 'ABC'}})
         })
@@ -57,7 +57,7 @@ test('show help text on empty email', t => {
   const props = {
     actions: {
       login (email, password) {
-        return new Promise((_, reject) => {
+        return new Promise((resolve, reject) => {
           t.is(password, '123456')
           reject({fields: {email: 'ABC'}})
         })

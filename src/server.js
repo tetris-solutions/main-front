@@ -1,6 +1,3 @@
-/* eslint-disable */
-import _intl from '@tetris/base-lib/intl'
-/* eslint-enable */
 import express from 'express'
 import path from 'path'
 import fetch from 'node-fetch'
@@ -20,6 +17,7 @@ import {loadUserCompaniesActionServerAdaptor} from './actions/load-user-companie
 import {loadCompanyActionServerAdaptor} from './actions/load-company-action'
 import {loadPermissionsActionServerAdaptor} from './actions/load-permissions-action'
 import {loadRoleUsersActionServerAdaptor} from './actions/load-role-users-action'
+import {httpLogStream} from './logger'
 
 global.fetch = fetch
 
@@ -31,10 +29,12 @@ const flags = {
 const app = express()
 
 app.use(express.static(path.normalize(`${__dirname}/../public`)))
-app.use(morgan(flags.productionMode === 'production'
+
+const morganMode = flags.productionMode === 'production'
   ? 'combined'
-  : 'dev'
-))
+  : 'short'
+
+app.use(morgan(morganMode, {stream: httpLogStream}))
 
 app.use(cookieParser())
 app.use(localeMiddleware)

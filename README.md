@@ -2,26 +2,38 @@
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-## Pré-requisitos
+## Preparação
 
 - certifique-se que você está rodando Linux ou OS X
-- arquivos de configuração - você vai precisar de dois arquivos ignorados pelo git:
-    - [.npmrc](https://www.npmjs.com/private-modules#logging-in) - esse arquivo contém um token que te permite instalar repositórios privados da tetris, você pode obter ele de duas formas:
-        - logando no npm localmente e copiando o arquivo gerado (nesse caso você precisa instalar o node/npm) com o comando `npm login` seguido de `cp ~/.npmrc .`
-        - pegando o arquivo de algum colega de trabalho
-    - [.env](https://github.com/motdotla/dotenv) - esse é o arquivo que contém as _variáveis de ambiente_ que configuram a aplicação, ele segue o modelo do `.env.sample` 
-        - se precisar usar as funcionalidades que enviam email, você vai precisar pedir os valores do SMTP a alguém do time
-- [instale o docker e o docker-compose](https://docs.docker.com/)
+- instale o node & npm
+- `npm login` - _pra ter acesso aos módulos privados_
+- `npm install`
+
+## Serviços requiridos
+
+O front precisa ter uma conexão para:
+- a [user-api](https://github.com/tetris-solutions/user-api), que pode estar rodando na mesma máquina ou não - configurável através da variável de ambiente `USER_API_URL`.
+- uma instância do logstash - configurável através da variável de ambiente `LOGSTASH_HOST`
+
+## Configuração
+
+[A configuração é feita através de variáveis ambiente](http://12factor.net/config). Existem duas opções: 
+- arquivo `.env` na raiz do projeto - que é lido pelo [dotenv](http://npmjs.com/dotenv) e injetado como variáveis de ambiente no processo.
+- variáveis ambiente já previamente definidas - que conforme descrito na documentação do **dotenv**, sobrescreve as variáveis do `.env`
+
+Fica a critério se você pretende usar uma delas ou as duas. Usar apenas o `.env` é o mais fácil.
+
+## Instalando localmente
+
+Caso não tenha uma instalação remota acessível, você pode  clonar o projeto [user-api](https://github.com/tetris-solutions/user-api) e o projeto [infra](https://github.com/tetris-solutions/infra) e executá-los localmente.
 
 ## Iniciando a aplicação
 
 ```sh
-npm install
-source .env
-docker-compose up
+npm start
 ```
 
-Se você estiver no Linux, já pode abrir localhost:3000 no browser, no caso do OS X você provavelmente vai precisar descobrir o ip da máquina virtual com o [docker-machine](https://docs.docker.com/machine/get-started/).
+Agora você já pode abrir $FRONT_URL:3000 no browser, $FRONT_URL é uma variável definida no `.env`.
 
 ## Arquitetura
 
@@ -29,8 +41,4 @@ Todo código editável se encontra em `src`. A aplicação segue o paradigma [ja
 
 ## Estilo
 
-Javascript, [ES2015](https://babeljs.io/docs/learn-es2015/), funcional arroz-com-feijão seguindo o [standard](http://standardjs.com/). 
-
-## Infraestrutura
-
-Não foi utilizado um task runner, apenas [npm scripts](http://substack.net/task_automation_with_npm_run) mesmo. A geração do bundle pro browser é feita com o [webpack](http://www.christianalfoni.com/articles/2015_10_01_Taking-the-next-step-with-react-and-webpack) e o [babel](http://babeljs.io/) como transpiler.
+Javascript, [ES2015](https://babeljs.io/docs/learn-es2015/), seguindo o [standard](http://standardjs.com/). 

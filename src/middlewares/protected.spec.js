@@ -8,7 +8,7 @@ test('redirects to login setting next query param', t =>
     },
     {
       redirect (newPath) {
-        t.is(newPath, `/login?next=/xxx`)
+        t.is(newPath, '/login?next=/xxx')
       }
     }))
 

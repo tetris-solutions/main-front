@@ -43,11 +43,14 @@ export const CreateCompany = React.createClass({
         <br/>
 
         <form className='jumbotron' onSubmit={this.handleSubmit} method='POST'>
-          <SimpleInput name='name'
-                       label='companyName'
-                       error={errors.name}
-                       onChange={this.dismissError}
-                       required/>
+
+          <SimpleInput
+            name='name'
+            label='companyName'
+            error={errors.name}
+            onChange={this.dismissError}
+            required/>
+
           <SubmitButton/>
         </form>
       </div>

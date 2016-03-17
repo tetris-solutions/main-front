@@ -12,6 +12,30 @@ import {pushSuccessMessageAction} from '../actions/push-success-message-action'
 
 const {PropTypes} = React
 
+const RoleUser = React.createClass({
+  displayName: 'Role-User',
+  propTypes: {
+    removeUser: PropTypes.func.isRequired,
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string
+  },
+  removeUser () {
+    this.props.removeUser(this.props.id)
+  },
+  render () {
+    return (
+      <div className='list-group-item'>
+        <h4>
+          {this.props.name}
+          <a className='close' onClick={this.removeUser}>
+            &times;
+          </a>
+        </h4>
+      </div>
+    )
+  }
+})
+
 export const RoleUsers = React.createClass({
   displayName: 'Role-Users',
   mixins: [FormMixin],
@@ -31,7 +55,9 @@ export const RoleUsers = React.createClass({
     return createUserRole(email.value, role)
       .then(() => loadRoleUsers(company, role))
       .then(() => pushSuccessMessage())
-      .then(() => email.value = '')
+      .then(() => {
+        email.value = ''
+      })
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
@@ -43,26 +69,32 @@ export const RoleUsers = React.createClass({
   render () {
     const {errors} = this.state
     const {role: {users}} = this.props
+
     return (
       <div className='well'>
         <div className='list-group'>
+
           {map(users, ({user_role, name}, index) => (
-            <div key={index} className='list-group-item'>
-              <h4>
-                {name}
-                <a className='close' onClick={this.removeUserRole.bind(null, user_role)}>&times;</a>
-              </h4>
-            </div>
+
+            <RoleUser
+              key={index}
+              id={user_role}
+              name={name}
+              removeUser={this.removeUserRole}/>
+
           ))}
 
           <form className='list-group-item' onSubmit={this.onSubmitUser}>
             <h4><Message>newRoleMemberLabel</Message></h4>
             <div className='row'>
               <div className='col-sm-10'>
-                <SimpleInput name='email'
-                             error={errors.email}
-                             onChange={this.dismissError}
-                             required/>
+
+                <SimpleInput
+                  name='email'
+                  error={errors.email}
+                  onChange={this.dismissError}
+                  required/>
+
               </div>
               <div className='col-sm-2'>
                 <SubmitButton>
