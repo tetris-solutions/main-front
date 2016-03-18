@@ -8,6 +8,7 @@ import FormMixin from '../mixins/FormMixin'
 import {createUserRoleAction} from '../actions/create-user-role-action'
 import {loadRoleUsersAction} from '../actions/load-role-users-action'
 import {deleteUserRoleAction} from '../actions/delete-user-role-action'
+import {deleteInviteAction} from '../actions/delete-invite-action'
 import {pushSuccessMessageAction} from '../actions/push-success-message-action'
 
 const {PropTypes} = React
@@ -17,16 +18,25 @@ const RoleUser = React.createClass({
   propTypes: {
     removeUser: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired,
-    id: PropTypes.string
+    id: PropTypes.string,
+    pending: PropTypes.bool
   },
   removeUser () {
     this.props.removeUser(this.props.id)
   },
   render () {
+    const {name, pending} = this.props
     return (
       <div className='list-group-item'>
         <h4>
-          {this.props.name}
+          {name + ' '}
+          {pending && (
+            <small>
+              <sup className='label label-warning'>
+                <Message>pendingInviteLabel</Message>
+              </sup>
+            </small>
+          )}
           <a className='close' onClick={this.removeUser}>
             &times;
           </a>
@@ -43,7 +53,11 @@ export const RoleUsers = React.createClass({
     role: PropTypes.object,
     params: PropTypes.object,
     actions: PropTypes.shape({
-      createUserRole: PropTypes.func
+      createUserRole: PropTypes.func,
+      deleteInvite: PropTypes.func,
+      deleteUserRole: PropTypes.func,
+      loadRoleUsers: PropTypes.func,
+      pushSuccessMessage: PropTypes.func
     })
   },
   onSubmitUser (e) {
@@ -61,6 +75,11 @@ export const RoleUsers = React.createClass({
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
+  removeInvite (id) {
+    const {actions: {deleteInvite, loadRoleUsers}, params: {company, role}} = this.props
+
+    return deleteInvite(id).then(() => loadRoleUsers(company, role))
+  },
   removeUserRole (id) {
     const {actions: {deleteUserRole, loadRoleUsers}, params: {company, role}} = this.props
 
@@ -74,13 +93,14 @@ export const RoleUsers = React.createClass({
       <div className='well'>
         <div className='list-group'>
 
-          {map(users, ({user_role, name}, index) => (
+          {map(users, ({user_role, pending, invite, name}, index) => (
 
             <RoleUser
               key={index}
-              id={user_role}
+              id={user_role || invite}
+              pending={pending}
               name={name}
-              removeUser={this.removeUserRole}/>
+              removeUser={pending ? this.removeInvite : this.removeUserRole}/>
 
           ))}
 
@@ -97,9 +117,7 @@ export const RoleUsers = React.createClass({
 
               </div>
               <div className='col-sm-2'>
-                <SubmitButton>
-                  <Message>callToActionInvite</Message>
-                </SubmitButton>
+                <SubmitButton/>
               </div>
             </div>
           </form>
@@ -114,6 +132,7 @@ export default branch(RoleUsers, {
     createUserRole: createUserRoleAction,
     loadRoleUsers: loadRoleUsersAction,
     deleteUserRole: deleteUserRoleAction,
+    deleteInvite: deleteInviteAction,
     pushSuccessMessage: pushSuccessMessageAction
   }
 })

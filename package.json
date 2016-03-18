@@ -21,7 +21,7 @@
     "coverage": "nyc ava",
     "lint": "eslint src",
     "start": "bin/cmd.js",
-    "start-dev": "nodemon src/main.js"
+    "start:dev": "nodemon src/main.js"
   },
   "pre-commit": [
     "lint"

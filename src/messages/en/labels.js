@@ -7,5 +7,6 @@ export default {
   newCompanyLabel: 'New Company',
   companyNameLabel: 'Your company name',
   roleNameLabel: 'Role name',
-  newRoleMemberLabel: 'Inserir usuário'
+  newRoleMemberLabel: 'Invite user',
+  pendingInviteLabel: 'Pending invite'
 }
