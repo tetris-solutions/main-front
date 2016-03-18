@@ -22,7 +22,7 @@ import {httpLogStream} from './logger'
 global.fetch = fetch
 
 const flags = {
-  developmentMode: process.env.NODE_ENV === 'development',
+  developmentMode: !process.env.BUILD_PROD,
   productionMode: process.env.NODE_ENV === 'production'
 }
 

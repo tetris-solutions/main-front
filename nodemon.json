@@ -4,6 +4,7 @@
     "src/server.js",
     "src/components/HTML.js",
     "src/middlewares",
+    "src/queries",
     "src/route-handlers"
   ],
   "execMap": {

@@ -3,6 +3,7 @@ import MissingRequiredFieldError from '../exceptions/MissingRequiredFieldError'
 import isEmpty from 'lodash/isEmpty'
 import assign from 'lodash/assign'
 import window from 'global/window'
+import omit from 'lodash/omit'
 
 const {PropTypes} = React
 
@@ -42,9 +43,12 @@ export default {
     })
   },
   dismissError ({target: {name}}) {
-    this.setState(({errors}) => {
-      delete errors[name]
-      return {errors}
+    const {errors} = this.state
+
+    if (!errors[name]) return
+
+    this.setState({
+      errors: omit(errors, name)
     })
   },
   preSubmit () {

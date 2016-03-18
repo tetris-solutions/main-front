@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 var $ = require('shelljs')
 var fs = require('fs')
+var path = require('path')
+
+$.cd(path.resolve(__dirname, '..'))
 
 $.mv('.babelrc', '_babelrc')
 $.rm('-rf', '.tmp')

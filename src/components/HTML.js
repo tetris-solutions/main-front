@@ -13,7 +13,7 @@ export const HTML = ({documentTitle = 'Tetris Solutions', payload, children}) =>
       <script id='state-injection' dangerouslySetInnerHTML={{__html: `var backendPayload = ${JSON.stringify(payload)}`}}/>
       <script src='/js/spin.min.js' defer/>
       <script src='/js/ladda.min.js' defer/>
-      <script src='/client.js' defer/>
+      <script src='/js/client.js' defer/>
 
     </head>
     <body>

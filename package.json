@@ -12,11 +12,12 @@
     "bin"
   ],
   "scripts": {
-    "documentation": "scripts/gen-docs.js",
+    "build:commonjs": "rimraf lib && babel src -d lib",
+    "build:documentation": "scripts/gen-docs.js",
+    "build:client": "scripts/bundle.js",
+    "test": "scripts/test.js",
     "babel-node": "babel-node",
-    "build": "rimraf lib && babel src -d lib",
-    "prepublish": "npm run build",
-    "test": "npm run build >/dev/null 2>&1 && NODE_ENV=production ava",
+    "prepublish": "npm run build:commonjs",
     "coverage": "nyc ava",
     "lint": "eslint src",
     "start": "bin/cmd.js",
