@@ -6,7 +6,10 @@ import webpackConfig from './webpack.config'
 const compiler = webpack(webpackConfig)
 
 export function devServerHook (app) {
-  app.use(webpackMiddleware(compiler, {headers: {'X-Webpack-Wizardry': 'true'}}))
+  app.use(webpackMiddleware(compiler, {
+    publicPath: '/js/',
+    headers: {'X-Webpack-Wizardry': 'true'}
+  }))
   app.use(webpackHot(compiler))
 }
 
