@@ -17,7 +17,7 @@ export const Admin = React.createClass({
     params: PropTypes.object
   },
   navigateToCompany ({target: {value}}) {
-    this.context.router.push(`/admin/${value}`)
+    this.context.router.push(`/dashboard/companies/${value}`)
   },
   render () {
     const {params: {company}} = this.context

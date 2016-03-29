@@ -53,19 +53,33 @@ app.get('/me', protectedRouteMiddleware, defaultRoute)
 app.get('/waiting-confirmation', defaultRoute)
 app.get('/activate/:activationCode', activateRoute)
 
-app.get('/admin',
+app.get('/dashboard/companies',
   protectedRouteMiddleware,
   performActionsMiddleware(loadUserCompaniesActionServerAdaptor),
   defaultRoute)
 
-app.get('/admin/:company',
+app.get('/dashboard/companies/:company',
   protectedRouteMiddleware,
   performActionsMiddleware(
     loadUserCompaniesActionServerAdaptor,
     loadCompanyActionServerAdaptor),
   defaultRoute)
 
-app.get('/admin/:company/:role',
+app.get('/dashboard/companies/:company/accounts',
+  protectedRouteMiddleware,
+  performActionsMiddleware(
+    loadUserCompaniesActionServerAdaptor,
+    loadCompanyActionServerAdaptor),
+  defaultRoute)
+
+app.get('/dashboard/companies/:company/roles',
+  protectedRouteMiddleware,
+  performActionsMiddleware(
+    loadUserCompaniesActionServerAdaptor,
+    loadCompanyActionServerAdaptor),
+  defaultRoute)
+
+app.get('/dashboard/companies/:company/roles/:role',
   protectedRouteMiddleware,
   performActionsMiddleware(
     loadUserCompaniesActionServerAdaptor,
@@ -73,7 +87,7 @@ app.get('/admin/:company/:role',
     loadPermissionsActionServerAdaptor),
   defaultRoute)
 
-app.get('/admin/:company/:role/users',
+app.get('/dashboard/companies/:company/roles/:role/users',
   protectedRouteMiddleware,
   performActionsMiddleware(
     loadUserCompaniesActionServerAdaptor,

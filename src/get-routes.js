@@ -12,6 +12,8 @@ import CompanyRole from './components/CompanyRole'
 import RoleOptions from './components/RoleOptions'
 import RoleUsers from './components/RoleUsers'
 import CreateRole from './components/CreateRole'
+import {CompanyAccounts} from './components/CompanyAccounts'
+import {CompanyRoles} from './components/CompanyRoles'
 
 import Profile from './components/Me'
 import WaitingConfirmation from './components/WaitingConfirmation'
@@ -50,7 +52,7 @@ export default (history, tree) => {
   }
 
   // @todo `protectedRoute` should receive a second argument `permission` or maybe create a new function `checkPermission`
-
+  // @todo create Dashboard component; this component should present a list of companies, which would replace the current <select>. ALSO, breadcrumbs.
   return (
     <Router history={history}>
       <Route path='/' component={root(Root, tree)}>
@@ -62,36 +64,20 @@ export default (history, tree) => {
 
         <Route onEnter={protectRoute}>
           <Route path='me' component={Profile}/>
-
-          <Route
-            path='admin'
-            component={Admin}
-            onEnter={preload(loadUserCompaniesActionRouterAdaptor)}>
-
-            <IndexRoute component={CreateCompany}/>
-
-            <Route
-              path=':company'
-              component={EditCompany}
-              onEnter={preload(loadCompanyActionRouterAdaptor)}>
-
-              <IndexRoute component={CreateRole}/>
-
-              <Route path=':role' component={CompanyRole}>
-
-                <IndexRoute
-                  component={RoleOptions}
-                  onEnter={preload(loadPermissionsActionRouterAdaptor)}/>
-
-                <Route
-                  path='users'
-                  component={RoleUsers}
-                  onEnter={preload(loadRoleUsersActionRouteAdaptor)}/>
-
+          <Route path='dashboard' component={Admin} onEnter={preload(loadUserCompaniesActionRouterAdaptor)}>
+            <Route path='companies'>
+              <IndexRoute component={CreateCompany}/>
+              <Route path=':company' component={EditCompany} onEnter={preload(loadCompanyActionRouterAdaptor)}>
+                <Route path='roles' component={CompanyRoles}>
+                  <IndexRoute component={CreateRole}/>
+                  <Route path=':role' component={CompanyRole}>
+                    <IndexRoute component={RoleOptions} onEnter={preload(loadPermissionsActionRouterAdaptor)}/>
+                    <Route path='users' component={RoleUsers} onEnter={preload(loadRoleUsersActionRouteAdaptor)}/>
+                  </Route>
+                </Route>
+                <Route path='accounts' component={CompanyAccounts}/>
               </Route>
-
             </Route>
-
           </Route>
         </Route>
 

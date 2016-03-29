@@ -19,8 +19,8 @@ export const CompanyRole = React.createClass({
   render () {
     const {params, children, company} = this.props
     const {router: {isActive}} = this.context
-    const optionsPath = `/admin/${params.company}/${params.role}`
-    const usersPath = `/admin/${params.company}/${params.role}/users`
+    const optionsPath = `/dashboard/companies/${params.company}/roles/${params.role}`
+    const usersPath = `/dashboard/companies/${params.company}/roles/${params.role}/users`
     const isUsers = isActive(usersPath)
     const role = find(company.roles, {id: params.role})
 

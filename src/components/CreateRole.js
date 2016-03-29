@@ -32,7 +32,7 @@ export const CreateRole = React.createClass({
     createRole(company, e.target.elements.name.value)
       .then(response => loadCompany(company)
         .then(() => {
-          this.context.router.push(`/admin/${company}/${response.data.id}`)
+          this.context.router.push(`/dashboard/companies/${company}/roles/${response.data.id}`)
         }))
       .then(() => pushSuccessMessage())
       .catch(this.handleSubmitException)

@@ -13,35 +13,35 @@ export const EditCompany = React.createClass({
     params: PropTypes.object,
     children: PropTypes.node
   },
+  contextTypes: {
+    router: PropTypes.object
+  },
   render () {
     const {company, children, params} = this.props
+    const {router: {isActive}} = this.context
+    const rolesPath = `/dashboard/companies/${params.company}/roles`
+    const accountsPath = `/dashboard/companies/${params.company}/accounts`
+
     return (
-      <div className='row'>
-        <div className='col-sm-3'>
-          <ul className='nav nav-pills nav-stacked'>
-            <li className='disabled'>
-              <h4>Grupos</h4>
-            </li>
-            {company.roles.map(({id, name}, index) => (
-              <li key={index} className={cx(params.role === id && 'active')}>
-                <Link to={`/admin/${params.company}/${id}`}>
-                  {name}
-                </Link>
-              </li>
-            ))}
-            <li className={cx(!params.role && 'active')}>
-              <Link to={`/admin/${params.company}`}>
-                <Message>newRoleHeader</Message>
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className='col-sm-9'>
-          <div className='tab-content'>
-            <div className='tab-pane active'>
-              {cloneElement(children, {company})}
-            </div>
-          </div>
+      <div>
+        <ul className='nav nav-tabs'>
+
+          <li className={cx(isActive(rolesPath) && 'active')}>
+            <Link to={rolesPath}>
+              <Message>roleListHeader</Message>
+            </Link>
+          </li>
+
+          <li className={cx(isActive(accountsPath) && 'active')}>
+            <Link to={accountsPath}>
+              <Message>accountListHeader</Message>
+            </Link>
+          </li>
+
+        </ul>
+        <div className='tab-content'>
+          <br/>
+          {children && cloneElement(children, {company})}
         </div>
       </div>
     )
