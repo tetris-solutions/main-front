@@ -8,5 +8,8 @@ export default {
   companyNameLabel: 'Your company name',
   roleNameLabel: 'Role name',
   newRoleMemberLabel: 'Invite user',
-  pendingInviteLabel: 'Pending invite'
+  pendingInviteLabel: 'Pending invite',
+  okTokenLabel: 'Active token',
+  invalidTokenLabel: 'Invalid token',
+  unknownTokenStatusLabel: 'Unknown status'
 }

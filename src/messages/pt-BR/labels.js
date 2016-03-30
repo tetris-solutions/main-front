@@ -8,5 +8,8 @@ export default {
   companyNameLabel: 'Nome da sua empresa',
   roleNameLabel: 'Nome do grupo',
   newRoleMemberLabel: 'Convidar usuário',
-  pendingInviteLabel: 'Convite pendente'
+  pendingInviteLabel: 'Convite pendente',
+  okTokenLabel: 'Token ativo',
+  invalidTokenLabel: 'Token inválido',
+  unknownTokenStatusLabel: 'Não foi possível determinar'
 }

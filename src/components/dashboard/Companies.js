@@ -22,7 +22,7 @@ export const Companies = React.createClass({
   render () {
     const {params: {company}} = this.context
     return (
-      <div className='container'>
+      <div>
         <h3>
           <Message>adminHeader</Message>
           <small>

@@ -4,5 +4,9 @@ export default {
   adminHeader: 'Administração de organizações',
   newRoleHeader: 'Novo grupo',
   roleListHeader: 'Grupos',
-  accountListHeader: 'Contas externas'
+  accountListHeader: 'Contas externas',
+  accountNameHeader: 'Nome da conta',
+  accountPlatformHeader: 'Plataforma',
+  accountExternalIdHeader: 'ID Externo',
+  accountTokenStatusHeader: 'Status do token'
 }

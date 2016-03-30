@@ -4,5 +4,9 @@ export default {
   adminHeader: 'Company administration',
   newRoleHeader: 'New role',
   roleListHeader: 'Roles',
-  accountListHeader: 'External accounts'
+  accountListHeader: 'External accounts',
+  accountNameHeader: 'Account name',
+  accountPlatformHeader: 'Platform',
+  accountExternalIdHeader: 'External ID',
+  accountTokenStatusHeader: 'Token status'
 }

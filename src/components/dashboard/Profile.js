@@ -38,50 +38,48 @@ export const Me = createClass({
     const {errors} = this.state
     const {user: {name, email, avatar}} = this.props
     return (
-      <div className='container'>
-        <div className='row'>
-          <div className='col-sm-2'>
-            <img className='img-responsive img-circle' src={avatar || 'http://placehold.it/320x320'}/>
-          </div>
-          <div className='col-sm-8 col-sm-offset-1'>
-            <form className='panel panel-default' onSubmit={this.handleSubmit} method='POST'>
-              <section className='panel-body'>
+      <div className='row'>
+        <div className='col-sm-2'>
+          <img className='img-responsive img-circle' src={avatar || 'http://placehold.it/320x320'}/>
+        </div>
+        <div className='col-sm-8 col-sm-offset-1'>
+          <form className='panel panel-default' onSubmit={this.handleSubmit} method='POST'>
+            <section className='panel-body'>
 
-                <SimpleInput
-                  name='name'
-                  label='name'
-                  defaultValue={name}
-                  error={errors.name}
-                  onChange={this.dismissError}
-                  required/>
+              <SimpleInput
+                name='name'
+                label='name'
+                defaultValue={name}
+                error={errors.name}
+                onChange={this.dismissError}
+                required/>
 
-                <SimpleInput
-                  name='email'
-                  type='email'
-                  label='email'
-                  defaultValue={email}
-                  error={errors.email}
-                  onChange={this.dismissError}
-                  required/>
+              <SimpleInput
+                name='email'
+                type='email'
+                label='email'
+                defaultValue={email}
+                error={errors.email}
+                onChange={this.dismissError}
+                required/>
 
-                <SimpleInput
-                  name='oldPassword'
-                  type='password'
-                  label='currentPassword'
-                  error={errors.oldPassword}
-                  onChange={this.dismissError}/>
+              <SimpleInput
+                name='oldPassword'
+                type='password'
+                label='currentPassword'
+                error={errors.oldPassword}
+                onChange={this.dismissError}/>
 
-                <SimpleInput
-                  name='password'
-                  type='password'
-                  label='newPassword'
-                  error={errors.password}
-                  onChange={this.dismissError}/>
+              <SimpleInput
+                name='password'
+                type='password'
+                label='newPassword'
+                error={errors.password}
+                onChange={this.dismissError}/>
 
-                <SubmitButton/>
-              </section>
-            </form>
-          </div>
+              <SubmitButton/>
+            </section>
+          </form>
         </div>
       </div>
     )
