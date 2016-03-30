@@ -59,7 +59,7 @@ export const CompanyAccountRow = React.createClass({
           )}
         </td>
         <td className='text-right'>
-          <a href='' onClick={this.unlink}>
+          <a href='' className='text-danger' onClick={this.unlink}>
             <Message>unlinkAccount</Message>
           </a>
         </td>
