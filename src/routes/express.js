@@ -40,6 +40,12 @@ export function setAppRoutes (app) {
       loadCompanyAccountsActionServerAdaptor),
     uiRoute)
 
+  app.get('/dashboard/account/:account',
+    protectedRouteMiddleware,
+    performActionsMiddleware(
+      loadCompanyAccountsActionServerAdaptor),
+    uiRoute)
+
   app.get('/dashboard/companies/:company/roles',
     protectedRouteMiddleware,
     performActionsMiddleware(

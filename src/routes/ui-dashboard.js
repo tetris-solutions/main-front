@@ -11,12 +11,14 @@ import CreateRole from './../components/dashboard/CreateRole'
 import CompanyAccounts from './../components/dashboard/CompanyAccounts'
 import CompanyRoles from './../components/dashboard/CompanyRoles'
 import Profile from './../components/dashboard/Profile'
+import AccountEdit from '../components/dashboard/AccountEdit'
 
 import {loadCompanyAccountsActionRouterAdaptor} from '../actions/load-company-accounts-action'
 import {loadUserCompaniesActionRouterAdaptor} from './../actions/load-user-companies-action'
 import {loadCompanyActionRouterAdaptor} from './../actions/load-company-action'
 import {loadPermissionsActionRouterAdaptor} from './../actions/load-permissions-action'
 import {loadRoleUsersActionRouteAdaptor} from './../actions/load-role-users-action'
+import {loadAccountActionRouterAdaptor} from '../actions/load-account-action'
 
 /**
  * get dashboard routes
@@ -41,6 +43,8 @@ export function dashboardRoutes (preload) {
           <Route path='accounts' component={CompanyAccounts} onEnter={preload(loadCompanyAccountsActionRouterAdaptor)}/>
         </Route>
       </Route>
+
+      <Route path='account/:account' component={AccountEdit} onEnter={preload(loadAccountActionRouterAdaptor)}/>
     </Route>
   )
 }

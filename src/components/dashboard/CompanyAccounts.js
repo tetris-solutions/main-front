@@ -1,5 +1,6 @@
 import React from 'react'
 import Message from '../intl/Message'
+import {Link} from 'react-router'
 import {branch} from 'baobab-react/higher-order'
 import map from 'lodash/map'
 
@@ -16,18 +17,22 @@ export const CompanyAccounts = React.createClass({
       <table className='table'>
         <thead>
           <tr>
+            <th><Message>accountExternalIdHeader</Message></th>
             <th><Message>accountNameHeader</Message></th>
             <th><Message>accountPlatformHeader</Message></th>
-            <th><Message>accountExternalIdHeader</Message></th>
             <th><Message>accountTokenStatusHeader</Message></th>
           </tr>
         </thead>
         <tbody>
         {map(accounts, ({id, platform, external_id, token_status, name}, index) => (
           <tr key={index}>
+            <td>
+              <Link to={`/dashboard/account/${id}`}>
+                {external_id}
+              </Link>
+            </td>
             <td>{name || '--'}</td>
             <td>{platform}</td>
-            <td>{external_id}</td>
             <td>
               {token_status === 'ok' && (
                 <span className='text-success'>
