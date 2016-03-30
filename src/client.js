@@ -32,6 +32,7 @@ loadScript('/js/react-intl.min.js')
 
     /**
      * loads a given locale and save it in application the state tree
+     * @todo moment localization
      * @global
      * @param {string} locale the locale to laod
      * @returns {Promise} return a promise that will be resolved once all resources are loaded

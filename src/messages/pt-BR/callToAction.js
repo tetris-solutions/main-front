@@ -5,5 +5,6 @@ export default {
   manageYourProfile: 'Gerencie seu perfil de usuário',
   manageYourCompanies: 'Gerencie suas empresas',
   unlinkAccount: 'Desvincular conta',
-  linkFacebookAccount: 'Vincular conta Facebook'
+  linkFacebookAccount: 'Vincular conta Facebook',
+  removeAccount: 'Remover conta'
 }

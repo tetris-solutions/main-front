@@ -11,5 +11,7 @@ export default {
   pendingInviteLabel: 'Pending invite',
   okTokenLabel: 'Active token',
   invalidTokenLabel: 'Invalid token',
-  unknownTokenStatusLabel: 'Unknown status'
+  unknownTokenStatusLabel: 'Unknown status',
+  accessTokenTimestamp: 'Issued',
+  accessTokenExpiration: 'Expires'
 }

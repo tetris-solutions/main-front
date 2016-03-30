@@ -4,6 +4,8 @@ import {Link} from 'react-router'
 import {branch} from 'baobab-react/higher-order'
 import {deleteCompanyAccountAction} from '../../actions/delete-company-account-action'
 import {loadCompanyAccountsAction} from '../../actions/load-company-accounts-action'
+import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
+
 const {PropTypes} = React
 
 export const CompanyAccountRow = React.createClass({
@@ -18,13 +20,24 @@ export const CompanyAccountRow = React.createClass({
     }),
     company: PropTypes.string,
     actions: PropTypes.shape({
-      unlinkCompanyAccount: PropTypes.func
+      unlinkCompanyAccount: PropTypes.func,
+      notifySuccess: PropTypes.func,
+      reloadAccounts: PropTypes.func
     })
   },
   unlink (e) {
     e.preventDefault()
-    const {actions: {unlinkCompanyAccount, reloadAccounts}, company, account} = this.props
+
+    const {
+      actions: {
+        unlinkCompanyAccount,
+        notifySuccess,
+        reloadAccounts
+      }, company, account
+    } = this.props
+
     return unlinkCompanyAccount(account.company_account)
+      .then(() => notifySuccess())
       .then(() => reloadAccounts(company))
   },
   render () {
@@ -71,6 +84,7 @@ export const CompanyAccountRow = React.createClass({
 export default branch(CompanyAccountRow, {
   actions: {
     unlinkCompanyAccount: deleteCompanyAccountAction,
-    reloadAccounts: loadCompanyAccountsAction
+    reloadAccounts: loadCompanyAccountsAction,
+    notifySuccess: pushSuccessMessageAction
   }
 })

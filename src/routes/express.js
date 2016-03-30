@@ -9,7 +9,7 @@ import {loadCompanyActionServerAdaptor} from '../actions/load-company-action'
 import {loadPermissionsActionServerAdaptor} from '../actions/load-permissions-action'
 import {loadRoleUsersActionServerAdaptor} from '../actions/load-role-users-action'
 import {loadCompanyAccountsActionServerAdaptor} from '../actions/load-company-accounts-action'
-
+import {loadAccountActionServerAdaptor} from '../actions/load-account-action'
 export function setAppRoutes (app) {
   app.get('/intl/:locale', intlRoute)
   app.get('/', uiRoute)
@@ -43,7 +43,7 @@ export function setAppRoutes (app) {
   app.get('/dashboard/account/:account',
     protectedRouteMiddleware,
     performActionsMiddleware(
-      loadCompanyAccountsActionServerAdaptor),
+      loadAccountActionServerAdaptor),
     uiRoute)
 
   app.get('/dashboard/companies/:company/roles',

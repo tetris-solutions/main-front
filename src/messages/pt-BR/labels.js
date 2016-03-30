@@ -11,5 +11,7 @@ export default {
   pendingInviteLabel: 'Convite pendente',
   okTokenLabel: 'Token ativo',
   invalidTokenLabel: 'Token inválido',
-  unknownTokenStatusLabel: 'Não foi possível determinar'
+  unknownTokenStatusLabel: 'Não foi possível determinar',
+  accessTokenTimestamp: 'Emitido',
+  accessTokenExpiration: 'Expira'
 }

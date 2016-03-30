@@ -8,5 +8,7 @@ export default {
   accountNameHeader: 'Account name',
   accountPlatformHeader: 'Platform',
   accountExternalIdHeader: 'External ID',
-  accountTokenStatusHeader: 'Token status'
+  accountTokenStatusHeader: 'Token status',
+  accountInformationHeader: 'Account Information',
+  accessTokenHeader: 'Access Token'
 }
