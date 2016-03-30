@@ -3,20 +3,12 @@ import path from 'path'
 import fetch from 'node-fetch'
 import cookieParser from 'cookie-parser'
 
-import protectedRouteMiddleware from './middlewares/protected'
 import initializeMiddleware from './middlewares/initialize-tree'
 import localeMiddleware from './middlewares/locale'
 import authMiddleware from './middlewares/auth'
-import {performActionsMiddleware} from './middlewares/perform-actions'
 
 import morgan from 'morgan'
-import defaultRoute from './route-handlers/default-route'
-import activateRoute from './route-handlers/activate-route'
-import intlRoute from './route-handlers/intl-route'
-import {loadUserCompaniesActionServerAdaptor} from './actions/load-user-companies-action'
-import {loadCompanyActionServerAdaptor} from './actions/load-company-action'
-import {loadPermissionsActionServerAdaptor} from './actions/load-permissions-action'
-import {loadRoleUsersActionServerAdaptor} from './actions/load-role-users-action'
+
 import {httpLogStream} from './logger'
 
 global.fetch = fetch
@@ -45,55 +37,8 @@ if (flags.developmentMode) {
   require('./dev-server-hook').devServerHook(app)
 }
 
-app.get('/intl/:locale', intlRoute)
-app.get('/', defaultRoute)
-app.get('/login', defaultRoute)
-app.get('/signup', defaultRoute)
-app.get('/me', protectedRouteMiddleware, defaultRoute)
-app.get('/waiting-confirmation', defaultRoute)
-app.get('/activate/:activationCode', activateRoute)
-
-app.get('/dashboard/companies',
-  protectedRouteMiddleware,
-  performActionsMiddleware(loadUserCompaniesActionServerAdaptor),
-  defaultRoute)
-
-app.get('/dashboard/companies/:company',
-  protectedRouteMiddleware,
-  performActionsMiddleware(
-    loadUserCompaniesActionServerAdaptor,
-    loadCompanyActionServerAdaptor),
-  defaultRoute)
-
-app.get('/dashboard/companies/:company/accounts',
-  protectedRouteMiddleware,
-  performActionsMiddleware(
-    loadUserCompaniesActionServerAdaptor,
-    loadCompanyActionServerAdaptor),
-  defaultRoute)
-
-app.get('/dashboard/companies/:company/roles',
-  protectedRouteMiddleware,
-  performActionsMiddleware(
-    loadUserCompaniesActionServerAdaptor,
-    loadCompanyActionServerAdaptor),
-  defaultRoute)
-
-app.get('/dashboard/companies/:company/roles/:role',
-  protectedRouteMiddleware,
-  performActionsMiddleware(
-    loadUserCompaniesActionServerAdaptor,
-    loadCompanyActionServerAdaptor,
-    loadPermissionsActionServerAdaptor),
-  defaultRoute)
-
-app.get('/dashboard/companies/:company/roles/:role/users',
-  protectedRouteMiddleware,
-  performActionsMiddleware(
-    loadUserCompaniesActionServerAdaptor,
-    loadCompanyActionServerAdaptor,
-    loadRoleUsersActionServerAdaptor),
-  defaultRoute)
+require('./routes/express')
+  .setAppRoutes(app)
 
 app.use(function errorHandler (_err, req, res, next) {
   // @todo logging

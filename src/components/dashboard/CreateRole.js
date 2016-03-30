@@ -1,11 +1,11 @@
 import React from 'react'
-import FormMixin from '../mixins/FormMixin'
-import SimpleInput from './SimpleInput'
-import SubmitButton from './SubmitButton'
+import FormMixin from '../../mixins/FormMixin'
+import SimpleInput from './../SimpleInput'
+import SubmitButton from './../SubmitButton'
 import {branch} from 'baobab-react/higher-order'
-import {createRoleAction} from '../actions/create-role-action'
-import {loadCompanyAction} from '../actions/load-company-action'
-import {pushSuccessMessageAction} from '../actions/push-success-message-action'
+import {createRoleAction} from '../../actions/create-role-action'
+import {loadCompanyAction} from '../../actions/load-company-action'
+import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 
 const {PropTypes} = React
 

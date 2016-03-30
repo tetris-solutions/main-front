@@ -2,7 +2,9 @@ export default {
   navSignup: 'Cadastrar',
   navLogin: 'Login',
   navLogout: 'Sair',
-  navAdmin: 'Dashboard',
+  navProfile: 'Seu Perfil',
+  navCompanies: 'Suas Empresas',
+  navDashboard: 'Dashboard',
   navRoleOptions: 'Opções',
   navRoleMembers: 'Membros'
 }

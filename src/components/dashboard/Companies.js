@@ -1,12 +1,12 @@
 import React from 'react'
-import Message from './intl/Message'
+import Message from './../intl/Message'
 import {branch} from 'baobab-react/higher-order'
 import map from 'lodash/map'
 
 const {PropTypes} = React
 
-export const Admin = React.createClass({
-  displayName: 'Admin',
+export const Companies = React.createClass({
+  displayName: 'Companies',
   propTypes: {
     companies: PropTypes.array.isRequired,
     children: PropTypes.node
@@ -47,7 +47,7 @@ export const Admin = React.createClass({
   }
 })
 
-export default branch(Admin, {
+export default branch(Companies, {
   cursors: {
     companies: ['user', 'companies']
   }

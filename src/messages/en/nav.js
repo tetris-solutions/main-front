@@ -2,7 +2,9 @@ export default {
   navSignup: 'Signup',
   navLogin: 'Login',
   navLogout: 'Logout',
-  navAdmin: 'Dashboard',
+  navDashboard: 'Dashboard',
+  navCompanies: 'Your Companies',
+  navProfile: 'Your Profile',
   navRoleOptions: 'Role',
   navRoleMembers: 'Members'
 }

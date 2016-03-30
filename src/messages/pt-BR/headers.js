@@ -1,6 +1,7 @@
 export default {
   permissionsHeader: 'Permissões do grupo',
-  adminHeader: 'Administração da empresa',
+  dashboardHeader: 'Painel',
+  adminHeader: 'Administração de organizações',
   newRoleHeader: 'Novo grupo',
   roleListHeader: 'Grupos',
   accountListHeader: 'Contas externas'

@@ -7,3 +7,5 @@ export const CompanyAccounts = React.createClass({
     )
   }
 })
+
+export default CompanyAccounts

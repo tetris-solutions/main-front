@@ -1,6 +1,6 @@
 import test from 'ava'
 import noop from 'lodash/noop'
-import {render, initialize} from '../test/helpers/render'
+import {render, initialize} from '../../test/helpers/render'
 import each from 'lodash/each'
 import delay from 'delay'
 
@@ -8,7 +8,7 @@ test.before(initialize)
 
 test('renders all attribute inputs', t => {
   const props = {user: {name: 'Obama', email: 'xx@xxx.com'}, actions: {updateMe: noop}}
-  const {Me} = require('./Me')
+  const {Me} = require('./Profile')
   const {element, unmount} = render(Me, props)
   const ReactTestUtils = require('react-addons-test-utils')
   const form = ReactTestUtils.findRenderedDOMComponentWithTag(element, 'form')
@@ -26,7 +26,7 @@ test('renders all attribute inputs', t => {
 
 test('renders avatar in img', t => {
   const props = {user: {avatar: 'http://placehold.it/480x480'}, actions: {updateMe: noop}}
-  const {Me} = require('./Me')
+  const {Me} = require('./Profile')
   const {element, unmount} = render(Me, props)
   const ReactTestUtils = require('react-addons-test-utils')
   const img = ReactTestUtils.findRenderedDOMComponentWithTag(element, 'img')
@@ -54,7 +54,7 @@ test('`handleSubmit` calls `updateMe` action passing form values', t => {
       }
     }
   }
-  const {Me} = require('./Me')
+  const {Me} = require('./Profile')
   const {element, unmount} = render(Me, props)
 
   element.handleSubmitException = noop
