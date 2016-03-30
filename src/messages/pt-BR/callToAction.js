@@ -3,5 +3,7 @@ export default {
   callToActionSubmit: 'Enviar',
   callToActionSave: 'Salvar',
   manageYourProfile: 'Gerencie seu perfil de usuário',
-  manageYourCompanies: 'Gerencie suas empresas'
+  manageYourCompanies: 'Gerencie suas empresas',
+  unlinkAccount: 'Desvincular conta',
+  linkFacebookAccount: 'Vincular conta Facebook'
 }

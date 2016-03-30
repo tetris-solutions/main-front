@@ -1,6 +1,6 @@
 import React from 'react'
 import Message from '../intl/Message'
-import {Link} from 'react-router'
+import CompanyAccountRow from './CompanyAccountRow'
 import {branch} from 'baobab-react/higher-order'
 import map from 'lodash/map'
 
@@ -12,48 +12,35 @@ export const CompanyAccounts = React.createClass({
     params: PropTypes.object
   },
   render () {
-    const {accounts} = this.props
+    const linkFBAccountUrl = `${process.env.TKM_URL}/company/${this.props.params.company}/link/facebook`
     return (
-      <table className='table'>
-        <thead>
-          <tr>
-            <th><Message>accountExternalIdHeader</Message></th>
-            <th><Message>accountNameHeader</Message></th>
-            <th><Message>accountPlatformHeader</Message></th>
-            <th><Message>accountTokenStatusHeader</Message></th>
-          </tr>
-        </thead>
-        <tbody>
-        {map(accounts, ({id, platform, external_id, token_status, name}, index) => (
-          <tr key={index}>
-            <td>
-              <Link to={`/dashboard/account/${id}`}>
-                {external_id}
-              </Link>
-            </td>
-            <td>{name || '--'}</td>
-            <td>{platform}</td>
-            <td>
-              {token_status === 'ok' && (
-                <span className='text-success'>
-                  <Message>okTokenLabel</Message>
-                </span>
-              )}
-              {token_status === 'invalid' && (
-                <span className='text-danger'>
-                  <Message>invalidTokenLabel</Message>
-                </span>
-              )}
-              {token_status === 'unknown' && (
-                <span className='text-warning'>
-                  <Message>unknownTokenStatusLabel</Message>
-                </span>
-              )}
-            </td>
-          </tr>
-        ))}
-        </tbody>
-      </table>
+      <div>
+        <p className='text-right'>
+          <a className='btn btn-primary' href={linkFBAccountUrl}>
+            <Message>linkFacebookAccount</Message>
+          </a>
+        </p>
+        <table className='table'>
+          <thead>
+            <tr>
+              <th><Message>accountExternalIdHeader</Message></th>
+              <th><Message>accountNameHeader</Message></th>
+              <th><Message>accountPlatformHeader</Message></th>
+              <th><Message>accountTokenStatusHeader</Message></th>
+              <th/>
+            </tr>
+          </thead>
+          <tbody>
+
+          {map(this.props.accounts, (account, index) =>
+            <CompanyAccountRow
+              key={index}
+              account={account}
+              company={this.props.params.company}/>)}
+
+          </tbody>
+        </table>
+      </div>
     )
   }
 })

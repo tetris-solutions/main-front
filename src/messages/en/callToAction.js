@@ -3,5 +3,7 @@ export default {
   callToActionSubmit: 'Send',
   callToActionSave: 'Save',
   manageYourProfile: 'Manage your profile',
-  manageYourCompanies: 'Manage your companies'
+  manageYourCompanies: 'Manage your companies',
+  unlinkAccount: 'Unlink account',
+  linkFacebookAccount: 'Link Facebook account'
 }
