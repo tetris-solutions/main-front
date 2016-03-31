@@ -2,19 +2,38 @@ import React from 'react'
 import {branch} from 'baobab-react/higher-order'
 import toUpper from 'lodash/toUpper'
 import Message from '../intl/Message'
+import {deleteAccountAction} from '../../actions/delete-account-action'
+import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
+import FormMixin from '../../mixins/FormMixin'
+import SubmitButton from './../SubmitButton'
+import get from 'lodash/get'
 
 const {PropTypes} = React
 
 export const AccountEdit = React.createClass({
+  mixins: [FormMixin],
   propTypes: {
-    account: PropTypes.object
+    account: PropTypes.object,
+    actions: PropTypes.shape({
+      notifySuccess: PropTypes.func,
+      removeAccount: PropTypes.func
+    })
   },
   contextTypes: {
-    moment: PropTypes.func.isRequired
+    moment: PropTypes.func,
+    router: PropTypes.object
   },
   removeAccount (e) {
     e.preventDefault()
-    // @todo: call action; etc
+
+    this.preSubmit()
+
+    const {account, actions: {notifySuccess, removeAccount}} = this.props
+
+    return removeAccount(account.id)
+      .then(() => notifySuccess())
+      .then(this.posSubmit)
+      .then(() => this.context.router.push('/dashboard'))
   },
   render () {
     const {
@@ -29,6 +48,7 @@ export const AccountEdit = React.createClass({
     const {moment} = this.context
 
     let tokenSession = null
+    const issuedAt = get(token, 'issuedAt') || token_timestamp
 
     if (token) {
       tokenSession = (
@@ -41,7 +61,7 @@ export const AccountEdit = React.createClass({
             <dt>
               <Message>accessTokenTimestamp</Message>
             </dt>
-            <dd>{moment(token_timestamp).fromNow()}</dd>
+            <dd>{moment(issuedAt).fromNow()}</dd>
             <dt>
               <Message>accessTokenExpiration</Message>
             </dt>
@@ -52,9 +72,9 @@ export const AccountEdit = React.createClass({
             </dd>
           </dl>
 
-          <p className='well' style={{wordWrap: 'break-word'}}>
-            {token}
-          </p>
+          <pre className='well' style={{wordWrap: 'break-word'}}>
+            {JSON.stringify(token, null, 2)}
+          </pre>
         </session>
       )
     }
@@ -64,7 +84,7 @@ export const AccountEdit = React.createClass({
         <div className='panel-heading'>
           {toUpper(platform)} :: {name || external_id}
         </div>
-        <div className='panel-body'>
+        <form className='panel-body' onSubmit={this.removeAccount}>
           <div className='row'>
             <div className='col-sm-6'>
               <h4>
@@ -83,10 +103,10 @@ export const AccountEdit = React.createClass({
           </div>
 
           <hr/>
-          <a className='btn btn-warning' onClick={this.removeAccount}>
-            <Message>removeAccount</Message>
-          </a>
-        </div>
+          <p className='text-right'>
+            <SubmitButton color='red' label='removeAccount'/>
+          </p>
+        </form>
       </div>
     )
   }
@@ -97,5 +117,9 @@ export default branch(AccountEdit, {
     return {
       account: ['accounts', props.params.account]
     }
+  },
+  actions: {
+    removeAccount: deleteAccountAction,
+    notifySuccess: pushSuccessMessageAction
   }
 })
