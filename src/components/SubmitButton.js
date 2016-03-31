@@ -9,15 +9,16 @@ export default React.createClass({
     submitInProgress: PropTypes.bool.isRequired
   },
   propTypes: {
-    label: PropTypes.string,
+    labelMessage: PropTypes.string,
     color: PropTypes.string,
-    size: PropTypes.string
+    size: PropTypes.string,
+    onClick: PropTypes.func
   },
   getDefaultProps () {
     return {
       color: 'mint',
       size: 's',
-      label: 'callToActionSubmit'
+      labelMessage: 'callToActionSubmit'
     }
   },
   componentDidMount () {
@@ -40,20 +41,24 @@ export default React.createClass({
     const {
       color,
       size,
-      label
+      labelMessage,
+      onClick
     } = this.props
+    const type = onClick ? undefined : 'submit'
+
     return (
       <button
-        type='submit'
+        type={type}
         name='submitButton'
         ref='btn'
+        onClick={onClick}
         className='ladda-button'
         data-style='expand-right'
         data-color={color}
         data-size={size}>
 
         <span className='ladda-label'>
-          <Message>{label}</Message>
+          <Message>{labelMessage}</Message>
         </span>
 
       </button>

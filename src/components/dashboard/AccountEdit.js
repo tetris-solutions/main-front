@@ -32,8 +32,8 @@ export const AccountEdit = React.createClass({
 
     return removeAccount(account.id)
       .then(() => notifySuccess())
-      .then(this.posSubmit)
       .then(() => this.context.router.push('/dashboard'))
+      .catch(this.posSubmit)
   },
   render () {
     const {
@@ -91,6 +91,17 @@ export const AccountEdit = React.createClass({
                 <Message>accountInformationHeader</Message>
               </h4>
               <dl>
+
+                <dt><Message>accountPlatformHeader</Message></dt>
+                <dd>{platform}</dd>
+
+                {name && (
+                  <dt>
+                    <Message>accountNameHeader</Message>
+                  </dt>)}
+
+                {name && <dd>{name}</dd>}
+
                 <dt>
                   <Message>accountExternalIdHeader</Message>
                 </dt>
@@ -104,7 +115,7 @@ export const AccountEdit = React.createClass({
 
           <hr/>
           <p className='text-right'>
-            <SubmitButton color='red' label='removeAccount'/>
+            <SubmitButton color='red' labelMessage='removeAccount'/>
           </p>
         </form>
       </div>

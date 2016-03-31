@@ -5,10 +5,13 @@ import {branch} from 'baobab-react/higher-order'
 import {deleteCompanyAccountAction} from '../../actions/delete-company-account-action'
 import {loadCompanyAccountsAction} from '../../actions/load-company-accounts-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
+import FormMixin from '../../mixins/FormMixin'
+import SubmitButton from './../SubmitButton'
 
 const {PropTypes} = React
 
 export const CompanyAccountRow = React.createClass({
+  mixins: [FormMixin],
   propTypes: {
     account: PropTypes.shape({
       id: PropTypes.string,
@@ -36,9 +39,12 @@ export const CompanyAccountRow = React.createClass({
       }, company, account
     } = this.props
 
+    this.preSubmit()
+
     return unlinkCompanyAccount(account.company_account)
       .then(() => notifySuccess())
       .then(() => reloadAccounts(company))
+      .catch(this.posSubmit)
   },
   render () {
     const {id, platform, external_id, token_status, name} = this.props.account
@@ -72,9 +78,11 @@ export const CompanyAccountRow = React.createClass({
           )}
         </td>
         <td className='text-right'>
-          <a href='' className='text-danger' onClick={this.unlink}>
-            <Message>unlinkAccount</Message>
-          </a>
+          <SubmitButton
+            onClick={this.unlink}
+            color='red'
+            size='xs'
+            labelMessage='unlinkAccount'/>
         </td>
       </tr>
     )
