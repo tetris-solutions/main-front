@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './Header'
 import {branch} from 'baobab-react/higher-order'
 import {ToastContainer, ToastMessage} from 'react-toastr'
+import _moment from 'moment'
 
 const isServer = typeof window === 'undefined'
 const ToastMessageFactory = React.createFactory(ToastMessage.animation)
@@ -24,11 +25,22 @@ export const Root = React.createClass({
     locales: PropTypes.string,
     messages: PropTypes.object,
     location: PropTypes.object,
-    params: PropTypes.object
+    params: PropTypes.object,
+    moment: PropTypes.func
   },
   getChildContext () {
     const {location, params, intl: {locales, messages}} = this.props
-    return {locales, messages, location, params}
+    return {
+      locales,
+      messages,
+      location,
+      params,
+      moment () {
+        const m = _moment(...arguments)
+        m.locale(locales)
+        return m
+      }
+    }
   },
   addAlerts () {
     if (isServer) return

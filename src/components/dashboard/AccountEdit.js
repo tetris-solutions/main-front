@@ -2,13 +2,15 @@ import React from 'react'
 import {branch} from 'baobab-react/higher-order'
 import toUpper from 'lodash/toUpper'
 import Message from '../intl/Message'
-import moment from 'moment'
 
 const {PropTypes} = React
 
 export const AccountEdit = React.createClass({
   propTypes: {
     account: PropTypes.object
+  },
+  contextTypes: {
+    moment: PropTypes.func.isRequired
   },
   removeAccount (e) {
     e.preventDefault()
@@ -23,6 +25,8 @@ export const AccountEdit = React.createClass({
       token_timestamp,
       external_id
     } = this.props.account
+
+    const {moment} = this.context
 
     let tokenSession = null
 
@@ -41,7 +45,11 @@ export const AccountEdit = React.createClass({
             <dt>
               <Message>accessTokenExpiration</Message>
             </dt>
-            <dd>{token_expiration ? moment(token_expiration).fromNow() : '--'}</dd>
+            <dd>
+              {token_expiration
+                ? moment(token_expiration).fromNow()
+                : '--'}
+            </dd>
           </dl>
 
           <p className='well' style={{wordWrap: 'break-word'}}>
