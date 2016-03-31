@@ -11,6 +11,7 @@ import SubmitButton from './../SubmitButton'
 const {PropTypes} = React
 
 export const CompanyAccountRow = React.createClass({
+  displayName: 'Company-Account-Row',
   mixins: [FormMixin],
   propTypes: {
     account: PropTypes.shape({

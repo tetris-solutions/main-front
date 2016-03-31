@@ -8,8 +8,8 @@ test.before(initialize)
 
 test('renders all attribute inputs', t => {
   const props = {user: {name: 'Obama', email: 'xx@xxx.com'}, actions: {updateMe: noop}}
-  const {Me} = require('./Profile')
-  const {element, unmount} = render(Me, props)
+  const {Profile} = require('./Profile')
+  const {element, unmount} = render(Profile, props)
   const ReactTestUtils = require('react-addons-test-utils')
   const form = ReactTestUtils.findRenderedDOMComponentWithTag(element, 'form')
 
@@ -26,8 +26,8 @@ test('renders all attribute inputs', t => {
 
 test('renders avatar in img', t => {
   const props = {user: {avatar: 'http://placehold.it/480x480'}, actions: {updateMe: noop}}
-  const {Me} = require('./Profile')
-  const {element, unmount} = render(Me, props)
+  const {Profile} = require('./Profile')
+  const {element, unmount} = render(Profile, props)
   const ReactTestUtils = require('react-addons-test-utils')
   const img = ReactTestUtils.findRenderedDOMComponentWithTag(element, 'img')
 
@@ -54,8 +54,8 @@ test('`handleSubmit` calls `updateMe` action passing form values', t => {
       }
     }
   }
-  const {Me} = require('./Profile')
-  const {element, unmount} = render(Me, props)
+  const {Profile} = require('./Profile')
+  const {element, unmount} = render(Profile, props)
 
   element.handleSubmitException = noop
 

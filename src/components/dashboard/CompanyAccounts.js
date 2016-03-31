@@ -7,6 +7,7 @@ import map from 'lodash/map'
 const {PropTypes} = React
 
 export const CompanyAccounts = React.createClass({
+  displayName: 'Company-Accounts',
   propTypes: {
     accounts: PropTypes.array,
     params: PropTypes.object

@@ -6,7 +6,7 @@ import cx from 'classnames'
 const {PropTypes, cloneElement} = React
 
 export const CompanyRoles = React.createClass({
-  displayName: 'CompanyRoles',
+  displayName: 'Company-Roles',
   propTypes: {
     company: PropTypes.object,
     params: PropTypes.object,

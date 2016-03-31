@@ -10,8 +10,55 @@ import get from 'lodash/get'
 
 const {PropTypes} = React
 
+function AccountToken ({
+  account: {
+    token,
+    token_expiration,
+    token_timestamp
+  }
+}, {moment}) {
+  const issuedAt = get(token, 'issuedAt') || token_timestamp
+
+  return (
+    <session>
+      <h4>
+        <Message>accessTokenHeader</Message>
+      </h4>
+
+      <dl>
+        <dt>
+          <Message>accessTokenTimestamp</Message>
+        </dt>
+        <dd>{moment(issuedAt).fromNow()}</dd>
+        <dt>
+          <Message>accessTokenExpiration</Message>
+        </dt>
+        <dd>
+          {token_expiration
+            ? moment(token_expiration).fromNow()
+            : '--'}
+        </dd>
+      </dl>
+
+      <pre className='well' style={{wordWrap: 'break-word'}}>
+        {JSON.stringify(token, null, 2)}
+      </pre>
+
+    </session>
+  )
+}
+
+AccountToken.displayName = 'Account-Token'
+AccountToken.contextTypes = {
+  moment: PropTypes.func
+}
+AccountToken.propTypes = {
+  account: PropTypes.object
+}
+
 export const AccountEdit = React.createClass({
   mixins: [FormMixin],
+  displayName: 'Account-Edit',
   propTypes: {
     account: PropTypes.object,
     actions: PropTypes.shape({
@@ -20,7 +67,7 @@ export const AccountEdit = React.createClass({
     })
   },
   contextTypes: {
-    moment: PropTypes.func,
+
     router: PropTypes.object
   },
   removeAccount (e) {
@@ -37,47 +84,12 @@ export const AccountEdit = React.createClass({
   },
   render () {
     const {
+      id,
       platform,
       name,
       token,
-      token_expiration,
-      token_timestamp,
       external_id
     } = this.props.account
-
-    const {moment} = this.context
-
-    let tokenSession = null
-    const issuedAt = get(token, 'issuedAt') || token_timestamp
-
-    if (token) {
-      tokenSession = (
-        <session>
-          <h4>
-            <Message>accessTokenHeader</Message>
-          </h4>
-
-          <dl>
-            <dt>
-              <Message>accessTokenTimestamp</Message>
-            </dt>
-            <dd>{moment(issuedAt).fromNow()}</dd>
-            <dt>
-              <Message>accessTokenExpiration</Message>
-            </dt>
-            <dd>
-              {token_expiration
-                ? moment(token_expiration).fromNow()
-                : '--'}
-            </dd>
-          </dl>
-
-          <pre className='well' style={{wordWrap: 'break-word'}}>
-            {JSON.stringify(token, null, 2)}
-          </pre>
-        </session>
-      )
-    }
 
     return (
       <div className='panel panel-default'>
@@ -109,13 +121,25 @@ export const AccountEdit = React.createClass({
               </dl>
             </div>
             <div className='col-sm-6'>
-              {tokenSession}
+              {token && <AccountToken {...this.props}/>}
             </div>
           </div>
 
           <hr/>
-          <p className='text-right'>
+          <p>
             <SubmitButton color='red' labelMessage='removeAccount'/>
+
+            <a
+              className='ladda-button pull-right'
+              data-size='s'
+              data-color='mint'
+              href={`${process.env.TKM_URL}/account/${id}/login/${platform}`}>
+
+              <span className='ladda-label'>
+                <Message>refreshToken</Message>
+              </span>
+
+            </a>
           </p>
         </form>
       </div>

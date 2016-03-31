@@ -6,5 +6,6 @@ export default {
   manageYourCompanies: 'Gerencie suas empresas',
   unlinkAccount: 'Desvincular conta',
   linkFacebookAccount: 'Vincular conta Facebook',
-  removeAccount: 'Remover conta'
+  removeAccount: 'Remover conta',
+  refreshToken: 'Renovar token'
 }

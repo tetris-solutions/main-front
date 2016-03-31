@@ -36,7 +36,10 @@ function DashboardNav () {
   )
 }
 
+DashboardNav.displayName = 'Dashboard-Nav'
+
 export const Dashboard = React.createClass({
+  displayName: 'Dashboard',
   propTypes: {
     children: React.PropTypes.node
   },

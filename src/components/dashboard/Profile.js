@@ -8,8 +8,8 @@ import {pushSuccessMessageAction} from '../../actions/push-success-message-actio
 
 const {PropTypes, createClass} = React
 
-export const Me = createClass({
-  displayName: 'Me',
+export const Profile = createClass({
+  displayName: 'Profile',
   mixins: [FormMixin],
   propTypes: {
     user: PropTypes.object.isRequired,
@@ -86,7 +86,7 @@ export const Me = createClass({
   }
 })
 
-export default branch(Me, {
+export default branch(Profile, {
   cursors: {
     user: ['user']
   },
