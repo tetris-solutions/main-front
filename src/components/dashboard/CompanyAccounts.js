@@ -13,24 +13,31 @@ export const CompanyAccounts = React.createClass({
     params: PropTypes.object
   },
   render () {
-    const linkFBAccountUrl = `${process.env.TKM_URL}/company/${this.props.params.company}/link/facebook`
+    const {params: {company}} = this.props
+
+    const tableHeaders = (
+      <tr>
+        <th><Message>accountExternalIdHeader</Message></th>
+        <th><Message>accountNameHeader</Message></th>
+        <th><Message>accountPlatformHeader</Message></th>
+        <th><Message>accountTokenStatusHeader</Message></th>
+        <th/>
+      </tr>
+    )
+
     return (
       <div>
         <p className='text-right'>
-          <a className='btn btn-primary' href={linkFBAccountUrl}>
+          <a className='btn btn-success' href={`${process.env.TKM_URL}/company/${company}/link/adwords`}>
+            <Message>linkAdWordsAccount</Message>
+          </a>
+          &nbsp;
+          <a className='btn btn-primary' href={`${process.env.TKM_URL}/company/${company}/link/facebook`}>
             <Message>linkFacebookAccount</Message>
           </a>
         </p>
         <table className='table'>
-          <thead>
-            <tr>
-              <th><Message>accountExternalIdHeader</Message></th>
-              <th><Message>accountNameHeader</Message></th>
-              <th><Message>accountPlatformHeader</Message></th>
-              <th><Message>accountTokenStatusHeader</Message></th>
-              <th/>
-            </tr>
-          </thead>
+          <thead>{tableHeaders}</thead>
           <tbody>
 
           {map(this.props.accounts, (account, index) =>

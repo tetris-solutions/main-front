@@ -6,10 +6,20 @@ import {deleteAccountAction} from '../../actions/delete-account-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 import FormMixin from '../../mixins/FormMixin'
 import SubmitButton from './../SubmitButton'
-import get from 'lodash/get'
 
 const {PropTypes} = React
 
+function getIssuedAtFromToken (token) {
+  if (!token) return null
+
+  const {issued_at, created} = token
+
+  if (!created && !issued_at) return null
+
+  return created
+    ? Number(created) * 1000
+    : issued_at
+}
 function AccountToken ({
   account: {
     token,
@@ -17,7 +27,7 @@ function AccountToken ({
     token_timestamp
   }
 }, {moment}) {
-  const issuedAt = get(token, 'issuedAt') || token_timestamp
+  const issuedAt = getIssuedAtFromToken(token) || token_timestamp
 
   return (
     <session>
