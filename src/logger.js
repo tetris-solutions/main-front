@@ -1,5 +1,6 @@
 import winston from 'winston'
 import {Logstash} from 'winston-logstash'
+import os from 'os'
 
 const transports = [
   new winston.transports.Console({
@@ -14,7 +15,7 @@ if (!process.env.SILENT) {
   transports.push(new Logstash({
     level: 'debug',
     port: 28777,
-    node_name: 'main-front',
+    node_name: 'main-front@' + os.hostname(),
     host: process.env.LOGSTASH_HOST
   }))
 }
