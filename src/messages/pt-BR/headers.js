@@ -1,7 +1,6 @@
 export default {
   permissionsHeader: 'Permissões do grupo',
   dashboardHeader: 'Painel',
-  adminHeader: 'Administração de organizações',
   newRoleHeader: 'Novo grupo',
   roleListHeader: 'Grupos',
   accountListHeader: 'Contas externas',
@@ -10,5 +9,6 @@ export default {
   accountExternalIdHeader: 'ID Externo',
   accountTokenStatusHeader: 'Status do token',
   accountInformationHeader: 'Informações da conta',
-  accessTokenHeader: 'Token de acesso'
+  accessTokenHeader: 'Token de acesso',
+  newCompanyHeader: 'Nova empresa'
 }

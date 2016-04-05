@@ -1,6 +1,6 @@
 import React from 'react'
 import omit from 'lodash/omit'
-
+import trim from 'lodash/trim'
 const {PropTypes} = React
 
 export default React.createClass({
@@ -10,12 +10,15 @@ export default React.createClass({
     messages: PropTypes.object
   },
   propTypes: {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.string.isRequired,
     html: PropTypes.bool
   },
   render () {
+    const messageName = trim(this.props.children)
+
+    if (!messageName) return '[ ___ ]'
+
     const {FormattedMessage, FormattedHTMLMessage} = ReactIntl
-    const messageName = this.props.children
     const Component = this.props.html
       ? FormattedHTMLMessage
       : FormattedMessage

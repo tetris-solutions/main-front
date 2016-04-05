@@ -19,8 +19,8 @@ export const EditCompany = React.createClass({
   render () {
     const {company, children, params} = this.props
     const {router: {isActive}} = this.context
-    const rolesPath = `/dashboard/companies/${params.company}/roles`
-    const accountsPath = `/dashboard/companies/${params.company}/accounts`
+    const rolesPath = `/dashboard/company/${params.company}/roles`
+    const accountsPath = `/dashboard/company/${params.company}/accounts`
 
     return (
       <div>

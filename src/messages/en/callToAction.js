@@ -8,5 +8,6 @@ export default {
   linkFacebookAccount: 'Link Facebook account',
   linkAdWordsAccount: 'Link AdWords account',
   removeAccount: 'Remove account',
-  refreshToken: 'Refresh token'
+  refreshToken: 'Refresh token',
+  createCompany: 'Create a new company'
 }

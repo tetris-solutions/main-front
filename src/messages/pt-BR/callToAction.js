@@ -8,5 +8,6 @@ export default {
   linkFacebookAccount: 'Vincular conta Facebook',
   linkAdWordsAccount: 'Vincular conta Adwords',
   removeAccount: 'Remover conta',
-  refreshToken: 'Renovar token'
+  refreshToken: 'Renovar token',
+  createCompany: 'Criar nova empresa'
 }

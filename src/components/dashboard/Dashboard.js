@@ -10,25 +10,29 @@ function DashboardNav () {
       </h3>
       <div className='row'>
         <Link to='/dashboard/profile' className='col-sm-6 col-md-4 col-md-offset-2 text-center'>
-          <h1 className='glyphicon glyphicon-user'/>
-          <div className='caption'>
-            <h3>
-              <Message>navProfile</Message>
-            </h3>
-            <p>
-              <Message>manageYourProfile</Message>
-            </p>
+          <div className='thumbnail'>
+            <h1 className='glyphicon glyphicon-user'/>
+            <div className='caption'>
+              <h3>
+                <Message>navProfile</Message>
+              </h3>
+              <p>
+                <Message>manageYourProfile</Message>
+              </p>
+            </div>
           </div>
         </Link>
         <Link to='/dashboard/companies' className='col-sm-6 col-md-4 text-center'>
-          <h1 className='glyphicon glyphicon-briefcase huge'/>
-          <div className='caption'>
-            <h3>
-              <Message>navCompanies</Message>
-            </h3>
-            <p>
-              <Message>manageYourCompanies</Message>
-            </p>
+          <div className='thumbnail'>
+            <h1 className='glyphicon glyphicon-briefcase huge'/>
+            <div className='caption'>
+              <h3>
+                <Message>navCompanies</Message>
+              </h3>
+              <p>
+                <Message>manageYourCompanies</Message>
+              </p>
+            </div>
           </div>
         </Link>
       </div>

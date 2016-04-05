@@ -1,7 +1,6 @@
 export default {
   permissionsHeader: 'Group permissions',
   dashboardHeader: 'Dashboard',
-  adminHeader: 'Company administration',
   newRoleHeader: 'New role',
   roleListHeader: 'Roles',
   accountListHeader: 'External accounts',
@@ -10,5 +9,6 @@ export default {
   accountExternalIdHeader: 'External ID',
   accountTokenStatusHeader: 'Token status',
   accountInformationHeader: 'Account Information',
-  accessTokenHeader: 'Access Token'
+  accessTokenHeader: 'Access Token',
+  newCompanyHeader: 'New company'
 }

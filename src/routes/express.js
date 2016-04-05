@@ -25,14 +25,18 @@ export function setAppRoutes (app) {
     performActionsMiddleware(loadUserCompaniesActionServerAdaptor),
     uiRoute)
 
-  app.get('/dashboard/companies/:company',
+  app.get('/dashboard/create/company',
+    protectedRouteMiddleware,
+    uiRoute)
+
+  app.get('/dashboard/company/:company',
     protectedRouteMiddleware,
     performActionsMiddleware(
       loadUserCompaniesActionServerAdaptor,
       loadCompanyActionServerAdaptor),
     uiRoute)
 
-  app.get('/dashboard/companies/:company/accounts',
+  app.get('/dashboard/company/:company/accounts',
     protectedRouteMiddleware,
     performActionsMiddleware(
       loadUserCompaniesActionServerAdaptor,
@@ -46,14 +50,14 @@ export function setAppRoutes (app) {
       loadAccountActionServerAdaptor),
     uiRoute)
 
-  app.get('/dashboard/companies/:company/roles',
+  app.get('/dashboard/company/:company/roles',
     protectedRouteMiddleware,
     performActionsMiddleware(
       loadUserCompaniesActionServerAdaptor,
       loadCompanyActionServerAdaptor),
     uiRoute)
 
-  app.get('/dashboard/companies/:company/roles/:role',
+  app.get('/dashboard/company/:company/roles/:role',
     protectedRouteMiddleware,
     performActionsMiddleware(
       loadUserCompaniesActionServerAdaptor,
@@ -61,7 +65,7 @@ export function setAppRoutes (app) {
       loadPermissionsActionServerAdaptor),
     uiRoute)
 
-  app.get('/dashboard/companies/:company/roles/:role/users',
+  app.get('/dashboard/company/:company/roles/:role/users',
     protectedRouteMiddleware,
     performActionsMiddleware(
       loadUserCompaniesActionServerAdaptor,

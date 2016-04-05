@@ -20,13 +20,13 @@ export const CompanyRoles = React.createClass({
           <ul className='nav nav-pills nav-stacked'>
             {company.roles.map(({id, name}, index) => (
               <li key={index} className={cx(params.role === id && 'active')}>
-                <Link to={`/dashboard/companies/${params.company}/roles/${id}`}>
+                <Link to={`/dashboard/company/${params.company}/roles/${id}`}>
                   {name}
                 </Link>
               </li>
             ))}
             <li className={cx(!params.role && 'active')}>
-              <Link to={`/dashboard/companies/${params.company}/roles`}>
+              <Link to={`/dashboard/company/${params.company}/roles`}>
                 <Message>newRoleHeader</Message>
               </Link>
             </li>

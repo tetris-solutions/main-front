@@ -30,18 +30,18 @@ export function dashboardRoutes (preload) {
     <Route path='dashboard' component={Dashboard}>
       <Route path='profile' component={Profile}/>
 
-      <Route path='companies' component={Companies} onEnter={preload(loadUserCompaniesActionRouterAdaptor)}>
-        <IndexRoute component={CreateCompany}/>
-        <Route path=':company' component={EditCompany} onEnter={preload(loadCompanyActionRouterAdaptor)}>
-          <Route path='roles' component={CompanyRoles}>
-            <IndexRoute component={CreateRole}/>
-            <Route path=':role' component={CompanyRole}>
-              <IndexRoute component={RoleOptions} onEnter={preload(loadPermissionsActionRouterAdaptor)}/>
-              <Route path='users' component={RoleUsers} onEnter={preload(loadRoleUsersActionRouteAdaptor)}/>
-            </Route>
+      <Route path='companies' component={Companies} onEnter={preload(loadUserCompaniesActionRouterAdaptor)}/>
+      <Route path='create/company' component={CreateCompany}/>
+
+      <Route path='company/:company' component={EditCompany} onEnter={preload(loadCompanyActionRouterAdaptor)}>
+        <Route path='roles' component={CompanyRoles}>
+          <IndexRoute component={CreateRole}/>
+          <Route path=':role' component={CompanyRole}>
+            <IndexRoute component={RoleOptions} onEnter={preload(loadPermissionsActionRouterAdaptor)}/>
+            <Route path='users' component={RoleUsers} onEnter={preload(loadRoleUsersActionRouteAdaptor)}/>
           </Route>
-          <Route path='accounts' component={CompanyAccounts} onEnter={preload(loadCompanyAccountsActionRouterAdaptor)}/>
         </Route>
+        <Route path='accounts' component={CompanyAccounts} onEnter={preload(loadCompanyAccountsActionRouterAdaptor)}/>
       </Route>
 
       <Route path='account/:account' component={AccountEdit} onEnter={preload(loadAccountActionRouterAdaptor)}/>

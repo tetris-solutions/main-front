@@ -30,7 +30,7 @@ export const CreateCompany = React.createClass({
     return createCompany(e.target.elements.name.value)
       .then(response => loadUserCompanies()
         .then(() => {
-          this.context.router.push(`/dashboard/companies/${response.data.id}`)
+          this.context.router.push(`/dashboard/company/${response.data.id}`)
         }))
       .then(() => pushSuccessMessage())
       .catch(this.handleSubmitException)
