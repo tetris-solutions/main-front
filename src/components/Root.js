@@ -3,6 +3,9 @@ import Header from './Header'
 import {branch} from 'baobab-react/higher-order'
 import {ToastContainer, ToastMessage} from 'react-toastr'
 import _moment from 'moment'
+import window from 'global/window'
+import get from 'lodash/get'
+import omit from 'lodash/omit'
 
 const isServer = typeof window === 'undefined'
 const ToastMessageFactory = React.createFactory(ToastMessage.animation)
@@ -18,8 +21,14 @@ export const Root = React.createClass({
       locales: PropTypes.string,
       messages: PropTypes.object
     }),
+    actions: PropTypes.shape({
+      pushErrorMessage: PropTypes.func
+    }),
     location: PropTypes.object,
     params: PropTypes.object
+  },
+  contextTypes: {
+    router: PropTypes.object
   },
   childContextTypes: {
     locales: PropTypes.string,
@@ -59,6 +68,20 @@ export const Root = React.createClass({
   componentDidMount () {
     this.alertTailIndex = 0
     this.addAlerts()
+    const redirectError = get(this, 'props.location.query.error')
+
+    if (!redirectError) return
+
+    const {query, pathname} = this.props.location
+
+    const location = {
+      query: omit(query, 'error'),
+      pathname: pathname
+    }
+
+    this.props.actions
+      .pushErrorMessage(window.atob(redirectError))
+      .then(() => this.context.router.push(location))
   },
   componentDidUpdate () {
     this.addAlerts()
@@ -83,5 +106,11 @@ export default branch(Root, {
     user: ['user'],
     intl: ['intl'],
     alerts: ['alerts']
+  },
+  actions: {
+    pushErrorMessage (tree, message) {
+      return Promise.resolve()
+        .then(() => tree.push('alerts', {message}))
+    }
   }
 })

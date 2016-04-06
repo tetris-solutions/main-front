@@ -89,7 +89,9 @@ export const AccountEdit = React.createClass({
 
     return removeAccount(account.id)
       .then(() => notifySuccess())
-      .then(() => this.context.router.push('/dashboard'))
+      .then(() => {
+        this.context.router.goBack()
+      })
       .catch(this.posSubmit)
   },
   render () {
