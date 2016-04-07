@@ -13,6 +13,7 @@ import {loadAccountActionServerAdaptor} from '../actions/load-account-action'
 export function setAppRoutes (app) {
   app.get('/intl/:locale', intlRoute)
   app.get('/', uiRoute)
+  app.get('/error', uiRoute)
   app.get('/login', uiRoute)
   app.get('/signup', uiRoute)
   app.get('/dashboard', protectedRouteMiddleware, uiRoute)

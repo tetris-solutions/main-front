@@ -1,3 +1,5 @@
+import {processRequestError} from '../functions/process-request-error'
+
 /**
  * creates a middleware that resolves a number of actions before going on
  * @param {...Function} actions actions to be performed before next is called
@@ -18,7 +20,10 @@ export function performActionsMiddleware (...actions) {
       promise = promise.then(() => action(req, res))
     })
 
-    return promise.then(() => next(), err => next(err))
+    return promise.then(() => next(), err => {
+      processRequestError(err, req, res)
+      next()
+    })
   }
 
   return resolveActions

@@ -14,9 +14,12 @@ export function performLoadAction (tree, action) {
    */
   function onEnter (nextState, replace, callback) {
     action(nextState, tree).then(() => callback(),
-      _err => {
-        // @todo show/redirect to error view
+      err => {
+        tree.set('error', err)
+        tree.commit()
+        callback(err)
       })
   }
+
   return onEnter
 }

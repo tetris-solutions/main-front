@@ -10,5 +10,6 @@ export default {
   accountTokenStatusHeader: 'Token status',
   accountInformationHeader: 'Account Information',
   accessTokenHeader: 'Access Token',
-  newCompanyHeader: 'New company'
+  newCompanyHeader: 'New company',
+  errorScreenHeader: 'Server Error'
 }

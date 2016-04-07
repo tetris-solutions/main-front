@@ -1,6 +1,6 @@
 import {getUserByToken} from '../api/get-user-by-token'
 import {passTokenAhead} from '../functions/pass-token-ahead'
-
+import {processRequestError} from '../functions/process-request-error'
 /**
  * express middleware that reads token from Authorization header and cookies, setting req.user
  * @param {Object} req express request
@@ -13,13 +13,19 @@ export function authMiddleware (req, res, next) {
   const cookieName = process.env.TOKEN_COOKIE_NAME
   const token = (req.get('Authorization') || '').replace(/^Bearer\s/, '') || req.cookies[cookieName]
 
-  function noAuth () {
-    if (req.cookies[cookieName]) res.clearCookie(cookieName, {domain})
+  function noAuth (response) {
+    if (response && (response.status === 401 || response.status === 403)) {
+      if (req.cookies[cookieName]) {
+        res.clearCookie(cookieName, {domain})
+      }
+    } else {
+      processRequestError(response, req, res)
+    }
     next()
     return Promise.resolve()
   }
 
-  if (!token) return noAuth()
+  if (!token) return noAuth({status: 403})
 
   return getUserByToken(token)
     .then(passTokenAhead(req, res))

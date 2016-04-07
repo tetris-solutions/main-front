@@ -18,7 +18,7 @@ require('react-intl/lib/locales')
  * @returns {undefined}
  */
 export function serverRenderRoute (req, res, location) {
-  location = location || req.path
+  location = location || req.url
 
   const useBeautify = process.env.BEAUTIFY_HTML === 'true'
   const {tree} = res.locals

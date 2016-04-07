@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser'
 import initializeMiddleware from './middlewares/initialize-tree'
 import localeMiddleware from './middlewares/locale'
 import authMiddleware from './middlewares/auth'
+import {debugMiddleware} from '@tetris/debug-middleware'
 
 import morgan from 'morgan'
 
@@ -28,28 +29,26 @@ const morganMode = flags.productionMode === 'production'
 
 app.use(morgan(morganMode, {stream: httpLogStream}))
 
-app.use(cookieParser())
-app.use(localeMiddleware)
-app.use(initializeMiddleware)
-app.use(authMiddleware)
-
 if (flags.developmentMode) {
   require('./dev-server-hook').devServerHook(app)
 }
+
+app.use(cookieParser())
+app.use(debugMiddleware)
+app.use(localeMiddleware)
+app.use(initializeMiddleware)
+app.use(authMiddleware)
 
 require('./routes/express')
   .setAppRoutes(app)
 
 app.use(function errorHandler (_err, req, res, next) {
   // @todo logging
-  // @todo show/redirect to error view
-  // console.log('### got err ###')
-  // console.log(err)
-  // console.log('### stack ###')
-  // console.log(err.stack)
-  res.status(500).send(`
-    <h1>${_err.message}</h1>
-    <pre><code>${_err.stack}</code></pre>`)
+  let body = `<h1>${_err.message}</h1>`
+  if (req.debugMode) {
+    body += `<pre><code>${_err.stack}</code></pre>`
+  }
+  res.status(500).send(body)
 })
 
 app.listen(3000)

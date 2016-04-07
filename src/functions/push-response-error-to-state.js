@@ -1,3 +1,6 @@
+import {getErrorFromResponse} from './get-error-from-response'
+import pick from 'lodash/pick'
+
 /**
  * creates a `Promise.catch` handler that pushes the response error to the state
  * @param {Baobab} tree state tree
@@ -11,8 +14,11 @@ export function pushResponseErrorToState (tree) {
    * @returns {undefined}
    */
   function catchError (response) {
-    tree.push('alerts', response.data)
-    throw response
+    const err = getErrorFromResponse(response)
+
+    tree.push('alerts', pick(err, 'message', 'stack'))
+
+    throw response || err
   }
 
   return catchError

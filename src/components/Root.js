@@ -6,6 +6,7 @@ import _moment from 'moment'
 import window from 'global/window'
 import get from 'lodash/get'
 import omit from 'lodash/omit'
+import ErrorScreen from './ErrorScreen'
 
 const isServer = typeof window === 'undefined'
 const ToastMessageFactory = React.createFactory(ToastMessage.animation)
@@ -16,6 +17,7 @@ export const Root = React.createClass({
   propTypes: {
     children: PropTypes.node,
     alerts: PropTypes.array,
+    error: PropTypes.object,
     user: PropTypes.object,
     intl: PropTypes.shape({
       locales: PropTypes.string,
@@ -87,10 +89,12 @@ export const Root = React.createClass({
     this.addAlerts()
   },
   render () {
-    const {user} = this.props
+    const {user, children, error} = this.props
     return <div>
       <Header user={user}/>
-      {this.props.children}
+      {error ? (
+        <ErrorScreen />
+      ) : children}
 
       {!isServer && (
         <ToastContainer
@@ -105,7 +109,8 @@ export default branch(Root, {
   cursors: {
     user: ['user'],
     intl: ['intl'],
-    alerts: ['alerts']
+    alerts: ['alerts'],
+    error: ['error']
   },
   actions: {
     pushErrorMessage (tree, message) {

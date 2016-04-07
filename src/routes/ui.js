@@ -4,6 +4,7 @@ import Login from './../components/Login'
 import Activation from './../components/Activation'
 import Home from './../components/Home'
 import Root from './../components/Root'
+import ErrorScreen from '../components/ErrorScreen'
 import Signup from './../components/Signup'
 import WaitingConfirmation from './../components/WaitingConfirmation'
 import {root} from '../../node_modules/baobab-react/higher-order'
@@ -29,6 +30,7 @@ export default (history, tree) => {
     const hook = performLoadAction(tree, action)
 
     function onEnter (nextState, replace, callback) {
+      // if this is the very first render, we can rely on the data injected by the server
       if (firstRender) return callback()
 
       hook(nextState, replace, callback)
@@ -47,11 +49,10 @@ export default (history, tree) => {
         <Route path='signup' component={Signup}/>
         <Route path='waiting-confirmation' component={WaitingConfirmation}/>
         <Route path='activate/:activationCode' component={Activation}/>
-
+        <Route path='error' component={ErrorScreen}/>
         <Route onEnter={protectRoute}>
           {dashboardRoutes(preload)}
         </Route>
-
       </Route>
     </Router>
   )

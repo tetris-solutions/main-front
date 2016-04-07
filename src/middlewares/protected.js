@@ -6,7 +6,7 @@
  * @returns {undefined}
  */
 export function protectedRouteMiddleware (req, res, next) {
-  if (!req.user) {
+  if (!req.user && !res.locals.tree.get('error')) {
     res.redirect(`/login?next=${req.path}`)
   } else {
     next()

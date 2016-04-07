@@ -10,9 +10,13 @@ import defaultState from '../default-state'
  */
 export function initializeTreeMiddleware (req, res, next) {
   const tree = res.locals.tree = new Tree(defaultState)
+  if (req.debugMode) {
+    tree.set('debugMode', true)
+  }
   if (req.locale) {
     tree.set('locale', req.locale)
   }
+  tree.commit()
   next()
 }
 

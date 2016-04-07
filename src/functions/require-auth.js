@@ -11,10 +11,10 @@ export function requireAuth (tree) {
    * @returns {undefined}
    */
   function onEnter (nextState, replace) {
-    if (!tree.get('user')) {
+    if (!tree.get('user') && !tree.get('error')) {
       replace({
         pathname: '/login',
-        state: {
+        query: {
           next: nextState.location.pathname
         }
       })
