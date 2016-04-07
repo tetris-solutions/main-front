@@ -1,13 +1,14 @@
 import pick from 'lodash/pick'
+import assign from 'lodash/assign'
+import get from 'lodash/get'
+
+const serialize = o => pick(o, 'message', 'stack', 'status')
 
 export function getErrorFromResponse (response) {
   const defaultError = new Error('Sorry, we could not reach the API.')
-  let err
-
-  if (response) {
-    err = response.data || pick(response, 'message', 'stack')
-    err.status = response.status
-  }
-
-  return err && err.message ? err : defaultError
+  return assign(
+    serialize(defaultError),
+    serialize(response),
+    serialize(get(response, 'data'))
+  )
 }

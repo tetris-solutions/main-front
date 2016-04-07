@@ -1,3 +1,4 @@
+import {getErrorFromResponse} from './get-error-from-response'
 /**
  * creates an onEnter hook that performs a load action before rendering the route
  * @param {Baobab} tree state tree
@@ -15,7 +16,7 @@ export function performLoadAction (tree, action) {
   function onEnter (nextState, replace, callback) {
     action(nextState, tree).then(() => callback(),
       err => {
-        tree.set('error', err)
+        tree.set('error', getErrorFromResponse(err))
         tree.commit()
         callback(err)
       })

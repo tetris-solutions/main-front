@@ -42,7 +42,7 @@
   "dependencies": {
     "@tetris/base-lib": "^0.1.0",
     "@tetris/debug-middleware": "0.0.1",
-    "@tetris/http": "^0.2.1",
+    "@tetris/http": "^0.2.3",
     "baobab": "^2.3.3",
     "baobab-react": "^1.0.1",
     "classnames": "^2.2.3",
