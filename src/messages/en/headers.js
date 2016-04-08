@@ -3,6 +3,8 @@ export default {
   dashboardHeader: 'Dashboard',
   newRoleHeader: 'New role',
   roleListHeader: 'Roles',
+  companyAppsHeader: 'Apps',
+  companyPlansHeader: 'Plans',
   accountListHeader: 'External accounts',
   accountNameHeader: 'Account name',
   accountPlatformHeader: 'Platform',

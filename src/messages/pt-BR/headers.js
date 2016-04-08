@@ -3,6 +3,8 @@ export default {
   dashboardHeader: 'Painel',
   newRoleHeader: 'Novo grupo',
   roleListHeader: 'Grupos',
+  companyAppsHeader: 'Aplicativos',
+  companyPlansHeader: 'Planos',
   accountListHeader: 'Contas externas',
   accountNameHeader: 'Nome da conta',
   accountPlatformHeader: 'Plataforma',

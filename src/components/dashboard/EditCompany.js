@@ -19,12 +19,26 @@ export const EditCompany = React.createClass({
   render () {
     const {company, children, params} = this.props
     const {router: {isActive}} = this.context
-    const rolesPath = `/dashboard/company/${params.company}/roles`
-    const accountsPath = `/dashboard/company/${params.company}/accounts`
+    const companyPath = `/dashboard/company/${params.company}`
+    const rolesPath = `${companyPath}/roles`
+    const accountsPath = `${companyPath}/accounts`
+    const appsPath = `${companyPath}/apps`
+    const isIndexRoute = !isActive(rolesPath) && !isActive(accountsPath) && !isActive(appsPath)
 
     return (
       <div>
         <ul className='nav nav-tabs'>
+          <li className={cx(isIndexRoute && 'active')}>
+            <Link to={companyPath}>
+              <Message>companyPlansHeader</Message>
+            </Link>
+          </li>
+
+          <li className={cx(isActive(appsPath) && 'active')}>
+            <Link to={appsPath}>
+              <Message>companyAppsHeader</Message>
+            </Link>
+          </li>
 
           <li className={cx(isActive(rolesPath) && 'active')}>
             <Link to={rolesPath}>

@@ -12,6 +12,8 @@ import CompanyAccounts from './../components/dashboard/CompanyAccounts'
 import CompanyRoles from './../components/dashboard/CompanyRoles'
 import Profile from './../components/dashboard/Profile'
 import AccountEdit from '../components/dashboard/AccountEdit'
+import CompanyApps from '../components/dashboard/CompanyApps'
+import CompanyPlans from '../components/dashboard/CompanyPlans'
 
 import {loadCompanyAccountsActionRouterAdaptor} from '../actions/load-company-accounts-action'
 import {loadUserCompaniesActionRouterAdaptor} from './../actions/load-user-companies-action'
@@ -19,6 +21,7 @@ import {loadCompanyActionRouterAdaptor} from './../actions/load-company-action'
 import {loadPermissionsActionRouterAdaptor} from './../actions/load-permissions-action'
 import {loadRoleUsersActionRouteAdaptor} from './../actions/load-role-users-action'
 import {loadAccountActionRouterAdaptor} from '../actions/load-account-action'
+import {loadPlansActionRouterAdaptor} from '../actions/load-plans-action'
 
 /**
  * get dashboard routes
@@ -34,6 +37,9 @@ export function dashboardRoutes (preload) {
       <Route path='create/company' component={CreateCompany}/>
 
       <Route path='company/:company' component={EditCompany} onEnter={preload(loadCompanyActionRouterAdaptor)}>
+        <IndexRoute component={CompanyPlans} onEnter={preload(loadPlansActionRouterAdaptor)}/>
+        <Route path='apps' component={CompanyApps}/>
+
         <Route path='roles' component={CompanyRoles}>
           <IndexRoute component={CreateRole}/>
           <Route path=':role' component={CompanyRole}>
