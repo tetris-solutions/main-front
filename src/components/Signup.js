@@ -29,7 +29,16 @@ export const Signup = React.createClass({
         password: elements.password.value,
         name: elements.name.value
       })
-      .then(() => this.context.router.push('/waiting-confirmation'))
+      .then(response => {
+        const {router} = this.context
+        const {companies} = response.data
+
+        if (companies) {
+          router.push(`/dashboard/company/${companies[0]}/apps`)
+        } else {
+          router.push('/waiting-confirmation')
+        }
+      })
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
