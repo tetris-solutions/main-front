@@ -5,7 +5,7 @@ import Message from '../intl/Message'
 import {deleteAccountAction} from '../../actions/delete-account-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 import FormMixin from '../../mixins/FormMixin'
-import SubmitButton from './../SubmitButton'
+import SubmitButton from '../SubmitButton'
 
 const {PropTypes} = React
 

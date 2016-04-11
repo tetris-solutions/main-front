@@ -9,5 +9,7 @@ export default {
   linkAdWordsAccount: 'Vincular conta Adwords',
   removeAccount: 'Remover conta',
   refreshToken: 'Renovar token',
-  createCompany: 'Criar nova empresa'
+  createCompany: 'Criar nova empresa',
+  choosePlan: 'Escolher plano',
+  cancelPlan: 'Cancelar plano'
 }

@@ -12,10 +12,12 @@ export default React.createClass({
     labelMessage: PropTypes.string,
     color: PropTypes.string,
     size: PropTypes.string,
+    style: PropTypes.string,
     onClick: PropTypes.func
   },
   getDefaultProps () {
     return {
+      style: 'expand-right',
       color: 'mint',
       size: 's',
       labelMessage: 'callToActionSubmit'
@@ -41,6 +43,7 @@ export default React.createClass({
     const {
       color,
       size,
+      style,
       labelMessage,
       onClick
     } = this.props
@@ -53,7 +56,7 @@ export default React.createClass({
         ref='btn'
         onClick={onClick}
         className='ladda-button'
-        data-style='expand-right'
+        data-style={style}
         data-color={color}
         data-size={size}>
 

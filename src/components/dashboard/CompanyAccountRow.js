@@ -6,7 +6,7 @@ import {deleteCompanyAccountAction} from '../../actions/delete-company-account-a
 import {loadCompanyAccountsAction} from '../../actions/load-company-accounts-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 import FormMixin from '../../mixins/FormMixin'
-import SubmitButton from './../SubmitButton'
+import SubmitButton from '../SubmitButton'
 
 const {PropTypes} = React
 

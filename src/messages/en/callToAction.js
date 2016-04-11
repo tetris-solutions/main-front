@@ -9,5 +9,7 @@ export default {
   linkAdWordsAccount: 'Link AdWords account',
   removeAccount: 'Remove account',
   refreshToken: 'Refresh token',
-  createCompany: 'Create a new company'
+  createCompany: 'Create a new company',
+  choosePlan: 'Choose plan',
+  cancelPlan: 'Cancel plan'
 }

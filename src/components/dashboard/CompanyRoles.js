@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router'
-import Message from './../intl/Message'
+import Message from '../intl/Message'
 import cx from 'classnames'
 
 const {PropTypes, cloneElement} = React
