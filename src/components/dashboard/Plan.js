@@ -3,6 +3,7 @@ import FormMixin from '../../mixins/FormMixin'
 import SubmitButton from '../SubmitButton'
 import {branch} from 'baobab-react/higher-order'
 import {createCompanyPlanAction} from '../../actions/create-company-plan-action'
+import {deleteCompanyPlanAction} from '../../actions/delete-company-plan-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 import {loadCompanyAction} from '../../actions/load-company-action'
 
@@ -15,6 +16,7 @@ export const Plan = React.createClass({
     plan: PropTypes.object,
     company: PropTypes.object,
     actions: PropTypes.shape({
+      cancelPlan: PropTypes.func,
       selectPlan: PropTypes.func,
       notifySuccess: PropTypes.func,
       reloadCompany: PropTypes.func
@@ -31,7 +33,7 @@ export const Plan = React.createClass({
     let promise
 
     if (this.isActive()) {
-      promise = Promise.resolve()
+      promise = actions.cancelPlan(company.plan.company_plan)
     } else {
       promise = actions.selectPlan(company.id, plan.id)
     }
@@ -70,6 +72,7 @@ export const Plan = React.createClass({
 export default branch(Plan, {
   actions: {
     selectPlan: createCompanyPlanAction,
+    cancelPlan: deleteCompanyPlanAction,
     notifySuccess: pushSuccessMessageAction,
     reloadCompany: loadCompanyAction
   }
