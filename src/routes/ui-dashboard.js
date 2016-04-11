@@ -22,6 +22,7 @@ import {loadPermissionsActionRouterAdaptor} from './../actions/load-permissions-
 import {loadRoleUsersActionRouteAdaptor} from './../actions/load-role-users-action'
 import {loadAccountActionRouterAdaptor} from '../actions/load-account-action'
 import {loadPlansActionRouterAdaptor} from '../actions/load-plans-action'
+import {loadCompanyAppsActionRouterAdaptor} from '../actions/load-company-apps-action'
 
 /**
  * get dashboard routes
@@ -38,7 +39,7 @@ export function dashboardRoutes (preload) {
 
       <Route path='company/:company' component={EditCompany} onEnter={preload(loadCompanyActionRouterAdaptor)}>
         <IndexRoute component={CompanyPlans} onEnter={preload(loadPlansActionRouterAdaptor)}/>
-        <Route path='apps' component={CompanyApps}/>
+        <Route path='apps' component={CompanyApps} onEnter={preload(loadCompanyAppsActionRouterAdaptor)}/>
 
         <Route path='roles' component={CompanyRoles}>
           <IndexRoute component={CreateRole}/>

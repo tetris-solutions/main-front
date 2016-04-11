@@ -11,6 +11,7 @@ import {loadRoleUsersActionServerAdaptor} from '../actions/load-role-users-actio
 import {loadCompanyAccountsActionServerAdaptor} from '../actions/load-company-accounts-action'
 import {loadAccountActionServerAdaptor} from '../actions/load-account-action'
 import {loadPlansActionServerAdaptor} from '../actions/load-plans-action'
+import {loadCompanyAppsActionServerAdaptor} from '../actions/load-company-apps-action'
 
 export function setAppRoutes (app) {
   app.get('/intl/:locale', intlRoute)
@@ -44,7 +45,8 @@ export function setAppRoutes (app) {
     protectedRouteMiddleware,
     performActionsMiddleware(
       loadUserCompaniesActionServerAdaptor,
-      loadCompanyActionServerAdaptor),
+      loadCompanyActionServerAdaptor,
+      loadCompanyAppsActionServerAdaptor),
     uiRoute)
 
   app.get('/dashboard/company/:company/accounts',

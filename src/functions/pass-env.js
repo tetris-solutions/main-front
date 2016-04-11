@@ -7,6 +7,7 @@ module.exports = function passEnv () {
   each(pick(process.env,
 
     'NODE_ENV',
+    'ADPEEK_URL',
     'FRONT_URL',
     'USER_API_URL',
     'TKM_URL',
