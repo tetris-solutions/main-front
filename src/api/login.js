@@ -1,6 +1,6 @@
 import {POST} from '@tetris/http'
 import MissingRequiredFieldError from '../exceptions/MissingRequiredFieldError'
-import merge from 'lodash/merge'
+import assign from 'lodash/assign'
 
 /**
  * fires a call to login api returning a promise
@@ -14,7 +14,7 @@ export function login (email, password, config) {
     if (!email) throw new MissingRequiredFieldError('email')
     if (!password) throw new MissingRequiredFieldError('password')
 
-    return POST(`${process.env.USER_API_URL}/login`, merge({}, config, {
+    return POST(`${process.env.USER_API_URL}/login`, assign({}, config, {
       body: {email, password}
     }))
   })
