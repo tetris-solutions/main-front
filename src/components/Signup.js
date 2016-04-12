@@ -1,8 +1,8 @@
 import React from 'react'
 import signupAction from '../actions/signup-action'
-import FormMixin from '../mixins/FormMixin'
-import SimpleInput from './SimpleInput'
-import SubmitButton from './SubmitButton'
+import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
+import SimpleInput from '@tetris/front-server/lib/components/SimpleInput'
+import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
 import {branch} from 'baobab-react/higher-order'
 
 const {PropTypes} = React

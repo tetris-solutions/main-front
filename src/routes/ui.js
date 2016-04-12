@@ -3,7 +3,6 @@ import {IndexRoute, Route} from 'react-router'
 import Login from './../components/Login'
 import Activation from './../components/Activation'
 import Home from './../components/Home'
-import ErrorScreen from '../components/ErrorScreen'
 import Signup from './../components/Signup'
 import WaitingConfirmation from './../components/WaitingConfirmation'
 import {root} from 'baobab-react/higher-order'
@@ -19,7 +18,6 @@ export function getRoutes (tree, protectRoute, preload) {
       <Route path='signup' component={Signup}/>
       <Route path='waiting-confirmation' component={WaitingConfirmation}/>
       <Route path='activate/:activationCode' component={Activation}/>
-      <Route path='error' component={ErrorScreen}/>
       <Route onEnter={protectRoute}>
         {dashboardRoutes(preload)}
       </Route>

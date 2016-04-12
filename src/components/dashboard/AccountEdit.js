@@ -4,8 +4,8 @@ import toUpper from 'lodash/toUpper'
 import Message from '../intl/Message'
 import {deleteAccountAction} from '../../actions/delete-account-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
-import FormMixin from '../../mixins/FormMixin'
-import SubmitButton from '../SubmitButton'
+import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
+import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
 
 const {PropTypes} = React
 

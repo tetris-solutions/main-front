@@ -1,9 +1,9 @@
 import React from 'react'
-import FormMixin from '../../mixins/FormMixin'
-import SimpleInput from '../SimpleInput'
+import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
+import SimpleInput from '@tetris/front-server/lib/components/SimpleInput'
 import {branch} from 'baobab-react/higher-order'
 import updateMeAction from '../../actions/update-me-action'
-import SubmitButton from '../SubmitButton'
+import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 
 const {PropTypes, createClass} = React

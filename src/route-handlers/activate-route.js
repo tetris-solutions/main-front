@@ -1,5 +1,5 @@
 import {GET} from '@tetris/http'
-import {getUserByToken} from '../api/get-user-by-token'
+import {getUserByToken} from '@tetris/front-server/lib//api/get-user-by-token'
 import {serverRenderRoute} from '../functions/server-render-route'
 import {passTokenAhead} from '../functions/pass-token-ahead'
 

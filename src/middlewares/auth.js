@@ -1,4 +1,4 @@
-import {getUserByToken} from '../api/get-user-by-token'
+import {getUserByToken} from '@tetris/front-server/lib//api/get-user-by-token'
 import {passTokenAhead} from '../functions/pass-token-ahead'
 import {processRequestError} from '../functions/process-request-error'
 /**

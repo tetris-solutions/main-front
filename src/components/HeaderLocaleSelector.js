@@ -1,43 +1,19 @@
 import React from 'react'
-import changeLocaleAction from '../actions/change-locale-action'
+import {changeLocaleAction} from '@tetris/front-server/lib/actions/change-locale-action'
 import {branch} from 'baobab-react/higher-order'
-import window from 'global/window'
+import LocaleSelector from '@tetris/front-server/lib/components/LocaleSelector'
 
-const {PropTypes} = React
+export function HeaderLocaleSelector (props) {
+  return (
+    <form className='navbar-form navbar-right'>
+      <div className='form-group'>
+        <LocaleSelector {...props} className='form-control'/>
+      </div>
+    </form>
+  )
+}
 
-export const HeaderLocaleSelector = React.createClass({
-  displayName: 'Locale-Selector',
-  propTypes: {
-    userLocale: PropTypes.string,
-    locale: PropTypes.string,
-    actions: PropTypes.shape({
-      changeLocale: PropTypes.func
-    })
-  },
-  onChangeLocale ({target: {value}}) {
-    this.props.actions.changeLocale(value)
-    window.tetrisLoadLocale(value)
-  },
-  render () {
-    return (
-      <form className='navbar-form navbar-right'>
-        <div className='form-group'>
-
-          <select
-            ref='select'
-            className='form-control'
-            value={this.props.locale || this.props.userLocale}
-            onChange={this.onChangeLocale}>
-
-            <option value='en'>English</option>
-            <option value='pt-BR'>Português</option>
-
-          </select>
-        </div>
-      </form>
-    )
-  }
-})
+HeaderLocaleSelector.displayName = 'Header-Locale-Selector'
 
 export default branch(HeaderLocaleSelector, {
   cursors: {

@@ -1,7 +1,7 @@
 import React from 'react'
 import LocaleSelector from './HeaderLocaleSelector'
 import {Link, IndexLink} from 'react-router'
-import logoutAction from '../actions/logout-action'
+import logoutAction from '@tetris/front-server/lib/actions/logout-action'
 import {branch} from 'baobab-react/higher-order'
 import Message from './intl/Message'
 

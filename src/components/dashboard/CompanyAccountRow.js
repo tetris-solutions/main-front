@@ -5,8 +5,8 @@ import {branch} from 'baobab-react/higher-order'
 import {deleteCompanyAccountAction} from '../../actions/delete-company-account-action'
 import {loadCompanyAccountsAction} from '../../actions/load-company-accounts-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
-import FormMixin from '../../mixins/FormMixin'
-import SubmitButton from '../SubmitButton'
+import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
+import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
 
 const {PropTypes} = React
 

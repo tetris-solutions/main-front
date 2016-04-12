@@ -1,9 +1,9 @@
 import React from 'react'
-import FormMixin from '../mixins/FormMixin'
+import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
 import loginAction from '../actions/login-action'
-import SimpleInput from './SimpleInput'
+import SimpleInput from '@tetris/front-server/lib/components/SimpleInput'
 import {branch} from 'baobab-react/higher-order'
-import SubmitButton from './SubmitButton'
+import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
 import get from 'lodash/get'
 import window from 'global/window'
 
