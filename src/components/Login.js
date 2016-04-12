@@ -5,8 +5,14 @@ import SimpleInput from './SimpleInput'
 import {branch} from 'baobab-react/higher-order'
 import SubmitButton from './SubmitButton'
 import get from 'lodash/get'
+import window from 'global/window'
 
 const {PropTypes} = React
+const absolutePattern = /^https?:\/\//i
+
+function isAbsolute (url) {
+  return absolutePattern.test(url)
+}
 
 export const Login = React.createClass({
   mixins: [FormMixin],
@@ -28,8 +34,15 @@ export const Login = React.createClass({
       .login(
         elements.email.value,
         elements.password.value)
-      .then(() => this.context
-        .router.push(get(this, 'context.location.query.next') || '/'))
+      .then(() => {
+        const next = get(this, 'context.location.query.next') || '/'
+
+        if (isAbsolute(next)) {
+          window.location.href = next
+        } else {
+          this.context.router.push(next)
+        }
+      })
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },

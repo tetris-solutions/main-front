@@ -1,9 +1,7 @@
-import {performActionsMiddleware} from '../middlewares/perform-actions'
-import {protectedRouteMiddleware} from '../middlewares/protected'
+import {protectedRouteMiddleware} from '@tetris/front-server/lib/middlewares/protected'
+import {performActionsMiddleware} from '@tetris/front-server/lib/middlewares/perform-actions'
 
-import {uiRoute} from '../route-handlers/ui-route'
 import activateRoute from '../route-handlers/activate-route'
-import intlRoute from '../route-handlers/intl-route'
 import {loadUserCompaniesActionServerAdaptor} from '../actions/load-user-companies-action'
 import {loadCompanyActionServerAdaptor} from '../actions/load-company-action'
 import {loadPermissionsActionServerAdaptor} from '../actions/load-permissions-action'
@@ -13,8 +11,7 @@ import {loadAccountActionServerAdaptor} from '../actions/load-account-action'
 import {loadPlansActionServerAdaptor} from '../actions/load-plans-action'
 import {loadCompanyAppsActionServerAdaptor} from '../actions/load-company-apps-action'
 
-export function setAppRoutes (app) {
-  app.get('/intl/:locale', intlRoute)
+export function setAppRoutes (app, uiRoute) {
   app.get('/', uiRoute)
   app.get('/error', uiRoute)
   app.get('/login', uiRoute)
