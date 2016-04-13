@@ -1,5 +1,5 @@
 import React from 'react'
-import Message from './intl/Message'
+import Message from '@tetris/front-server/lib/components/intl/Message'
 
 export default () => (
   <div className='container'>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {branch} from 'baobab-react/higher-order'
 import {Link} from 'react-router'
-import Message from '../intl/Message'
+import Message from '@tetris/front-server/lib/components/intl/Message'
 import cx from 'classnames'
 
 const {PropTypes, cloneElement} = React

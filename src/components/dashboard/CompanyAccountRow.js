@@ -1,5 +1,5 @@
 import React from 'react'
-import Message from '../intl/Message'
+import Message from '@tetris/front-server/lib/components/intl/Message'
 import {Link} from 'react-router'
 import {branch} from 'baobab-react/higher-order'
 import {deleteCompanyAccountAction} from '../../actions/delete-company-account-action'

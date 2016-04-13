@@ -1,5 +1,5 @@
 import React from 'react'
-import Message from '../intl/Message'
+import Message from '@tetris/front-server/lib/components/intl/Message'
 import CompanyAccountRow from './CompanyAccountRow'
 import {branch} from 'baobab-react/higher-order'
 import map from 'lodash/map'
