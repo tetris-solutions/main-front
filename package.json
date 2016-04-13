@@ -35,10 +35,8 @@
   "homepage": "https://github.com/tetris-solutions/main-front#readme",
   "dependencies": {
     "@tetris/base-lib": "^0.1.0",
-    "@tetris/debug-middleware": "^0.1.0",
-    "@tetris/front-server": "0.0.4",
+    "@tetris/front-server": "0.0.6",
     "@tetris/http": "^0.2.3",
-    "@tetris/locale-middleware": "0.0.2",
     "baobab": "^2.3.3",
     "baobab-react": "^1.0.1",
     "classnames": "^2.2.3",
