@@ -17,7 +17,7 @@ test('passes user and request config to apis', t => {
     }
   })
 
-  mock('../functions/get-api-fetch-config', {
+  mock('@tetris/front-server/lib/functions/get-api-fetch-config', {
     getApiFetchConfig (tree) {
       t.is(tree, expectedTree)
       return expectedConfig

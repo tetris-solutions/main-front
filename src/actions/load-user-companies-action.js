@@ -1,7 +1,7 @@
 import {loadUserCompanies} from '../api/load-user-companies'
-import {saveResponseTokenAsCookie} from '../functions/save-token-as-cookie'
-import getApiFetchConfig from '../functions/get-api-fetch-config'
-import {pushResponseErrorToState} from '../functions/push-response-error-to-state'
+import {saveResponseTokenAsCookie} from '@tetris/front-server/lib/functions/save-token-as-cookie'
+import {getApiFetchConfig} from '@tetris/front-server/lib/functions/get-api-fetch-config'
+import {pushResponseErrorToState} from '@tetris/front-server/lib/functions/push-response-error-to-state'
 
 /**
  * loads a list of user companies and saving it into the passed tree as `tree.user.companies`

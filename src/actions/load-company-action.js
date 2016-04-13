@@ -1,7 +1,7 @@
 import {loadCompany} from '../api/load-company'
-import {saveResponseTokenAsCookie} from '../functions/save-token-as-cookie'
-import getApiFetchConfig from '../functions/get-api-fetch-config'
-import {pushResponseErrorToState} from '../functions/push-response-error-to-state'
+import {saveResponseTokenAsCookie} from '@tetris/front-server/lib/functions/save-token-as-cookie'
+import {getApiFetchConfig} from '@tetris/front-server/lib/functions/get-api-fetch-config'
+import {pushResponseErrorToState} from '@tetris/front-server/lib/functions/push-response-error-to-state'
 
 /**
  * loads a single company
