@@ -1,7 +1,7 @@
 import React from 'react'
 import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
 import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
-import {branch} from 'baobab-react/higher-order'
+import {branch} from 'baobab-react/dist-modules/higher-order'
 import {createCompanyPlanAction} from '../../actions/create-company-plan-action'
 import {deleteCompanyPlanAction} from '../../actions/delete-company-plan-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
@@ -15,12 +15,7 @@ export const Plan = React.createClass({
   propTypes: {
     plan: PropTypes.object,
     company: PropTypes.object,
-    actions: PropTypes.shape({
-      cancelPlan: PropTypes.func,
-      selectPlan: PropTypes.func,
-      notifySuccess: PropTypes.func,
-      reloadCompany: PropTypes.func
-    })
+    dispatch: PropTypes.func
   },
   isActive () {
     const {plan, company} = this.props
@@ -29,18 +24,19 @@ export const Plan = React.createClass({
   handleSubmit (e) {
     e.preventDefault()
     this.preSubmit()
-    const {plan, company, actions} = this.props
+
+    const {dispatch, plan, company} = this.props
     let promise
 
     if (this.isActive()) {
-      promise = actions.cancelPlan(company.plan.company_plan)
+      promise = dispatch(deleteCompanyPlanAction, company.plan.company_plan)
     } else {
-      promise = actions.selectPlan(company.id, plan.id)
+      promise = dispatch(createCompanyPlanAction, company.id, plan.id)
     }
 
     return promise
-      .then(() => actions.notifySuccess())
-      .then(() => actions.reloadCompany(company.id))
+      .then(() => dispatch(pushSuccessMessageAction))
+      .then(() => dispatch(loadCompanyAction, company.id))
       .then(this.posSubmit, this.posSubmit)
   },
   render () {
@@ -69,11 +65,4 @@ export const Plan = React.createClass({
   }
 })
 
-export default branch(Plan, {
-  actions: {
-    selectPlan: createCompanyPlanAction,
-    cancelPlan: deleteCompanyPlanAction,
-    notifySuccess: pushSuccessMessageAction,
-    reloadCompany: loadCompanyAction
-  }
-})
+export default branch({}, Plan)

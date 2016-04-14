@@ -1,5 +1,5 @@
 import React from 'react'
-import {branch} from 'baobab-react/higher-order'
+import {branch} from 'baobab-react/dist-modules/higher-order'
 import ActivationFailure from './ActivationFailure'
 import ActivationSuccess from './ActivationSuccess'
 
@@ -22,8 +22,6 @@ export const Activation = createClass({
   }
 })
 
-export default branch(Activation, {
-  cursors: {
-    activationError: ['errors', 'activation']
-  }
-})
+export default branch({
+  activationError: ['errors', 'activation']
+}, Activation)

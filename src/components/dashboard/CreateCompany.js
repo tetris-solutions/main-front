@@ -2,7 +2,7 @@ import React from 'react'
 import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
 import SimpleInput from '@tetris/front-server/lib/components/SimpleInput'
 import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
-import {branch} from 'baobab-react/higher-order'
+import {branch} from 'baobab-react/dist-modules/higher-order'
 import {createCompanyAction} from '../../actions/create-company-action'
 import {loadUserCompaniesAction} from '../../actions/load-user-companies-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
@@ -16,23 +16,20 @@ export const CreateCompany = React.createClass({
     router: PropTypes.object
   },
   propTypes: {
-    actions: PropTypes.shape({
-      createCompany: PropTypes.func,
-      loadUserCompanies: PropTypes.func,
-      pushSuccessMessage: PropTypes.func
-    })
+    dispatch: PropTypes.func
   },
   handleSubmit (e) {
     e.preventDefault()
     this.preSubmit()
 
-    const {createCompany, loadUserCompanies, pushSuccessMessage} = this.props.actions
-    return createCompany(e.target.elements.name.value)
-      .then(response => loadUserCompanies()
+    const {dispatch} = this.props
+
+    return dispatch(createCompanyAction, e.target.elements.name.value)
+      .then(response => dispatch(loadUserCompaniesAction)
         .then(() => {
           this.context.router.push(`/dashboard/company/${response.data.id}`)
         }))
-      .then(() => pushSuccessMessage())
+      .then(() => dispatch(pushSuccessMessageAction))
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
@@ -58,10 +55,4 @@ export const CreateCompany = React.createClass({
   }
 })
 
-export default branch(CreateCompany, {
-  actions: {
-    createCompany: createCompanyAction,
-    loadUserCompanies: loadUserCompaniesAction,
-    pushSuccessMessage: pushSuccessMessageAction
-  }
-})
+export default branch({}, CreateCompany)

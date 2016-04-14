@@ -2,7 +2,7 @@ import React from 'react'
 import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
 import loginAction from '../actions/login-action'
 import SimpleInput from '@tetris/front-server/lib/components/SimpleInput'
-import {branch} from 'baobab-react/higher-order'
+import {branch} from 'baobab-react/dist-modules/higher-order'
 import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
 import get from 'lodash/get'
 import window from 'global/window'
@@ -18,9 +18,7 @@ export const Login = React.createClass({
   mixins: [FormMixin],
   displayName: 'Login',
   propTypes: {
-    actions: PropTypes.shape({
-      login: PropTypes.func.isRequired
-    })
+    dispatch: PropTypes.func
   },
   contextTypes: {
     router: PropTypes.object.isRequired,
@@ -30,8 +28,8 @@ export const Login = React.createClass({
     e.preventDefault()
     const {elements} = e.target
     this.preSubmit()
-    return this.props.actions
-      .login(
+    return this.props
+      .dispatch(loginAction,
         elements.email.value,
         elements.password.value)
       .then(() => {
@@ -77,8 +75,4 @@ export const Login = React.createClass({
   }
 })
 
-export default branch(Login, {
-  actions: {
-    login: loginAction
-  }
-})
+export default branch({}, Login)

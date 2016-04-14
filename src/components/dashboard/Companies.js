@@ -1,6 +1,6 @@
 import React from 'react'
 import Message from '@tetris/front-server/lib/components/intl/Message'
-import {branch} from 'baobab-react/higher-order'
+import {branch} from 'baobab-react/dist-modules/higher-order'
 import map from 'lodash/map'
 import {Link} from 'react-router'
 
@@ -70,8 +70,4 @@ export const Companies = React.createClass({
   }
 })
 
-export default branch(Companies, {
-  cursors: {
-    companies: ['user', 'companies']
-  }
-})
+export default branch({companies: ['user', 'companies']}, Companies)

@@ -2,7 +2,7 @@ import React from 'react'
 import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
 import SimpleInput from '@tetris/front-server/lib/components/SimpleInput'
 import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
-import {branch} from 'baobab-react/higher-order'
+import {branch} from 'baobab-react/dist-modules/higher-order'
 import {createRoleAction} from '../../actions/create-role-action'
 import {loadCompanyAction} from '../../actions/load-company-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
@@ -16,6 +16,7 @@ export const CreateRole = React.createClass({
     router: PropTypes.object
   },
   propTypes: {
+    dispatch: PropTypes.func,
     params: PropTypes.object,
     actions: PropTypes.shape({
       createRole: PropTypes.func,
@@ -27,14 +28,14 @@ export const CreateRole = React.createClass({
     e.preventDefault()
     this.preSubmit()
 
-    const {params: {company}, actions: {createRole, loadCompany, pushSuccessMessage}} = this.props
+    const {dispatch, params: {company}} = this.props
 
-    createRole(company, e.target.elements.name.value)
-      .then(response => loadCompany(company)
+    dispatch(createRoleAction, company, e.target.elements.name.value)
+      .then(response => dispatch(loadCompanyAction, company)
         .then(() => {
           this.context.router.push(`/dashboard/company/${company}/roles/${response.data.id}`)
         }))
-      .then(() => pushSuccessMessage())
+      .then(() => dispatch(pushSuccessMessageAction))
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
@@ -60,10 +61,4 @@ export const CreateRole = React.createClass({
   }
 })
 
-export default branch(CreateRole, {
-  actions: {
-    createRole: createRoleAction,
-    loadCompany: loadCompanyAction,
-    pushSuccessMessage: pushSuccessMessageAction
-  }
-})
+export default branch({}, CreateRole)

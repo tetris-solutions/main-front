@@ -1,5 +1,5 @@
 import React from 'react'
-import {branch} from 'baobab-react/higher-order'
+import {branch} from 'baobab-react/dist-modules/higher-order'
 import toUpper from 'lodash/toUpper'
 import Message from '@tetris/front-server/lib/components/intl/Message'
 import {deleteAccountAction} from '../../actions/delete-account-action'
@@ -71,10 +71,7 @@ export const AccountEdit = React.createClass({
   displayName: 'Account-Edit',
   propTypes: {
     account: PropTypes.object,
-    actions: PropTypes.shape({
-      notifySuccess: PropTypes.func,
-      removeAccount: PropTypes.func
-    })
+    dispatch: PropTypes.func
   },
   contextTypes: {
 
@@ -85,10 +82,10 @@ export const AccountEdit = React.createClass({
 
     this.preSubmit()
 
-    const {account, actions: {notifySuccess, removeAccount}} = this.props
+    const {dispatch, account} = this.props
 
-    return removeAccount(account.id)
-      .then(() => notifySuccess())
+    return dispatch(deleteAccountAction, account.id)
+      .then(() => dispatch(pushSuccessMessageAction))
       .then(() => {
         this.context.router.goBack()
       })
@@ -159,14 +156,6 @@ export const AccountEdit = React.createClass({
   }
 })
 
-export default branch(AccountEdit, {
-  cursors (props, context) {
-    return {
-      account: ['accounts', props.params.account]
-    }
-  },
-  actions: {
-    removeAccount: deleteAccountAction,
-    notifySuccess: pushSuccessMessageAction
-  }
-})
+export default branch((props, context) => ({
+  account: ['accounts', props.params.account]
+}), AccountEdit)

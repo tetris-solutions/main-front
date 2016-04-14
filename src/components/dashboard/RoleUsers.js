@@ -1,7 +1,7 @@
 import React from 'react'
 import Message from '@tetris/front-server/lib/components/intl/Message'
 import map from 'lodash/map'
-import {branch} from 'baobab-react/higher-order'
+import {branch} from 'baobab-react/dist-modules/higher-order'
 import SimpleInput from '@tetris/front-server/lib/components/SimpleInput'
 import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
 import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
@@ -52,6 +52,7 @@ export const RoleUsers = React.createClass({
   propTypes: {
     role: PropTypes.object,
     params: PropTypes.object,
+    dispatch: PropTypes.func,
     actions: PropTypes.shape({
       createUserRole: PropTypes.func,
       deleteInvite: PropTypes.func,
@@ -64,11 +65,11 @@ export const RoleUsers = React.createClass({
     e.preventDefault()
     this.preSubmit()
     const {target: {email}} = e
-    const {actions: {pushSuccessMessage, createUserRole, loadRoleUsers}, params: {company, role}} = this.props
+    const {dispatch, params: {company, role}} = this.props
 
-    return createUserRole(email.value, role)
-      .then(() => loadRoleUsers(company, role))
-      .then(() => pushSuccessMessage())
+    return dispatch(createUserRoleAction, email.value, role)
+      .then(() => dispatch(loadRoleUsersAction, company, role))
+      .then(() => dispatch(pushSuccessMessageAction))
       .then(() => {
         email.value = ''
       })
@@ -76,14 +77,16 @@ export const RoleUsers = React.createClass({
       .then(this.posSubmit)
   },
   removeInvite (id) {
-    const {actions: {deleteInvite, loadRoleUsers}, params: {company, role}} = this.props
+    const {dispatch, params: {company, role}} = this.props
 
-    return deleteInvite(id).then(() => loadRoleUsers(company, role))
+    return dispatch(deleteInviteAction, id)
+      .then(() => dispatch(loadRoleUsersAction, company, role))
   },
   removeUserRole (id) {
-    const {actions: {deleteUserRole, loadRoleUsers}, params: {company, role}} = this.props
+    const {dispatch, params: {company, role}} = this.props
 
-    return deleteUserRole(id).then(() => loadRoleUsers(company, role))
+    return dispatch(deleteUserRoleAction, id)
+      .then(() => dispatch(loadRoleUsersAction, company, role))
   },
   render () {
     const {errors} = this.state
@@ -127,12 +130,4 @@ export const RoleUsers = React.createClass({
   }
 })
 
-export default branch(RoleUsers, {
-  actions: {
-    createUserRole: createUserRoleAction,
-    loadRoleUsers: loadRoleUsersAction,
-    deleteUserRole: deleteUserRoleAction,
-    deleteInvite: deleteInviteAction,
-    pushSuccessMessage: pushSuccessMessageAction
-  }
-})
+export default branch({}, RoleUsers)

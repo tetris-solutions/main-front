@@ -5,14 +5,14 @@ import Activation from './../components/Activation'
 import Home from './../components/Home'
 import Signup from './../components/Signup'
 import WaitingConfirmation from './../components/WaitingConfirmation'
-import {root} from 'baobab-react/higher-order'
+import {root} from 'baobab-react/dist-modules/higher-order'
 import {root as createRoot} from '@tetris/front-server/lib/higher-order/root'
 import {dashboardRoutes} from './ui-dashboard'
 import Header from '../components/Header'
 
 export function getRoutes (tree, protectRoute, preload) {
   return (
-    <Route path='/' component={root(createRoot(Header), tree)}>
+    <Route path='/' component={root(tree, createRoot(Header))}>
       <IndexRoute component={Home}/>
       <Route path='login' component={Login}/>
       <Route path='signup' component={Signup}/>

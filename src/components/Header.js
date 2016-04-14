@@ -1,8 +1,8 @@
 import React from 'react'
 import LocaleSelector from './HeaderLocaleSelector'
 import {Link, IndexLink} from 'react-router'
-import logoutAction from '@tetris/front-server/lib/actions/logout-action'
-import {branch} from 'baobab-react/higher-order'
+import {logoutAction} from '@tetris/front-server/lib/actions/logout-action'
+import {branch} from 'baobab-react/dist-modules/higher-order'
 import Message from '@tetris/front-server/lib/components/intl/Message'
 
 const {PropTypes} = React
@@ -11,16 +11,14 @@ export const Header = React.createClass({
   displayName: 'Header',
   propTypes: {
     user: PropTypes.object,
-    actions: PropTypes.shape({
-      logout: PropTypes.func.isRequired
-    })
+    dispatch: PropTypes.func
   },
   contextTypes: {
     router: PropTypes.object.isRequired
   },
   handleLogoutClick (e) {
     e.preventDefault()
-    this.props.actions.logout()
+    this.props.dispatch(logoutAction)
     this.context.router.push('/')
   },
   render () {
@@ -67,8 +65,4 @@ export const Header = React.createClass({
   }
 })
 
-export default branch(Header, {
-  actions: {
-    logout: logoutAction
-  }
-})
+export default branch({}, Header)

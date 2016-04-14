@@ -1,7 +1,7 @@
 import React from 'react'
 import map from 'lodash/map'
 import forEach from 'lodash/forEach'
-import {branch} from 'baobab-react/higher-order'
+import {branch} from 'baobab-react/dist-modules/higher-order'
 import some from 'lodash/some'
 import SimpleInput from '@tetris/front-server/lib/components/SimpleInput'
 import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
@@ -21,9 +21,7 @@ export const RoleOptions = React.createClass({
     role: PropTypes.object,
     permissions: PropTypes.array,
     params: PropTypes.object,
-    actions: PropTypes.shape({
-      updateRole: PropTypes.func
-    })
+    dispatch: PropTypes.func
   },
   handleSubmit (e) {
     e.preventDefault()
@@ -31,14 +29,7 @@ export const RoleOptions = React.createClass({
 
     const {elements} = e.target
     const permissions = []
-    const {
-      role, params: {company}, actions: {
-      updateRole,
-      loadUserCompanies,
-      loadCompany,
-      pushSuccessMessage
-    }
-    } = this.props
+    const {dispatch, role, params: {company}} = this.props
 
     forEach(this.props.permissions, ({id}) => {
       if (elements[id] && elements[id].checked) {
@@ -46,12 +37,12 @@ export const RoleOptions = React.createClass({
       }
     })
 
-    return updateRole(role.id, elements.name.value, permissions)
+    return dispatch(updateRoleAction, role.id, elements.name.value, permissions)
       .then(() => Promise.all([
-        loadUserCompanies(),
-        loadCompany(company)
+        dispatch(loadUserCompaniesAction),
+        dispatch(loadCompanyAction, company)
       ]))
-      .then(() => pushSuccessMessage())
+      .then(() => dispatch(pushSuccessMessageAction))
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
@@ -97,14 +88,4 @@ export const RoleOptions = React.createClass({
   }
 })
 
-export default branch(RoleOptions, {
-  cursors: {
-    permissions: ['permissions']
-  },
-  actions: {
-    updateRole: updateRoleAction,
-    loadCompany: loadCompanyAction,
-    loadUserCompanies: loadUserCompaniesAction,
-    pushSuccessMessage: pushSuccessMessageAction
-  }
-})
+export default branch({permissions: ['permissions']}, RoleOptions)

@@ -3,7 +3,7 @@ import signupAction from '../actions/signup-action'
 import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
 import SimpleInput from '@tetris/front-server/lib/components/SimpleInput'
 import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
-import {branch} from 'baobab-react/higher-order'
+import {branch} from 'baobab-react/dist-modules/higher-order'
 
 const {PropTypes} = React
 
@@ -11,9 +11,7 @@ export const Signup = React.createClass({
   displayName: 'Signup',
   mixins: [FormMixin],
   propTypes: {
-    actions: PropTypes.shape({
-      signup: PropTypes.func
-    })
+    dispatch: PropTypes.func
   },
   contextTypes: {
     router: PropTypes.object.isRequired
@@ -23,8 +21,8 @@ export const Signup = React.createClass({
     const {elements} = e.target
 
     this.preSubmit()
-    this.props.actions
-      .signup({
+    this.props
+      .dispatch(signupAction, {
         email: elements.email.value,
         password: elements.password.value,
         name: elements.name.value
@@ -80,8 +78,4 @@ export const Signup = React.createClass({
   }
 })
 
-export default branch(Signup, {
-  actions: {
-    signup: signupAction
-  }
-})
+export default branch({}, Signup)

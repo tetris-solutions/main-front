@@ -1,7 +1,7 @@
 import React from 'react'
 import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
 import SimpleInput from '@tetris/front-server/lib/components/SimpleInput'
-import {branch} from 'baobab-react/higher-order'
+import {branch} from 'baobab-react/dist-modules/higher-order'
 import updateMeAction from '../../actions/update-me-action'
 import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
@@ -13,24 +13,21 @@ export const Profile = createClass({
   mixins: [FormMixin],
   propTypes: {
     user: PropTypes.object.isRequired,
-    actions: PropTypes.shape({
-      updateMe: PropTypes.func,
-      pushSuccessMessage: PropTypes.func
-    })
+    dispatch: PropTypes.func
   },
   handleSubmit (e) {
     e.preventDefault()
     const {target: {elements: {name, email, password, oldPassword}}} = e
     this.preSubmit()
-    const {updateMe, pushSuccessMessage} = this.props.actions
+    const {dispatch} = this.props
 
-    return updateMe({
+    return dispatch(updateMeAction, {
       name: name.value,
       email: email.value,
       password: password.value,
       oldPassword: oldPassword.value
     })
-      .then(() => pushSuccessMessage())
+      .then(() => dispatch(pushSuccessMessageAction))
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
@@ -86,12 +83,4 @@ export const Profile = createClass({
   }
 })
 
-export default branch(Profile, {
-  cursors: {
-    user: ['user']
-  },
-  actions: {
-    updateMe: updateMeAction,
-    pushSuccessMessage: pushSuccessMessageAction
-  }
-})
+export default branch({user: ['user']}, Profile)

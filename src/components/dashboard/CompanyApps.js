@@ -1,5 +1,5 @@
 import React from 'react'
-import {branch} from 'baobab-react/higher-order'
+import {branch} from 'baobab-react/dist-modules/higher-order'
 import map from 'lodash/map'
 
 const appUrls = {
@@ -26,11 +26,6 @@ export const CompanyApps = React.createClass({
   }
 })
 
-export default branch(CompanyApps, {
-  cursors (props, context) {
-    return {
-      apps: ['companies', props.params.company, 'apps']
-    }
-  }
-})
-
+export default branch((props, context) => ({
+  apps: ['companies', props.params.company, 'apps']
+}), CompanyApps)

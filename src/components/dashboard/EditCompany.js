@@ -1,5 +1,5 @@
 import React from 'react'
-import {branch} from 'baobab-react/higher-order'
+import {branch} from 'baobab-react/dist-modules/higher-order'
 import {Link} from 'react-router'
 import Message from '@tetris/front-server/lib/components/intl/Message'
 import cx from 'classnames'
@@ -62,10 +62,6 @@ export const EditCompany = React.createClass({
   }
 })
 
-export default branch(EditCompany, {
-  cursors (props, context) {
-    return {
-      company: ['companies', props.params.company]
-    }
-  }
-})
+export default branch((props, context) => ({
+  company: ['companies', props.params.company]
+}), EditCompany)

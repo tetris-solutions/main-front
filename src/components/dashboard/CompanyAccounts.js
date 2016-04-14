@@ -1,7 +1,7 @@
 import React from 'react'
 import Message from '@tetris/front-server/lib/components/intl/Message'
 import CompanyAccountRow from './CompanyAccountRow'
-import {branch} from 'baobab-react/higher-order'
+import {branch} from 'baobab-react/dist-modules/higher-order'
 import map from 'lodash/map'
 
 const {PropTypes} = React
@@ -53,10 +53,6 @@ export const CompanyAccounts = React.createClass({
   }
 })
 
-export default branch(CompanyAccounts, {
-  cursors (props, context) {
-    return {
-      accounts: ['companies', props.params.company, 'accounts']
-    }
-  }
-})
+export default branch((props, context) => ({
+  accounts: ['companies', props.params.company, 'accounts']
+}), CompanyAccounts)

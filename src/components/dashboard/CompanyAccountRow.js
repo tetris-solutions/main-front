@@ -1,7 +1,7 @@
 import React from 'react'
 import Message from '@tetris/front-server/lib/components/intl/Message'
 import {Link} from 'react-router'
-import {branch} from 'baobab-react/higher-order'
+import {branch} from 'baobab-react/dist-modules/higher-order'
 import {deleteCompanyAccountAction} from '../../actions/delete-company-account-action'
 import {loadCompanyAccountsAction} from '../../actions/load-company-accounts-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
@@ -23,28 +23,18 @@ export const CompanyAccountRow = React.createClass({
       company_account: PropTypes.string
     }),
     company: PropTypes.string,
-    actions: PropTypes.shape({
-      unlinkCompanyAccount: PropTypes.func,
-      notifySuccess: PropTypes.func,
-      reloadAccounts: PropTypes.func
-    })
+    dispatch: PropTypes.func
   },
   unlink (e) {
     e.preventDefault()
 
-    const {
-      actions: {
-        unlinkCompanyAccount,
-        notifySuccess,
-        reloadAccounts
-      }, company, account
-    } = this.props
+    const {dispatch, company, account} = this.props
 
     this.preSubmit()
 
-    return unlinkCompanyAccount(account.company_account)
-      .then(() => notifySuccess())
-      .then(() => reloadAccounts(company))
+    return dispatch(deleteCompanyAccountAction, account.company_account)
+      .then(() => dispatch(pushSuccessMessageAction))
+      .then(() => dispatch(loadCompanyAccountsAction, company))
       .catch(this.posSubmit)
   },
   render () {
@@ -90,10 +80,4 @@ export const CompanyAccountRow = React.createClass({
   }
 })
 
-export default branch(CompanyAccountRow, {
-  actions: {
-    unlinkCompanyAccount: deleteCompanyAccountAction,
-    reloadAccounts: loadCompanyAccountsAction,
-    notifySuccess: pushSuccessMessageAction
-  }
-})
+export default branch({}, CompanyAccountRow)
