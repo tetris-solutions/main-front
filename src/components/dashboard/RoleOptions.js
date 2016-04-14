@@ -8,7 +8,7 @@ import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
 import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
 import Message from '@tetris/front-server/lib/components/intl/Message'
 import {updateRoleAction} from '../../actions/update-role-action'
-import {loadUserCompaniesAction} from '../../actions/load-user-companies-action'
+import {loadUserCompaniesAction} from '@tetris/front-server/lib/actions/load-user-companies-action'
 import {loadCompanyAction} from '../../actions/load-company-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 

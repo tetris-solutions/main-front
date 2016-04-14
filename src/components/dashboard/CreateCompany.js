@@ -4,7 +4,7 @@ import SimpleInput from '@tetris/front-server/lib/components/SimpleInput'
 import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
 import {branch} from 'baobab-react/dist-modules/higher-order'
 import {createCompanyAction} from '../../actions/create-company-action'
-import {loadUserCompaniesAction} from '../../actions/load-user-companies-action'
+import {loadUserCompaniesAction} from '@tetris/front-server/lib/actions/load-user-companies-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 
 const {PropTypes} = React

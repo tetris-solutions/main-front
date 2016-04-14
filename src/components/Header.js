@@ -22,7 +22,6 @@ export const Header = React.createClass({
     this.context.router.push('/')
   },
   render () {
-    const {user} = this.props
     return (
       <nav className='navbar navbar-default'>
         <div className='container-fluid'>
@@ -30,7 +29,7 @@ export const Header = React.createClass({
             <IndexLink className='navbar-brand' to='/'>Tetris</IndexLink>
           </div>
 
-          {user ? (
+          {this.props.user ? (
             <ul ref='ul' className='nav navbar-nav navbar-right'>
               <li>
                 <Link to='/dashboard'>
@@ -65,4 +64,4 @@ export const Header = React.createClass({
   }
 })
 
-export default branch({}, Header)
+export default branch({user: ['user']}, Header)

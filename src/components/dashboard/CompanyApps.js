@@ -11,14 +11,20 @@ const {PropTypes} = React
 export const CompanyApps = React.createClass({
   displayName: 'Company-Apps',
   propTypes: {
-    apps: PropTypes.array
+    apps: PropTypes.array,
+    params: PropTypes.shape({
+      company: PropTypes.string
+    })
   },
   render () {
+    const {apps, params: {company}} = this.props
     return (
       <ul>
-        {map(this.props.apps, ({id, name}, index) => (
+        {map(apps, ({id, name}, index) => (
           <li key={index}>
-            <a target='_blank' href={appUrls[id]}>{name}</a>
+            <a target='_blank' href={`${appUrls[id]}/company/${company}`}>
+              {name}
+            </a>
           </li>
         ))}
       </ul>
