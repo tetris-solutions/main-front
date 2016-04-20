@@ -5,6 +5,7 @@ export const HTML = ({documentTitle = 'Tetris Solutions', payload, children}) =>
     <head>
 
       <meta charSet='UTF-8'/>
+      <meta name='viewport' content='width=device-width, initial-scale=1'/>
       <title>{documentTitle}</title>
       <link rel='stylesheet' href='https://bootswatch.com/sandstone/bootstrap.css'/>
       <link rel='stylesheet' href='https://cdn.rawgit.com/daneden/animate.css/master/animate.css'/>
