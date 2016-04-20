@@ -4,6 +4,11 @@
   "version": "0.0.1",
   "description": "front para o site e admin base",
   "main": "lib/main.js",
+  "engineStrict": true,
+  "engines": {
+    "npm": ">=3.0.0",
+    "node": ">=4.0.0"
+  },
   "bin": {
     "main-front": "bin/cmd.js"
   },

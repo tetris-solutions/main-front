@@ -42,7 +42,7 @@ export const CompanyAccounts = React.createClass({
 
           {map(this.props.accounts, (account, index) =>
             <CompanyAccountRow
-              key={index}
+              key={account.id}
               account={account}
               company={this.props.params.company}/>)}
 
