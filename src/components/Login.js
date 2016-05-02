@@ -33,7 +33,7 @@ export const Login = React.createClass({
         elements.email.value,
         elements.password.value)
       .then(() => {
-        const next = get(this, 'context.location.query.next') || '/'
+        const next = get(this, 'context.location.query.next') || '/dashboard'
 
         if (isAbsolute(next)) {
           window.location.href = next
