@@ -7,7 +7,7 @@ import {GET} from '@tetris/http'
  * @returns {Promise.<Array>} promise that resolves to a list users
  */
 export function loadRoleUsers (role, config) {
-  return GET(`${process.env.USER_API_URL}/role/${role}/users`, config)
+  return GET(`${process.env.USER_API_URL}/role/${role}/users?invited=true`, config)
 }
 
 export default loadRoleUsers

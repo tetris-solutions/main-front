@@ -96,13 +96,13 @@ export const RoleUsers = React.createClass({
       <div className='well'>
         <div className='list-group'>
 
-          {map(users, ({user_role, pending, invite, name}, index) => (
+          {map(users, ({user_role, pending, invite, name, email}, index) => (
 
             <RoleUser
               key={index}
               id={user_role || invite}
               pending={pending}
-              name={name}
+              name={name || email}
               removeUser={pending ? this.removeInvite : this.removeUserRole}/>
 
           ))}
