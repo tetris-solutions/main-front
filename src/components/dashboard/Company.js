@@ -1,13 +1,13 @@
 import React from 'react'
-import {branch} from 'baobab-react/dist-modules/higher-order'
+import {branch} from 'baobab-react/higher-order'
 import {Link} from 'react-router'
 import Message from '@tetris/front-server/lib/components/intl/Message'
 import cx from 'classnames'
 
 const {PropTypes, cloneElement} = React
 
-export const EditCompany = React.createClass({
-  displayName: 'Edit-Company',
+export const Company = React.createClass({
+  displayName: 'Company',
   propTypes: {
     company: PropTypes.object,
     params: PropTypes.object,
@@ -64,4 +64,4 @@ export const EditCompany = React.createClass({
 
 export default branch((props, context) => ({
   company: ['companies', props.params.company]
-}), EditCompany)
+}), Company)

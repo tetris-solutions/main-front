@@ -1,5 +1,5 @@
 import React from 'react'
-import {branch} from 'baobab-react/dist-modules/higher-order'
+import {branch} from 'baobab-react/higher-order'
 import toUpper from 'lodash/toUpper'
 import Message from '@tetris/front-server/lib/components/intl/Message'
 import {deleteAccountAction} from '../../actions/delete-account-action'

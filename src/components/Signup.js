@@ -3,7 +3,7 @@ import signupAction from '../actions/signup-action'
 import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
 import SimpleInput from '@tetris/front-server/lib/components/SimpleInput'
 import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
-import {branch} from 'baobab-react/dist-modules/higher-order'
+import {branch} from 'baobab-react/higher-order'
 
 const {PropTypes} = React
 

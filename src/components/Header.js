@@ -2,7 +2,7 @@ import React from 'react'
 import LocaleSelector from './HeaderLocaleSelector'
 import {Link, IndexLink} from 'react-router'
 import {logoutAction} from '@tetris/front-server/lib/actions/logout-action'
-import {branch} from 'baobab-react/dist-modules/higher-order'
+import {branch} from 'baobab-react/higher-order'
 import Message from '@tetris/front-server/lib/components/intl/Message'
 
 const {PropTypes} = React

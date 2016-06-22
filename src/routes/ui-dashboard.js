@@ -2,7 +2,7 @@ import {Route, IndexRoute} from 'react-router'
 
 import Dashboard from '../components/dashboard/Dashboard'
 import Companies from '../components/dashboard/Companies'
-import EditCompany from '../components/dashboard/EditCompany'
+import Company from '../components/dashboard/Company'
 import CreateCompany from '../components/dashboard/CreateCompany'
 import CompanyRole from '../components/dashboard/CompanyRole'
 import RoleOptions from '../components/dashboard/RoleOptions'
@@ -37,7 +37,7 @@ export function dashboardRoutes (preload) {
       <Route path='companies' component={Companies} onEnter={preload(loadUserCompaniesActionRouterAdaptor)}/>
       <Route path='create/company' component={CreateCompany}/>
 
-      <Route path='company/:company' component={EditCompany} onEnter={preload(loadCompanyActionRouterAdaptor)}>
+      <Route path='company/:company' component={Company} onEnter={preload(loadCompanyActionRouterAdaptor)}>
         <IndexRoute component={CompanyPlans} onEnter={preload(loadPlansActionRouterAdaptor)}/>
         <Route path='apps' component={CompanyApps} onEnter={preload(loadCompanyAppsActionRouterAdaptor)}/>
 

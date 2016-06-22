@@ -1,6 +1,6 @@
 import React from 'react'
 import Message from '@tetris/front-server/lib/components/intl/Message'
-import {branch} from 'baobab-react/dist-modules/higher-order'
+import {branch} from 'baobab-react/higher-order'
 import map from 'lodash/map'
 import {Link} from 'react-router'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import Message from '@tetris/front-server/lib/components/intl/Message'
 import CompanyAccountRow from './CompanyAccountRow'
-import {branch} from 'baobab-react/dist-modules/higher-order'
+import {branch} from 'baobab-react/higher-order'
 import map from 'lodash/map'
 
 const {PropTypes} = React
