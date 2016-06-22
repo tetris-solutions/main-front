@@ -9,6 +9,7 @@ export function loadCompanyAccountsAction (tree, id, token) {
     .then(response => {
       tree.set(['companies', id, 'accounts'], response.data)
       tree.commit()
+      return response
     })
     .catch(pushResponseErrorToState(tree))
 }

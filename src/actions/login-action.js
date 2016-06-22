@@ -16,6 +16,7 @@ export function loginAction (tree, email, password) {
     .then(response => {
       tree.set('user', response.data)
       tree.commit()
+      return response
     })
     .catch(pushResponseErrorToState(tree))
 }

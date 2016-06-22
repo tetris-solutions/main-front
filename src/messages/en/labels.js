@@ -13,5 +13,6 @@ export default {
   invalidTokenLabel: 'Invalid token',
   unknownTokenStatusLabel: 'Unknown status',
   accessTokenTimestamp: 'Issued',
-  accessTokenExpiration: 'Expires'
+  accessTokenExpiration: 'Expires',
+  timezoneLabel: 'Timezone'
 }

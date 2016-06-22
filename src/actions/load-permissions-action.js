@@ -15,6 +15,7 @@ export function loadPermissionsAction (tree, token) {
     .then(response => {
       tree.set('permissions', response.data)
       tree.commit()
+      return response
     })
     .catch(pushResponseErrorToState(tree))
 }

@@ -13,5 +13,6 @@ export default {
   invalidTokenLabel: 'Token inválido',
   unknownTokenStatusLabel: 'Não foi possível determinar',
   accessTokenTimestamp: 'Emitido',
-  accessTokenExpiration: 'Expira'
+  accessTokenExpiration: 'Expira',
+  timezoneLabel: 'Fuso horário'
 }

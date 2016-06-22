@@ -11,5 +11,6 @@ export default {
   refreshToken: 'Refresh token',
   createCompany: 'Create a new company',
   choosePlan: 'Choose plan',
-  cancelPlan: 'Cancel plan'
+  cancelPlan: 'Cancel plan',
+  editCompany: 'Edit company'
 }

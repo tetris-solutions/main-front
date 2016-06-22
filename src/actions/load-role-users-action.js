@@ -21,6 +21,7 @@ export function loadRoleUsersAction (tree, company, role, token) {
 
       rolesCursor.set([roleIndex, 'users'], response.data)
       tree.commit()
+      return response
     })
     .catch(pushResponseErrorToState(tree))
 }

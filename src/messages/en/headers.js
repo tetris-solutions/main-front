@@ -5,6 +5,7 @@ export default {
   roleListHeader: 'Roles',
   companyAppsHeader: 'Apps',
   companyPlansHeader: 'Plans',
+  companyInfoHeader: 'Company Information',
   accountListHeader: 'External accounts',
   accountNameHeader: 'Account name',
   accountPlatformHeader: 'Platform',

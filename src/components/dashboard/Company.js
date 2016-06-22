@@ -23,7 +23,8 @@ export const Company = React.createClass({
     const rolesPath = `${companyPath}/roles`
     const accountsPath = `${companyPath}/accounts`
     const appsPath = `${companyPath}/apps`
-    const isIndexRoute = !isActive(rolesPath) && !isActive(accountsPath) && !isActive(appsPath)
+    const infoPath = `${companyPath}/info`
+    const isIndexRoute = !isActive(rolesPath) && !isActive(accountsPath) && !isActive(appsPath) && !isActive(infoPath)
 
     return (
       <div>
@@ -49,6 +50,12 @@ export const Company = React.createClass({
           <li className={cx(isActive(accountsPath) && 'active')}>
             <Link to={accountsPath}>
               <Message>accountListHeader</Message>
+            </Link>
+          </li>
+
+          <li className={cx(isActive(infoPath) && 'active')}>
+            <Link to={infoPath}>
+              <Message>companyInfoHeader</Message>
             </Link>
           </li>
 

@@ -9,6 +9,7 @@ export function loadAccountAction (tree, id, token) {
     .then(response => {
       tree.set(['accounts', id], response.data)
       tree.commit()
+      return response
     })
     .catch(pushResponseErrorToState(tree))
 }

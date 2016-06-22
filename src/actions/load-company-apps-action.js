@@ -9,6 +9,7 @@ export function loadCompanyAppsAction (tree, id, token) {
     .then(response => {
       tree.set(['companies', id, 'apps'], response.data)
       tree.commit()
+      return response
     })
     .catch(pushResponseErrorToState(tree))
 }

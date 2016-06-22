@@ -15,6 +15,7 @@ export function loadPlansAction (tree, token) {
     .then(response => {
       tree.set('plans', response.data)
       tree.commit()
+      return response
     })
     .catch(pushResponseErrorToState(tree))
 }

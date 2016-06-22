@@ -1,19 +1,17 @@
-import {updateMe} from '../api/update-me'
+import {updateCompany} from '../api/update-company'
 import {saveResponseTokenAsCookie} from '@tetris/front-server/lib/functions/save-token-as-cookie'
 import {getApiFetchConfig} from '@tetris/front-server/lib/functions/get-api-fetch-config'
 import {pushResponseErrorToState} from '@tetris/front-server/lib/functions/push-response-error-to-state'
+import findIndex from 'lodash/findIndex'
 
-/**
- * fires a request to the update user api
- * @param {Baobab} tree state tree
- * @param {Object} user new user object
- * @returns {Promise} promise that resolves once action is complete
- */
-export function updateMeAction (tree, user) {
-  return updateMe(user, getApiFetchConfig(tree))
+export function updateCompanyAction (tree, id, changes) {
+  return updateCompany(id, changes, getApiFetchConfig(tree))
     .then(saveResponseTokenAsCookie)
     .then(response => {
-      tree.set('user', response.data)
+      const index = findIndex(tree.get(['user', 'companies']), {id})
+
+      tree.merge(['user', 'companies', index], changes)
+      tree.merge(['companies', id], changes)
       tree.commit()
 
       return response
@@ -21,4 +19,4 @@ export function updateMeAction (tree, user) {
     .catch(pushResponseErrorToState(tree))
 }
 
-export default updateMeAction
+export default updateCompanyAction
