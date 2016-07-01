@@ -7,6 +7,7 @@ export default {
   unlinkAccount: 'Unlink account',
   linkFacebookAccount: 'Link Facebook account',
   linkAdWordsAccount: 'Link AdWords account',
+  linkTwitterAccount: 'Link Twitter account',
   removeAccount: 'Remove account',
   refreshToken: 'Refresh token',
   createCompany: 'Create a new company',

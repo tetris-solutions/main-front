@@ -35,6 +35,10 @@ export const CompanyAccounts = React.createClass({
           <a className='btn btn-primary' href={`${process.env.TKM_URL}/company/${company}/link/facebook`}>
             <Message>linkFacebookAccount</Message>
           </a>
+          &nbsp;
+          <a className='btn btn-info' href={`${process.env.TKM_URL}/company/${company}/link/twitter`}>
+            <Message>linkTwitterAccount</Message>
+          </a>
         </p>
         <table className='table'>
           <thead>{tableHeaders}</thead>
