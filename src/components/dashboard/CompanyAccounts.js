@@ -27,19 +27,7 @@ export const CompanyAccounts = React.createClass({
 
     return (
       <div>
-        <p className='text-right'>
-          <a className='btn btn-success' href={`${process.env.TKM_URL}/company/${company}/link/adwords`}>
-            <Message>linkAdWordsAccount</Message>
-          </a>
-          &nbsp;
-          <a className='btn btn-primary' href={`${process.env.TKM_URL}/company/${company}/link/facebook`}>
-            <Message>linkFacebookAccount</Message>
-          </a>
-          &nbsp;
-          <a className='btn btn-info' href={`${process.env.TKM_URL}/company/${company}/link/twitter`}>
-            <Message>linkTwitterAccount</Message>
-          </a>
-        </p>
+        <br/>
         <table className='table'>
           <thead>{tableHeaders}</thead>
           <tbody>
@@ -52,6 +40,34 @@ export const CompanyAccounts = React.createClass({
 
           </tbody>
         </table>
+
+        <br/>
+        <section className='text-right'>
+          <h4>
+            <Message>linkAccount</Message>
+          </h4>
+          <div className='btn-group'>
+            <a className='btn btn-success' href={`${process.env.TKM_URL}/company/${company}/link/adwords`}>
+              Adwords
+            </a>
+            &nbsp;
+            <a className='btn btn-default' href={`${process.env.TKM_URL}/company/${company}/link/analytics`}>
+              Google Analytics
+            </a>
+            &nbsp;
+            <a className='btn btn-warning' href={`${process.env.TKM_URL}/company/${company}/link/doubleclick`}>
+              Double Click
+            </a>
+            &nbsp;
+            <a className='btn btn-primary' href={`${process.env.TKM_URL}/company/${company}/link/facebook`}>
+              Facebook
+            </a>
+            &nbsp;
+            <a className='btn btn-info' href={`${process.env.TKM_URL}/company/${company}/link/twitter`}>
+              Twitter
+            </a>
+          </div>
+        </section>
       </div>
     )
   }

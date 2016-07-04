@@ -5,6 +5,7 @@ export default {
   manageYourProfile: 'Manage your profile',
   manageYourCompanies: 'Manage your companies',
   unlinkAccount: 'Unlink account',
+  linkAccount: 'Link another account',
   linkFacebookAccount: 'Link Facebook account',
   linkAdWordsAccount: 'Link AdWords account',
   linkTwitterAccount: 'Link Twitter account',

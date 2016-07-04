@@ -5,6 +5,7 @@ export default {
   manageYourProfile: 'Gerencie seu perfil de usuário',
   manageYourCompanies: 'Gerencie suas empresas',
   unlinkAccount: 'Desvincular conta',
+  linkAccount: 'Vincular nova conta',
   linkFacebookAccount: 'Vincular conta Facebook',
   linkAdWordsAccount: 'Vincular conta Adwords',
   linkTwitterAccount: 'Vincular conta Twitter',
