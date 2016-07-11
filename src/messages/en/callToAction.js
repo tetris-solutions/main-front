@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   callToActionReturnHome: 'Return to home',
   callToActionSubmit: 'Send',
   callToActionSave: 'Save',

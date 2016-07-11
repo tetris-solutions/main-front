@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   permissionsHeader: 'Permissões do grupo',
   dashboardHeader: 'Painel',
   newRoleHeader: 'Novo grupo',

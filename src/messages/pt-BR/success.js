@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   emailConfirmationSuccessTitle: 'E-mail confirmado!',
   emailConfirmationSuccess: 'Sua conta foi ativada com sucesso.',
   accountCreationSuccessTitle: 'Conta criada com sucesso!',

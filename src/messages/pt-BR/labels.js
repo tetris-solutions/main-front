@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   nameLabel: 'Nome',
   emailLabel: 'E-mail',
   passwordLabel: 'Senha',

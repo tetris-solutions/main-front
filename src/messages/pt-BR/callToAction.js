@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   callToActionReturnHome: 'Voltar para tela inicial',
   callToActionSubmit: 'Enviar',
   callToActionSave: 'Salvar',

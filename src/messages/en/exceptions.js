@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   emailConfirmationFailure: 'E-mail confirmation failure',
   emailConfirmationFailureDefaultDescription: 'We could not confirm your e-mail',
   accessForbiddenTitle: 'Access forbidden!',

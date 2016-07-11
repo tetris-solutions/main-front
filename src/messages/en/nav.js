@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   navSignup: 'Signup',
   navLogin: 'Login',
   navLogout: 'Logout',

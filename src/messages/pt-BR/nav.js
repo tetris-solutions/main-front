@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   navSignup: 'Cadastrar',
   navLogin: 'Login',
   navLogout: 'Sair',
