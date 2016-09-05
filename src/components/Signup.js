@@ -1,9 +1,11 @@
-import React from 'react'
-import signupAction from '../actions/signup-action'
 import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
+import Message from '@tetris/front-server/lib/components/intl/Message'
+import React from 'react'
 import SimpleInput from '@tetris/front-server/lib/components/SimpleInput'
 import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
 import {branch} from 'baobab-react/higher-order'
+
+import signupAction from '../actions/signup-action'
 
 const {PropTypes} = React
 
@@ -11,7 +13,12 @@ export const Signup = React.createClass({
   displayName: 'Signup',
   mixins: [FormMixin],
   propTypes: {
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
+    location: PropTypes.shape({
+      query: PropTypes.shape({
+        email: PropTypes.string
+      })
+    })
   },
   contextTypes: {
     router: PropTypes.object.isRequired
@@ -19,29 +26,32 @@ export const Signup = React.createClass({
   handleSubmit (e) {
     e.preventDefault()
     const {elements} = e.target
+    const {dispatch, location: {query}} = this.props
 
     this.preSubmit()
-    this.props
-      .dispatch(signupAction, {
-        email: elements.email.value,
-        password: elements.password.value,
-        name: elements.name.value
-      })
-      .then(response => {
-        const {router} = this.context
-        const {companies} = response.data
 
-        if (companies) {
-          router.push(`/dashboard/company/${companies[0]}/apps`)
-        } else {
-          router.push('/waiting-confirmation')
-        }
-      })
-      .catch(this.handleSubmitException)
-      .then(this.posSubmit)
+    dispatch(signupAction, {
+      email: query.email || elements.email.value,
+      password: elements.password.value,
+      name: elements.name.value
+    })
+    .then(response => {
+      const {router} = this.context
+      const {companies} = response.data
+
+      if (companies) {
+        router.push(`/dashboard/company/${companies[0]}/apps`)
+      } else {
+        router.push('/waiting-confirmation')
+      }
+    })
+    .catch(this.handleSubmitException)
+    .then(this.posSubmit)
   },
   render () {
     const {errors} = this.state
+    const {email} = this.props.location.query
+
     return (
       <div className='container'>
         <form className='panel panel-default' onSubmit={this.handleSubmit} method='POST'>
@@ -54,13 +64,20 @@ export const Signup = React.createClass({
               onChange={this.dismissError}
               required/>
 
-            <SimpleInput
-              name='email'
-              type='email'
-              label='email'
-              error={errors.email}
-              onChange={this.dismissError}
-              required/>
+            {email ? (
+              <div className='form-group'>
+                <label className='control-label'>
+                  <Message>emailLabel</Message>
+                </label>
+                <p className='form-control-static'>{email}</p>
+              </div>) : (
+              <SimpleInput
+                name='email'
+                type='email'
+                label='email'
+                error={errors.email}
+                onChange={this.dismissError}
+                required/>)}
 
             <SimpleInput
               name='password'
