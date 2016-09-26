@@ -14,5 +14,6 @@ module.exports = {
   unknownTokenStatusLabel: 'Não foi possível determinar',
   accessTokenTimestamp: 'Emitido',
   accessTokenExpiration: 'Expira',
-  timezoneLabel: 'Fuso horário'
+  timezoneLabel: 'Fuso horário',
+  legacyDashUrlLabel: 'Url de integração Dash'
 }

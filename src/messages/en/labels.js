@@ -14,5 +14,6 @@ module.exports = {
   unknownTokenStatusLabel: 'Unknown status',
   accessTokenTimestamp: 'Issued',
   accessTokenExpiration: 'Expires',
-  timezoneLabel: 'Timezone'
+  timezoneLabel: 'Timezone',
+  legacyDashUrlLabel: 'Dash Integration URL'
 }

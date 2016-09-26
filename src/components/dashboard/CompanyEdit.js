@@ -33,11 +33,13 @@ export const CompanyEdit = React.createClass({
     e.preventDefault()
     const form = e.target
     const {dispatch, company} = this.props
-
-    return dispatch(updateCompanyAction, company.id, {
+    const payload = {
       name: form.elements.name.value,
-      timezone: form.elements.timezone.value
-    })
+      timezone: form.elements.timezone.value,
+      legacy_dash_url: form.elements.legacy_dash_url.value
+    }
+
+    return dispatch(updateCompanyAction, company.id, payload)
       .then(() => dispatch(pushSuccessMessageAction))
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
@@ -59,6 +61,14 @@ export const CompanyEdit = React.createClass({
             error={errors.name}
             onChange={this.dismissError}
             required/>
+
+          <SimpleInput
+            type='url'
+            name='legacy_dash_url'
+            label='legacyDashUrl'
+            defaultValue={company.legacy_dash_url}
+            error={errors.legacy_dash_url}
+            onChange={this.dismissError}/>
 
           <div className='form-group'>
             <label className='control-label'>
