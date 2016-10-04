@@ -9,6 +9,7 @@ module.exports = {
   roleNameLabel: 'Role name',
   newRoleMemberLabel: 'Invite user',
   pendingInviteLabel: 'Pending invite',
+  companyOwnerLabel: 'Company owner',
   okTokenLabel: 'Active token',
   invalidTokenLabel: 'Invalid token',
   unknownTokenStatusLabel: 'Unknown status',

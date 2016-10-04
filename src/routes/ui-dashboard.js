@@ -1,5 +1,5 @@
 import {Route, IndexRoute} from 'react-router'
-
+import React from 'react'
 import Dashboard from '../components/dashboard/Dashboard'
 import Companies from '../components/dashboard/Companies'
 import Company from '../components/dashboard/Company'

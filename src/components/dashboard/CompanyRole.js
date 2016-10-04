@@ -40,7 +40,7 @@ export const CompanyRole = React.createClass({
         </ul>
         <div className='tab-content'>
           <div className='tab-pane active'>
-            {cloneElement(children, {role})}
+            {cloneElement(children, {role, company})}
           </div>
         </div>
       </div>

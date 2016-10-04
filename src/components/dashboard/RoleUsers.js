@@ -16,6 +16,7 @@ const {PropTypes} = React
 const RoleUser = React.createClass({
   displayName: 'Role-User',
   propTypes: {
+    isOwner: PropTypes.bool.isRequired,
     removeUser: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired,
     id: PropTypes.string,
@@ -25,7 +26,7 @@ const RoleUser = React.createClass({
     this.props.removeUser(this.props.id)
   },
   render () {
-    const {name, pending} = this.props
+    const {isOwner, name, pending} = this.props
     return (
       <div className='list-group-item'>
         <h4>
@@ -37,9 +38,19 @@ const RoleUser = React.createClass({
               </sup>
             </small>
           )}
-          <a className='close' onClick={this.removeUser}>
-            &times;
-          </a>
+
+          {isOwner && (
+            <small>
+              <sup className='label label-info'>
+                <Message>companyOwnerLabel</Message>
+              </sup>
+            </small>
+          )}
+
+          {!isOwner && (
+            <a className='close' onClick={this.removeUser}>
+              &times;
+            </a>)}
         </h4>
       </div>
     )
@@ -50,6 +61,11 @@ export const RoleUsers = React.createClass({
   displayName: 'Role-Users',
   mixins: [FormMixin],
   propTypes: {
+    company: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      owner: PropTypes.string
+    }).isRequired,
     role: PropTypes.object,
     params: PropTypes.object,
     dispatch: PropTypes.func,
@@ -90,17 +106,18 @@ export const RoleUsers = React.createClass({
   },
   render () {
     const {errors} = this.state
-    const {role: {users}} = this.props
+    const {company, role: {users}} = this.props
 
     return (
       <div className='well'>
         <div className='list-group'>
 
-          {map(users, ({user_role, pending, invite, name, email}, index) => (
+          {map(users, ({id: userId, user_role, pending, invite, name, email}, index) => (
 
             <RoleUser
               key={index}
               id={user_role || invite}
+              isOwner={company.owner === userId}
               pending={pending}
               name={name || email}
               removeUser={pending ? this.removeInvite : this.removeUserRole}/>
