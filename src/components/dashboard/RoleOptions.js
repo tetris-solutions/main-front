@@ -88,4 +88,6 @@ export const RoleOptions = React.createClass({
   }
 })
 
-export default branch({permissions: ['permissions']}, RoleOptions)
+export default branch(({params: {company}}) => ({
+  permissions: ['companies', company, 'permissions']
+}), RoleOptions)

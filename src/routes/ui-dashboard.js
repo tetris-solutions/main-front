@@ -20,7 +20,7 @@ import CompanyInfo from '../components/dashboard/CompanyInfo'
 import {loadCompanyAccountsActionRouterAdaptor} from '../actions/load-company-accounts-action'
 import {loadUserCompaniesActionRouterAdaptor} from '@tetris/front-server/lib/actions/load-user-companies-action'
 import {loadCompanyActionRouterAdaptor} from '../actions/load-company-action'
-import {loadPermissionsActionRouterAdaptor} from '../actions/load-permissions-action'
+import {loadCompanyPermissionsActionRouterAdaptor} from '../actions/load-company-permissions-action'
 import {loadRoleUsersActionRouteAdaptor} from '../actions/load-role-users-action'
 import {loadAccountActionRouterAdaptor} from '../actions/load-account-action'
 import {loadPlansActionRouterAdaptor} from '../actions/load-plans-action'
@@ -52,7 +52,7 @@ export function dashboardRoutes (preload) {
         <Route path='roles' component={CompanyRoles}>
           <IndexRoute component={CreateRole}/>
           <Route path=':role' component={CompanyRole}>
-            <IndexRoute component={RoleOptions} onEnter={preload(loadPermissionsActionRouterAdaptor)}/>
+            <IndexRoute component={RoleOptions} onEnter={preload(loadCompanyPermissionsActionRouterAdaptor)}/>
             <Route path='users' component={RoleUsers} onEnter={preload(loadRoleUsersActionRouteAdaptor)}/>
           </Route>
         </Route>

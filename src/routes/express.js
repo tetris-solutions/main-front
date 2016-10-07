@@ -4,7 +4,7 @@ import {performActionsMiddleware} from '@tetris/front-server/lib/middlewares/per
 import {activateRoute} from '../route-handlers/activate-route'
 import {loadUserCompaniesActionServerAdaptor} from '@tetris/front-server/lib/actions/load-user-companies-action'
 import {loadCompanyActionServerAdaptor} from '../actions/load-company-action'
-import {loadPermissionsActionServerAdaptor} from '../actions/load-permissions-action'
+import {loadCompanyPermissionsActionServerAdaptor} from '../actions/load-company-permissions-action'
 import {loadRoleUsersActionServerAdaptor} from '../actions/load-role-users-action'
 import {loadCompanyAccountsActionServerAdaptor} from '../actions/load-company-accounts-action'
 import {loadAccountActionServerAdaptor} from '../actions/load-account-action'
@@ -75,7 +75,7 @@ export function setAppRoutes (app, uiRoute) {
     performActionsMiddleware(
       loadUserCompaniesActionServerAdaptor,
       loadCompanyActionServerAdaptor,
-      loadPermissionsActionServerAdaptor),
+      loadCompanyPermissionsActionServerAdaptor),
     uiRoute)
 
   app.get('/dashboard/company/:company/roles/:role/users',
