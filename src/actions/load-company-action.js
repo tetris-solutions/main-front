@@ -14,7 +14,7 @@ export function loadCompanyAction (tree, id, token) {
   return loadCompany(id, getApiFetchConfig(tree, token))
     .then(saveResponseTokenAsCookie)
     .then(response => {
-      tree.set(['companies', id], response.data)
+      tree.merge(['companies', id], response.data)
       tree.commit()
       return response
     })
