@@ -1,5 +1,5 @@
 import {GET} from '@tetris/http'
-import {passTokenAhead} from 'tetris-iso/lib/functions/pass-token-ahead'
+import {passTokenAhead} from 'tetris-iso/utils'
 
 function getUserByToken (token) {
   return GET(`${process.env.USER_API_URL}`, {
