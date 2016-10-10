@@ -1,11 +1,11 @@
 import React from 'react'
 import {branch} from 'baobab-react/higher-order'
 import toUpper from 'lodash/toUpper'
-import Message from '@tetris/front-server/lib/components/intl/Message'
+import Message from 'tetris-iso/Message'
 import {deleteAccountAction} from '../../actions/delete-account-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
-import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
-import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
+import FormMixin from '../FormMixin'
+import SubmitButton from '../SubmitButton'
 
 const {PropTypes} = React
 

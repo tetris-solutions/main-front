@@ -1,6 +1,6 @@
 import React from 'react'
 import {IndexLink} from 'react-router'
-import Message from '@tetris/front-server/lib/components/intl/Message'
+import Message from 'tetris-iso/Message'
 
 const {createClass, PropTypes} = React
 

@@ -20,14 +20,14 @@ test('passes `tree` through `getApiFetchConfig` and uses this config to call api
     return expectedPromise
   })
 
-  mock('@tetris/front-server/lib/functions/get-api-fetch-config', {
+  mock('tetris-iso/lib/functions/get-api-fetch-config', {
     getApiFetchConfig (tree) {
       t.is(tree, expectedTree)
       return expectedConfig
     }
   })
 
-  mock('@tetris/front-server/lib/functions/save-token-as-cookie', {
+  mock('tetris-iso/lib/functions/save-token-as-cookie', {
     saveTokenAsCookie (response) {
       t.is(response, expectedResponse)
       return expectedResponse

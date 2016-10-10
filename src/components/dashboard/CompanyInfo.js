@@ -1,7 +1,7 @@
 import React from 'react'
 import {branch} from 'baobab-react/higher-order'
 import {Link, PropTypes as routerTypes} from 'react-router'
-import Message from '@tetris/front-server/lib/components/intl/Message'
+import Message from 'tetris-iso/Message'
 
 const {PropTypes} = React
 

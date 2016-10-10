@@ -1,6 +1,11 @@
 import {GET} from '@tetris/http'
-import {getUserByToken} from '@tetris/front-server/lib/api/get-user-by-token'
-import {passTokenAhead} from '@tetris/front-server/lib/functions/pass-token-ahead'
+import {passTokenAhead} from 'tetris-iso/lib/functions/pass-token-ahead'
+
+function getUserByToken (token) {
+  return GET(`${process.env.USER_API_URL}`, {
+    headers: {Authorization: `Bearer ${token}`}
+  })
+}
 
 export function activateRoute (uiRoute) {
   /**

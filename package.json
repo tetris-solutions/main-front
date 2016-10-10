@@ -40,7 +40,6 @@
   "homepage": "https://github.com/tetris-solutions/main-front#readme",
   "dependencies": {
     "@tetris/base-lib": "^0.1.0",
-    "@tetris/front-server": "^0.1.15",
     "@tetris/http": "^0.2.3",
     "baobab": "^2.3.3",
     "baobab-react": "^2.1.1",
@@ -54,6 +53,7 @@
     "react-dom": "^15.3.1",
     "react-intl": "^1.2.2",
     "react-router": "^2.7.0",
+    "tetris-iso": "^0.2.0",
     "winston": "^2.2.0",
     "winston-logstash": "^0.2.11"
   },

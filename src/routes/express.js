@@ -1,8 +1,6 @@
-import {protectedRouteMiddleware} from '@tetris/front-server/lib/middlewares/protected'
-import {performActionsMiddleware} from '@tetris/front-server/lib/middlewares/perform-actions'
-
+import {protectedRouteMiddleware, performActionsMiddleware} from 'tetris-iso/server'
+import {loadUserCompaniesActionServerAdaptor} from 'tetris-iso/actions'
 import {activateRoute} from '../route-handlers/activate-route'
-import {loadUserCompaniesActionServerAdaptor} from '@tetris/front-server/lib/actions/load-user-companies-action'
 import {loadCompanyActionServerAdaptor} from '../actions/load-company-action'
 import {loadCompanyPermissionsActionServerAdaptor} from '../actions/load-company-permissions-action'
 import {loadRoleUsersActionServerAdaptor} from '../actions/load-role-users-action'

@@ -1,10 +1,10 @@
 import React from 'react'
-import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
-import SimpleInput from '@tetris/front-server/lib/components/SimpleInput'
-import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
+import FormMixin from '../FormMixin'
+import SimpleInput from '../SimpleInput'
+import SubmitButton from '../SubmitButton'
 import {branch} from 'baobab-react/higher-order'
 import {createCompanyAction} from '../../actions/create-company-action'
-import {loadUserCompaniesAction} from '@tetris/front-server/lib/actions/load-user-companies-action'
+import {loadUserCompaniesAction} from 'tetris-iso/actions'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 
 const {PropTypes} = React

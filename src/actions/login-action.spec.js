@@ -14,8 +14,8 @@ const saveToken = {}
 const reqConfig = {}
 
 mock('../api/login', login)
-mock('@tetris/front-server/lib/functions/save-token-as-cookie', saveToken)
-mock('@tetris/front-server/lib/functions/get-api-fetch-config', {
+mock('tetris-iso/lib/functions/save-token-as-cookie', saveToken)
+mock('tetris-iso/lib/functions/get-api-fetch-config', {
   getApiFetchConfig: constant(reqConfig)
 })
 

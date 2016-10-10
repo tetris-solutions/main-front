@@ -1,5 +1,5 @@
 import React from 'react'
-import LocaleSelector from '@tetris/front-server/lib/components/LocaleSelector'
+import LocaleSelector from './LocaleSelector'
 
 export function HeaderLocaleSelector (props) {
   return (

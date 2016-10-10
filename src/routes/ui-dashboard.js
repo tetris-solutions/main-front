@@ -18,7 +18,7 @@ import CompanyEdit from '../components/dashboard/CompanyEdit'
 import CompanyInfo from '../components/dashboard/CompanyInfo'
 
 import {loadCompanyAccountsActionRouterAdaptor} from '../actions/load-company-accounts-action'
-import {loadUserCompaniesActionRouterAdaptor} from '@tetris/front-server/lib/actions/load-user-companies-action'
+import {loadUserCompaniesActionRouterAdaptor} from 'tetris-iso/actions'
 import {loadCompanyActionRouterAdaptor} from '../actions/load-company-action'
 import {loadCompanyPermissionsActionRouterAdaptor} from '../actions/load-company-permissions-action'
 import {loadRoleUsersActionRouteAdaptor} from '../actions/load-role-users-action'

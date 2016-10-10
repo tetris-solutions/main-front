@@ -1,12 +1,12 @@
 import React from 'react'
-import Message from '@tetris/front-server/lib/components/intl/Message'
+import Message from 'tetris-iso/Message'
 import {Link} from 'react-router'
 import {branch} from 'baobab-react/higher-order'
 import {deleteCompanyAccountAction} from '../../actions/delete-company-account-action'
 import {loadCompanyAccountsAction} from '../../actions/load-company-accounts-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
-import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
-import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
+import FormMixin from '../FormMixin'
+import SubmitButton from '../SubmitButton'
 
 const {PropTypes} = React
 

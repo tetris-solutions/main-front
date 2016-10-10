@@ -1,5 +1,5 @@
 import React from 'react'
-import Message from '@tetris/front-server/lib/components/intl/Message'
+import Message from 'tetris-iso/Message'
 
 export const Home = React.createClass({
   displayName: 'Home',

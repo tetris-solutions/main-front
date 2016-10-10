@@ -1,8 +1,8 @@
-import FormMixin from '@tetris/front-server/lib/mixins/FormMixin'
-import Message from '@tetris/front-server/lib/components/intl/Message'
+import FormMixin from './FormMixin'
+import Message from 'tetris-iso/Message'
 import React from 'react'
-import SimpleInput from '@tetris/front-server/lib/components/SimpleInput'
-import SubmitButton from '@tetris/front-server/lib/components/SubmitButton'
+import SimpleInput from './SimpleInput'
+import SubmitButton from './SubmitButton'
 import {branch} from 'baobab-react/higher-order'
 
 import signupAction from '../actions/signup-action'
