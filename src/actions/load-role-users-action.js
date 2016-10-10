@@ -1,8 +1,6 @@
 import {loadRoleUsers} from '../api/load-role-users'
-import {saveResponseTokenAsCookie} from 'tetris-iso/lib/functions/save-token-as-cookie'
-import {getApiFetchConfig} from 'tetris-iso/lib/functions/get-api-fetch-config'
 import findIndex from 'lodash/findIndex'
-import {pushResponseErrorToState} from 'tetris-iso/lib/functions/push-response-error-to-state'
+import {saveResponseTokenAsCookie, getApiFetchConfig, pushResponseErrorToState} from 'tetris-iso/utils'
 
 /**
  * loads a list of users in a role saving it in `tree.companies[company].roles[roleIndex].users`

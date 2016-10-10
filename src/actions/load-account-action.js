@@ -1,7 +1,5 @@
 import {loadAccount} from '../api/load-account'
-import {saveResponseTokenAsCookie} from 'tetris-iso/lib/functions/save-token-as-cookie'
-import {getApiFetchConfig} from 'tetris-iso/lib/functions/get-api-fetch-config'
-import {pushResponseErrorToState} from 'tetris-iso/lib/functions/push-response-error-to-state'
+import {saveResponseTokenAsCookie, getApiFetchConfig, pushResponseErrorToState} from 'tetris-iso/utils'
 
 export function loadAccountAction (tree, id, token) {
   return loadAccount(id, getApiFetchConfig(tree, token))

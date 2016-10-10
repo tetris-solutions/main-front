@@ -1,7 +1,5 @@
 import {loadPlans} from '../api/load-plans'
-import {saveResponseTokenAsCookie} from 'tetris-iso/lib/functions/save-token-as-cookie'
-import {getApiFetchConfig} from 'tetris-iso/lib/functions/get-api-fetch-config'
-import {pushResponseErrorToState} from 'tetris-iso/lib/functions/push-response-error-to-state'
+import {saveResponseTokenAsCookie, getApiFetchConfig, pushResponseErrorToState} from 'tetris-iso/utils'
 
 /**
  * loads the list of plans

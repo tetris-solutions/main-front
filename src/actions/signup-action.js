@@ -1,7 +1,5 @@
 import {signup} from '../api/signup'
-import {getApiFetchConfig} from 'tetris-iso/lib/functions/get-api-fetch-config'
-import {saveResponseTokenAsCookie} from 'tetris-iso/lib/functions/save-token-as-cookie'
-import {pushResponseErrorToState} from 'tetris-iso/lib/functions/push-response-error-to-state'
+import {saveResponseTokenAsCookie, getApiFetchConfig, pushResponseErrorToState} from 'tetris-iso/utils'
 
 /**
  * makes a call to the signup user api

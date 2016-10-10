@@ -1,7 +1,5 @@
 import {updateCompany} from '../api/update-company'
-import {saveResponseTokenAsCookie} from 'tetris-iso/lib/functions/save-token-as-cookie'
-import {getApiFetchConfig} from 'tetris-iso/lib/functions/get-api-fetch-config'
-import {pushResponseErrorToState} from 'tetris-iso/lib/functions/push-response-error-to-state'
+import {saveResponseTokenAsCookie, getApiFetchConfig, pushResponseErrorToState} from 'tetris-iso/utils'
 import findIndex from 'lodash/findIndex'
 
 export function updateCompanyAction (tree, id, changes) {
