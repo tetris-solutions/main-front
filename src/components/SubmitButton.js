@@ -3,6 +3,7 @@ import Message from 'tetris-iso/Message'
 import window from 'global/window'
 
 const {PropTypes} = React
+const isServer = typeof document === 'undefined'
 
 export default React.createClass({
   contextTypes: {
@@ -14,9 +15,6 @@ export default React.createClass({
     size: PropTypes.string,
     style: PropTypes.string,
     onClick: PropTypes.func
-  },
-  getInitialState () {
-
   },
   getDefaultProps () {
     return {
@@ -50,10 +48,11 @@ export default React.createClass({
       labelMessage,
       onClick
     } = this.props
-    const type = onClick ? undefined : 'submit'
+    const type = onClick ? 'button' : 'submit'
 
     return (
       <button
+        disabled={isServer}
         type={type}
         name='submitButton'
         ref='btn'
