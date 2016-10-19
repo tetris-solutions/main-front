@@ -11,7 +11,7 @@ export const updateCompanyIconAction = (tree, id, blob) => new Promise((resolve,
     if (xhr.status !== 200) {
       tree.push('alerts', {
         level: 'error',
-        message: 'Could not save'
+        message: xhr.statusText
       })
     } else {
       resolve()
@@ -19,8 +19,7 @@ export const updateCompanyIconAction = (tree, id, blob) => new Promise((resolve,
   }
 
   xhr.open('PUT', url, true)
-  xhr.upload.addEventListener('load', onLoad)
-  xhr.overrideMimeType('text/plain; charset=x-user-defined-binary')
+  xhr.onload = onLoad
 
   forEach(headers, (value, header) => {
     xhr.setRequestHeader(header, value)

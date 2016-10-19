@@ -47,9 +47,9 @@ export const CompanyEdit = React.createClass({
     }
 
     return dispatch(updateCompanyAction, company.id, payload)
-      .then(() => dispatch(pushSuccessMessageAction))
       .then(this.uploadAvatar)
       .then(() => dispatch(loadCompanyAction, company.id))
+      .then(() => dispatch(pushSuccessMessageAction))
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
@@ -59,13 +59,13 @@ export const CompanyEdit = React.createClass({
      */
     const av = this.refs.icon
     const {company, dispatch} = this.props
+    const upload = blob => dispatch(updateCompanyIconAction, company.id, blob)
 
     if (!av.hasImage()) {
       return Promise.resolve()
     }
 
-    av.getImageAsBlob().then(blob =>
-      dispatch(updateCompanyIconAction, company.id, blob))
+    return av.getImageAsBlob().then(upload)
   },
   render () {
     const {company} = this.props

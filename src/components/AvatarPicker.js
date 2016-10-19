@@ -73,10 +73,8 @@ const AvatarPicker = React.createClass({
    * @return {Promise.<Blob>} image as blob
    */
   getImageAsBlob () {
-    return new Promise((resolve, reject) =>
-      this.getCanvas().toBlob(function onConverted (blob) {
-        resolve(blob)
-      }, 'image/jpeg'))
+    return new Promise((resolve, reject) => this.getCanvas()
+      .toBlob(resolve, 'image/jpeg'))
   },
   /**
    * @return {String} image as data url string
