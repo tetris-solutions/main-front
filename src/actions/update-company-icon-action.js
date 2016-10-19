@@ -4,7 +4,7 @@ import forEach from 'lodash/forEach'
 
 export const updateCompanyIconAction = (tree, id, blob) => new Promise((resolve, reject) => {
   const xhr = new window.XMLHttpRequest()
-  const url = `${process.env.USER_API_URL}/company/${id}/avatar`
+  const url = `${process.env.USER_API_URL}/company/${id}/icon`
   const {headers} = getApiFetchConfig(tree)
 
   function onLoad () {
