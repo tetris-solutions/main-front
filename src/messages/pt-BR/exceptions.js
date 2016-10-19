@@ -4,5 +4,6 @@ module.exports = {
   accessForbiddenTitle: 'Acesso negado!',
   accessForbiddenDescription: 'Você não tem permissão para acessar está página.',
   missingRequiredField: 'Esse campo é obrigatório',
-  invalidImageType: 'Tipo de imagem inválido'
+  invalidImageType: 'Tipo de imagem inválido',
+  imageIsRequired: 'Por favor, selecione uma imagem'
 }

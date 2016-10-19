@@ -45,7 +45,7 @@ const AvatarPicker = React.createClass({
   },
   onChangeFile ({target: {files: [image]}}) {
     if (!image) {
-      return this.setState({image: null})
+      return this.alert('imageIsRequired')
     }
 
     if (!startsWith(image.type, 'image/')) {
@@ -73,7 +73,7 @@ const AvatarPicker = React.createClass({
       <div style={wrapperStyle}>
         <AvatarEditor
           border={BORDER_WIDTH}
-          image={image || ''}
+          image={image}
           scale={scale}
           width={width}
           height={height}/>
