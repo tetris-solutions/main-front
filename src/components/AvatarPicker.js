@@ -2,7 +2,6 @@ import React from 'react'
 import AvatarEditor from 'react-avatar-editor'
 import Message from 'tetris-iso/Message'
 import startsWith from 'lodash/startsWith'
-import {branch} from 'baobab-react/higher-order'
 import {pushAlertMessageAction} from '../actions/push-alert-message-action'
 
 const {PropTypes} = React
@@ -21,8 +20,10 @@ const inputFileStyle = {
 
 const AvatarPicker = React.createClass({
   displayName: 'Avatar-Picker',
+  contextTypes: {
+    tree: PropTypes.object
+  },
   propTypes: {
-    dispatch: PropTypes.func,
     width: PropTypes.number,
     height: PropTypes.number,
     image: PropTypes.string
@@ -41,7 +42,7 @@ const AvatarPicker = React.createClass({
     }
   },
   alert (message, level = 'warning') {
-    this.props.dispatch(pushAlertMessageAction, message, level)
+    pushAlertMessageAction(this.context.tree, message, level)
   },
   onChangeFile ({target: {files: [image]}}) {
     if (!image) {
@@ -59,6 +60,9 @@ const AvatarPicker = React.createClass({
   onChangeScale ({target: {value}}) {
     this.setState({scale: Number(value)})
   },
+  hasImage () {
+    return Boolean(this.state.image)
+  },
   /**
    * @return {HTMLCanvasElement} canvas
    */
@@ -66,10 +70,13 @@ const AvatarPicker = React.createClass({
     return this.refs.avatar.getImage()
   },
   /**
-   * @return {Blob} image as blob
+   * @return {Promise.<Blob>} image as blob
    */
   getImageAsBlob () {
-    return this.getCanvas().toBlob()
+    return new Promise((resolve, reject) =>
+      this.getCanvas().toBlob(function onConverted (blob) {
+        resolve(blob)
+      }, 'image/jpeg'))
   },
   /**
    * @return {String} image as data url string
@@ -124,4 +131,4 @@ const AvatarPicker = React.createClass({
   }
 })
 
-export default branch({}, AvatarPicker)
+export default AvatarPicker

@@ -10,6 +10,8 @@ import flatten from 'lodash/flatten'
 import sortBy from 'lodash/sortBy'
 import {updateCompanyAction} from '../../actions/update-company-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
+import {updateCompanyIconAction} from '../../actions/update-company-icon-action'
+import {loadCompanyAction} from '../../actions/load-company-action'
 import AvatarPicker from '../AvatarPicker'
 
 const {PropTypes} = React
@@ -27,7 +29,11 @@ export const CompanyEdit = React.createClass({
   propTypes: {
     dispatch: PropTypes.func,
     company: PropTypes.shape({
-      name: PropTypes.string
+      id: PropTypes.string,
+      name: PropTypes.string,
+      icon: PropTypes.string,
+      legacy_dash_url: PropTypes.string,
+      timezone: PropTypes.string
     })
   },
   handleSubmit (e) {
@@ -42,8 +48,24 @@ export const CompanyEdit = React.createClass({
 
     return dispatch(updateCompanyAction, company.id, payload)
       .then(() => dispatch(pushSuccessMessageAction))
+      .then(this.uploadAvatar)
+      .then(() => dispatch(loadCompanyAction, company.id))
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
+  },
+  uploadAvatar () {
+    /**
+     * @type {AvatarPicker}
+     */
+    const av = this.refs.icon
+    const {company, dispatch} = this.props
+
+    if (!av.hasImage()) {
+      return Promise.resolve()
+    }
+
+    av.getImageAsBlob().then(blob =>
+      dispatch(updateCompanyIconAction, company.id, blob))
   },
   render () {
     const {company} = this.props
@@ -55,7 +77,7 @@ export const CompanyEdit = React.createClass({
 
         <form className='jumbotron' onSubmit={this.handleSubmit} method='POST'>
 
-          <AvatarPicker image={company.avatar}/>
+          <AvatarPicker ref='icon' image={company.icon}/>
 
           <SimpleInput
             name='name'
