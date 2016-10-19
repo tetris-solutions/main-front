@@ -10,6 +10,7 @@ import flatten from 'lodash/flatten'
 import sortBy from 'lodash/sortBy'
 import {updateCompanyAction} from '../../actions/update-company-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
+import AvatarPicker from '../AvatarPicker'
 
 const {PropTypes} = React
 
@@ -53,6 +54,8 @@ export const CompanyEdit = React.createClass({
         <br/>
 
         <form className='jumbotron' onSubmit={this.handleSubmit} method='POST'>
+
+          <AvatarPicker image={company.avatar}/>
 
           <SimpleInput
             name='name'

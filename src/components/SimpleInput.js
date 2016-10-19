@@ -6,6 +6,8 @@ import Message from 'tetris-iso/Message'
 const {PropTypes} = React
 const inputFields = [
   'name',
+  'disabled',
+  'readOnly',
   'type',
   'onChange',
   'required',

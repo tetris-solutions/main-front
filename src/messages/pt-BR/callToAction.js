@@ -14,5 +14,6 @@ module.exports = {
   createCompany: 'Criar nova empresa',
   choosePlan: 'Escolher plano',
   cancelPlan: 'Cancelar plano',
-  editCompany: 'Editar empresa'
+  editCompany: 'Editar empresa',
+  pickNewImage: 'Trocar imagem'
 }
