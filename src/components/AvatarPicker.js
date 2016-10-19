@@ -59,6 +59,30 @@ const AvatarPicker = React.createClass({
   onChangeScale ({target: {value}}) {
     this.setState({scale: Number(value)})
   },
+  /**
+   * @return {HTMLCanvasElement} canvas
+   */
+  getCanvas () {
+    return this.refs.avatar.getImage()
+  },
+  /**
+   * @return {Blob} image as blob
+   */
+  getImageAsBlob () {
+    return this.getCanvas().toBlob()
+  },
+  /**
+   * @return {String} image as data url string
+   */
+  getImageAsDataUrl () {
+    return this.getCanvas().toDataURL()
+  },
+  /**
+   * @return {String} image as string
+   */
+  getImageAsString () {
+    return this.getCanvas().toString()
+  },
   render () {
     const {width, height} = this.props
     const {image, scale} = this.state
@@ -72,6 +96,7 @@ const AvatarPicker = React.createClass({
     return (
       <div style={wrapperStyle}>
         <AvatarEditor
+          ref='avatar'
           border={BORDER_WIDTH}
           image={image}
           scale={scale}
