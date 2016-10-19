@@ -67,26 +67,14 @@ const AvatarPicker = React.createClass({
    * @return {HTMLCanvasElement} canvas
    */
   getCanvas () {
-    return this.refs.avatar.getImage()
+    return this.refs.avatar.getImageScaledToCanvas()
   },
   /**
    * @return {Promise.<Blob>} image as blob
    */
   getImageAsBlob () {
     return new Promise((resolve, reject) => this.getCanvas()
-      .toBlob(resolve, 'image/jpeg'))
-  },
-  /**
-   * @return {String} image as data url string
-   */
-  getImageAsDataUrl () {
-    return this.getCanvas().toDataURL()
-  },
-  /**
-   * @return {String} image as string
-   */
-  getImageAsString () {
-    return this.getCanvas().toString()
+      .toBlob(resolve, 'image/jpeg', 0.95))
   },
   render () {
     const {width, height} = this.props
