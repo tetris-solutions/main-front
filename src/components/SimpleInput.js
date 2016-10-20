@@ -28,10 +28,11 @@ export const SimpleInput = React.createClass({
     name: PropTypes.string.isRequired,
     label: PropTypes.string,
     error: PropTypes.string,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    className: PropTypes.string
   },
   render () {
-    const {error, label} = this.props
+    const {error, label, className} = this.props
     return (
       <div className={cx('form-group', error && 'has-error')}>
         {label && (
@@ -39,7 +40,7 @@ export const SimpleInput = React.createClass({
             <Message>{label + 'Label'}</Message>
           </label>
         )}
-        <input className='form-control' {...pick(this.props, inputFields)}/>
+        <input className={cx('form-control', className)} {...pick(this.props, inputFields)}/>
         {error && (<p className='help-block'>{error}</p>)}
       </div>
     )

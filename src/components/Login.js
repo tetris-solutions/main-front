@@ -1,55 +1,21 @@
 import React from 'react'
 import FormMixin from './FormMixin'
 import loginAction from '../actions/login-action'
-import SimpleInput from './SimpleInput'
 import {branch} from 'baobab-react/higher-order'
 import SubmitButton from './SubmitButton'
 import get from 'lodash/get'
 import window from 'global/window'
-import csjs from 'csjs'
-import StyledMixin from './mixins/styled'
+import AuthScreen, {Input} from './AuthScreen'
+
 const {PropTypes} = React
 const absolutePattern = /^https?:\/\//i
-const style = csjs`
-.container {
-  padding-top: 20vh;
-  height: 100vh;
-  background-color: #e5e5e5;
-}
-.box input {
-  background-color: #e5e5e5;
-  border-radius: 2px;
-}
-.box input:-webkit-autofill {
-  background-color: #e5e5e5;
-}
-.box {
-  padding: 46px 50px;
-  background: white;
-  width: 340px;
-  border-radius: 3px;
-  margin: 0 auto;
-  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
-}
-.logo {
-  display: block;
-  width: 140px;
-  height: auto;
-  margin: 0 auto 20px auto;
-}
-@media (max-width: 400px) {
-  .box {
-    width: 96%;
-  }
-}`
 
 function isAbsolute (url) {
   return absolutePattern.test(url)
 }
 
 export const Login = React.createClass({
-  mixins: [FormMixin, StyledMixin],
-  style,
+  mixins: [FormMixin],
   displayName: 'Login',
   propTypes: {
     dispatch: PropTypes.func
@@ -83,11 +49,9 @@ export const Login = React.createClass({
     const {messages: {emailLabel, passwordLabel}} = this.context
     const {errors} = this.state
     return (
-      <div className={`container-fluid ${style.container}`}>
-        <form className={`${style.box}`} onSubmit={this.handleSubmit} method='POST'>
-          <img className={`${style.logo}`} src='/img/tetris-logo.png'/>
-
-          <SimpleInput
+      <AuthScreen>
+        <form onSubmit={this.handleSubmit}>
+          <Input
             name='email'
             type='email'
             placeholder={emailLabel}
@@ -95,7 +59,7 @@ export const Login = React.createClass({
             onChange={this.dismissError}
             required/>
 
-          <SimpleInput
+          <Input
             name='password'
             type='password'
             placeholder={passwordLabel}
@@ -105,7 +69,7 @@ export const Login = React.createClass({
 
           <SubmitButton/>
         </form>
-      </div>
+      </AuthScreen>
     )
   }
 })
