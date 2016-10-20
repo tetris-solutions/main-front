@@ -16,19 +16,26 @@ const style = csjs`
   height: 100vh;
   background-color: #e5e5e5;
 }
+.box input {
+  background-color: #e5e5e5;
+  border-radius: 2px;
+}
+.box input:-webkit-autofill {
+  background-color: #e5e5e5;
+}
 .box {
-  padding: 6em 4em 4em 4em;
+  padding: 46px 50px;
   background: white;
-  width: 400px;
+  width: 340px;
   border-radius: 3px;
   margin: 0 auto;
   box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
 }
 .logo {
   display: block;
-  width: 200px;
+  width: 140px;
   height: auto;
-  margin: 0 auto 2em auto;
+  margin: 0 auto 20px auto;
 }
 @media (max-width: 400px) {
   .box {
