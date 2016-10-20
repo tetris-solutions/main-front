@@ -13,7 +13,8 @@ const style = csjs`
   background-color: #e5e5e5 !important;
   border-radius: 2px;
 }
-.input::-webkit-input-placeholder {
+.input::-webkit-input-placeholder,
+.input::-moz-placeholder {
   opacity: 1;
   font-weight: bold;
   color: #bdbdbd;
