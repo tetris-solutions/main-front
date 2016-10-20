@@ -11,11 +11,15 @@ export const HTML = ({documentTitle = 'Tetris Solutions', payload, children}) =>
       <link rel='stylesheet' href='https://cdn.rawgit.com/daneden/animate.css/master/animate.css'/>
       <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css'/>
       <link rel='stylesheet' href='/css/ladda.min.css'/>
-      <script id='state-injection' dangerouslySetInnerHTML={{__html: `var backendPayload = ${JSON.stringify(payload)}`}}/>
+
+      <script
+        id='state-injection'
+        dangerouslySetInnerHTML={{__html: `var backendPayload = ${JSON.stringify(payload)}`}}/>
+
       <script src='/js/spin.min.js' defer/>
       <script src='/js/ladda.min.js' defer/>
       <script src='/js/client.js' defer/>
-
+      <style id='style-injection'/>
     </head>
     <body>
 
