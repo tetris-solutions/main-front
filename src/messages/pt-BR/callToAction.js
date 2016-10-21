@@ -16,5 +16,5 @@ module.exports = {
   cancelPlan: 'Cancelar plano',
   editCompany: 'Editar empresa',
   pickNewImage: 'Trocar imagem',
-  getIn: 'Entrar'
+  signIn: 'Entrar'
 }

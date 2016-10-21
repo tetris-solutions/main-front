@@ -10,6 +10,7 @@ const style = csjs`
   background-color: #e5e5e5;
 }
 .input {
+  color: #5f5f5f !important; 
   background-color: #e5e5e5 !important;
   border-radius: 2px;
 }

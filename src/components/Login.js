@@ -70,7 +70,7 @@ export const Login = React.createClass({
           <SubmitButton
             block
             color='blue'
-            labelMessage='getIn'/>
+            labelMessage='signIn'/>
         </form>
       </AuthScreen>
     )
