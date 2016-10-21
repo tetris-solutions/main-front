@@ -14,6 +14,8 @@ export function setAppRoutes (app, uiRoute) {
   app.get('/error', uiRoute)
   app.get('/login', uiRoute)
   app.get('/signup', uiRoute)
+  app.get('/recover-password', uiRoute)
+  app.get('/reset-password/:recoveryCode', uiRoute)
   app.get('/dashboard', protectedRouteMiddleware, uiRoute)
   app.get('/dashboard/profile', protectedRouteMiddleware, uiRoute)
   app.get('/waiting-confirmation', uiRoute)

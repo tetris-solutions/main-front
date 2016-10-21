@@ -6,10 +6,12 @@ import SubmitButton from './SubmitButton'
 import get from 'lodash/get'
 import window from 'global/window'
 import AuthScreen, {Input} from './AuthScreen'
+import Message from 'tetris-iso/Message'
+import BlueLink from './BlueLink'
 
 const {PropTypes} = React
 const absolutePattern = /^https?:\/\//i
-
+const actionRowStyle = {marginTop: '1em'}
 function isAbsolute (url) {
   return absolutePattern.test(url)
 }
@@ -71,6 +73,17 @@ export const Login = React.createClass({
             block
             color='blue'
             labelMessage='signIn'/>
+
+          <div className='row' style={actionRowStyle}>
+            <div className='col-xs-6'>
+              <BlueLink to='/recover-password'>
+                <Message>forgotPassword</Message>
+              </BlueLink>
+            </div>
+            <div className='col-xs-6'>
+
+            </div>
+          </div>
         </form>
       </AuthScreen>
     )

@@ -24,6 +24,8 @@ export function getRoutes (tree, protectRoute, preload, createRoot) {
   return (
     <Route path='/' component={root(tree, createRoot())}>
       <Route path='login' component={Login}/>
+      <Route path='recover-password' component={Login}/>
+      <Route path='reset-password/:recoveryCode' component={Login}/>
 
       <Route component={Main}>
         <IndexRoute component={Home}/>
