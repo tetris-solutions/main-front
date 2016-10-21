@@ -67,7 +67,10 @@ export const Login = React.createClass({
             onChange={this.dismissError}
             required/>
 
-          <SubmitButton/>
+          <SubmitButton
+            block
+            color='blue'
+            labelMessage='getIn'/>
         </form>
       </AuthScreen>
     )

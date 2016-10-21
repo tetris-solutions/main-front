@@ -15,5 +15,6 @@ module.exports = {
   choosePlan: 'Choose plan',
   cancelPlan: 'Cancel plan',
   editCompany: 'Edit company',
-  pickNewImage: 'Choose image'
+  pickNewImage: 'Choose image',
+  getIn: 'Get in'
 }

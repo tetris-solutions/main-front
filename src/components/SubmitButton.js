@@ -4,6 +4,7 @@ import window from 'global/window'
 
 const {PropTypes} = React
 const isServer = typeof document === 'undefined'
+const btBlock = {display: 'block', width: '100%'}
 
 export default React.createClass({
   contextTypes: {
@@ -13,11 +14,13 @@ export default React.createClass({
     labelMessage: PropTypes.string,
     color: PropTypes.string,
     size: PropTypes.string,
+    block: PropTypes.bool,
     style: PropTypes.string,
     onClick: PropTypes.func
   },
   getDefaultProps () {
     return {
+      block: false,
       style: 'expand-right',
       color: 'mint',
       size: 's',
@@ -45,6 +48,7 @@ export default React.createClass({
       color,
       size,
       style,
+      block,
       labelMessage,
       onClick
     } = this.props
@@ -58,6 +62,7 @@ export default React.createClass({
         ref='btn'
         onClick={onClick}
         className='ladda-button'
+        style={block ? btBlock : undefined}
         data-style={style}
         data-color={color}
         data-size={size}>
