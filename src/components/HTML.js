@@ -11,6 +11,7 @@ export const HTML = ({documentTitle = 'Tetris Solutions', payload, children}) =>
       <link rel='stylesheet' href='https://cdn.rawgit.com/daneden/animate.css/master/animate.css'/>
       <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css'/>
       <link rel='stylesheet' href='/css/ladda.min.css'/>
+      <link rel='stylesheet' href='/css/flag-icon.min.css'/>
 
       <script
         id='state-injection'

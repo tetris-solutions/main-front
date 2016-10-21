@@ -5,13 +5,14 @@ import {branch} from 'baobab-react/higher-order'
 import SubmitButton from './SubmitButton'
 import get from 'lodash/get'
 import window from 'global/window'
-import AuthScreen, {Input} from './AuthScreen'
+import AuthScreen, {Input, LangMenu} from './AuthScreen'
 import Message from 'tetris-iso/Message'
 import BlueLink from './BlueLink'
 
 const {PropTypes} = React
 const absolutePattern = /^https?:\/\//i
 const actionRowStyle = {marginTop: '1em'}
+
 function isAbsolute (url) {
   return absolutePattern.test(url)
 }
@@ -75,13 +76,13 @@ export const Login = React.createClass({
             labelMessage='signIn'/>
 
           <div className='row' style={actionRowStyle}>
-            <div className='col-xs-6'>
+            <div className='col-xs-8'>
               <BlueLink to='/recover-password'>
                 <Message>forgotPassword</Message>
               </BlueLink>
             </div>
-            <div className='col-xs-6'>
-
+            <div className='col-xs-4 text-right'>
+              <LangMenu/>
             </div>
           </div>
         </form>
