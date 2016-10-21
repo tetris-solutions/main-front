@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const HTML = ({documentTitle = 'Tetris Solutions', payload, children}) => (
+export const HTML = ({documentTitle = 'Tetris Solutions', css, payload, children}) => (
   <html>
     <head>
 
@@ -20,7 +20,7 @@ export const HTML = ({documentTitle = 'Tetris Solutions', payload, children}) =>
       <script src='/js/spin.min.js' defer/>
       <script src='/js/ladda.min.js' defer/>
       <script src='/js/client.js' defer/>
-      <style id='style-injection'/>
+      <style id='style-injection' dangerouslySetInnerHTML={{__html: css}}/>
     </head>
     <body>
 
@@ -33,6 +33,7 @@ export const HTML = ({documentTitle = 'Tetris Solutions', payload, children}) =>
 const {PropTypes} = React
 
 HTML.propTypes = {
+  css: PropTypes.string,
   documentTitle: PropTypes.string,
   payload: PropTypes.object,
   children: PropTypes.node
