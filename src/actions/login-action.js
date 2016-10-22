@@ -11,11 +11,6 @@ import {saveResponseTokenAsCookie, getApiFetchConfig, pushResponseErrorToState} 
 export function loginAction (tree, email, password) {
   return login(email, password, getApiFetchConfig(tree))
     .then(saveResponseTokenAsCookie)
-    .then(response => {
-      tree.set('user', response.data)
-      tree.commit()
-      return response
-    })
     .catch(pushResponseErrorToState(tree))
 }
 

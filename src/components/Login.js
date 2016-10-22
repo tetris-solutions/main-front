@@ -10,12 +10,7 @@ import Message from 'tetris-iso/Message'
 import BlueLink from './BlueLink'
 
 const {PropTypes} = React
-const absolutePattern = /^https?:\/\//i
 const actionRowStyle = {marginTop: '1em'}
-
-function isAbsolute (url) {
-  return absolutePattern.test(url)
-}
 
 export const Login = React.createClass({
   mixins: [FormMixin],
@@ -25,7 +20,6 @@ export const Login = React.createClass({
   },
   contextTypes: {
     messages: PropTypes.object.isRequired,
-    router: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired
   },
   handleSubmit (e) {
@@ -37,13 +31,7 @@ export const Login = React.createClass({
         elements.email.value,
         elements.password.value)
       .then(() => {
-        const next = get(this, 'context.location.query.next') || '/dashboard'
-
-        if (isAbsolute(next)) {
-          window.location.href = next
-        } else {
-          this.context.router.push(next)
-        }
+        window.location.href = get(this, 'context.location.query.next') || '/dashboard'
       })
       .catch(this.handleSubmitException)
       .then(this.posSubmit)

@@ -11,7 +11,7 @@ export function updateMeAction (tree, user) {
   return updateMe(user, getApiFetchConfig(tree))
     .then(saveResponseTokenAsCookie)
     .then(response => {
-      tree.set('user', response.data)
+      tree.merge('user', response.data)
       tree.commit()
 
       return response

@@ -34,19 +34,18 @@ export const Signup = React.createClass({
       email: query.email || elements.email.value,
       password: elements.password.value,
       name: elements.name.value
-    })
-    .then(response => {
+    }).then(response => {
       const {router} = this.context
       const {companies} = response.data
 
       if (companies) {
-        router.push(`/dashboard/company/${companies[0]}/apps`)
+        window.location.href = `/dashboard/company/${companies[0]}/apps`
       } else {
         router.push('/waiting-confirmation')
       }
     })
-    .catch(this.handleSubmitException)
-    .then(this.posSubmit)
+      .catch(this.handleSubmitException)
+      .then(this.posSubmit)
   },
   render () {
     const {errors} = this.state

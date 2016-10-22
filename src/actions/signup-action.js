@@ -10,13 +10,6 @@ import {saveResponseTokenAsCookie, getApiFetchConfig, pushResponseErrorToState} 
 export function signupAction (tree, user) {
   return signup(user, getApiFetchConfig(tree))
     .then(saveResponseTokenAsCookie)
-    .then(response => {
-      if (response.data.user) {
-        tree.set('user', response.data.user)
-        tree.commit()
-      }
-      return response
-    })
     .catch(pushResponseErrorToState(tree))
 }
 

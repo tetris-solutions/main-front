@@ -1,7 +1,6 @@
 import React from 'react'
 import FormMixin from './FormMixin'
 import {resetPasswordAction} from '../actions/reset-password-action'
-import {loginAction} from '../actions/login-action'
 import {branch} from 'baobab-react/higher-order'
 import SubmitButton from './SubmitButton'
 import AuthScreen, {Input, LangMenu} from './AuthScreen'
@@ -23,14 +22,13 @@ const ResetPassword = React.createClass({
   },
   contextTypes: {
     messages: PropTypes.object.isRequired,
-    router: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired
   },
   handleSubmit (e) {
     e.preventDefault()
 
     const {elements} = e.target
-    const {dispatch, params: {email, recoveryCode}} = this.props
+    const {dispatch, params: {recoveryCode}} = this.props
     const newPassword = elements.password.value
     const repeatPassword = elements.repeat.value
 
@@ -41,8 +39,9 @@ const ResetPassword = React.createClass({
     this.preSubmit()
 
     return dispatch(resetPasswordAction, newPassword, recoveryCode)
-      .then(() => dispatch(loginAction, email, newPassword))
-      .then(() => this.context.router.push('/dashboard'))
+      .then(() => {
+        window.location.href = '/dashboard'
+      })
       .catch(this.handleSubmitException)
       .then(this.posSubmit)
   },
@@ -52,6 +51,13 @@ const ResetPassword = React.createClass({
     return (
       <AuthScreen>
         <form onSubmit={this.handleSubmit}>
+          <div className='form-group'>
+            <label className='control-label'>
+              <Message>emailLabel</Message>
+            </label>
+            <p className='form-control-static'>{this.props.params.email}</p>
+          </div>
+
           <Input
             name='password'
             type='password'
