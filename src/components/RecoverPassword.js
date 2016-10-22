@@ -10,9 +10,9 @@ import BlueLink from './BlueLink'
 const {PropTypes} = React
 const actionRowStyle = {marginTop: '1em'}
 
-export const Login = React.createClass({
+const RecoverPassword = React.createClass({
   mixins: [FormMixin],
-  displayName: 'Login',
+  displayName: 'Recover-Password',
   propTypes: {
     dispatch: PropTypes.func
   },
@@ -37,38 +37,44 @@ export const Login = React.createClass({
       .then(this.posSubmit)
   },
   render () {
-    const {messages: {emailLabel}} = this.context
-    const {errors} = this.state
+    const {messages: {emailLabel, sentRecoveryEmail}} = this.context
+    const {hasSentRecoveryEmail, errors} = this.state
+
     return (
       <AuthScreen>
-        <form onSubmit={this.handleSubmit}>
-          <Input
-            name='email'
-            type='email'
-            placeholder={emailLabel}
-            error={errors.email}
-            onChange={this.dismissError}
-            required/>
+        {hasSentRecoveryEmail ? (
+          <p className='alert alert-success' dangerouslySetInnerHTML={{__html: sentRecoveryEmail}}/>
+        ) : (
+          <form onSubmit={this.handleSubmit}>
+            <Input
+              name='email'
+              type='email'
+              placeholder={emailLabel}
+              error={errors.email}
+              onChange={this.dismissError}
+              required/>
 
-          <SubmitButton
-            block
-            color='blue'
-            labelMessage='recoverPassword'/>
+            <SubmitButton
+              block
+              color='blue'
+              labelMessage='recoverPassword'/>
 
-          <div className='row' style={actionRowStyle}>
-            <div className='col-xs-8'>
-              <BlueLink to='/login'>
-                <Message>backToLogin</Message>
-              </BlueLink>
+            <div className='row' style={actionRowStyle}>
+              <div className='col-xs-8'>
+                <BlueLink to='/login'>
+                  <Message>backToLogin</Message>
+                </BlueLink>
+              </div>
+              <div className='col-xs-4 text-right'>
+                <LangMenu/>
+              </div>
             </div>
-            <div className='col-xs-4 text-right'>
-              <LangMenu/>
-            </div>
-          </div>
-        </form>
+          </form>
+        )}
+
       </AuthScreen>
     )
   }
 })
 
-export default branch({}, Login)
+export default branch({}, RecoverPassword)

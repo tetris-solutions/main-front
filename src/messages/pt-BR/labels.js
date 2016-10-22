@@ -16,5 +16,6 @@ module.exports = {
   accessTokenTimestamp: 'Emitido',
   accessTokenExpiration: 'Expira',
   timezoneLabel: 'Fuso horário',
-  legacyDashUrlLabel: 'Url de integração Dash'
+  legacyDashUrlLabel: 'Url de integração Dash',
+  repeatPasswordLabel: 'Repetir senha'
 }

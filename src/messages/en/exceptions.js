@@ -5,5 +5,6 @@ module.exports = {
   accessForbiddenDescription: 'You don\'t have access to this page',
   missingRequiredField: 'Required field',
   invalidImageType: 'Invalid image type',
-  imageIsRequired: 'Please, select an image file'
+  imageIsRequired: 'Please, select an image file',
+  passwordDoesNotMatch: 'Password does not match'
 }

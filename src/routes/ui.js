@@ -2,6 +2,7 @@ import React from 'react'
 import {IndexRoute, Route} from 'react-router'
 import Login from '../components/Login'
 import RecoverPassword from '../components/RecoverPassword'
+import ResetPassword from '../components/ResetPassword'
 import Activation from '../components/Activation'
 import Home from '../components/Home'
 import Signup from '../components/Signup'
@@ -26,7 +27,7 @@ export function getRoutes (tree, protectRoute, preload, createRoot) {
     <Route path='/' component={root(tree, createRoot())}>
       <Route path='login' component={Login}/>
       <Route path='recover-password' component={RecoverPassword}/>
-      <Route path='reset-password/:email/:recoveryCode' component={Login}/>
+      <Route path='reset-password/:email/:recoveryCode' component={ResetPassword}/>
 
       <Route component={Main}>
         <IndexRoute component={Home}/>
