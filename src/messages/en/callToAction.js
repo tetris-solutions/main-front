@@ -17,5 +17,7 @@ module.exports = {
   editCompany: 'Edit company',
   pickNewImage: 'Choose image',
   signIn: 'Sign in',
-  forgotPassword: 'Forgot password'
+  forgotPassword: 'Forgot password',
+  backToLogin: 'Cancel',
+  recoverPassword: 'Recover password'
 }
