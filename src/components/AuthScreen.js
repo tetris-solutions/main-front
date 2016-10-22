@@ -3,7 +3,7 @@ import csjs from 'csjs'
 import StyledMixin from './mixins/styled'
 import SimpleInput from './SimpleInput'
 import {changeLocaleAction} from 'tetris-iso/actions'
-import Tooltip from './Tooltip'
+import Tooltip from 'tetris-iso/Tooltip'
 import startsWith from 'lodash/startsWith'
 
 const {PropTypes} = React
