@@ -31,8 +31,8 @@ const AvatarPicker = React.createClass({
   getDefaultProps () {
     return {
       image: null,
-      width: 320,
-      height: 320
+      width: 240,
+      height: 240
     }
   },
   getInitialState () {
