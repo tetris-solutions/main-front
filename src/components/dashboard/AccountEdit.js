@@ -2,10 +2,10 @@ import React from 'react'
 import {branch} from 'baobab-react/higher-order'
 import toUpper from 'lodash/toUpper'
 import Message from 'tetris-iso/Message'
-import {deleteAccountAction} from '../../actions/delete-account-action'
-import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
+// import {deleteAccountAction} from '../../actions/delete-account-action'
+// import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 import FormMixin from '../FormMixin'
-import SubmitButton from '../SubmitButton'
+// import SubmitButton from '../SubmitButton'
 
 const {PropTypes} = React
 
@@ -74,23 +74,22 @@ export const AccountEdit = React.createClass({
     dispatch: PropTypes.func
   },
   contextTypes: {
-
     router: PropTypes.object
   },
-  removeAccount (e) {
-    e.preventDefault()
-
-    this.preSubmit()
-
-    const {dispatch, account} = this.props
-
-    return dispatch(deleteAccountAction, account.id)
-      .then(() => dispatch(pushSuccessMessageAction))
-      .then(() => {
-        this.context.router.goBack()
-      })
-      .catch(this.posSubmit)
-  },
+  // removeAccount (e) {
+  //   e.preventDefault()
+  //
+  //   this.preSubmit()
+  //
+  //   const {dispatch, account} = this.props
+  //
+  //   return dispatch(deleteAccountAction, account.id)
+  //     .then(() => dispatch(pushSuccessMessageAction))
+  //     .then(() => {
+  //       this.context.router.goBack()
+  //     })
+  //     .catch(this.posSubmit)
+  // },
   render () {
     const {
       id,
@@ -105,7 +104,7 @@ export const AccountEdit = React.createClass({
         <div className='panel-heading'>
           {toUpper(platform)} :: {name || external_id}
         </div>
-        <form className='panel-body' onSubmit={this.removeAccount}>
+        <div className='panel-body'>
           <div className='row'>
             <div className='col-sm-6'>
               <h4>
@@ -136,8 +135,6 @@ export const AccountEdit = React.createClass({
 
           <hr/>
           <p>
-            <SubmitButton color='red' labelMessage='removeAccount'/>
-
             <a
               className='ladda-button pull-right'
               data-size='s'
@@ -150,7 +147,7 @@ export const AccountEdit = React.createClass({
 
             </a>
           </p>
-        </form>
+        </div>
       </div>
     )
   }
