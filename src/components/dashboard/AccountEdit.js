@@ -6,6 +6,8 @@ import Message from 'tetris-iso/Message'
 // import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 import FormMixin from '../FormMixin'
 // import SubmitButton from '../SubmitButton'
+import join from 'lodash/join'
+import map from 'lodash/map'
 
 const {PropTypes} = React
 
@@ -93,6 +95,8 @@ export const AccountEdit = React.createClass({
   render () {
     const {
       id,
+      emails,
+      companies,
       platform,
       name,
       token,
@@ -121,6 +125,12 @@ export const AccountEdit = React.createClass({
                   </dt>)}
 
                 {name && <dd>{name}</dd>}
+
+                {companies && <dt><Message>accountCompaniesHeader</Message></dt>}
+                {companies && <dd>{join(map(companies, 'name'), ', ')}</dd>}
+
+                {emails && <dt>Email</dt>}
+                {emails && <dd>{join(emails, ', ')}</dd>}
 
                 <dt>
                   <Message>accountExternalIdHeader</Message>

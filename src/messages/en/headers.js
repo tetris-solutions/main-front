@@ -8,6 +8,7 @@ module.exports = {
   companyInfoHeader: 'Company Information',
   accountListHeader: 'External accounts',
   accountNameHeader: 'Account name',
+  accountCompaniesHeader: 'Related Companies',
   accountPlatformHeader: 'Platform',
   accountExternalIdHeader: 'External ID',
   accountTokenStatusHeader: 'Token status',

@@ -15,7 +15,10 @@ export const CompanyAccountRow = React.createClass({
   mixins: [FormMixin],
   propTypes: {
     account: PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+      ]),
       name: PropTypes.string,
       platform: PropTypes.string,
       external_id: PropTypes.string,
