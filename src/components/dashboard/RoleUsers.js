@@ -22,7 +22,7 @@ const style = csjs`
 }`
 
 const Confirm = ({roleName, userName, dismiss, confirm}) => (
-  <div className='modal-content'>
+  <div>
     <div className='modal-header'>
       <h3 className='modal-title'>
         <Message>confirmRoleUserDeleteHeader</Message>
