@@ -1,5 +1,6 @@
 import React from 'react'
 import Message from 'tetris-iso/Message'
+import ButtonWithPrompt from 'tetris-iso/ButtonWithPrompt'
 import map from 'lodash/map'
 import {branch} from 'baobab-react/higher-order'
 import SimpleInput from '../SimpleInput'
@@ -10,8 +11,27 @@ import {loadRoleUsersAction} from '../../actions/load-role-users-action'
 import {deleteUserRoleAction} from '../../actions/delete-user-role-action'
 import {deleteInviteAction} from '../../actions/delete-invite-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
+import flow from 'lodash/flow'
 
 const {PropTypes} = React
+
+const Confirm = ({dismiss, confirm}) => (
+  <div>
+    <h2>You sure about this son</h2>
+    <hr/>
+    <button className='btn btn-success' type='button' onClick={flow(dismiss, confirm)}>
+      yes
+    </button>
+    <button className='btn btn-danger' type='button' onClick={dismiss}>
+      hell no
+    </button>
+  </div>
+)
+
+Confirm.propTypes = {
+  confirm: PropTypes.func.isRequired,
+  dismiss: PropTypes.func.isRequired
+}
 
 const RoleUser = React.createClass({
   displayName: 'Role-User',
@@ -48,9 +68,10 @@ const RoleUser = React.createClass({
           )}
 
           {!isOwner && (
-            <a className='close' onClick={this.removeUser}>
-              &times;
-            </a>)}
+            <ButtonWithPrompt label='&times;' className='close' tag='a'>
+              {({dismiss}) => (
+                <Confirm confirm={this.removeUser} dismiss={dismiss}/>)}
+            </ButtonWithPrompt>)}
         </h4>
       </div>
     )

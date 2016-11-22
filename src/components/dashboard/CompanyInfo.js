@@ -1,6 +1,6 @@
 import React from 'react'
 import {branch} from 'baobab-react/higher-order'
-import {Link, PropTypes as routerTypes} from 'react-router'
+import {Link} from 'react-router'
 import Message from 'tetris-iso/Message'
 
 const {PropTypes} = React
@@ -8,10 +8,11 @@ const {PropTypes} = React
 export const CompanyInfo = React.createClass({
   displayName: 'Company-Info',
   propTypes: {
-    location: routerTypes.location,
+    location: PropTypes.object.isRequired,
     company: PropTypes.shape({
-      name: PropTypes.string
-    })
+      name: PropTypes.string,
+      timezone: PropTypes.string
+    }).isRequired
   },
   render () {
     const {company, location} = this.props
