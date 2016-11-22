@@ -1,6 +1,7 @@
 import React from 'react'
 import Message from 'tetris-iso/Message'
 import ButtonWithPrompt from 'tetris-iso/ButtonWithPrompt'
+import StyledMixin from 'tetris-iso/lib/components/mixins/styled'
 import map from 'lodash/map'
 import {branch} from 'baobab-react/higher-order'
 import SimpleInput from '../SimpleInput'
@@ -12,8 +13,13 @@ import {deleteUserRoleAction} from '../../actions/delete-user-role-action'
 import {deleteInviteAction} from '../../actions/delete-invite-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 import flow from 'lodash/flow'
+import csjs from 'csjs'
 
 const {PropTypes} = React
+const style = csjs`
+.x {
+  color: rgb(70, 70, 70) !important;
+}`
 
 const Confirm = ({dismiss, confirm}) => (
   <div>
@@ -68,7 +74,7 @@ const RoleUser = React.createClass({
           )}
 
           {!isOwner && (
-            <ButtonWithPrompt label='&times;' className='close' tag='a'>
+            <ButtonWithPrompt label='&times;' className={`close ${style.x}`}>
               {({dismiss}) => (
                 <Confirm confirm={this.removeUser} dismiss={dismiss}/>)}
             </ButtonWithPrompt>)}
@@ -80,7 +86,8 @@ const RoleUser = React.createClass({
 
 export const RoleUsers = React.createClass({
   displayName: 'Role-Users',
-  mixins: [FormMixin],
+  mixins: [FormMixin, StyledMixin],
+  style,
   propTypes: {
     company: PropTypes.shape({
       id: PropTypes.string,
