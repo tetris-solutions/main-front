@@ -62,7 +62,7 @@ const RecoverPassword = React.createClass({
             <div className='row' style={actionRowStyle}>
               <div className='col-xs-8'>
                 <BlueLink to='/login'>
-                  <Message>backToLogin</Message>
+                  <Message>cancelAction</Message>
                 </BlueLink>
               </div>
               <div className='col-xs-4 text-right'>

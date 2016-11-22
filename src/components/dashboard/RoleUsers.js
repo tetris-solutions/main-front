@@ -21,20 +21,37 @@ const style = csjs`
   color: rgb(70, 70, 70) !important;
 }`
 
-const Confirm = ({dismiss, confirm}) => (
-  <div>
-    <h2>You sure about this son</h2>
-    <hr/>
-    <button className='btn btn-success' type='button' onClick={flow(dismiss, confirm)}>
-      yes
-    </button>
-    <button className='btn btn-danger' type='button' onClick={dismiss}>
-      hell no
-    </button>
+const Confirm = ({roleName, userName, dismiss, confirm}) => (
+  <div className='modal-content'>
+    <div className='modal-header'>
+      <h3 className='modal-title'>
+        <Message>confirmRoleUserDeleteHeader</Message>
+      </h3>
+    </div>
+
+    <div className='modal-body'>
+      <Message user={userName} role={roleName} html>
+        confirmUserDeleteBody
+      </Message>
+    </div>
+
+    <div className='modal-footer'>
+      <button className='btn btn-success' type='button' onClick={flow(dismiss, confirm)}>
+        <Message>
+          confirmAction
+        </Message>
+      </button>
+
+      <button className='btn btn-danger' type='button' onClick={dismiss}>
+        <Message>cancelAction</Message>
+      </button>
+    </div>
   </div>
 )
 
 Confirm.propTypes = {
+  userName: PropTypes.string.isRequired,
+  roleName: PropTypes.string.isRequired,
   confirm: PropTypes.func.isRequired,
   dismiss: PropTypes.func.isRequired
 }
@@ -44,7 +61,8 @@ const RoleUser = React.createClass({
   propTypes: {
     isOwner: PropTypes.bool.isRequired,
     removeUser: PropTypes.func.isRequired,
-    name: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
+    roleName: PropTypes.string.isRequired,
     id: PropTypes.string,
     pending: PropTypes.bool
   },
@@ -52,11 +70,11 @@ const RoleUser = React.createClass({
     this.props.removeUser(this.props.id)
   },
   render () {
-    const {isOwner, name, pending} = this.props
+    const {isOwner, roleName, userName, pending} = this.props
     return (
       <div className='list-group-item'>
         <h4>
-          {name + ' '}
+          {userName + ' '}
           {pending && (
             <small>
               <sup className='label label-warning'>
@@ -74,9 +92,12 @@ const RoleUser = React.createClass({
           )}
 
           {!isOwner && (
-            <ButtonWithPrompt label='&times;' className={`close ${style.x}`}>
-              {({dismiss}) => (
-                <Confirm confirm={this.removeUser} dismiss={dismiss}/>)}
+            <ButtonWithPrompt label='&times;' className={`close ${style.x}`}>{({dismiss}) =>
+              <Confirm
+                roleName={roleName}
+                userName={userName}
+                confirm={this.removeUser}
+                dismiss={dismiss}/>}
             </ButtonWithPrompt>)}
         </h4>
       </div>
@@ -134,23 +155,21 @@ export const RoleUsers = React.createClass({
   },
   render () {
     const {errors} = this.state
-    const {company, role: {users}} = this.props
+    const {company, role} = this.props
 
     return (
       <div className='well'>
         <div className='list-group'>
 
-          {map(users, ({id: userId, user_role, pending, invite, name, email}, index) => (
-
+          {map(role.users, ({id: userId, user_role, pending, invite, name, email}, index) => (
             <RoleUser
               key={index}
+              roleName={role.name}
               id={user_role || invite}
               isOwner={company.owner === userId}
               pending={pending}
-              name={name || email}
-              removeUser={pending ? this.removeInvite : this.removeUserRole}/>
-
-          ))}
+              userName={name || email}
+              removeUser={pending ? this.removeInvite : this.removeUserRole}/>))}
 
           <form className='list-group-item' onSubmit={this.onSubmitUser}>
             <h4><Message>newRoleMemberLabel</Message></h4>

@@ -15,5 +15,6 @@ module.exports = {
   accountInformationHeader: 'Account Information',
   accessTokenHeader: 'Access Token',
   newCompanyHeader: 'New company',
-  errorScreenHeader: 'Server Error'
+  errorScreenHeader: 'Server Error',
+  confirmRoleUserDeleteHeader: 'Remove role member'
 }

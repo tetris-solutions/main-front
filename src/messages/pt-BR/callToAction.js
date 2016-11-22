@@ -18,6 +18,7 @@ module.exports = {
   pickNewImage: 'Trocar imagem',
   signIn: 'Entrar',
   forgotPassword: 'Esqueci minha senha',
-  backToLogin: 'Cancelar',
-  recoverPassword: 'Recuperar senha'
+  cancelAction: 'Cancelar',
+  recoverPassword: 'Recuperar senha',
+  confirmAction: 'Sim'
 }
