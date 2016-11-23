@@ -47,7 +47,8 @@ Gate.propTypes = {
 const Fence = React.createClass({
   displayName: 'Fence',
   contextTypes: {
-    permissions: PropTypes.array.isRequired
+    permissions: PropTypes.array.isRequired,
+    tree: PropTypes.object.isRequired
   },
   propTypes: {
     children: passengerType,
@@ -56,17 +57,24 @@ const Fence = React.createClass({
     canManageTokens: PropTypes.bool
   },
   render () {
+    const {tree, permissions: userPerms} = this.context
+    const isAdmin = Boolean(tree.get(['user', 'is_admin']))
+
     const required = compact(map(keys(this.props), getPermissionName))
-    const granted = map(this.context.permissions || none, 'id')
-    const missing = diff(required, granted)
-    const allow = isEmpty(missing)
+    const granted = map(userPerms || none, 'id')
+
+    const missing = isAdmin
+      ? []
+      : diff(required, granted)
+
+    const allow = isAdmin || isEmpty(missing)
     const permissions = {allow, missing, granted, required}
 
     for (let i = 0; i < required.length; i++) {
       const name = required[i]
       const alias = permissionAliases[name]
 
-      permissions[alias] = includes(granted, name)
+      permissions[alias] = isAdmin || includes(granted, name)
     }
 
     return <Gate passenger={this.props.children} permissions={permissions}/>
