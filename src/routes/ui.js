@@ -10,6 +10,7 @@ import WaitingConfirmation from '../components/WaitingConfirmation'
 import {root} from 'baobab-react/higher-order'
 import {dashboardRoutes} from './ui-dashboard'
 import Header from '../components/Header'
+import ErrorScreen from '../components/ErrorScreen'
 
 const Main = ({children}) => (
   <div>
@@ -24,7 +25,7 @@ Main.propTypes = {
 
 export function getRoutes (tree, protectRoute, preload, createRoot) {
   return (
-    <Route path='/' component={root(tree, createRoot())}>
+    <Route path='/' component={root(tree, createRoot(null, ErrorScreen))}>
       <Route path='login' component={Login}/>
       <Route path='recover-password' component={RecoverPassword}/>
       <Route path='reset-password/:email/:recoveryCode' component={ResetPassword}/>
