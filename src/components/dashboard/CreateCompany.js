@@ -27,7 +27,7 @@ export const CreateCompany = React.createClass({
     return dispatch(createCompanyAction, e.target.elements.name.value)
       .then(response => dispatch(loadUserCompaniesAction)
         .then(() => {
-          this.context.router.push(`/dashboard/company/${response.data.id}`)
+          this.context.router.push(`/dashboard/company/${response.data.id}/info`)
         }))
       .then(() => dispatch(pushSuccessMessageAction))
       .catch(this.handleSubmitException)
@@ -38,16 +38,13 @@ export const CreateCompany = React.createClass({
     return (
       <div>
         <br/>
-
         <form className='jumbotron' onSubmit={this.handleSubmit} method='POST'>
-
           <SimpleInput
             name='name'
             label='companyName'
             error={errors.name}
             onChange={this.dismissError}
             required/>
-
           <SubmitButton/>
         </form>
       </div>

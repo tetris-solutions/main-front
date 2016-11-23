@@ -40,7 +40,7 @@ export function dashboardRoutes (preload) {
       <Route path='create/company' component={CreateCompany}/>
 
       <Route path='company/:company' component={Company} onEnter={preload(loadCompanyActionRouterAdaptor)}>
-        <IndexRoute component={CompanyPlans} onEnter={preload(loadPlansActionRouterAdaptor)}/>
+        <Route path='plans' component={CompanyPlans} onEnter={preload(loadPlansActionRouterAdaptor)}/>
 
         <Route path='info'>
           <IndexRoute component={CompanyInfo}/>

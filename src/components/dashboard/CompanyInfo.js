@@ -2,6 +2,7 @@ import React from 'react'
 import {branch} from 'baobab-react/higher-order'
 import {Link} from 'react-router'
 import Message from 'tetris-iso/Message'
+import Fence from './Fence'
 
 const {PropTypes} = React
 
@@ -28,9 +29,12 @@ export const CompanyInfo = React.createClass({
         </dl>
 
         <hr/>
-        <Link className='btn btn-link' to={`${location.pathname}/edit`}>
-          <Message>editCompany</Message>
-        </Link>
+
+        <Fence canEditCompany>
+          <Link className='btn btn-link' to={`${location.pathname}/edit`}>
+            <Message>editCompany</Message>
+          </Link>
+        </Fence>
       </div>
     )
   }

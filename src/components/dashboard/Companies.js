@@ -8,7 +8,7 @@ const {PropTypes} = React
 
 function CompanyThumb ({name, id, role}) {
   return (
-    <Link to={`/dashboard/company/${id}`} className='col-sm-6 col-md-4 text-center'>
+    <Link to={`/dashboard/company/${id}/info`} className='col-sm-6 col-md-4 text-center'>
       <div className='thumbnail'>
         <h1 className='glyphicon glyphicon-briefcase huge'/>
         <div className='caption'>
