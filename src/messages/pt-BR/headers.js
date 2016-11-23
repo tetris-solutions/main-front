@@ -1,5 +1,5 @@
 module.exports = {
-  permissionsHeader: 'Permissões do grupo',
+  permissionsHeader: 'Permissões - {group}',
   dashboardHeader: 'Painel',
   newRoleHeader: 'Novo grupo',
   roleListHeader: 'Grupos',

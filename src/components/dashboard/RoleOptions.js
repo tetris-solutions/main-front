@@ -11,6 +11,7 @@ import {updateRoleAction} from '../../actions/update-role-action'
 import {loadUserCompaniesAction} from 'tetris-iso/actions'
 import {loadCompanyAction} from '../../actions/load-company-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
+import groupBy from 'lodash/groupBy'
 
 const {PropTypes} = React
 
@@ -48,11 +49,11 @@ export const RoleOptions = React.createClass({
   },
   render () {
     const {errors} = this.state
-    const {role: {id, name, permissions}} = this.props
+    const {permissions: availablePerms, role: {id, name, permissions: enabledPerms}} = this.props
+    const permGroups = groupBy(availablePerms, 'app_name')
 
     return (
       <form key={`edit-role-${id}`} className='well' method='POST' onSubmit={this.handleSubmit}>
-
         <SimpleInput
           name='name'
           label='roleName'
@@ -61,23 +62,26 @@ export const RoleOptions = React.createClass({
           onChange={this.dismissError}
           required/>
 
-        <div className='panel panel-default'>
-          <div className='panel-heading'>
-            <Message>permissionsHeader</Message>
-          </div>
-          <div className='panel-body'>
-            {map(this.props.permissions, ({id, name}, index) => (
-              <div className='checkbox' key={index}>
-                <label>
-                  <input
-                    name={id}
-                    type='checkbox'
-                    defaultChecked={some(permissions, {id})}/> {name}
-                </label>
-              </div>
-            ))}
-          </div>
-        </div>
+        {map(permGroups, (permissions, groupName) =>
+          <div key={groupName} className='panel panel-default'>
+            <div className='panel-heading'>
+              <Message group={groupName === 'undefined' ? 'Global' : groupName}>
+                permissionsHeader
+              </Message>
+            </div>
+
+            <div className='panel-body'>
+              {map(permissions, ({id, name}, index) =>
+                <div className='checkbox' key={index}>
+                  <label>
+                    <input
+                      name={id}
+                      type='checkbox'
+                      defaultChecked={some(enabledPerms, {id})}/> {name}
+                  </label>
+                </div>)}
+            </div>
+          </div>)}
 
         <div className='text-right'>
           <SubmitButton/>
