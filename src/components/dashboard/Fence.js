@@ -1,4 +1,5 @@
 import React from 'react'
+import NoTrespassing from './NoTrespassing'
 import diff from 'lodash/difference'
 import isEmpty from 'lodash/isEmpty'
 import map from 'lodash/map'
@@ -71,5 +72,31 @@ const Fence = React.createClass({
     return <Gate passenger={this.props.children} permissions={permissions}/>
   }
 })
+
+export function restrict (Component, ...permissions) {
+  const requiredPerms = {}
+
+  for (let i = 0; i < permissions.length; i++) {
+    requiredPerms[permissions[i]] = true
+  }
+
+  function ProtectedArea (props) {
+    return (
+      <Fence {...requiredPerms}>
+        {f => f.allow
+          ? <Component {...props}/>
+          : <NoTrespassing/>}
+      </Fence>
+    )
+  }
+
+  ProtectedArea.displayName = 'Protected-Area'
+
+  return ProtectedArea
+}
+
+restrict.canEditRole = 'canEditRole'
+restrict.canEditCompany = 'canEditCompany'
+restrict.canManageTokens = 'canManageTokens'
 
 export default Fence

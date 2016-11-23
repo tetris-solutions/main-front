@@ -30,16 +30,27 @@ export function setAppRoutes (app, uiRoute) {
     protectedRouteMiddleware,
     uiRoute)
 
-  const ls = ['', '/info', '/info/edit']
+  app.get('/dashboard/company/:company/plans',
+    protectedRouteMiddleware,
+    performActionsMiddleware(
+      loadUserCompaniesActionServerAdaptor,
+      loadPlansActionServerAdaptor,
+      loadCompanyActionServerAdaptor),
+    uiRoute)
 
-  ls.map(uri =>
-    app.get('/dashboard/company/:company' + uri,
-      protectedRouteMiddleware,
-      performActionsMiddleware(
-        loadUserCompaniesActionServerAdaptor,
-        loadPlansActionServerAdaptor,
-        loadCompanyActionServerAdaptor),
-      uiRoute))
+  app.get('/dashboard/company/:company/info',
+    protectedRouteMiddleware,
+    performActionsMiddleware(
+      loadUserCompaniesActionServerAdaptor,
+      loadCompanyActionServerAdaptor),
+    uiRoute)
+
+  app.get('/dashboard/company/:company/info/edit',
+    protectedRouteMiddleware,
+    performActionsMiddleware(
+      loadUserCompaniesActionServerAdaptor,
+      loadCompanyActionServerAdaptor),
+    uiRoute)
 
   app.get('/dashboard/company/:company/apps',
     protectedRouteMiddleware,

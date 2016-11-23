@@ -16,6 +16,7 @@ import CompanyApps from '../components/dashboard/CompanyApps'
 import CompanyPlans from '../components/dashboard/CompanyPlans'
 import CompanyEdit from '../components/dashboard/CompanyEdit'
 import CompanyInfo from '../components/dashboard/CompanyInfo'
+import {restrict} from '../components/dashboard/Fence'
 
 import {loadCompanyAccountsActionRouterAdaptor} from '../actions/load-company-accounts-action'
 import {loadUserCompaniesActionRouterAdaptor} from 'tetris-iso/actions'
@@ -40,23 +41,26 @@ export function dashboardRoutes (preload) {
       <Route path='create/company' component={CreateCompany}/>
 
       <Route path='company/:company' component={Company} onEnter={preload(loadCompanyActionRouterAdaptor)}>
-        <Route path='plans' component={CompanyPlans} onEnter={preload(loadPlansActionRouterAdaptor)}/>
+        <Route
+          path='plans'
+          component={restrict(CompanyPlans, restrict.canEditCompany)}
+          onEnter={preload(loadPlansActionRouterAdaptor)}/>
 
         <Route path='info'>
           <IndexRoute component={CompanyInfo}/>
-          <Route path='edit' component={CompanyEdit}/>
+          <Route path='edit' component={restrict(CompanyEdit, restrict.canEditCompany)}/>
         </Route>
 
         <Route path='apps' component={CompanyApps} onEnter={preload(loadCompanyAppsActionRouterAdaptor)}/>
 
-        <Route path='roles' component={CompanyRoles}>
+        <Route path='roles' component={restrict(CompanyRoles, restrict.canEditRole)}>
           <IndexRoute component={CreateRole}/>
           <Route path=':role' component={CompanyRole}>
             <IndexRoute component={RoleOptions} onEnter={preload(loadCompanyPermissionsActionRouterAdaptor)}/>
             <Route path='users' component={RoleUsers} onEnter={preload(loadRoleUsersActionRouteAdaptor)}/>
           </Route>
         </Route>
-        <Route path='accounts' component={CompanyAccounts} onEnter={preload(loadCompanyAccountsActionRouterAdaptor)}/>
+        <Route path='accounts' component={restrict(CompanyAccounts, restrict.canManageTokens)} onEnter={preload(loadCompanyAccountsActionRouterAdaptor)}/>
       </Route>
 
       <Route path='account/:account' component={AccountEdit} onEnter={preload(loadAccountActionRouterAdaptor)}/>
