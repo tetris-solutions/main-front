@@ -61,7 +61,8 @@ const RoleUser = React.createClass({
   propTypes: {
     isOwner: PropTypes.bool.isRequired,
     removeUser: PropTypes.func.isRequired,
-    userName: PropTypes.string.isRequired,
+    userName: PropTypes.string,
+    userEmail: PropTypes.string.isRequired,
     roleName: PropTypes.string.isRequired,
     id: PropTypes.string,
     pending: PropTypes.bool
@@ -70,11 +71,11 @@ const RoleUser = React.createClass({
     this.props.removeUser(this.props.id)
   },
   render () {
-    const {isOwner, roleName, userName, pending} = this.props
+    const {isOwner, roleName, userName, userEmail, pending} = this.props
     return (
       <div className='list-group-item'>
         <h4>
-          {userName + ' '}
+          {(userName || userEmail) + ' '}
           {pending && (
             <small>
               <sup className='label label-warning'>
@@ -99,6 +100,12 @@ const RoleUser = React.createClass({
                 confirm={this.removeUser}
                 dismiss={dismiss}/>}
             </ButtonWithPrompt>)}
+
+          {userName && userEmail && (
+            <p>
+              <small>{userEmail}</small>
+            </p>
+          )}
         </h4>
       </div>
     )
@@ -168,7 +175,8 @@ export const RoleUsers = React.createClass({
               id={user_role || invite}
               isOwner={company.owner === userId}
               pending={pending}
-              userName={name || email}
+              userName={name}
+              userEmail={email}
               removeUser={pending ? this.removeInvite : this.removeUserRole}/>))}
 
           <form className='list-group-item' onSubmit={this.onSubmitUser}>
