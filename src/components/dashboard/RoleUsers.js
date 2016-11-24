@@ -96,7 +96,7 @@ const RoleUser = React.createClass({
             <ButtonWithPrompt label='&times;' className={`close ${style.x}`}>{({dismiss}) =>
               <Confirm
                 roleName={roleName}
-                userName={userName}
+                userName={userName || userEmail}
                 confirm={this.removeUser}
                 dismiss={dismiss}/>}
             </ButtonWithPrompt>)}
