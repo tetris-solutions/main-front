@@ -3,6 +3,7 @@ import Message from 'tetris-iso/Message'
 import {branch} from 'baobab-react/higher-order'
 import map from 'lodash/map'
 import {Link} from 'react-router'
+import Fence from './Fence'
 
 const {PropTypes} = React
 
@@ -51,19 +52,21 @@ export const Companies = React.createClass({
         <div className='row'>
           {map(this.props.companies, (company, index) => <CompanyThumb key={index} {...company} />)}
 
-          <Link to='/dashboard/create/company' className='col-sm-6 col-md-4 text-center'>
-            <div className='thumbnail'>
-              <h1 className='glyphicon glyphicon-briefcase huge'/>
-              <div className='caption'>
-                <h2>
-                  <Message>newCompanyHeader</Message>
-                </h2>
-                <p>
-                  <Message>createCompany</Message>
-                </p>
+          <Fence adminOnly>
+            <Link to='/dashboard/create/company' className='col-sm-6 col-md-4 text-center'>
+              <div className='thumbnail'>
+                <h1 className='glyphicon glyphicon-briefcase huge'/>
+                <div className='caption'>
+                  <h2>
+                    <Message>newCompanyHeader</Message>
+                  </h2>
+                  <p>
+                    <Message>createCompany</Message>
+                  </p>
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          </Fence>
         </div>
       </div>
     )

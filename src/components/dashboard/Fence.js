@@ -47,19 +47,17 @@ Gate.propTypes = {
 const Fence = React.createClass({
   displayName: 'Fence',
   contextTypes: {
-    permissions: PropTypes.array.isRequired,
+    permissions: PropTypes.array,
     tree: PropTypes.object.isRequired
   },
   propTypes: {
     children: passengerType,
+    adminOnly: PropTypes.bool,
     canEditRole: PropTypes.bool,
     canEditCompany: PropTypes.bool,
     canManageTokens: PropTypes.bool
   },
-  render () {
-    const {tree, permissions: userPerms} = this.context
-    const isAdmin = Boolean(tree.get(['user', 'is_admin']))
-
+  permissionCheck (userPerms, isAdmin) {
     const required = compact(map(keys(this.props), getPermissionName))
     const granted = map(userPerms || none, 'id')
 
@@ -75,6 +73,19 @@ const Fence = React.createClass({
       const alias = permissionAliases[name]
 
       permissions[alias] = isAdmin || includes(granted, name)
+    }
+
+    return permissions
+  },
+  render () {
+    const {tree, permissions: userPerms} = this.context
+    const isAdmin = Boolean(tree.get(['user', 'is_admin']))
+    let permissions
+
+    if (this.props.adminOnly) {
+      permissions = {allow: isAdmin, missing: [], granted: [], required: []}
+    } else {
+      permissions = this.permissionCheck(userPerms, isAdmin)
     }
 
     return <Gate passenger={this.props.children} permissions={permissions}/>
@@ -106,5 +117,6 @@ export function restrict (Component, ...permissions) {
 restrict.canEditRole = 'canEditRole'
 restrict.canEditCompany = 'canEditCompany'
 restrict.canManageTokens = 'canManageTokens'
+restrict.adminOnly = 'adminOnly'
 
 export default Fence

@@ -38,7 +38,7 @@ export function dashboardRoutes (preload) {
       <Route path='profile' component={Profile}/>
 
       <Route path='companies' component={Companies} onEnter={preload(loadUserCompaniesActionRouterAdaptor)}/>
-      <Route path='create/company' component={CreateCompany}/>
+      <Route path='create/company' component={restrict(CreateCompany, restrict.adminOnly)}/>
 
       <Route path='company/:company' component={Company} onEnter={preload(loadCompanyActionRouterAdaptor)}>
         <Route
@@ -60,7 +60,11 @@ export function dashboardRoutes (preload) {
             <Route path='users' component={RoleUsers} onEnter={preload(loadRoleUsersActionRouteAdaptor)}/>
           </Route>
         </Route>
-        <Route path='accounts' component={restrict(CompanyAccounts, restrict.canManageTokens)} onEnter={preload(loadCompanyAccountsActionRouterAdaptor)}/>
+
+        <Route
+          path='accounts'
+          component={restrict(CompanyAccounts, restrict.canManageTokens)}
+          onEnter={preload(loadCompanyAccountsActionRouterAdaptor)}/>
       </Route>
 
       <Route path='account/:account' component={AccountEdit} onEnter={preload(loadAccountActionRouterAdaptor)}/>
