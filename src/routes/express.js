@@ -1,6 +1,7 @@
 import {protectedRouteMiddleware, performActionsMiddleware} from 'tetris-iso/server'
 import {loadUserCompaniesActionServerAdaptor} from 'tetris-iso/actions'
 import {activateRoute} from '../route-handlers/activate-route'
+import {bridgeRoute} from '../route-handlers/bridge-route'
 import {loadCompanyActionServerAdaptor} from '../actions/load-company-action'
 import {loadCompanyPermissionsActionServerAdaptor} from '../actions/load-company-permissions-action'
 import {loadRoleUsersActionServerAdaptor} from '../actions/load-role-users-action'
@@ -11,6 +12,7 @@ import {loadCompanyAppsActionServerAdaptor} from '../actions/load-company-apps-a
 
 export function setAppRoutes (app, uiRoute) {
   app.get('/', uiRoute)
+  app.get('/bridge/:token', bridgeRoute)
   app.get('/error', uiRoute)
   app.get('/login', uiRoute)
   app.get('/signup', uiRoute)
