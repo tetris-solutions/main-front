@@ -19,6 +19,13 @@ export function setAppRoutes (app, uiRoute) {
 
   app.get('/tunnel/:tunnelCode',
     performActionsMiddleware(loadTunnelInfoActionServerAdaptor),
+    function (req, res, next) {
+      if (res.get('Authorization')) {
+        res.redirect(req.query.next || '/dashboard')
+      } else {
+        next()
+      }
+    },
     uiRoute)
 
   app.post('/dash/user', bodyParser.json(), createDashUserRoute)

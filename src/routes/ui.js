@@ -12,7 +12,6 @@ import {root} from 'baobab-react/higher-order'
 import {dashboardRoutes} from './ui-dashboard'
 import Header from '../components/Header'
 import ErrorScreen from '../components/ErrorScreen'
-import {loadTunnelInfoActionRouterAdaptor as tunnelInfo} from '../actions/load-tunnel-info'
 
 const Main = ({children}) => (
   <div>
@@ -31,7 +30,7 @@ export function getRoutes (tree, protectRoute, preload, createRoot) {
       <Route path='login' component={Login}/>
       <Route path='recover-password' component={RecoverPassword}/>
       <Route path='reset-password/:email/:recoveryCode' component={ResetPassword}/>
-      <Route path='tunnel/:tunnelCode' onEnter={preload(tunnelInfo)} component={Tunnel}/>
+      <Route path='tunnel/:tunnelCode' component={Tunnel}/>
 
       <Route component={Main}>
         <IndexRoute component={Home}/>

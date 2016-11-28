@@ -1,4 +1,4 @@
-import {getApiFetchConfig, pushResponseErrorToState} from 'tetris-iso/utils'
+import {getApiFetchConfig, pushResponseErrorToState, passTokenAhead} from 'tetris-iso/utils'
 import {GET} from '@tetris/http'
 
 export function loadTunnelInfo (tunnelCode, config) {
@@ -17,8 +17,5 @@ export function loadTunnelInfoAction (tree, tunnelCode) {
 
 export function loadTunnelInfoActionServerAdaptor (req, res) {
   return loadTunnelInfoAction(res.locals.tree, req.params.tunnelCode)
-}
-
-export function loadTunnelInfoActionRouterAdaptor (state, tree) {
-  return loadTunnelInfoAction(tree, state.params.tunnelCode)
+    .then(passTokenAhead(req, res))
 }
