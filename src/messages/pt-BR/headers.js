@@ -16,5 +16,6 @@ module.exports = {
   accessTokenHeader: 'Token de acesso',
   newCompanyHeader: 'Nova empresa',
   errorScreenHeader: 'Erro no servidor',
-  confirmRoleUserDeleteHeader: 'Desassociar usuário'
+  confirmRoleUserDeleteHeader: 'Desassociar usuário',
+  tunnelHeader: 'Olá, {name}! <br/> <small>Por favor, defina sua senha Tetris</small>'
 }

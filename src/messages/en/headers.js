@@ -16,5 +16,6 @@ module.exports = {
   accessTokenHeader: 'Access Token',
   newCompanyHeader: 'New company',
   errorScreenHeader: 'Server Error',
-  confirmRoleUserDeleteHeader: 'Remove role member'
+  confirmRoleUserDeleteHeader: 'Remove role member',
+  tunnelHeader: 'Hey, {name}! <br/> <small>Please, set your Tetris password</small>'
 }

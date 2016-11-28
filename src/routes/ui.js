@@ -3,6 +3,7 @@ import {IndexRoute, Route} from 'react-router'
 import Login from '../components/Login'
 import RecoverPassword from '../components/RecoverPassword'
 import ResetPassword from '../components/ResetPassword'
+import Tunnel from '../components/Tunnel'
 import Activation from '../components/Activation'
 import Home from '../components/Home'
 import Signup from '../components/Signup'
@@ -11,6 +12,7 @@ import {root} from 'baobab-react/higher-order'
 import {dashboardRoutes} from './ui-dashboard'
 import Header from '../components/Header'
 import ErrorScreen from '../components/ErrorScreen'
+import {loadTunnelInfoActionRouterAdaptor as tunnelInfo} from '../actions/load-tunnel-info'
 
 const Main = ({children}) => (
   <div>
@@ -29,6 +31,7 @@ export function getRoutes (tree, protectRoute, preload, createRoot) {
       <Route path='login' component={Login}/>
       <Route path='recover-password' component={RecoverPassword}/>
       <Route path='reset-password/:email/:recoveryCode' component={ResetPassword}/>
+      <Route path='tunnel/:tunnelCode' onEnter={preload(tunnelInfo)} component={Tunnel}/>
 
       <Route component={Main}>
         <IndexRoute component={Home}/>
