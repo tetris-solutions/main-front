@@ -10,6 +10,8 @@ export const HTML = ({documentTitle = 'Tetris Solutions', css, payload, children
       <meta charSet='UTF-8'/>
       <meta name='viewport' content='width=device-width, initial-scale=1'/>
       <title>{documentTitle}</title>
+
+      <link rel='shortcut icon' type='image/png' href='/img/favicon.png'/>
       <link rel='stylesheet' href='https://bootswatch.com/yeti/bootstrap.css'/>
       <link rel='stylesheet' href='https://cdn.rawgit.com/daneden/animate.css/master/animate.css'/>
       <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css'/>
