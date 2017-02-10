@@ -17,7 +17,7 @@
     "bin"
   ],
   "scripts": {
-    "compile": "rimraf lib && babel src -d lib",
+    "compile": "rimraf lib && babel --quiet src -d lib",
     "bundle": "webpack --config src/webpack.config.js --optimize-minimize",
     "docs": "scripts/gen-docs.js",
     "test": "scripts/test.js",
