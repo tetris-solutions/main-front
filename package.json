@@ -17,12 +17,12 @@
     "bin"
   ],
   "scripts": {
-    "build:commonjs": "rimraf lib && babel src -d lib",
-    "build:documentation": "scripts/gen-docs.js",
-    "build:client": "scripts/bundle.js",
+    "compile": "rimraf lib && babel src -d lib",
+    "bundle": "webpack --config src/webpack.config.js --optimize-minimize",
+    "docs": "scripts/gen-docs.js",
     "test": "scripts/test.js",
     "babel-node": "babel-node",
-    "prepublish": "npm run build:commonjs",
+    "prepublish": "npm run compile",
     "lint": "eslint src",
     "start": "bin/cmd.js",
     "start:dev": "nodemon src/main.js"
@@ -57,7 +57,7 @@
     "react-dom": "^15.3.1",
     "react-intl": "^1.2.2",
     "react-router": "^3.0.0",
-    "tetris-iso": "^0.4.2",
+    "tetris-iso": "^0.5.9",
     "winston": "^2.2.0",
     "winston-logstash": "^0.2.11"
   },
