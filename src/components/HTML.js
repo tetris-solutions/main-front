@@ -1,7 +1,6 @@
 import React from 'react'
-import revision from 'git-rev-sync'
 
-const revSuffix = process.env.BUILD_PROD ? `.${revision.short()}` : ''
+const revisionSuffix = process.env.DEV_SERVER ? '' : `.${require('../../package.json').version}`
 
 export const HTML = ({documentTitle = 'Tetris Solutions', css, payload, children}) => (
   <html>
@@ -24,7 +23,7 @@ export const HTML = ({documentTitle = 'Tetris Solutions', css, payload, children
 
       <script src='/js/spin.min.js' defer/>
       <script src='/js/ladda.min.js' defer/>
-      <script src={`/js/client${revSuffix}.js`} defer/>
+      <script src={`/js/client${revisionSuffix}.js`} defer/>
       <style id='style-injection' dangerouslySetInnerHTML={{__html: css}}/>
     </head>
     <body>

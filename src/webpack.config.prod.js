@@ -1,7 +1,7 @@
 var webpack = require('webpack')
 var path = require('path')
 var passEnv = require('./functions/pass-env')
-var revision = require('git-rev-sync')
+var pkg = require('../package.json')
 
 module.exports = {
   devtool: 'source-map',
@@ -11,7 +11,7 @@ module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, '..', 'public', 'js'),
-    filename: 'client.' + revision.short() + '.js',
+    filename: 'client.' + pkg.version + '.js',
     publicPath: '/'
   },
   plugins: [
