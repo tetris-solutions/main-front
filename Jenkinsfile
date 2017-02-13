@@ -1,8 +1,11 @@
 pipeline {
   agent any
   environment {
+    svc_name = 'user-client'
+    htdocs = "/var/www/user-client"
     production_env = credentials('production.env')
     homolog_env = credentials('homolog.env')
+    ssh_key = credentials('tetris.pem')
   }
   stages {
     stage('Provision') {
@@ -37,19 +40,18 @@ pipeline {
         archive "build.${env.BUILD_NUMBER}.tar.gz"
       }
     }
-    stage('Deploy HOMOLOG') {
-      when { environment name: 'DEPLOY_TO', value: 'homolog' }
-      environment {
-        htdocs = "/var/www/user-client"
-      }
+    stage('Deploy') {
       steps {
-        sh "mkdir -p ${env.htdocs}/${env.BUILD_NUMBER}"
-        sh "tar -zxf build.${env.BUILD_NUMBER}.tar.gz -C ${env.htdocs}/${env.BUILD_NUMBER}"
-        sh "psy rm user-client"
-        sh "psy start -n user-client -- ${env.htdocs}/${env.BUILD_NUMBER}/bin/cmd.js"
-        sh "psy ls"
-        sh "rm -f ${env.htdocs}/assets"
-        sh "ln -s ${env.htdocs}/${env.BUILD_NUMBER}/public ${env.htdocs}/assets"
+        sh "cp ${env.ssh_key} tetris.pem"
+        sh "chmod 600 tetris.pem"
+        sh "scp -i tetris.pem -o StrictHostKeyChecking=no build.${env.BUILD_NUMBER}.tar.gz ubuntu@${env.DEPLOY_TO}:."
+        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'mkdir -p ${env.htdocs}/${env.BUILD_NUMBER}'"
+        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'tar -zxf build.${env.BUILD_NUMBER}.tar.gz -C ${env.htdocs}/${env.BUILD_NUMBER}'"
+        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'rm build.${env.BUILD_NUMBER}.tar.gz'"
+        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'pm2 delete ${env.svc_name} || true'"
+        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'pm2 start ${env.htdocs}/${env.BUILD_NUMBER}/bin/cmd.js --name=${env.svc_name}'"
+        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'rm -f ${env.htdocs}/assets'"
+        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'ln -s ${env.htdocs}/${env.BUILD_NUMBER}/public ${env.htdocs}/assets'"
       }
     }
   }
