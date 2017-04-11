@@ -14,7 +14,7 @@ function CompanyThumb ({name, id, role}) {
         <h1 className='glyphicon glyphicon-briefcase huge'/>
         <div className='caption'>
           <h2>{name}</h2>
-          <p>{role.name}</p>
+          <p>{role ? role.name : 'Super Admin'}</p>
         </div>
       </div>
     </Link>
