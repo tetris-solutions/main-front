@@ -1,4 +1,6 @@
 import React from 'react'
+import createReactClass from 'create-react-class'
+import PropTypes from 'prop-types'
 import {branch} from 'baobab-react/higher-order'
 import FormMixin from '../FormMixin'
 import SimpleInput from '../SimpleInput'
@@ -14,8 +16,6 @@ import {updateCompanyIconAction} from '../../actions/update-company-icon-action'
 import {loadCompanyAction} from '../../actions/load-company-action'
 import AvatarPicker from '../AvatarPicker'
 
-const {PropTypes} = React
-
 const fmtTz = str => str.replace(/_/g, ' ').split('/').reverse().join(', ')
 const timezones = sortBy(flatten(map(_timezones, ({utc}) =>
   map(utc || [], str => ({
@@ -23,7 +23,7 @@ const timezones = sortBy(flatten(map(_timezones, ({utc}) =>
     value: str
   })))), 'text')
 
-export const CompanyEdit = React.createClass({
+export const CompanyEdit = createReactClass({
   displayName: 'Company-Edit',
   mixins: [FormMixin],
   propTypes: {

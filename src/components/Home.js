@@ -1,13 +1,16 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Message from 'tetris-iso/Message'
 import Dashboard from './dashboard/Dashboard'
 import {Link} from 'react-router'
 
-export const Home = React.createClass({
-  displayName: 'Home',
-  contextTypes: {
-    tree: React.PropTypes.object.isRequired
-  },
+export class Home extends React.Component {
+  static displayName = 'Home'
+
+  static contextTypes = {
+    tree: PropTypes.object.isRequired
+  }
+
   render () {
     if (this.context.tree.get('user')) {
       return <Dashboard {...this.props}/>
@@ -26,6 +29,6 @@ export const Home = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default Home

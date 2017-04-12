@@ -1,9 +1,9 @@
 import React from 'react'
+import createClass from 'create-react-class'
+import PropTypes from 'prop-types'
 import {branch} from 'baobab-react/higher-order'
 import ActivationFailure from './ActivationFailure'
 import ActivationSuccess from './ActivationSuccess'
-
-const {PropTypes, createClass} = React
 
 export const Activation = createClass({
   displayName: 'Activation',

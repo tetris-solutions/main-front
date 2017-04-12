@@ -1,20 +1,21 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {branch} from 'baobab-react/higher-order'
 import {Link} from 'react-router'
 import Message from 'tetris-iso/Message'
 import Fence from './Fence'
 
-const {PropTypes} = React
+export class CompanyInfo extends React.Component {
+  static displayName = 'Company-Info'
 
-export const CompanyInfo = React.createClass({
-  displayName: 'Company-Info',
-  propTypes: {
+  static propTypes = {
     location: PropTypes.object.isRequired,
     company: PropTypes.shape({
       name: PropTypes.string,
       timezone: PropTypes.string
     }).isRequired
-  },
+  }
+
   render () {
     const {company, location} = this.props
     return (
@@ -38,7 +39,7 @@ export const CompanyInfo = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default branch((props, context) => ({
   company: ['companies', props.params.company]

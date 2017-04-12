@@ -1,4 +1,6 @@
 import React from 'react'
+import createReactClass from 'create-react-class'
+import PropTypes from 'prop-types'
 import {branch} from 'baobab-react/higher-order'
 import toUpper from 'lodash/toUpper'
 import Message from 'tetris-iso/Message'
@@ -8,8 +10,6 @@ import FormMixin from '../FormMixin'
 // import SubmitButton from '../SubmitButton'
 import join from 'lodash/join'
 import map from 'lodash/map'
-
-const {PropTypes} = React
 
 function getIssuedAtFromToken (token) {
   if (!token) return null
@@ -22,13 +22,7 @@ function getIssuedAtFromToken (token) {
     ? Number(created) * 1000
     : issued_at
 }
-function AccountToken ({
-  account: {
-    token,
-    token_expiration,
-    token_timestamp
-  }
-}, {moment}) {
+function AccountToken ({account: {token, token_expiration, token_timestamp}}, {moment}) {
   const issuedAt = getIssuedAtFromToken(token) || token_timestamp
 
   return (
@@ -68,7 +62,7 @@ AccountToken.propTypes = {
   account: PropTypes.object
 }
 
-export const AccountEdit = React.createClass({
+export const AccountEdit = createReactClass({
   mixins: [FormMixin],
   displayName: 'Account-Edit',
   propTypes: {

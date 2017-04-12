@@ -1,21 +1,27 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import find from 'lodash/find'
 import {Link} from 'react-router'
 import Message from 'tetris-iso/Message'
 import cx from 'classnames'
 
-const {PropTypes, cloneElement} = React
+const {
+  cloneElement
+} = React
 
-export const CompanyRole = React.createClass({
-  displayName: 'Company-Role',
-  propTypes: {
+export class CompanyRole extends React.Component {
+  static displayName = 'Company-Role'
+
+  static propTypes = {
     params: PropTypes.object,
     children: PropTypes.node,
     company: PropTypes.object
-  },
-  contextTypes: {
+  }
+
+  static contextTypes = {
     router: PropTypes.object
-  },
+  }
+
   render () {
     const {params, children, company} = this.props
     const {router: {isActive}} = this.context
@@ -46,6 +52,6 @@ export const CompanyRole = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default CompanyRole

@@ -1,9 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import pick from 'lodash/pick'
 import cx from 'classnames'
 import Message from 'tetris-iso/Message'
 
-const {PropTypes} = React
 const inputFields = [
   'name',
   'disabled',
@@ -16,21 +16,22 @@ const inputFields = [
   'value'
 ]
 
-export const SimpleInput = React.createClass({
-  displayName: 'SimpleInput',
-  getDefaultProps () {
-    return {
-      type: 'text'
-    }
-  },
-  propTypes: {
+export class SimpleInput extends React.Component {
+  static displayName = 'SimpleInput'
+
+  static defaultProps = {
+    type: 'text'
+  }
+
+  static propTypes = {
     type: PropTypes.string,
     name: PropTypes.string.isRequired,
     label: PropTypes.string,
     error: PropTypes.string,
     onChange: PropTypes.func,
     className: PropTypes.string
-  },
+  }
+
   render () {
     const {error, label, className} = this.props
     return (
@@ -45,6 +46,6 @@ export const SimpleInput = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default SimpleInput

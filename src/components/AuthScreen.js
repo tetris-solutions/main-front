@@ -1,4 +1,6 @@
 import React from 'react'
+import createReactClass from 'create-react-class'
+import PropTypes from 'prop-types'
 import csjs from 'csjs'
 import StyledMixin from './mixins/styled'
 import SimpleInput from './SimpleInput'
@@ -6,7 +8,6 @@ import {changeLocaleAction} from 'tetris-iso/actions'
 import Tooltip from 'tetris-iso/Tooltip'
 import startsWith from 'lodash/startsWith'
 
-const {PropTypes} = React
 const style = csjs`
 .container {
   padding-top: 20vh;
@@ -129,7 +130,7 @@ LangMenu.contextTypes = {
   tree: PropTypes.object.isRequired
 }
 
-const AuthScreen = React.createClass({
+const AuthScreen = createReactClass({
   displayName: 'Auth-Screen',
   mixins: [StyledMixin],
   style,

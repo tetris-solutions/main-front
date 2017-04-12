@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Message from 'tetris-iso/Message'
 import {Link} from 'react-router'
 
@@ -42,11 +43,13 @@ function DashboardNav () {
 
 DashboardNav.displayName = 'Dashboard-Nav'
 
-export const Dashboard = React.createClass({
-  displayName: 'Dashboard',
-  propTypes: {
-    children: React.PropTypes.node
-  },
+export class Dashboard extends React.Component {
+  static displayName = 'Dashboard'
+
+  static propTypes = {
+    children: PropTypes.node
+  }
+
   render () {
     const {children} = this.props
     // @todo: breadcrumbs
@@ -58,6 +61,6 @@ export const Dashboard = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default Dashboard

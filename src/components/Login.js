@@ -1,4 +1,6 @@
 import React from 'react'
+import createReactClass from 'create-react-class'
+import PropTypes from 'prop-types'
 import FormMixin from './FormMixin'
 import loginAction from '../actions/login-action'
 import {branch} from 'baobab-react/higher-order'
@@ -9,10 +11,9 @@ import AuthScreen, {Input, LangMenu} from './AuthScreen'
 import Message from 'tetris-iso/Message'
 import BlueLink from './BlueLink'
 
-const {PropTypes} = React
 const actionRowStyle = {marginTop: '1em'}
 
-export const Login = React.createClass({
+export const Login = createReactClass({
   mixins: [FormMixin],
   displayName: 'Login',
   propTypes: {

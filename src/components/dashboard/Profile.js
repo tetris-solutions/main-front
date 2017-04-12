@@ -1,4 +1,6 @@
 import React from 'react'
+import createClass from 'create-react-class'
+import PropTypes from 'prop-types'
 import FormMixin from '../FormMixin'
 import SimpleInput from '../SimpleInput'
 import {branch} from 'baobab-react/higher-order'
@@ -7,8 +9,6 @@ import SubmitButton from '../SubmitButton'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 import AvatarPicker from '../AvatarPicker'
 import {updateUserAvatarAction} from '../../actions/update-user-avatar-action'
-
-const {PropTypes, createClass} = React
 
 export const Profile = createClass({
   displayName: 'Profile',

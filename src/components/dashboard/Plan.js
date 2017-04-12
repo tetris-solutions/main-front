@@ -1,4 +1,6 @@
 import React from 'react'
+import createReactClass from 'create-react-class'
+import PropTypes from 'prop-types'
 import FormMixin from '../FormMixin'
 import SubmitButton from '../SubmitButton'
 import {branch} from 'baobab-react/higher-order'
@@ -7,9 +9,7 @@ import {deleteCompanyPlanAction} from '../../actions/delete-company-plan-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 import {loadCompanyAction} from '../../actions/load-company-action'
 
-const {PropTypes} = React
-
-export const Plan = React.createClass({
+export const Plan = createReactClass({
   mixins: [FormMixin],
   displayName: 'Plan',
   propTypes: {

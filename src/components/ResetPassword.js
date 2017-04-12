@@ -1,4 +1,6 @@
 import React from 'react'
+import createReactClass from 'create-react-class'
+import PropTypes from 'prop-types'
 import FormMixin from './FormMixin'
 import {resetPasswordAction} from '../actions/reset-password-action'
 import {branch} from 'baobab-react/higher-order'
@@ -7,10 +9,9 @@ import AuthScreen, {Input, LangMenu} from './AuthScreen'
 import Message from 'tetris-iso/Message'
 import BlueLink from './BlueLink'
 
-const {PropTypes} = React
 const actionRowStyle = {marginTop: '1em'}
 
-const ResetPassword = React.createClass({
+const ResetPassword = createReactClass({
   mixins: [FormMixin],
   displayName: 'Reset-Password',
   propTypes: {

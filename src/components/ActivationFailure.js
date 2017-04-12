@@ -1,8 +1,8 @@
 import React from 'react'
+import createClass from 'create-react-class'
+import PropTypes from 'prop-types'
 import {IndexLink} from 'react-router'
 import Message from 'tetris-iso/Message'
-
-const {createClass, PropTypes} = React
 
 export const ActivationFailure = createClass({
   displayName: 'Activation-Failure',

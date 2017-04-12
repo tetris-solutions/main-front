@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import NoTrespassing from './NoTrespassing'
 import diff from 'lodash/difference'
 import isEmpty from 'lodash/isEmpty'
@@ -17,7 +18,6 @@ const permissionNames = {
 const permissionAliases = invert(permissionNames)
 const getPermissionName = id => permissionNames[id]
 
-const {PropTypes} = React
 const none = []
 const passengerType = PropTypes.oneOfType([
   PropTypes.func,
@@ -44,20 +44,23 @@ Gate.propTypes = {
   }).isRequired
 }
 
-const Fence = React.createClass({
-  displayName: 'Fence',
-  contextTypes: {
+class Fence extends React.Component {
+  static displayName = 'Fence'
+
+  static contextTypes = {
     permissions: PropTypes.array,
     tree: PropTypes.object.isRequired
-  },
-  propTypes: {
+  }
+
+  static propTypes = {
     children: passengerType,
     adminOnly: PropTypes.bool,
     canEditRole: PropTypes.bool,
     canEditCompany: PropTypes.bool,
     canManageTokens: PropTypes.bool
-  },
-  permissionCheck (userPerms, isAdmin) {
+  }
+
+  permissionCheck = (userPerms, isAdmin) => {
     const required = compact(map(keys(this.props), getPermissionName))
     const granted = map(userPerms || none, 'id')
 
@@ -76,7 +79,8 @@ const Fence = React.createClass({
     }
 
     return permissions
-  },
+  }
+
   render () {
     const {tree, permissions: userPerms} = this.context
     const isAdmin = Boolean(tree.get(['user', 'is_admin']))
@@ -90,7 +94,7 @@ const Fence = React.createClass({
 
     return <Gate passenger={this.props.children} permissions={permissions}/>
   }
-})
+}
 
 export function restrict (Component, ...permissions) {
   const requiredPerms = {}

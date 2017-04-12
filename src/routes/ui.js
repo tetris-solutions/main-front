@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {IndexRoute, Route} from 'react-router'
 import Login from '../components/Login'
 import RecoverPassword from '../components/RecoverPassword'
@@ -21,7 +22,7 @@ const Main = ({children}) => (
 )
 Main.displayName = 'Main'
 Main.propTypes = {
-  children: React.PropTypes.node.isRequired
+  children: PropTypes.node.isRequired
 }
 
 export function getRoutes (tree, protectRoute, preload, createRoot) {

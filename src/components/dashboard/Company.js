@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {branch} from 'baobab-react/higher-order'
 import {Link} from 'react-router'
 import Message from 'tetris-iso/Message'
@@ -6,11 +7,14 @@ import cx from 'classnames'
 import findIndex from 'lodash/findIndex'
 import Fence from './Fence'
 
-const {PropTypes, cloneElement} = React
+const {
+  cloneElement
+} = React
 
-export const Company = React.createClass({
-  displayName: 'Company',
-  propTypes: {
+export class Company extends React.Component {
+  static displayName = 'Company'
+
+  static propTypes = {
     children: PropTypes.node,
     location: PropTypes.shape({
       pathname: PropTypes.string
@@ -18,18 +22,22 @@ export const Company = React.createClass({
     company: PropTypes.object.isRequired,
     params: PropTypes.object.isRequired,
     permissions: PropTypes.array.isRequired
-  },
-  contextTypes: {
+  }
+
+  static contextTypes = {
     router: PropTypes.object
-  },
-  childContextTypes: {
+  }
+
+  static childContextTypes = {
     permissions: PropTypes.array
-  },
+  }
+
   getChildContext () {
     return {
       permissions: this.props.permissions
     }
-  },
+  }
+
   componentDidMount () {
     const {location: {pathname}, params: {company}} = this.props
     const baseUrl = `/dashboard/company/${company}`
@@ -37,7 +45,8 @@ export const Company = React.createClass({
     if (pathname === baseUrl) {
       this.context.router.push(`${baseUrl}/info`)
     }
-  },
+  }
+
   render () {
     const {company, children, params} = this.props
     const {router: {isActive}} = this.context
@@ -99,7 +108,7 @@ export const Company = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default branch((props, context) => ({
   company: ['companies', props.params.company],

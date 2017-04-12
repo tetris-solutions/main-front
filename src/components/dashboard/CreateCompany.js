@@ -1,4 +1,6 @@
 import React from 'react'
+import createReactClass from 'create-react-class'
+import PropTypes from 'prop-types'
 import FormMixin from '../FormMixin'
 import SimpleInput from '../SimpleInput'
 import SubmitButton from '../SubmitButton'
@@ -7,9 +9,7 @@ import {createCompanyAction} from '../../actions/create-company-action'
 import {loadUserCompaniesAction} from 'tetris-iso/actions'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 
-const {PropTypes} = React
-
-export const CreateCompany = React.createClass({
+export const CreateCompany = createReactClass({
   displayName: 'Create-Company',
   mixins: [FormMixin],
   contextTypes: {

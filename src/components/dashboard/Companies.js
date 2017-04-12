@@ -1,11 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Message from 'tetris-iso/Message'
 import {branch} from 'baobab-react/higher-order'
 import map from 'lodash/map'
 import {Link} from 'react-router'
 import Fence from './Fence'
-
-const {PropTypes} = React
 
 function CompanyThumb ({name, id, role}) {
   return (
@@ -32,16 +31,19 @@ CompanyThumb.propTypes = {
 
 CompanyThumb.displayName = 'Company-Thumb'
 
-export const Companies = React.createClass({
-  displayName: 'Companies',
-  propTypes: {
+export class Companies extends React.Component {
+  static displayName = 'Companies'
+
+  static propTypes = {
     companies: PropTypes.array.isRequired
-  },
-  contextTypes: {
+  }
+
+  static contextTypes = {
     messages: PropTypes.object,
     router: PropTypes.object,
     params: PropTypes.object
-  },
+  }
+
   render () {
     return (
       <div>
@@ -71,6 +73,6 @@ export const Companies = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default branch({companies: ['user', 'companies']}, Companies)

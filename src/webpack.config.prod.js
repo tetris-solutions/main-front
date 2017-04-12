@@ -18,9 +18,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': passEnv()
     }),
-    new webpack.optimize.UglifyJsPlugin({
-
-    })
+    new webpack.optimize.UglifyJsPlugin({})
   ],
   module: {
     loaders: [{

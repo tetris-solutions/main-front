@@ -1,4 +1,6 @@
 import React from 'react'
+import createReactClass from 'create-react-class'
+import PropTypes from 'prop-types'
 import Message from 'tetris-iso/Message'
 import {Link} from 'react-router'
 import {branch} from 'baobab-react/higher-order'
@@ -8,9 +10,7 @@ import {pushSuccessMessageAction} from '../../actions/push-success-message-actio
 import FormMixin from '../FormMixin'
 import SubmitButton from '../SubmitButton'
 
-const {PropTypes} = React
-
-export const CompanyAccountRow = React.createClass({
+export const CompanyAccountRow = createReactClass({
   displayName: 'Company-Account-Row',
   mixins: [FormMixin],
   propTypes: {

@@ -1,6 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const revisionSuffix = process.env.DEV_SERVER ? '' : `.${require('../../package.json').version}`
+const revisionSuffix = process.env.DEV_SERVER
+  ? ''
+  : `.${require('../../package.json').version}`
 
 export const HTML = ({documentTitle = 'Tetris Solutions', css, payload, children}) => (
   <html>
@@ -33,8 +36,6 @@ export const HTML = ({documentTitle = 'Tetris Solutions', css, payload, children
     </body>
   </html>
 )
-
-const {PropTypes} = React
 
 HTML.propTypes = {
   css: PropTypes.string,

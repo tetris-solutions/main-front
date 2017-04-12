@@ -1,4 +1,6 @@
 import React from 'react'
+import createReactClass from 'create-react-class'
+import PropTypes from 'prop-types'
 import map from 'lodash/map'
 import forEach from 'lodash/forEach'
 import {branch} from 'baobab-react/higher-order'
@@ -13,9 +15,7 @@ import {loadCompanyAction} from '../../actions/load-company-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 import groupBy from 'lodash/groupBy'
 
-const {PropTypes} = React
-
-export const RoleOptions = React.createClass({
+export const RoleOptions = createReactClass({
   displayName: 'Role-Options',
   mixins: [FormMixin],
   propTypes: {

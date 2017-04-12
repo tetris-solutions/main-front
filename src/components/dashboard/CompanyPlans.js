@@ -1,16 +1,17 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {branch} from 'baobab-react/higher-order'
 import map from 'lodash/map'
 import Plan from './Plan'
 
-const {PropTypes} = React
+export class CompanyPlans extends React.Component {
+  static displayName = 'Company-Plans'
 
-export const CompanyPlans = React.createClass({
-  displayName: 'Company-Plans',
-  propTypes: {
+  static propTypes = {
     company: PropTypes.object,
     plans: PropTypes.array
-  },
+  }
+
   render () {
     const {plans, company} = this.props
     return (
@@ -22,7 +23,7 @@ export const CompanyPlans = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default branch((props, context) => ({
   company: ['companies', props.params.company],

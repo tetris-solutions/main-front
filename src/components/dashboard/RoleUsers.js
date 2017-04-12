@@ -1,4 +1,6 @@
 import React from 'react'
+import createReactClass from 'create-react-class'
+import PropTypes from 'prop-types'
 import Message from 'tetris-iso/Message'
 import ButtonWithPrompt from 'tetris-iso/ButtonWithPrompt'
 import StyledMixin from 'tetris-iso/lib/components/mixins/styled'
@@ -15,7 +17,6 @@ import {pushSuccessMessageAction} from '../../actions/push-success-message-actio
 import flow from 'lodash/flow'
 import csjs from 'csjs'
 
-const {PropTypes} = React
 const style = csjs`
 .x {
   color: rgb(70, 70, 70) !important;
@@ -56,9 +57,10 @@ Confirm.propTypes = {
   dismiss: PropTypes.func.isRequired
 }
 
-const RoleUser = React.createClass({
-  displayName: 'Role-User',
-  propTypes: {
+class RoleUser extends React.Component {
+  static displayName = 'Role-User'
+
+  static propTypes = {
     isOwner: PropTypes.bool.isRequired,
     removeUser: PropTypes.func.isRequired,
     userName: PropTypes.string,
@@ -66,10 +68,12 @@ const RoleUser = React.createClass({
     roleName: PropTypes.string.isRequired,
     id: PropTypes.string,
     pending: PropTypes.bool
-  },
-  removeUser () {
+  }
+
+  removeUser = () => {
     this.props.removeUser(this.props.id)
-  },
+  }
+
   render () {
     const {isOwner, roleName, userName, userEmail, pending} = this.props
     return (
@@ -110,9 +114,9 @@ const RoleUser = React.createClass({
       </div>
     )
   }
-})
+}
 
-export const RoleUsers = React.createClass({
+export const RoleUsers = createReactClass({
   displayName: 'Role-Users',
   mixins: [FormMixin, StyledMixin],
   style,

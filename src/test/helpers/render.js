@@ -12,6 +12,8 @@ export function initialize () {
 
 export function render (Component, props = null, location = null) {
   const React = require('react')
+  const createClass = require('create-react-class')
+  const PropTypes = require('prop-types')
   const ReactDOM = require('react-dom')
   const assign = require('lodash/assign')
   const {stateTree} = require('../fixtures/state-tree')
@@ -26,12 +28,10 @@ export function render (Component, props = null, location = null) {
 
   require('react-intl/lib/locales')
 
-  const {PropTypes} = React
-
   const context = assign({router}, stateTree)
   context.tree = new Baobab(stateTree)
 
-  const Wrapper = React.createClass({
+  const Wrapper = createClass({
     displayName: 'Wrapper',
     getChildContext () {
       return context

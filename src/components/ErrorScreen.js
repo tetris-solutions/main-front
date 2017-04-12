@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {branch} from 'baobab-react/higher-order'
 import Message from 'tetris-iso/Message'
 
@@ -7,24 +8,26 @@ function clearError (tree) {
   tree.commit()
 }
 
-const {PropTypes} = React
+class ErrorScreen extends React.Component {
+  static displayName = 'Error-Screen'
 
-const ErrorScreen = React.createClass({
-  displayName: 'Error-Screen',
-  contextTypes: {
+  static contextTypes = {
     router: PropTypes.object
-  },
-  propTypes: {
+  }
+
+  static propTypes = {
     error: PropTypes.shape({
       message: PropTypes.string
     }).isRequired,
     dispatch: PropTypes.func.isRequired,
     debugMode: PropTypes.bool.isRequired
-  },
-  dropError () {
+  }
+
+  dropError = () => {
     this.props.dispatch(clearError)
     this.context.router.push('/')
-  },
+  }
+
   render () {
     const {debugMode, error} = this.props
 
@@ -50,7 +53,7 @@ const ErrorScreen = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default branch({
   error: ['error'],

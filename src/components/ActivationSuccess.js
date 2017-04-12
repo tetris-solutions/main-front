@@ -2,8 +2,9 @@ import React from 'react'
 import {IndexLink} from 'react-router'
 import Message from 'tetris-iso/Message'
 
-export const ActivationSuccess = React.createClass({
-  displayName: 'Activation-Success',
+export class ActivationSuccess extends React.Component {
+  static displayName = 'Activation-Success'
+
   render () {
     return (
       <div className='container'>
@@ -19,6 +20,6 @@ export const ActivationSuccess = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default ActivationSuccess

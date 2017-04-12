@@ -1,15 +1,15 @@
 import FormMixin from './FormMixin'
 import Message from 'tetris-iso/Message'
 import React from 'react'
+import createReactClass from 'create-react-class'
+import PropTypes from 'prop-types'
 import SimpleInput from './SimpleInput'
 import SubmitButton from './SubmitButton'
 import {branch} from 'baobab-react/higher-order'
 
 import signupAction from '../actions/signup-action'
 
-const {PropTypes} = React
-
-export const Signup = React.createClass({
+export const Signup = createReactClass({
   displayName: 'Signup',
   mixins: [FormMixin],
   propTypes: {

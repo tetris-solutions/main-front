@@ -1,25 +1,26 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {changeLocaleAction} from 'tetris-iso/actions'
 import {branch} from 'baobab-react/higher-order'
 
-const {PropTypes} = React
+export class LocaleSelector extends React.Component {
+  static displayName = 'Locale-Selector'
 
-export const LocaleSelector = React.createClass({
-  displayName: 'Locale-Selector',
-  propTypes: {
+  static propTypes = {
     className: PropTypes.string,
     userLocale: PropTypes.string,
     locale: PropTypes.string,
     dispatch: PropTypes.func
-  },
-  getDefaultProps () {
-    return {
-      className: 'form-control'
-    }
-  },
-  onChangeLocale ({target: {value}}) {
+  }
+
+  static defaultProps = {
+    className: 'form-control'
+  }
+
+  onChangeLocale = ({target: {value}}) => {
     this.props.dispatch(changeLocaleAction, value)
-  },
+  }
+
   render () {
     return (
       <select
@@ -34,7 +35,7 @@ export const LocaleSelector = React.createClass({
       </select>
     )
   }
-})
+}
 
 export default branch({
   userLocale: ['user', 'locale'],

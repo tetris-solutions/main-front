@@ -1,26 +1,29 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import LocaleSelector from './HeaderLocaleSelector'
 import {Link, IndexLink} from 'react-router'
 import {logoutAction} from 'tetris-iso/actions'
 import {branch} from 'baobab-react/higher-order'
 import Message from 'tetris-iso/Message'
 
-const {PropTypes} = React
+export class Header extends React.Component {
+  static displayName = 'Header'
 
-export const Header = React.createClass({
-  displayName: 'Header',
-  propTypes: {
+  static propTypes = {
     user: PropTypes.object,
     dispatch: PropTypes.func
-  },
-  contextTypes: {
+  }
+
+  static contextTypes = {
     router: PropTypes.object.isRequired
-  },
-  handleLogoutClick (e) {
+  }
+
+  handleLogoutClick = (e) => {
     e.preventDefault()
     this.props.dispatch(logoutAction)
     this.context.router.push('/')
-  },
+  }
+
   render () {
     return (
       <nav className='navbar navbar-default'>
@@ -62,6 +65,6 @@ export const Header = React.createClass({
       </nav>
     )
   }
-})
+}
 
 export default branch({user: ['user']}, Header)

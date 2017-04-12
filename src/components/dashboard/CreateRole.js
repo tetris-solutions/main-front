@@ -1,4 +1,6 @@
 import React from 'react'
+import createReactClass from 'create-react-class'
+import PropTypes from 'prop-types'
 import FormMixin from '../FormMixin'
 import SimpleInput from '../SimpleInput'
 import SubmitButton from '../SubmitButton'
@@ -7,9 +9,7 @@ import {createRoleAction} from '../../actions/create-role-action'
 import {loadCompanyAction} from '../../actions/load-company-action'
 import {pushSuccessMessageAction} from '../../actions/push-success-message-action'
 
-const {PropTypes} = React
-
-export const CreateRole = React.createClass({
+export const CreateRole = createReactClass({
   displayName: 'Create-Role',
   mixins: [FormMixin],
   contextTypes: {

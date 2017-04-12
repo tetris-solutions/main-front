@@ -1,10 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import AvatarEditor from 'react-avatar-editor'
 import Message from 'tetris-iso/Message'
 import startsWith from 'lodash/startsWith'
 import {pushAlertMessageAction} from '../actions/push-alert-message-action'
 
-const {PropTypes} = React
 const BORDER_WIDTH = 25
 const btStyle = {position: 'relative'}
 const inputRangeStyle = {margin: '1em 0'}
@@ -18,33 +18,35 @@ const inputFileStyle = {
   height: '100%'
 }
 
-const AvatarPicker = React.createClass({
-  displayName: 'Avatar-Picker',
-  contextTypes: {
+class AvatarPicker extends React.Component {
+  static displayName = 'Avatar-Picker'
+
+  static contextTypes = {
     tree: PropTypes.object
-  },
-  propTypes: {
+  }
+
+  static propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
     image: PropTypes.string
-  },
-  getDefaultProps () {
-    return {
-      image: null,
-      width: 240,
-      height: 240
-    }
-  },
-  getInitialState () {
-    return {
-      image: this.props.image,
-      scale: 1
-    }
-  },
-  alert (message, level = 'warning') {
+  }
+
+  static defaultProps = {
+    image: null,
+    width: 240,
+    height: 240
+  }
+
+  state = {
+    image: this.props.image,
+    scale: 1
+  }
+
+  alert = (message, level = 'warning') => {
     pushAlertMessageAction(this.context.tree, message, level)
-  },
-  onChangeFile ({target: {files: [image]}}) {
+  }
+
+  onChangeFile = ({target: {files: [image]}}) => {
     if (!image) {
       return this.alert('imageIsRequired')
     }
@@ -56,26 +58,31 @@ const AvatarPicker = React.createClass({
     this.setState({
       image: window.URL.createObjectURL(image)
     })
-  },
-  onChangeScale ({target: {value}}) {
+  }
+
+  onChangeScale = ({target: {value}}) => {
     this.setState({scale: Number(value)})
-  },
-  hasImage () {
+  }
+
+  hasImage = () => {
     return Boolean(this.state.image)
-  },
+  }
+
   /**
    * @return {HTMLCanvasElement} canvas
    */
-  getCanvas () {
+  getCanvas = () => {
     return this.refs.avatar.getImageScaledToCanvas()
-  },
+  }
+
   /**
    * @return {Promise.<Blob>} image as blob
    */
-  getImageAsBlob () {
+  getImageAsBlob = () => {
     return new Promise((resolve, reject) => this.getCanvas()
       .toBlob(resolve, 'image/jpeg', 0.95))
-  },
+  }
+
   render () {
     const {width, height} = this.props
     const {image, scale} = this.state
@@ -115,6 +122,6 @@ const AvatarPicker = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default AvatarPicker
