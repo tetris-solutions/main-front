@@ -4537,18 +4537,17 @@ react-addons-test-utils@^15.2.1:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
-react-avatar-editor@^6.0.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/react-avatar-editor/-/react-avatar-editor-6.1.0.tgz#9e48d9a67ae8a74936dbe0089604f532da5b27f5"
+react-avatar-editor@^9.1.1:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/react-avatar-editor/-/react-avatar-editor-9.1.1.tgz#6a9c83c35698936530ff6c602966461abd145aeb"
   dependencies:
-    react "^15.3.2"
-    react-dom "^15.3.2"
+    prop-types "^15.5.8"
 
 react-deep-force-update@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz#f911b5be1d2a6fe387507dd6e9a767aa2924b4c7"
 
-react-dom@^15.3.2, react-dom@^15.5.4:
+react-dom@^15.5.4:
   version "15.5.4"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.5.4.tgz#ba0c28786fd52ed7e4f2135fe0288d462aef93da"
   dependencies:
@@ -4618,7 +4617,7 @@ react-transform-hmr@^1.0.4:
     global "^4.3.0"
     react-proxy "^1.1.7"
 
-react@^15.3.2, react@^15.5.4:
+react@^15.5.4:
   version "15.5.4"
   resolved "https://registry.yarnpkg.com/react/-/react-15.5.4.tgz#fa83eb01506ab237cdc1c8c3b1cea8de012bf047"
   dependencies:
