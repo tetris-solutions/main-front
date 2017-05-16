@@ -5,7 +5,7 @@ const revisionSuffix = process.env.DEV_SERVER
   ? ''
   : `.${require('../../package.json').version}`
 
-export const HTML = ({documentTitle = 'Tetris Solutions', css, payload, children}) => (
+export const HTML = ({documentTitle = 'Tetris Solutions', css, state, children}) => (
   <html>
     <head>
 
@@ -22,10 +22,13 @@ export const HTML = ({documentTitle = 'Tetris Solutions', css, payload, children
 
       <script
         id='state-injection'
-        dangerouslySetInnerHTML={{__html: `var backendPayload = ${JSON.stringify(payload)}`}}/>
+        dangerouslySetInnerHTML={{__html: `var backendPayload = ${JSON.stringify(state)}`}}/>
 
       <script src='/js/spin.min.js' defer/>
       <script src='/js/ladda.min.js' defer/>
+
+      <script src='/js/intl.min.js' defer/>
+      <script src={`/js/intl/${state.locale}.js`} defer/>
       <script src={`/js/client${revisionSuffix}.js`} defer/>
       <style id='style-injection' dangerouslySetInnerHTML={{__html: css}}/>
     </head>
@@ -40,7 +43,7 @@ export const HTML = ({documentTitle = 'Tetris Solutions', css, payload, children
 HTML.propTypes = {
   css: PropTypes.string,
   documentTitle: PropTypes.string,
-  payload: PropTypes.object,
+  state: PropTypes.object,
   children: PropTypes.node
 }
 
