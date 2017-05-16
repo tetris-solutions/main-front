@@ -16,9 +16,12 @@ export const HTML = ({documentTitle = 'Tetris Solutions', css, state, children})
       <link rel='shortcut icon' type='image/png' href='/img/favicon.png'/>
       <link rel='stylesheet' href='https://bootswatch.com/yeti/bootstrap.css'/>
       <link rel='stylesheet' href='https://cdn.rawgit.com/daneden/animate.css/master/animate.css'/>
-      <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css'/>
       <link rel='stylesheet' href='/css/ladda.min.css'/>
       <link rel='stylesheet' href='/css/flag-icon.min.css'/>
+
+      <link rel='stylesheet' href='/css/react-s-alert.css'/>
+      <link rel='stylesheet' href='/css/react-s-alert-slide.css'/>
+      <link rel='stylesheet' href='/css/react-s-alert-flip.css'/>
 
       <script
         id='state-injection'

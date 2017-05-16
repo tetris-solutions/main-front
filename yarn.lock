@@ -1039,7 +1039,7 @@ babel-register@^6.24.1:
     mkdirp "^0.5.1"
     source-map-support "^0.4.2"
 
-babel-runtime@^6.18.0, babel-runtime@^6.2.0, babel-runtime@^6.22.0, babel-runtime@^6.3.19:
+babel-runtime@^6.18.0, babel-runtime@^6.2.0, babel-runtime@^6.22.0, babel-runtime@^6.23.0, babel-runtime@^6.3.19:
   version "6.23.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.23.0.tgz#0a9489f144de70efb3ce4300accdb329e2fc543b"
   dependencies:
@@ -1400,7 +1400,7 @@ circular-json@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/circular-json/-/circular-json-0.3.1.tgz#be8b36aefccde8b3ca7aa2d6afc07a37242c0d2d"
 
-classnames@^2.2.3, classnames@^2.2.5:
+classnames@^2.2.3:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
@@ -1971,10 +1971,6 @@ ee-first@1.1.1:
 elegant-spinner@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
-
-element-class@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/element-class/-/element-class-0.2.2.tgz#9d3bbd0767f9013ef8e1c8ebe722c1402a60050e"
 
 emmett@^3.1.1:
   version "3.1.1"
@@ -3507,7 +3503,7 @@ lodash@4.12.0:
   version "4.12.0"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.12.0.tgz#2bd6dc46a040f59e686c972ed21d93dc59053258"
 
-lodash@^4.0.0, lodash@^4.1.0, lodash@^4.11.1, lodash@^4.16.1, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.6.1:
+lodash@^4.0.0, lodash@^4.1.0, lodash@^4.11.1, lodash@^4.2.0, lodash@^4.3.0, lodash@^4.6.1:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -4541,13 +4537,6 @@ react-addons-test-utils@^15.2.1:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
-"react-addons-update@^0.14.0 || ^15.0.0":
-  version "15.5.2"
-  resolved "https://registry.yarnpkg.com/react-addons-update/-/react-addons-update-15.5.2.tgz#0ada50494387b17238999ee9662f9f3fc38f935d"
-  dependencies:
-    fbjs "^0.8.9"
-    object-assign "^4.1.0"
-
 react-avatar-editor@^6.0.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/react-avatar-editor/-/react-avatar-editor-6.1.0.tgz#9e48d9a67ae8a74936dbe0089604f532da5b27f5"
@@ -4559,7 +4548,7 @@ react-deep-force-update@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz#f911b5be1d2a6fe387507dd6e9a767aa2924b4c7"
 
-"react-dom@^0.14.0 || ^15.0.0", react-dom@^15.3.2, react-dom@^15.5.4:
+react-dom@^15.3.2, react-dom@^15.5.4:
   version "15.5.4"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.5.4.tgz#ba0c28786fd52ed7e4f2135fe0288d462aef93da"
   dependencies:
@@ -4605,22 +4594,18 @@ react-router@^3.0.5:
     prop-types "^15.5.6"
     warning "^3.0.0"
 
+react-s-alert@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/react-s-alert/-/react-s-alert-1.3.0.tgz#d81224a474f15e89c35c0ea6c2a73f232a767128"
+  dependencies:
+    babel-runtime "^6.23.0"
+
 react-side-effect@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-1.1.0.tgz#57209f7ebc940d55e0fda82fe51422654175d609"
   dependencies:
     exenv "^1.2.1"
     shallowequal "^0.2.2"
-
-react-toastr@^2.4.0:
-  version "2.8.2"
-  resolved "https://registry.yarnpkg.com/react-toastr/-/react-toastr-2.8.2.tgz#55bfe8a5b1adc7a09e9fa14ddf428575876f42e1"
-  dependencies:
-    classnames "^2.2.5"
-    element-class "^0.2.2"
-    lodash "^4.16.1"
-    react-addons-update "^0.14.0 || ^15.0.0"
-    react-dom "^0.14.0 || ^15.0.0"
 
 react-transform-catch-errors@^1.0.2:
   version "1.0.2"
@@ -5414,9 +5399,9 @@ tar@^2.2.1:
     fstream "^1.0.2"
     inherits "2"
 
-tetris-iso@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/tetris-iso/-/tetris-iso-0.6.0.tgz#e931e96ad497b70c28dc0819c206483baafaebd5"
+tetris-iso@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/tetris-iso/-/tetris-iso-0.6.2.tgz#96c4e3042d5a8350d6726699d88b180f154deea0"
   dependencies:
     "@tetris/debug-middleware" "^0.1.0"
     "@tetris/locale-middleware" "^0.1.1"
@@ -5425,7 +5410,7 @@ tetris-iso@^0.6.0:
     express "^4.13.4"
     morgan "^1.7.0"
     node-fetch "^1.3.3"
-    react-toastr "^2.4.0"
+    react-s-alert "^1.3.0"
     whatwg-fetch "^0.11.0"
 
 text-table@^0.2.0, text-table@~0.2.0:
