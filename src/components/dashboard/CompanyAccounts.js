@@ -13,7 +13,12 @@ export class CompanyAccounts extends React.Component {
     params: PropTypes.object
   }
 
+  static contextTypes = {
+    location: PropTypes.object.isRequired
+  }
+
   render () {
+    const {location} = this.context
     const {params: {company}} = this.props
 
     const tableHeaders = (
@@ -26,6 +31,8 @@ export class CompanyAccounts extends React.Component {
       </tr>
     )
 
+    const here = process.env.FRONT_URL + location.pathname
+
     return (
       <div>
         <br/>
@@ -33,11 +40,11 @@ export class CompanyAccounts extends React.Component {
           <thead>{tableHeaders}</thead>
           <tbody>
 
-          {map(this.props.accounts, (account, index) =>
-            <CompanyAccountRow
-              key={account.id}
-              account={account}
-              company={this.props.params.company}/>)}
+            {map(this.props.accounts, (account, index) =>
+              <CompanyAccountRow
+                key={account.id}
+                account={account}
+                company={this.props.params.company}/>)}
 
           </tbody>
         </table>
@@ -66,6 +73,9 @@ export class CompanyAccounts extends React.Component {
             &nbsp;
             <a className='btn btn-info' href={`${process.env.TKM_URL}/company/${company}/link/twitter`}>
               Twitter
+            </a>
+            <a className='btn btn-primary' href={`${process.env.TKM_URL}/account/vtex/?company=${company}&next=${here}`}>
+              VTEX
             </a>
           </div>
         </section>
