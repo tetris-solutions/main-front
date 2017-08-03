@@ -1,7 +1,7 @@
 {
   "name": "@tetris/main-front",
   "scope": "tetris",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "front para o site e admin base",
   "main": "lib/main.js",
   "engineStrict": true,
