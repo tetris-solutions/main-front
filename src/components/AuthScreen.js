@@ -8,11 +8,14 @@ import {changeLocaleAction} from 'tetris-iso/actions'
 import Tooltip from 'tetris-iso/Tooltip'
 import startsWith from 'lodash/startsWith'
 
-const style = csjs`
+export const style = csjs`
 .container {
   padding-top: 20vh;
   height: 100vh;
   background-color: #e5e5e5;
+}
+.container button[type=submit] {
+  background-color: grey;
 }
 .input {
   color: #5f5f5f !important; 
@@ -70,6 +73,9 @@ const style = csjs`
   .box {
     width: 96%;
   }
+}
+.actions {
+  margin-top: 1em;
 }`
 
 export const Input = props => <SimpleInput className={String(style.input)} {...props} />
@@ -141,7 +147,7 @@ const AuthScreen = createReactClass({
     return (
       <div className={`container-fluid ${style.container}`}>
         <div className={`${style.box}`}>
-          <img className={`${style.logo}`} src='/img/tetris-logo.png'/>
+          <img className={`${style.logo}`} src='/img/tetris.co.png'/>
           {this.props.children}
         </div>
       </div>
