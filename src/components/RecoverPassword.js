@@ -5,11 +5,9 @@ import FormMixin from './FormMixin'
 import {recoverPasswordAction} from '../actions/recover-password-action'
 import {branch} from 'baobab-react/higher-order'
 import SubmitButton from './SubmitButton'
-import AuthScreen, {Input, LangMenu} from './AuthScreen'
+import AuthScreen, {Input, LangMenu, style} from './AuthScreen'
 import Message from 'tetris-iso/Message'
 import BlueLink from './BlueLink'
-
-const actionRowStyle = {marginTop: '1em'}
 
 const RecoverPassword = createReactClass({
   mixins: [FormMixin],
@@ -57,10 +55,10 @@ const RecoverPassword = createReactClass({
 
             <SubmitButton
               block
-              color='blue'
+              color='grey'
               labelMessage='recoverPassword'/>
 
-            <div className='row' style={actionRowStyle}>
+            <div className={`row ${style.actions}`}>
               <div className='col-xs-8'>
                 <BlueLink to='/login'>
                   <Message>cancelAction</Message>
@@ -72,7 +70,6 @@ const RecoverPassword = createReactClass({
             </div>
           </form>
         )}
-
       </AuthScreen>
     )
   }

@@ -5,11 +5,9 @@ import FormMixin from './FormMixin'
 import {createDashUserAction} from '../actions/create-dash-user-action'
 import {branch} from 'baobab-react/higher-order'
 import SubmitButton from './SubmitButton'
-import AuthScreen, {Input, LangMenu} from './AuthScreen'
+import AuthScreen, {Input, LangMenu, style} from './AuthScreen'
 import Message from 'tetris-iso/Message'
 import BlueLink from './BlueLink'
-
-const actionRowStyle = {marginTop: '1em'}
 
 const Tunnel = createReactClass({
   mixins: [FormMixin],
@@ -72,9 +70,9 @@ const Tunnel = createReactClass({
 
           <SubmitButton
             block
-            color='blue'/>
+            color='grey'/>
 
-          <div className='row' style={actionRowStyle}>
+          <div className={`row ${style.actions}`}>
             <div className='col-xs-8'>
               <BlueLink to='/'>
                 <Message>cancelAction</Message>
