@@ -14,8 +14,8 @@ export const HTML = ({documentTitle = 'Tetris Solutions', css, state, children})
       <title>{documentTitle}</title>
 
       <link rel='shortcut icon' type='image/png' href='/img/favicon.png'/>
-      <link rel='stylesheet' href='https://bootswatch.com/yeti/bootstrap.css'/>
-      <link rel='stylesheet' href='https://cdn.rawgit.com/daneden/animate.css/master/animate.css'/>
+      <link rel='stylesheet' href='/css/bootstrap.min.css'/>
+      <link rel='stylesheet' href='/css/animate.min.css'/>
       <link rel='stylesheet' href='/css/ladda.min.css'/>
       <link rel='stylesheet' href='/css/flag-icon.min.css'/>
 
