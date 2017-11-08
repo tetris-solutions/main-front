@@ -27,9 +27,6 @@
     "start": "bin/cmd.js",
     "start:dev": "DEV_SERVER=true nodemon src/main.js"
   },
-  "pre-commit": [
-    "lint"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tetris-solutions/main-front.git"
