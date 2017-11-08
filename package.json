@@ -27,6 +27,9 @@
     "start": "bin/cmd.js",
     "start:dev": "DEV_SERVER=true nodemon src/main.js"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tetris-solutions/main-front.git"
@@ -83,7 +86,7 @@
     "mock-require": "^1.2.1",
     "node-mocks-http": "^1.5.2",
     "nodemon": "^1.9.1",
-    "pre-commit": "^1.1.2",
+    "pre-commit": "^1.2.2",
     "react-addons-test-utils": "^15.2.1",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
