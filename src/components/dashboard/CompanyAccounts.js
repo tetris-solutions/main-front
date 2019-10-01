@@ -58,24 +58,26 @@ export class CompanyAccounts extends React.Component {
             <a className='btn btn-success' href={`${process.env.TKM_URL}/company/${company}/link/adwords`}>
               Adwords
             </a>
-            &nbsp;
             <a className='btn btn-default' href={`${process.env.TKM_URL}/company/${company}/link/analytics`}>
               Google Analytics
             </a>
-            &nbsp;
             <a className='btn btn-warning' href={`${process.env.TKM_URL}/company/${company}/link/doubleclick`}>
               Double Click
             </a>
-            &nbsp;
             <a className='btn btn-primary' href={`${process.env.TKM_URL}/company/${company}/link/facebook`}>
               Facebook
             </a>
-            &nbsp;
             <a className='btn btn-info' href={`${process.env.TKM_URL}/company/${company}/link/twitter`}>
               Twitter
             </a>
-            <a className='btn btn-primary' href={`${process.env.TKM_URL}/account/vtex/?company=${company}&next=${here}`}>
+            <a className='btn btn-success' href={`${process.env.TKM_URL}/account/vtex/?company=${company}&next=${here}`}>
               VTEX
+            </a>
+            <a className='btn btn-default' href={`${process.env.TKM_URL}/company/${company}/link/linkedin`}>
+              Linkedin
+            </a>
+            <a className='btn btn-warning' href={`${process.env.TKM_URL}/company/${company}/link/microsoft`}>
+              Microsoft
             </a>
           </div>
         </section>
