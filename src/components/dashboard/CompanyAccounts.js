@@ -79,6 +79,9 @@ export class CompanyAccounts extends React.Component {
             <a className='btn btn-warning' href={`${process.env.TKM_URL}/company/${company}/link/microsoft`}>
               Microsoft
             </a>
+            <a className='btn btn-primary' href={`${process.env.TKM_URL}/account/criteo/?company=${company}&next=${here}`}>
+              Criteo
+            </a>
           </div>
         </section>
       </div>
