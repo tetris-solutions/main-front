@@ -1,5 +1,5 @@
 import winston from 'winston'
-import {Logstash} from 'winston-logstash'
+//import {Logstash} from 'winston-logstash'
 import os from 'os'
 
 const transports = [
@@ -12,12 +12,12 @@ const transports = [
 ]
 
 if (!process.env.SILENT) {
-  transports.push(new Logstash({
+  /*transports.push(new Logstash({
     level: 'debug',
     port: 28777,
     node_name: 'main-front@' + os.hostname(),
     host: process.env.LOGSTASH_HOST
-  }))
+  }))*/
 }
 
 export const logger = new winston.Logger({

@@ -60,8 +60,7 @@
     "react-intl": "^2.3.0",
     "react-router": "^3.0.5",
     "tetris-iso": "^0.6.2",
-    "winston": "^2.2.0",
-    "winston-logstash": "^0.2.11"
+    "winston": "^2.2.0"
   },
   "devDependencies": {
     "ava": "^0.13.0",
