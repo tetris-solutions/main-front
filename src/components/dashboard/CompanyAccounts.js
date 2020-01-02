@@ -61,6 +61,9 @@ export class CompanyAccounts extends React.Component {
             <a className='btn btn-default' href={`${process.env.TKM_URL}/company/${company}/link/analytics`}>
               Google Analytics
             </a>
+            <a className='btn btn-default' href={`${process.env.TKM_URL}/company/${company}/link/youtube`}>
+              Youtube
+            </a>
             <a className='btn btn-warning' href={`${process.env.TKM_URL}/company/${company}/link/doubleclick`}>
               Double Click
             </a>
