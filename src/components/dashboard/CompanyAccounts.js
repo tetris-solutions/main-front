@@ -61,9 +61,6 @@ export class CompanyAccounts extends React.Component {
             <a className='btn btn-default' href={`${process.env.TKM_URL}/company/${company}/link/analytics`}>
               Google Analytics
             </a>
-            <a className='btn btn-default' href={`${process.env.TKM_URL}/company/${company}/link/youtube`}>
-              Youtube
-            </a>
             <a className='btn btn-warning' href={`${process.env.TKM_URL}/company/${company}/link/doubleclick`}>
               Double Click
             </a>
@@ -84,6 +81,9 @@ export class CompanyAccounts extends React.Component {
             </a>
             <a className='btn btn-primary' href={`${process.env.TKM_URL}/account/criteo/?company=${company}&next=${here}`}>
               Criteo
+            </a>
+            <a className='btn btn-info' href={`${process.env.TKM_URL}/company/${company}/link/youtube`}>
+              Youtube
             </a>
           </div>
         </section>
