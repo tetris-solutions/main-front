@@ -88,6 +88,9 @@ export class CompanyAccounts extends React.Component {
             <a className='btn btn-success' href={`${process.env.TKM_URL}/account/linx/?company=${company}&next=${here}`}>
               Linx
             </a>
+            <a className='btn btn-default' href={`${process.env.TKM_URL}/account/taboola/?company=${company}&next=${here}`}>
+              Taboola
+            </a>
           </div>
         </section>
       </div>
