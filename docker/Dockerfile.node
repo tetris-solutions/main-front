@@ -5,7 +5,7 @@ RUN apk add g++ make python3
 WORKDIR /usr/app
 
 COPY package.json ./
-COPY .npmrc /root/
+RUN printf '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > /root/.npmrc
 
 EXPOSE 3000
 
