@@ -94,6 +94,12 @@ export class CompanyAccounts extends React.Component {
             <a className='btn btn-warning' href={`${process.env.TKM_URL}/company/${company}/link/amazon`}>
               Amazon
             </a>
+            <a className='btn btn-primary' href={`${process.env.TKM_URL}/company/${company}/link/salesforce`}>
+              Salesforce
+            </a>
+            <a className='btn btn-info' href={`${process.env.TKM_URL}/account/pipedrive/?company=${company}&next=${here}`}>
+              Pipedrive
+            </a>
           </div>
         </section>
       </div>
