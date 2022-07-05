@@ -100,6 +100,9 @@ export class CompanyAccounts extends React.Component {
             <a className='btn btn-info' href={`${process.env.TKM_URL}/account/pipedrive/?company=${company}&next=${here}`}>
               Pipedrive
             </a>
+            <a className='btn btn-primary' href={`${process.env.TKM_URL}/company/${company}/link/rdstation`}>
+              RD Station
+            </a>
           </div>
         </section>
       </div>
