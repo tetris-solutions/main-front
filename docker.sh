@@ -8,6 +8,12 @@ case $1 in
     docker-compose -f docker/docker-compose.${DOCKER_ENV}.yml --project-directory=./ stop
     docker-compose -f docker/docker-compose.${DOCKER_ENV}.yml --project-directory=./ up --build -d
     ;;
+  stop)
+    docker-compose -f docker/docker-compose.${DOCKER_ENV}.yml --project-directory=./ stop
+    ;;
+  rm)
+    docker-compose -f docker/docker-compose.${DOCKER_ENV}.yml --project-directory=./ rm
+    ;;
   logs)
     if [ -z "$2" ]; then
       docker-compose -f docker/docker-compose.${DOCKER_ENV}.yml --project-directory=./ logs -f
