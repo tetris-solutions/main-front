@@ -9,4 +9,4 @@ RUN printf '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > /root/.npmrc
 
 EXPOSE 3000
 
-CMD npm install --production=false && npm run bundle && npm run start
+CMD npm install --production=false && npm run compile && npm run bundle && npm run start
