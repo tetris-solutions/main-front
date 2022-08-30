@@ -3,7 +3,7 @@ pipeline {
   environment {
     svc_name = 'main-front'
     name_env = '.env.main-front'
-    htdocs = "/var/www/main-front"
+    htdocs = "/var/www/html/main-front"
     ssh_key = credentials('tetris-oracle.key')
     ssh_ip = credentials("${env.DEPLOY_TO}")
     tetris_github_user = credentials('tetris_github_user')
