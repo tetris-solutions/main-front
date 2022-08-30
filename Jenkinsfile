@@ -1,62 +1,39 @@
 pipeline {
   agent any
   environment {
-    svc_name = 'user-client'
-    htdocs = "/var/www/user-client"
+    svc_name = 'main-front'
+    name_env = '.env.main-front'
+    htdocs = "/var/www/main-front"
+    ssh_key = credentials('tetris-oracle.key')
+    ssh_ip = credentials("${env.DEPLOY_TO}")
+    tetris_github_user = credentials('tetris_github_user')
+    tetris_github_pass = credentials('tetris_github_pass')
     production_env = credentials('production.env')
-    homolog_env = credentials('homolog.env')
-    ssh_key = credentials('tetris.pem')
+    dev_env = credentials('dev.env')
   }
   stages {
     stage('Provision') {
       steps {
         script {
-          if (env.TETRIS_ENV == 'homolog') {
-            sh "cp ${env.homolog_env} .env"
+          if (env.TETRIS_ENV == 'dev') {
+            sh "cp ${env.dev_env} ${env.name_env}"
           } else {
-            sh "cp ${env.production_env} .env"
+            sh "cp ${env.production_env} ${env.name_env}"
           }
         }
 
-        sh 'chmod 644 .env'
-      }
-    }
-    stage('Build') {
-      steps {
-        sh 'npm install'
-        sh 'npm run bundle'
-      }
-    }
-    stage('Test') {
-      steps {
-        echo 'Testing... jk'
-      }
-    }
-    stage ('Archive') {
-      steps {
-        sh 'rm -rf node_modules'
-        sh 'npm install --production'
-        sh "tar -zcf build.${env.BUILD_NUMBER}.tar.gz .env package.json npm-shrinkwrap.json bin lib public node_modules"
-        archive "build.${env.BUILD_NUMBER}.tar.gz"
+        sh "chmod 644 ${env.name_env}"
       }
     }
     stage('Deploy') {
       steps {
-        sh "cp ${env.ssh_key} tetris.pem"
-        sh "chmod 600 tetris.pem"
-        sh "scp -i tetris.pem -o StrictHostKeyChecking=no build.${env.BUILD_NUMBER}.tar.gz ubuntu@${env.DEPLOY_TO}:."
-        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'mkdir -p ${env.htdocs}/${env.BUILD_NUMBER}'"
-        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'tar -zxf build.${env.BUILD_NUMBER}.tar.gz -C ${env.htdocs}/${env.BUILD_NUMBER}'"
-        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'rm build.${env.BUILD_NUMBER}.tar.gz'"
-
-        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'rm -f ${env.htdocs}/latest'"
-        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'ln -s ${env.htdocs}/${env.BUILD_NUMBER} ${env.htdocs}/latest'"
-        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'sudo rm -f /usr/bin/${env.svc_name}'"
-        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'sudo ln -s ${env.htdocs}/latest/bin/cmd.js /usr/bin/${env.svc_name}'"
-
-        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'sudo pm2 delete ${env.svc_name} || true'"
-        sh "ssh -i tetris.pem -o StrictHostKeyChecking=no -t ubuntu@${env.DEPLOY_TO} 'sudo pm2 start ${env.svc_name}'"
-
+        sh "cp ${env.ssh_key} tetris-oracle.key"
+        sh "chmod 600 tetris-oracle.key"
+        sh "scp -i tetris-oracle.key -o StrictHostKeyChecking=no ${env.name_env} opc@${env.ssh_ip}:/var/www/full/${env.name_env}"
+        sh "ssh -i tetris-oracle.key -o StrictHostKeyChecking=no -t opc@${env.ssh_ip} 'sudo mv /var/www/full/${env.name_env} ${htdocs}/.env'"
+        sh "ssh -i tetris-oracle.key -o StrictHostKeyChecking=no -t opc@${env.ssh_ip} 'cd ${env.htdocs} && sudo MY_GIT_USER=${env.tetris_github_user} MY_GIT_PASS=${env.tetris_github_pass} GIT_ASKPASS=/root/.git-askpass git fetch --all'"
+        sh "ssh -i tetris-oracle.key -o StrictHostKeyChecking=no -t opc@${env.ssh_ip} 'cd ${env.htdocs} && sudo MY_GIT_USER=${env.tetris_github_user} MY_GIT_PASS=${env.tetris_github_pass} GIT_ASKPASS=/root/.git-askpass git checkout ${env.BRANCH}'"
+        sh "ssh -i tetris-oracle.key -o StrictHostKeyChecking=no -t opc@${env.ssh_ip} 'sudo su -c \"cd ${htdocs}; ./docker.sh restart\"'"
       }
     }
   }
