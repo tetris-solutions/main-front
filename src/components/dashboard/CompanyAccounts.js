@@ -103,6 +103,9 @@ export class CompanyAccounts extends React.Component {
             <a className='btn btn-primary' href={`${process.env.TKM_URL}/company/${company}/link/rdstation`}>
               RD Station
             </a>
+            <a className='btn btn-info' href={`${process.env.TKM_URL}/company/${company}/link/tiktok`}>
+              Tiktok
+            </a>
           </div>
         </section>
       </div>
